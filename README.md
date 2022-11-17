@@ -13,6 +13,6 @@ minden terület felszabadítása után az adott birodalom/terület lakóitól ka
 mindegyik tagja a Rendnek tartalmazza egy kisebb kristályt ami segít a mágia terjesztésében.
 
 
-///ha ájulás közelébe kerülnénk egy macska megnyalja az arcunk és felébredünk
+///ha ájulás közelébe kerülnénk egy macska megnyalja az arcunk és felébredünk, vagy olyan hatás alá kerülünk ami korlátoz
 
 Vezető: másik birodalomból érkezett démon, pusztító mágia
