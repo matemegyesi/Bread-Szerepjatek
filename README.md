@@ -17,4 +17,5 @@ mindegyik tagja a Rendnek tartalmazza egy kisebb kristályt ami segít a mágia 
 
 Vezető: másik birodalomból érkezett démon, pusztító mágia
 
+# Történet kezdete
 Az utunkat a szülővárosunkban kezdjük, Rauðagnúpur - ból. Itt nem vagyunk se közkedveltek se utáltak, az itt élők nem tudják mi történt velünk vagy hogy milyen hatalmas erőnk van. Viszont a helyieket jól ismerjük így megkeressük a helyi templom főpapját, adjon nekünk betekintést a Varázsló Rend radikális változásáról, mi állhat a háttérben. Elmondja nekünk, hogy 5 éve érkezett egy hírnök, aki az új rend alapjairól kezdett prédikálni. Megdöbbentőek voltak ezek a változások, a Varázslók sosem árulnák el a Birodalmat. Egy nyomot tud adni nekünk: keressük a helyi templom visszavonult főpapját aki 5 éve volt a főpap, hátha többet tud mondani. 
