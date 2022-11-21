@@ -1,4 +1,4 @@
-# Bread-Szerepjatek
+# Bread-Szerepjáték
 téma: sokrétű(tűz, tér, idő blabla)
 mágia szint: 1, 2, 3, 4, 5, 6, 7, 8, 9, Felsőbbrendű mágia, Isteni mágia
 
