@@ -1,0 +1,14 @@
+Ent-hez hasonló bölcs élő fa. 
+
+Múlt: Hjálmey hozta létre a népét mert bántotta őt a sok fájdalom az erdőben ezért életre keltette az Enteket, hogy védjék az erdőt. Jörmundur a faja vezetője és a legidősebb közülük.
+Örök hálával tartozik Hjálmey-nek. Az életre ébredése óta nagy erőfeszítésekkel vezeti népét és örzi a békét és a nyugalmat az erdőben.
+
+Személyiség: Nyugodt, nagyon bölcs és hűséges. Mély picit lassú beszéd.
+
+Racial spells: 
++létrehoz maga körül egy "fagolyót" ami védi őt, ezáltal időt nyer gondoklodni vagy spellt castolni.
++gyökereket fon a lábaid köré, hogy ne tudj mozogni. 
++Tüskével megdobál
++mini fagólem.
+
+Gyengeség: lassú 
