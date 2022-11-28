@@ -1,0 +1,15 @@
+Hjálmey - női elf - 7. Mágus/boss
+
+Egy nemes elf családból származó női elf, aki hatalmas tehetséggel és mágiával rendelkezik. Jó indulató és mindenkivel kedves. Mindenkinek a szándékát szemelőtt tartja. Tisztában van a saját erejével de nem vág fel vele. Főként csak mágiát használ és gyenge közelharcos, sőt semmiből sem annyira erős kívéve mágiából, abban ő az egyik legerősebb az egész világban.
+
+Múlt:
+Egy 5 fős családból származik, 3 testévre van.
+
+
+Racial Spells:
++heal
++anti magic area
++charm elcsábít és emiatt elkábulsz 1.5 másodperce
++hatodik érzék: lesz egy minimális dodgeolási esélye
++Wind blast: Hatalmas széllökés
++Hatalmas erejű hanggal halláskárosodást okoz ami miatt csökken az éberséged.
