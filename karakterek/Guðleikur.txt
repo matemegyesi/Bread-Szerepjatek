@@ -3,4 +3,11 @@ Guðleikur - 6. boss
 Ember
 Guðleikur egy szegényes családból származó átlag ember volt. Mióta az eszét tudta az volt az álma hogy felülkerekedik a családja szegénységén és egy erős, befolyásos jómodú ember lesz. Habár nem is merték régen sokan mivel egész nap a szüleinek kellet segíteni, hogy épp megutdjanak élni vagy edzett és gyakorolt annak reményében, hogy felülkerekedjen sanyarú sorsán, még akik ismerték is azok is kinevették, mert úgy gondolták hogy túl naív elképzelései vannak. Szerencsére Guðleikur az apja pozitivitását örökölte és csak elmosolyodott ezen megszólalásokon. Hosszú kemény munka árán hatalmas erőre tett szert. A mágiája és fizikai képessége szinte tökéletesen kiegyenlített és egyensúlyban van. Egy mágusbotja és egy kardja van. Szereti az állatokat. Mindenkinek meghallgatja a véleményét és mindenkivel foglalkozik, mert tudja milyen a társadalom alján lenni, akit mindenki elítél. 
 
+Járatos a Druida varázslatokban, sőt az egyik legnagyobb mestere.
+
 Viszonylag higgadt, kopasz szakállas ember. Mérlegelve dönt a helyzetekben. Fivéreit elvesztette a csatában, de már túllépett rajta. Szülei meghaltak öregségben és gyengeségben. Az egyetlen családja a barátnője. Nem akarja, hogy bárki úgy járjon mint ő, ezért békepárti és egyenlőségre törekszik mindenki közt.
+
+Racial Spells:
++hp potion - 3 szor tudja használni és kevés hpt tölt.
++mending - gyenge
++segítségűl hív állatokat: Medve (+ hp, - dmg), Jaguár (+gyorsaság, sebzés -hp) Madár (+dodge rate -nagyon kevés hp)

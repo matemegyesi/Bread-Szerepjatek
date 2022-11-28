@@ -8,3 +8,9 @@ Bjöllupóstur-ból származik. Már gyerekkorában is jó kovácsképességekke
 Hosszas munka után ő is a legjobb kovács, akit csak megismert az egész birodalom. Így történt, hogy megkérték hogy képviselje őket a mágustanácsban, amit el is fogadott. 
 Nem hisz a szent örök békében, sokkal inkább abban, hogy néha egy fejszével kell lerendezni a nézez eltréréseket.
 
+Racial Spells:
++Armor Spell
++dmg spell
++Picit nagyobbítja a támadási sebességét
+-Maximum 2 spell lehet rajta.
++Fejsze dobás, ami visszajön, OP --> -nagy töltési idő
