@@ -2,7 +2,7 @@
 Birodalomban a mágia szinteződik. Ez 1-9-ig megy, felette van a *Felsőbbrendű Mágia* és az *Isteni Mágia*.
 
 ### A célunk a történetben
-Egy másik Birodalomból érkezett démon, a Birodalom főbb dolgait irányító Varászló Rendet irányítsa alá von. Mi az ő felderítését és a Rend visszaállítását szeretnénk elérni. 
+Egy másik Birodalomból érkezett démon, a Birodalom főbb dolgait irányító Varázsló Rendet irányítsa alá von. Mi az ő felderítését és a Rend visszaállítását szeretnénk elérni. 
 
 A Rendnek 13 tagja van, ahogy segítünk és haladunk a felszabadítással, a segítségüket ajánlják fel a démon legyőzéséhez.
 
