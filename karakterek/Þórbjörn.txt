@@ -14,3 +14,6 @@ Racial Spells:
 +Picit nagyobbítja a támadási sebességét
 -Maximum 2 spell lehet rajta.
 +Fejsze dobás, ami visszajön, OP --> -nagy töltési idő
+
+Gyengeség: Range
+Erősség: Közeli nagy sebzés, átlagosnál nagyobb hp

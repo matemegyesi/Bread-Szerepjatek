@@ -13,3 +13,5 @@ Racial spells:
 +Neked dob egy bárdot.
 
 Különlegesség: Hatalmas mennyiségű hp, nem érti a szarkazmust.
+Erősség: Nagy hp, tankos
+Gyengeség: Kis sebzés

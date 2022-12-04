@@ -13,3 +13,6 @@ Racial Spells:
 +hatodik érzék: lesz egy minimális dodgeolási esélye
 +Wind blast: Hatalmas széllökés
 +Hatalmas erejű hanggal halláskárosodást okoz ami miatt csökken az éberséged.
+
+Gyengeség: Kevés hp
+Erősség: Nagy sebzés, heal

@@ -11,3 +11,6 @@ Racial Spells:
 +hp potion - 3 szor tudja használni és kevés hpt tölt.
 +mending - gyenge
 +segítségűl hív állatokat: Medve (+ hp, - dmg), Jaguár (+gyorsaság, sebzés -hp) Madár (+dodge rate -nagyon kevés hp)
+
+Erősség: HP potion, állat segítségűl hívás
+Gyengeség: semmiben nem különleges

@@ -12,3 +12,4 @@ Racial spells:
 +mini fagólem.
 
 Gyengeség: lassú 
+Erősség: Okos

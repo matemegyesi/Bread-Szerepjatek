@@ -8,3 +8,6 @@ Szülei úgy nevelték hogy a saját érdekeit nézze és legyen ambiciózús, �
 
 Racial spells:
 +invisibility
+
+Gyengeség: kevés hp
+Erősség: Mozgékonyság
