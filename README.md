@@ -10,13 +10,14 @@ Stigandr, "Wanderer"
 
 ### A Rend tagjai:
 ```
-1. Guðleikur
-2. Þórbjörn
-3. Trykxezz
-4. Adavesa
-5. Snærún
-6. Hjálmey
-7. Jörmundur
+Guðleikur
+Þórbjörn
+Trykxezz
+Adavesa
+Snærún
+Hjálmey
+Jörmundur
+Tjörfi
 ```
 # Történet
 ## Főpap meglátogatása
