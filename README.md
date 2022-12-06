@@ -16,8 +16,9 @@ Trykxezz
 Adavesa
 Snærún
 Hjálmey
-Jörmundur
+Jörmündor
 Tjörfi
+Sigmundur
 ```
 # Történet
 ## Főpap meglátogatása
@@ -42,4 +43,11 @@ Megkérjük ***Þórbjörn***-t, hogy hívja ide a Királyság legerősebb *Rún
 Visszatérünk **Barringsons** kikőtőjébe, ahol információ szerzés után megtudjuk, hogy ***Trykxezz*** klánja, éppen ***Nefaris Elementál*** megidézésével tevékenykednek.(**Elementál Idézés - 3.-5.-7. szintű mágia**). Minden elementál leszármazottja az *Ősi Elementáloknak*, akik a Birodalmak Nagy Háborújának idején voltak aktívak(Azóta is léteznek de nehezen megközelíthető helyeken a 9-ből). Egy akkor induló hajóra felszállunk és meglátogatjuk őket a **Genesia tengeren** található szigeten.(Neve ismeretlen) A sziget alaphelyzetben nem létezik, mágikus természetű, egy óriás teknős hátán "vándorol" a sziget, egy mágiával ellátott mezővel, ami megtéveszti a szemet. Megtaláljuk ***Trykxezz***-t és szívességet kérünk, hogy segítsen nekünk visszaszerezni a küldöttet. A *Jackal-ek* alapból agresszívak, nem szeretik az idegeneket, de velünk jó kapcsolatuk volt, mindeddig. ***Trykxezz*** olyan mágiát használ, ami gyorsaságát és agilitását növeli, ezáltal tud olyan sebességre szert tenni ami néhány szem számára követhetetlen. Tudjuk, hogy fertőzőtt a 13-al elméje ezért nem is próbáljuk megölni, vagy nagy kárt tenni benne, csak lelassítani. (**Béklyó Mágia - 6. szint**) Miután mozgásképtelenné vált, megvizsgáljuk elméjét és eltörjük ***Rirgrollath-tal*** való összekötettését. Mivel megmentettük, így már 2szer az életét, szívesen segít nekünk. A varázslat egyszerű, csak az alany nevét, faját, és a **Pokoli Triász**-ban szereplő 3 lény nevét kell tudnunk. Ebből csak a 3 lény neve hiányzik. Elküldjük ***Hjalmar***-t, a goblin fejvadászt, derítse ki(**Idézés - 4. szintű mágia**). 1 nappal később vissza is tér. A küldött visszaszerzése után (**Szent Mágia - 7. szint**), vele együtt térünk vissza a **Királynőhöz**. (**Felsőbbrendű Teleportálás - Felsőbbrendű Mágia**)
 ## Nazjatar-ba visszatérés
 A Királynő már előkészült hadseregével, összehívta Királysága összes harcedzett katonáját, akik a **Nagalana harcstílus** mesterei. Elvonulva szobájába a követével megtudjuk, hogy a 13-ak elméjét tényleg átok súlytja, de ebből már csak 8 aktív, 4-et már megtörtünk. Ezenkívül megtudta, hogy ***Rirgrollath***, egyeduralomra készül, megpróbálná a Mély segítégével irányítani ezt a Birodalmat. Tudjuk, ha most néznék szembe vele, a károk nagyok lennének, teljes kontinensek veszhetnének oda a harcokban. ***Adavesa***-val ezek után sok időt töltünk kettesben. Levelet küldünk ***Guðleikur***-nak, ***Þórbjörn***-nek és ***Trykxezz***-nek, hogy jöjjenek a palotába megbeszélni a helyzetet, mint a Rend jelenlegi 4 tagja. 1 héten belül megérkeznek mindannyian. A probléma orvoslására a terv az, hogy 5-en másik 5 tagot szabadítunk fel ***Rirgrollath*** irányítása alól. Azonban mielőtt mindenki elindulna, ***Adavesa***-át nem engedjük egyedül, egy társat idézünk neki. Egyik fő mágia területünk a *Nekromancia*, így megidézzük egyik legerősebb szolgánkat, ***Sol'gazath***-ot. Ő hadseregünk tábornoka és egy elfeledett faj képviselője (**Dregon**, alstory). Ereje túlszárnyalja a 13-ak nagytöbbségét. 
-## 5 tag felszabadítása
+## 5 tag felszabadítása és Lélek Tárgyak
+5-en elindulok megtísztítani Hjálmey-t, Snærún-t, Jörmündor-t, Tjörfi-t és Sigmundur-t. Ők 5-en a mágiát aktívan használják, kivéve Tjörfi, ő inkább egy harcos mintsem mágiahasználó, azonban mind az 5-en megállnák a helyüket ellenünk. A 4 küldöttünknek 4 Lélek Tárgyat adunk. Ezek olyan mágiával átjárt tárgyak, amik a legmagasabb szintű varázslatok tárolására is képesek, kivéve a legfelső 2-őt. Trykxezz egy duplapengéjű tőrt kapott, Guðleikur egy kristály-t kapott, Þórbjörn egy kalapácsot. Azonban egyikük sem akármilyen tőrt, kristályt vagy kalapácsot kapott. Ezek mind egy ősi idő relikviáji amik létrejöttüket követően nem sokkal került hozzánk. Adavesa egy gyűrűt kap, ami egykor a Gallanbalt Mélységben rejlő erőteljes szörnyeteg börtönének kulcsa volt. Mi Sigmundurhoz látogatunk el, ami annyiban nehéz csak, hogy legutoljára 5 éve látták, azóta csak megbízottja tud róla bármit is.
+##
+
+
+
+
+The Bay of Nokode
