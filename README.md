@@ -6,8 +6,6 @@ Egy másik Birodalomból érkezett démon, a Birodalom főbb dolgait irányító
 
 A Rendnek 13 tagja van, ahogy segítünk és haladunk a felszabadítással, a segítségüket ajánlják fel a démon legyőzéséhez.
 
-Stigandr, "Wanderer"
-
 ### A Rend tagjai:
 ```
 Guðleikur
