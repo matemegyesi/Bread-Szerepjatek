@@ -19,6 +19,10 @@ Hjálmey
 Jörmündor
 Tjörfi
 Sigmundur
+Anðroghour
+Kaprasíus
+Sigursteina
+Alyndra
 ```
 # Történet
 ## Főpap meglátogatása
