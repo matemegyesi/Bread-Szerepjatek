@@ -16,5 +16,9 @@ Elmegyünk egy szépen feldíszitett erdőbe megkeresni a kis Goblin bátyját (
  ### Minden jó ha vége jó
  Megsajnáljuk a medvét és a családját ezért elvisszük őket a NAGY karácsonyi vásárra és meghívjuk őket nagyon sok finomságra, köztük mézes dolgokra is. A szép, együtt töltött este végén közösen éneklünk a karácsonyi vásár nagy fája alatt karácsonyi énekeket.
 ## 2. Side quest - A tolvaj manók
+### Bonyodalom
+Éppen egyedül sétálunk az utcán amikor egy síró gyerek hangjára figyelünk fel. A hang a térség legnagyobb karácsonyfa aljából jön. Tudni illik hogy ez a fa alatt történik nagyon az ajándék adományozás, ahol szegényebb embereknek lehet adományozni és kaja osztás is. Oda sietünk és megtudakoljuk, hogy mi történt. Egy szegény gyerek hangát hallotuk aki nagyon szomorú mert egész évben ezt a napot várta viszont alig maradt valami az adományozó asztalon. Az éppen ott felügyelők nem értik mi történt mert a feljegyzéseik szerint még bőven kéne lennie ajándékoknak. Arra gyanakodunk hogy vlaki lop ezért egy roppant elmés tervvel állunk elő. 
+### Elmés terv 
+Először is elküldjük a feltünést keltő embereket, hogy ne fogjanak gyanút a tolvajok. Oda teszünk a fa alá egy értékesnek tünő ajándékot. Beépülünk a tömegbe és várunk egy picit. Hirtelen arra leszünk figyelmesek hogy eltüntek az ajándékok. Nem esünk pánikba mert volt egy B tervünk. A csomagot megjelöltük mágiával, és letudtuk az követni. Egy erdőszéli házhoz érkezünk ahova belépve 3 kobold iker fogad minket. 
 
 ## 3. Side quest - Karácsoni táncverseny
