@@ -15,3 +15,6 @@ Elmegyünk egy szépen feldíszitett erdőbe megkeresni a kis Goblin bátyját (
  Megpróbálunk közelebb lopakodni mivel nem tudjuk hogy meddig bírja még a sülő Goblin. A sötét rejtekből csak a egy mély hang megszólal: "Nem gondoltam volna, hogy ekkora lakoma lesz ma." Majd előlép egy medve karácsony sapkában és pulcsiban mikulás szakállal. Harcba keveredünk a medvével. Miután a játékos padlóra tudta küldeni a medvét a medve egyik bocsa felkiállt, hogy hagyjuk békén az apját. Ezután a medve elmeséli nekünk, hogy szegény körülmények között élnek és a gyerekei folyamatosan éheznek és ő csak legalább karácsony estélyén akart nekik valami ennivalót adni és együtt lenni velük. Kiderül, hogy a medvének jó lelke van és szerő családja viszont gyerekei épségének érdekében rákényszerűlve érezte magát eme tettre. A Goblin elengedik és a testvére könnyes hálát ad a karakternek
  ### Minden jó ha vége jó
  Megsajnáljuk a medvét és a családját ezért elvisszük őket a NAGY karácsonyi vásárra és meghívjuk őket nagyon sok finomságra, köztük mézes dolgokra is. A szép, együtt töltött este végén közösen éneklünk a karácsonyi vásár nagy fája alatt karácsonyi énekeket.
+## 2. Side quest - A tolvaj manók
+
+## 3. Side quest - Karácsoni táncverseny
