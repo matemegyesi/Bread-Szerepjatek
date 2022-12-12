@@ -1,4 +1,4 @@
-# Bread RPG
+# Bread RPG - Path of Power
 Birodalomban a mágia szinteződik. Ez 1-9-ig megy, felette van a *Felsőbbrendű Mágia* és az *Isteni Mágia*.
 
 ### A célunk a történetben
