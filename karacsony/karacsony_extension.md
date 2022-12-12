@@ -1,3 +1,4 @@
+# Újdonságok
 ## Új terület
 A karácsonyi bővítmény tartalma egy terület átváltozása karácsonyi hangulatba, azaz a karácsonyi időszakban ezen a területen karácsonyi játékokkal lehet játszani, naponta lehet ajándékot szerezni egy adventi naptárból. 
 ## Járkáló karácsonyfa
