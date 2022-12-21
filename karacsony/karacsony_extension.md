@@ -20,5 +20,20 @@ Elmegyünk egy szépen feldíszitett erdőbe megkeresni a kis Goblin bátyját (
 Éppen egyedül sétálunk az utcán amikor egy síró gyerek hangjára figyelünk fel. A hang a térség legnagyobb karácsonyfa aljából jön. Tudni illik hogy ez a fa alatt történik nagyon az ajándék adományozás, ahol szegényebb embereknek lehet adományozni és kaja osztás is. Oda sietünk és megtudakoljuk, hogy mi történt. Egy szegény gyerek hangát hallotuk aki nagyon szomorú mert egész évben ezt a napot várta viszont alig maradt valami az adományozó asztalon. Az éppen ott felügyelők nem értik mi történt mert a feljegyzéseik szerint még bőven kéne lennie ajándékoknak. Arra gyanakodunk hogy vlaki lop ezért egy roppant elmés tervvel állunk elő. 
 ### Elmés terv 
 Először is elküldjük a feltünést keltő embereket, hogy ne fogjanak gyanút a tolvajok. Oda teszünk a fa alá egy értékesnek tünő ajándékot. Beépülünk a tömegbe és várunk egy picit. Hirtelen arra leszünk figyelmesek hogy eltüntek az ajándékok. Nem esünk pánikba mert volt egy B tervünk. A csomagot megjelöltük mágiával, és letudtuk az követni. Egy erdőszéli házhoz érkezünk ahova belépve 3 kobold iker fogad minket. 
+### Harc
+A három ikernél egy láthatatlanná tévő köpeny van amit gyorsan elkell pusztítanunk, viszont ezután megkell velük küzenünk, a csata idegesítő mivel 3 mozgékony kis karakter ellen kell küzdeni egyszerre
+### Boldogság
+A harcjelenet után vissza kell vinni a csomagokat a vásárra és miután ezt megtettük mindenki boldog lesz és örülni fog, és mindenki megkapja amire vágyott karácsonyra
 
 ## 3. Side quest - Karácsoni táncverseny
+
+## 4. Side quest - Giga hóember
+### Bejelentések
+A karácsony előtti napokon bejelentések jönnek egy gigantikus hóemberről aki embereket mészáról és vadászik rájuk, sőt tulajdonképpen mindent megöl ami az utjába kerül. A bejelentések főként elfektől jönnek egy a lakhelyüktől közeli helyről. Ki kell mennünk megölni ezt a hóembert
+### Harc
+A harc a hóemberrel hosszú és nehéz, sok tudást és erőt igénylő. A hóember hatalmas, erős emellet sok kiismerhetetlen támadása van. Az egyetlen előnyünk, hogy vannak gyenge pontjai bár ezekre is magunknak kell rájönni. Ilyen például az orra és a középső gombja, emellet az is gyengíti ha leverjük a cilinderjét.
+### További bonyodalom
+A győzelem után úgy döntünk, hogy jobban utána járunk a dolognak hiszen nem potyognak csak úgy ilyen hataémas gonosz hóemberek az égből. Kis kérdezősködés tuán megtudjuk egy gyerektől, hogy látott erre egy sötét elfet hóembert csinálni. Arra gyanakodunk, hogy ezt később újjá élesztette azért mert utálja az elfeket. Egy különleges mágia lekövető varázslattal kis munkával megtudjuk találni az elkövetőt.ű, majd könnyen fel is kutatjuk.
+### Küzdelem
+Miután megtaláljuk egyértelmű lesz, hogy nem barátságos, majd vele is meg kell küzdenünk. A sötét elf már gyengébb mint a hóember, ő igazából csak egy pont a történet végére. A hóember azért volt ilyen erős mert elvette azok erejét akiket megölt.
+ 
