@@ -17,7 +17,6 @@ public class Spell : IEffect
         //todo
     }
 
-
     public void Stun()
     {
         //todo
