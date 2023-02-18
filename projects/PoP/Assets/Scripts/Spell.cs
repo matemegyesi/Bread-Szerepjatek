@@ -17,7 +17,17 @@ public class Spell : IEffect
         //todo
     }
 
+
     public void Stun()
+    {
+        //todo
+    }
+    public void HealthRegenReducion()
+    {
+        //todo
+    }
+
+    public void ManaRegenReducion()
     {
         //todo
     }

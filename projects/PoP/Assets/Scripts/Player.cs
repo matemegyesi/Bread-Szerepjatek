@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class Player : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class Player : MonoBehaviour
     //a statisztika fict-je, minden key egy string (pl.: "Kitartás", "Erõ", "Intelligencia") a value pedig egy double érték
     Dictionary<string, float> Stats;
 
+    //inventory
+    List<Item> Inventory = new List<Item>();
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -30,7 +34,21 @@ public class Player : MonoBehaviour
         else
             Instance = this;
     }
-
+    /// <summary>
+    /// Felveszi az itemet, csak az inventoryba rakja, szöveges opció lesz
+    /// </summary>
+    /// <param name="item"></param>
+    void PickUpGear(Item item)
+    {
+        if (!Inventory.Contains(item))
+            Inventory.Add(item);
+        else
+            Debug.Log("Már van ilyen az inventoryban.");
+    }
+    /// <summary>
+    /// az adott itemet a megfelelõ item.slot helyre rakja be
+    /// </summary>
+    /// <param name="item"></param>
     void EquipGear(Item item)
     {
         if (!Gear.ContainsKey(item.slot))
@@ -39,6 +57,11 @@ public class Player : MonoBehaviour
         else
             Gear[item.slot] = item;
     }
+    /// <summary>
+    /// Egy statName statisztikát változtat a value értékkel
+    /// </summary>
+    /// <param name="statName"></param>
+    /// <param name="value"></param>
     void UpdateStat(string statName, float value)
     {
         Stats[statName] += value;    

@@ -6,5 +6,7 @@ public interface IEffect
 {
     void Stun();
     void Bleed();
+    void ManaRegenReducion();
+    void HealthRegenReducion();
 
 }
