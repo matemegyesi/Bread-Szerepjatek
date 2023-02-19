@@ -14,12 +14,15 @@ public class Combat : MonoBehaviour
     float EnemyHealth;
     float EnemyDamage;
 
+    int turnCount = 0;
+
     CombatState combatState;
 
     public void StartCombat()
     { 
         combatState = CombatState.START;
         StartCoroutine(SetupCombat());
+        turnCount++;
     }
 
     IEnumerator SetupCombat()
@@ -36,7 +39,7 @@ public class Combat : MonoBehaviour
 
     private void PlayerTurn()
     {
-        Debug.Log("Player Turn");
+        Debug.Log($"Turn:{turnCount} - Player Turn");
     }
 
     public void OnAttackButton()
@@ -68,6 +71,7 @@ public class Combat : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
+        Debug.Log($"Turn: {turnCount} - Enemy Turn");
         PlayerHealth -= EnemyDamage;
 
         yield return new WaitForSeconds(2f);
@@ -79,10 +83,11 @@ public class Combat : MonoBehaviour
         }
         else
         {
-            combatState = CombatState.PLAYER_TURN;
+            turnCount++;
             PlayerTurn();
+            combatState = CombatState.PLAYER_TURN;
         }
-        Debug.Log("Player health" + PlayerHealth);
+        Debug.Log("Player health " + PlayerHealth);
     }
 
     private void EndCombat()
