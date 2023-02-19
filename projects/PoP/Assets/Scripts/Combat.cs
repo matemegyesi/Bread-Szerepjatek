@@ -18,30 +18,35 @@ public class Combat : MonoBehaviour
 
     CombatState combatState;
 
+    //Egy start buttonon van rajta, elíndítja a combatot(késõbb nem gomb lesz de egyenlõre jó)
     public void StartCombat()
     { 
         combatState = CombatState.START;
         StartCoroutine(SetupCombat());
+
         turnCount++;
     }
 
+    //beállítjuk az enemyt és a player turn következik
     IEnumerator SetupCombat()
     {
         enemy = new Enemy("Ferenc", 100f, 10f);
         EnemyHealth = enemy.Health;
         EnemyDamage = enemy.Damage;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
-        combatState= CombatState.PLAYER_TURN;
+        combatState = CombatState.PLAYER_TURN;
         PlayerTurn();
     }
 
+    //kiírja hogy a player jön, csak információt ad
     private void PlayerTurn()
     {
-        Debug.Log($"Turn:{turnCount} - Player Turn");
+        Debug.Log($"Turn: {turnCount} - Player Turn");
     }
 
+    //az attack button, ha player turn az aktív combat state akkor tudunk támadni és meghívódik a PlayerAttack
     public void OnAttackButton()
     {
         if (combatState != CombatState.PLAYER_TURN)
@@ -50,31 +55,30 @@ public class Combat : MonoBehaviour
         StartCoroutine(PlayerAttack());
     }
 
+    //minden ide kerül amit player támadás közben tesz
     IEnumerator PlayerAttack()
     {
         EnemyHealth -= PlayerDamage;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         if(EnemyHealth <= 0)
         {
-            combatState= CombatState.WIN;
+            combatState = CombatState.WIN;
             EndCombat();
         }
         else
         {
-            combatState= CombatState.ENEMY_TURN;
+            combatState = CombatState.ENEMY_TURN;
             StartCoroutine(EnemyTurn());
         }
-        Debug.Log("Enemy health " + EnemyHealth);
     }
 
     IEnumerator EnemyTurn()
     {
-        Debug.Log($"Turn: {turnCount} - Enemy Turn");
         PlayerHealth -= EnemyDamage;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         if (PlayerHealth <= 0)
         {
@@ -84,20 +88,16 @@ public class Combat : MonoBehaviour
         else
         {
             turnCount++;
-            PlayerTurn();
             combatState = CombatState.PLAYER_TURN;
+            PlayerTurn();
         }
-        Debug.Log("Player health " + PlayerHealth);
     }
 
     private void EndCombat()
     {
-        if(combatState == CombatState.WIN) {
-            Debug.Log("Won");
-        }
+        if(combatState == CombatState.WIN)
+            Debug.Log("WON!");
         else if(combatState == CombatState.LOSE)
-        {
-            Debug.Log("Lost");
-        }
+            Debug.Log("LOST!");
     }
 }
