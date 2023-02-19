@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -13,19 +14,18 @@ public class Player : MonoBehaviour
     //nem a harc hp-ja hanem a játék általános hp-ja
     int Health = 2;
 
-    //harc beli mana
-    float Mana = 500;
-    //Mana visszatöltési ráta, körönként
-    float ManaRegenerationRate = 50f;
+    public float PlayerCombatHealth = 100f;
+
+    public float PlayerDamage;
 
     //a felszerelés dict-je, a key egy Item.Slot a value maga az Item
-    Dictionary<Item.Slot, Item> Gear = new Dictionary<Item.Slot, Item>();
+    Dictionary<Item.Slot, Item> Gear;
 
     //a statisztika fict-je, minden key egy string (pl.: "Kitartás", "Erõ", "Intelligencia") a value pedig egy double érték
     Dictionary<string, float> Stats;
 
     //inventory
-    List<Item> Inventory = new List<Item>();
+    List<Item> Inventory;
 
     void Awake()
     {
@@ -33,6 +33,11 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         else
             Instance = this;
+    }
+    void Update()
+    {
+        PlayerDamage = 10f;
+        //PlayerDamage = Gear.Sum(x => x.Value.Damage);
     }
     /// <summary>
     /// Felveszi az itemet, csak az inventoryba rakja, szöveges opció lesz
