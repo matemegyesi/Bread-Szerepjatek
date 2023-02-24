@@ -1,0 +1,34 @@
+Pusztító mágiák a történetben:
+
+Eorsairth
+Xylzroid
+
+
+
+Támadó spellek:
+
+Lávatócsa
+Villám
+Gömbvillám
+Vakító fény
+Artériaroppantás
+Méreg-köd
+Pokol-szakadék
+
+
+
+Védekező spellek:
+
+Manaszipolyozás
+Könnygáz
+Émelygőgáz
+Neocortex rongálás (erős enemy debuff, de 0 damage)
+Vashevítés (kard buff következő körre)
+
+
+
+Tárgyak:
+
+Gyógyfű
+Mana flaska
+Aranygyűrű
