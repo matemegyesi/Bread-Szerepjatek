@@ -29,6 +29,37 @@ Vashevítés (kard buff következő körre)
 
 Tárgyak:
 
-Gyógyfű
-Mana flaska
+Maszk
+Süveg
+Lovagsisak
+Páncélsisak
+Aranykorona
+
+Bőr mellvért
+Szegecselt bőr
+Lemezvért
+Láncing
+Gyűrűspáncél
+Dombornyomos páncél
+
+Bocskor
+Csizma
+Magas csizma
+Lábszárvédő csizma
+
+Tőr
+Buzogány
+Kerek pajzs
+Tüskés pajzs
+Torony pajzs
+
 Aranygyűrű
+
+Mana flaska
+Stamina ital
+Gyorsaság ital
+Regeneráló ital
+Méreg flaska
+
+Gyógyfű
+Robbanó kirstályok
