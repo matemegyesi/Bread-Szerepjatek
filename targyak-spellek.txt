@@ -17,13 +17,18 @@ Szívzúzás
 Méregtócsa
 Méreg-köd
 Pokol-szakadék
+Tüzgolyó
+Meteor-zápor
+Gömb-Villám
+Gyors közleharci támadás
+Fényrobbanás
+Csillageső
 
 
 
 Védekező spellek:
 
 Manaszipolyozás
-Könnygáz
 Émelygőgáz
 Neocortex rongálás (erős enemy debuff, de 0 damage)
 Vashevítés (kard buff következő körre)
@@ -32,6 +37,7 @@ Elmeuralom
 Illúziógerjesztés
 Jégfal
 Ködösítés
+
 
 
 
