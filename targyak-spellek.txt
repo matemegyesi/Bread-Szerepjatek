@@ -81,3 +81,23 @@ Gyógyfű
 Kötszer
 Élelmiszer
 Robbanó kirstályok
+
+(
+(
+    Éteri Váltás
+    Kthonikus Düh
+    Arkanus Fátyol
+    Csillagösvényi Harmónia
+    Árnyékok Egyesülése
+    Egyuralmi Vihar
+    Kronomágiás Áldás
+    Prímordiális Láng
+    Fantom Kard
+    Illúziós Tükröződés
+    Arkanus Örvény
+    Elemi Áramlás
+    Csillagközi Vetítés
+    Nekró Embrionálás
+    Rejtvény Zárása
+)
+)
