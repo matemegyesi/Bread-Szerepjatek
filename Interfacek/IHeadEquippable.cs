@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Interfacek
+namespace ConsoleApp1
 {
-    class Program
+    interface IHeadEquippable
     {
-        static void Main(string[] args)
-        {
-        }
+        bool Equip(Inventory.Slot slot);
     }
 }
