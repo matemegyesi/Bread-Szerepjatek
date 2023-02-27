@@ -1,0 +1,10 @@
+ICollectible
+IEffect
+IUsable
+IHeadEquippable
+IChestEquippable
+ILegEquippable
+IHandEquippable
+IFingerEquippable
+IUpgradeable
+ICatCollectible
