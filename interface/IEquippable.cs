@@ -8,6 +8,6 @@ namespace ConsoleApp1
 {
     interface IEquippable
     {
-        bool Equip(Inventory.Slot slot);
+        void Equip(Inventory.Slot slot);
     }
 }
