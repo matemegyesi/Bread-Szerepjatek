@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    interface IHeadEquippable
+    interface IEquippable
     {
         bool Equip(Inventory.Slot slot);
     }
