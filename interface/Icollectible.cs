@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Interfacek
 {
-    interface Icollectible
+    interface ICollectible
     {
         void Collect();
         void Drop();
