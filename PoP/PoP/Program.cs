@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace PoP
 {
-    interface IEquippable
+    internal class Program
     {
-        void Equip(Inventory.Slot slot);
+        static void Main(string[] args)
+        {
+        }
     }
 }
