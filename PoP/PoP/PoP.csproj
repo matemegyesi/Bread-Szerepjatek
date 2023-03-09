@@ -43,15 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\Inventory.cs" />
+    <Compile Include="interfaces\ICatCollectible.cs" />
+    <Compile Include="interfaces\ICollectible.cs" />
+    <Compile Include="interfaces\IEffect.cs" />
+    <Compile Include="interfaces\IEquippable.cs" />
+    <Compile Include="interfaces\IUpgradeable.cs" />
+    <Compile Include="interfaces\IUsable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="classes\" />
-    <Folder Include="interfaces\" />
+    <Content Include="res\map.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
