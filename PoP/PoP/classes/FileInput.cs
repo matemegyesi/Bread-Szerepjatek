@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PoP
+namespace PoP.classes
 {
-	interface ICatCollectible
-	{ 
-		void CollectCat();
-		void DropCat();
-	}
+    internal class FileInput
+    {
+    }
 }
