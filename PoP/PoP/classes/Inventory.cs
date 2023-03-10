@@ -8,7 +8,6 @@ namespace PoP
 {
     class Inventory
     {
-
         public enum Slot
         {
             HEAD,
