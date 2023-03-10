@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PoP.classes
 {
-    internal class FileInput
+    class FileInput
     {
+
     }
 }

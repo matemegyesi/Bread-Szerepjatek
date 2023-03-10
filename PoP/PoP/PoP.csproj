@@ -43,7 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\Armor.cs" />
+    <Compile Include="classes\FileInput.cs" />
     <Compile Include="classes\Inventory.cs" />
+    <Compile Include="classes\Item.cs" />
+    <Compile Include="classes\Weapon.cs" />
     <Compile Include="interfaces\ICatCollectible.cs" />
     <Compile Include="interfaces\ICollectible.cs" />
     <Compile Include="interfaces\IEffect.cs" />
