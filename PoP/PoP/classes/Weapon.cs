@@ -6,7 +6,24 @@ using System.Threading.Tasks;
 
 namespace PoP.classes
 {
-    class Weapon
+    /// <summary>
+    /// HAND slotra berakható itemek
+    /// </summary>
+    class Weapon : Item, ICollectible, IEquippable
     {
+        public void Collect()
+        {
+            //todo
+        }
+
+        public void Drop()
+        {
+            //todo
+        }
+
+        public void Equip(Inventory.Slot slot)
+        {
+            //todo
+        }
     }
 }

@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace PoP.classes
 {
-    internal class Armor
+    class Armor : Item, ICollectible, IEquippable
     {
+        public void Collect()
+        {
+            //todo
+        }
+
+        public void Drop()
+        {
+            //todo
+        }
+
+        public void Equip(Inventory.Slot slot)
+        {
+            //todo
+        }
     }
 }
