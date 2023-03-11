@@ -63,6 +63,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="res\map.txt" />
+    <Content Include="res\targyak-spellek.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
