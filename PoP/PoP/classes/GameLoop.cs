@@ -27,7 +27,6 @@ namespace PoP.classes
         private void Update()
         {
             DateTime lastTime = DateTime.Now;
-            int count = 0;
 
             while (Running)
             {
@@ -38,9 +37,17 @@ namespace PoP.classes
                 {
                     lastTime = currentTime;
 
-                    display.render();
+                    display.Render();
 
-                    Console.WriteLine($"{++count}");
+                    Item w1 = ItemFactory.CreateItem(ItemType.Weapon, "Kard", 10);
+                    Item w2 = ItemFactory.CreateItem(ItemType.Weapon, "Lándzsa", 20);
+                    Item a1 = ItemFactory.CreateItem(ItemType.Armor, "Sisak", 5);
+
+                    w1.Collect();
+                    w2.Collect();
+                    a1.Collect();
+
+                    display.drawString(w1.ToString().ToCharArray(), 10, 10);
                 }
             }
         }

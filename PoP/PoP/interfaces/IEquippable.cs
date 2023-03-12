@@ -8,6 +8,6 @@ namespace PoP
 {
     interface IEquippable
     {
-        void Equip();
+        void Equip(Inventory.Slot slot);
     }
 }

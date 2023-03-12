@@ -9,23 +9,28 @@ namespace PoP.classes
     /// <summary>
     /// HAND slotra berakható itemek
     /// </summary>
-    class Weapon : Item, ICollectible, IEquippable
+    class Weapon : Item
     {
         public float Damage { get; set; }
 
-        public void Collect()
+        public override void Collect()
         {
             Inventory.inventory.Add(this);
         }
 
-        public void Drop()
+        public override void Drop()
         {
             Inventory.inventory.Remove(this);
         }
 
-        public void Equip(Inventory.Slot slot)
+        public override void Equip(Inventory.Slot slot)
         {
             //todo
+        }
+
+        public override string ToString()
+        {
+            return $"{Name};{Damage}";
         }
     }
 }

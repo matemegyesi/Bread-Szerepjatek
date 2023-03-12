@@ -1,0 +1,63 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PoP.classes
+{
+    class Armor : Item
+    {
+        public float Defense { get; set; }
+
+<<<<<<< HEAD
+        public string Name { get; set; }
+
+        public Inventory.Slot slot { get; set; }
+
+
+        public Armor(Inventory.Slot armorType, string name)
+        {
+            switch (armorType)
+            {
+                case Inventory.Slot.HEAD:
+                case Inventory.Slot.CHEST:
+                case Inventory.Slot.LEG:
+                    this.slot = armorType;
+                    break;
+                default:
+                    throw new ArgumentException($"Ez nem egy armor tipus: {armorType}");
+            }
+            this.Name = name;
+        }
+
+        public void Collect()
+=======
+        public override void Collect()
+>>>>>>> b82389b9 (mukodik a kiirás)
+        {
+            Inventory.inventory.Add(this);
+        }
+
+        public override void Drop()
+        {
+            Inventory.inventory.Remove(this);
+        }
+
+<<<<<<< HEAD
+        /// <summary>
+        /// Felveszi a játékosnak a szettjét
+        /// </summary>
+        public void Equip()
+=======
+        public override void Equip(Inventory.Slot slot)
+>>>>>>> b82389b9 (mukodik a kiirás)
+        {
+            Inventory.armorList.Add(this);
+        }
+        public override string ToString()
+        {
+            return $"{Name};{Defense}";
+        }
+    }
+}

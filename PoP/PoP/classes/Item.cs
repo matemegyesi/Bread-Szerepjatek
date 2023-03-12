@@ -11,11 +11,14 @@ namespace PoP.classes
         Weapon,
         Armor
     }
-    abstract class Item
+    abstract class Item : ICollectible, IEquippable
     {
         public string Name { get; set; }
 
         public Inventory.Slot slot { get; set; }
 
+        public abstract void Collect();
+        public abstract void Drop();
+        public abstract void Equip(Inventory.Slot slot);
     }
 }
