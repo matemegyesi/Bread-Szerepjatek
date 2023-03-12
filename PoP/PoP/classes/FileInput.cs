@@ -9,7 +9,7 @@ namespace PoP.classes
 {
     class FileInput
     {
-        public string[] GetAllLines(string filePath)
+        public static string[] GetAllLines(string filePath)
         {
             return File.ReadAllLines(filePath, Encoding.UTF8);
         }
