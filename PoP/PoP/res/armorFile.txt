@@ -1,0 +1,5 @@
+﻿Armor;Aranykorona;10;Head
+Armor;Szegecselt bőr;20;Chest
+Armor;Bocskor;30;Leg
+Armor;Maszk;40;Head
+Armor;Gyűrűspáncél;50;Chest

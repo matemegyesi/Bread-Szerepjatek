@@ -13,5 +13,9 @@ namespace PoP.classes
         {
             return File.ReadAllLines(filePath, Encoding.UTF8);
         }
+        public static List<string> GetAllLinesAsList(string filePath)
+        {
+            return File.ReadAllLines(filePath, Encoding.UTF8).ToList();
+        }
     }
 }

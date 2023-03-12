@@ -39,7 +39,7 @@ namespace PoP.classes
 
                     display.Render();
 
-                    Item w1 = ItemFactory.CreateItem(ItemType.Weapon, "Kard", 10);
+                    /*Item w1 = ItemFactory.CreateItem(ItemType.Weapon, "Kard", 10);
                     Item w2 = ItemFactory.CreateItem(ItemType.Weapon, "Lándzsa", 20);
                     Item a1 = ItemFactory.CreateItem(ItemType.Armor, "Sisak", 5);
 
@@ -47,7 +47,32 @@ namespace PoP.classes
                     w2.Collect();
                     a1.Collect();
 
-                    display.drawString(w1.ToString().ToCharArray(), 10, 10);
+                    display.drawString(w1.ToString().ToCharArray(), 10, 10);*/
+
+                    int c = 0;
+
+                    foreach (string item in FileInput.GetAllLinesAsList("D:\\My\\School\\Bread\\Bread-Szerepjatek\\PoP\\PoP\\res\\armorFile.txt"))
+                    {
+
+                        Item a1 = null;
+                        string[] itemT = item.Split(';');
+                        switch (itemT[3])
+                        {
+                            case "Head":
+                                a1 = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Inventory.Slot.HEAD);
+                                break;
+                            case "Chest":
+                                a1 = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Inventory.Slot.CHEST);
+                                break;
+                            case "Leg":
+                                a1 = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Inventory.Slot.LEG);
+                                break;
+                            default:
+                                break;
+                        }
+
+                        display.drawString(a1.ToString().ToCharArray(), 10, c++);
+                    }
                 }
             }
         }
