@@ -16,9 +16,13 @@ namespace PoP.classes
         /// Képernyő frissítés állapota
         /// </summary>
         public bool Running { get; private set; }
+
+        Display display;
         
         public void Start()
         {
+            display = new Display();
+
             Running = true;
             Update();
         }

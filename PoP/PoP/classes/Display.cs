@@ -11,14 +11,48 @@ namespace PoP.classes
         public const int WIDTH = 100;
         public const int HEIGHT = 100;
 
-        private void render()
-        {
+        public string[,] content = new string[WIDTH,HEIGHT];
 
+        public Display()
+        {
+            Console.CursorVisible = false;
         }
 
-        private void draw()
+        private void render()
         {
+            Console.SetCursorPosition(0, 0);
 
+            Console.Write(GetContent());
+        }
+        private void drawString(string e, int x, int y)
+        {
+            int count = 0;
+            for (int i = 0; i < HEIGHT; i++)
+            {
+                for (int j = 0; j < WIDTH; j++)
+                {
+                    if (i == y && j == x)
+                    {
+                        content[i, j] = e[++count].ToString();
+                    }
+                }
+            }
+        }
+
+        private string GetContent()
+        {
+            string result = "";
+
+            for (int i = 0; i < HEIGHT; i++)
+            {
+                for (int j = 0; j < WIDTH; j++)
+                {
+                    result += content[i, j];
+                }
+                result+= "\n";
+            }
+
+            return result;
         }
     }
 }
