@@ -44,7 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\Armor.cs" />
+    <Compile Include="classes\Display.cs" />
     <Compile Include="classes\FileInput.cs" />
+    <Compile Include="classes\Game.cs" />
+    <Compile Include="classes\GameLoop.cs" />
     <Compile Include="classes\Inventory.cs" />
     <Compile Include="classes\Item.cs" />
     <Compile Include="classes\Weapon.cs" />

@@ -9,10 +9,6 @@ namespace PoP.classes
 {
     class GameLoop
     {
-        /*
-        private string[] content;
-        */
-
         /// <summary>
         /// Képernyő frissítés állapota
         /// </summary>
@@ -48,6 +44,10 @@ namespace PoP.classes
                 }
             }
         }
+
+        /*
+        private string[] content;
+        */
 
         /*/// <summary>
         /// Tartalom betöltése a GameLoop-ba

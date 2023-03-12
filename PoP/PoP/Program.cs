@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PoP.classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,11 @@ namespace PoP
     {
         static void Main(string[] args)
         {
+
+            GameLoop gameLoop= new GameLoop();
+
+            gameLoop.Start();
+
         }
     }
 }
