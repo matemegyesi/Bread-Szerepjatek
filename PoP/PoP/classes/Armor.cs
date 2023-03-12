@@ -10,12 +10,12 @@ namespace PoP.classes
     {
         public void Collect()
         {
-            //todo
+            Inventory.inventory.Add(this);
         }
 
         public void Drop()
         {
-            //todo
+            Inventory.inventory.Remove(this);
         }
 
         public void Equip(Inventory.Slot slot)

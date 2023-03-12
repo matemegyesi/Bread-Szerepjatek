@@ -13,7 +13,7 @@ namespace PoP.classes
     {
         public void Collect()
         {
-            //todo
+            Inventory.inventory.Add(this);
         }
 
         public void Drop()
