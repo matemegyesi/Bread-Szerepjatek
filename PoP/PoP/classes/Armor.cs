@@ -10,6 +10,22 @@ namespace PoP.classes
     {
         public float Defense { get; set; }
 
+        public Armor(string name,Inventory.Slot armorType, float defense)
+        {
+            switch (armorType)
+            {
+                case Inventory.Slot.HEAD:
+                case Inventory.Slot.CHEST:
+                case Inventory.Slot.LEG:
+                    slot = armorType;
+                    break;
+                default:
+                    throw new ArgumentException($"Ez nem egy armor tipus: {armorType}");
+            }
+            Name = name;
+            Defense = defense;
+        }
+
         public override void Collect()
         {
             Inventory.inventory.Add(this);
