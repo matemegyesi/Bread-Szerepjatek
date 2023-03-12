@@ -8,6 +8,8 @@ namespace PoP.classes
 {
     class Armor : Item, ICollectible, IEquippable
     {
+        public float Defense { get; set; }
+
         public void Collect()
         {
             Inventory.inventory.Add(this);

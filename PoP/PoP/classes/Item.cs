@@ -6,18 +6,16 @@ using System.Threading.Tasks;
 
 namespace PoP.classes
 {
+    public enum ItemType
+    {
+        Weapon,
+        Armor
+    }
     abstract class Item
     {
-        protected string name { get; private set; }
+        public string Name { get; set; }
 
-        protected Inventory.Slot slot { get; private set; }
-
-
-        //minden itemnek van armor és damage statja de lehet az armor vagy a damage 0
-
-        protected float damage { get; private set; }
-
-        protected float armor { get; private set; }
+        public Inventory.Slot slot { get; set; }
 
     }
 }

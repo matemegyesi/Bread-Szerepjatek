@@ -11,6 +11,8 @@ namespace PoP.classes
     /// </summary>
     class Weapon : Item, ICollectible, IEquippable
     {
+        public float Damage { get; set; }
+
         public void Collect()
         {
             Inventory.inventory.Add(this);
