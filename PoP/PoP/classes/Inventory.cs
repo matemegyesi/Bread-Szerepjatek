@@ -18,7 +18,8 @@ namespace PoP
             RING
         }
 
-        public static List<Item> inventory = new List<Item>(); 
+        public static List<Item> inventory = new List<Item>();
+        public static List<Armor> armorList = new List<Armor>();
 
     }
 }

@@ -10,6 +10,26 @@ namespace PoP.classes
     {
         public float Defense { get; set; }
 
+        public string Name { get; set; }
+
+        public Inventory.Slot slot { get; set; }
+
+
+        public Armor(Inventory.Slot armorType, string name)
+        {
+            switch (armorType)
+            {
+                case Inventory.Slot.HEAD:
+                case Inventory.Slot.CHEST:
+                case Inventory.Slot.LEG:
+                    this.slot = armorType;
+                    break;
+                default:
+                    throw new ArgumentException($"Ez nem egy armor tipus: {armorType}");
+            }
+            this.Name = name;
+        }
+
         public void Collect()
         {
             Inventory.inventory.Add(this);
@@ -20,9 +40,12 @@ namespace PoP.classes
             Inventory.inventory.Remove(this);
         }
 
-        public void Equip(Inventory.Slot slot)
+        /// <summary>
+        /// Felveszi a játékosnak a szettjét
+        /// </summary>
+        public void Equip()
         {
-            //todo
+            Inventory.armorList.Add(this);
         }
     }
 }
