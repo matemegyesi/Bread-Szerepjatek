@@ -9,27 +9,52 @@ namespace PoP.classes
 {
     class GameLoop
     {
-
-        private string[] _content;
-
+        /*
+        private string[] content;
+        */
         /// <summary>
         /// Képernyő frissítés állapota
         /// </summary>
         public bool Running { get; private set; }
         
-        /// <summary>
+        public void Start()
+        {
+            Running = true;
+            Update();
+        }
+
+        private void Update()
+        {
+            DateTime lastTime = DateTime.Now;
+            int count = 0;
+
+            while (Running)
+            {
+                DateTime currentTime = DateTime.Now;
+                double elapsedTime = (currentTime - lastTime).TotalMilliseconds;
+
+                if(elapsedTime >= 33.33)
+                {
+                    lastTime = currentTime;
+
+                    Console.WriteLine($"{++count}");
+                }
+            }
+        }
+
+        /*/// <summary>
         /// Tartalom betöltése a GameLoop-ba
         /// </summary>
         public void Load(string[] content)
         {
-            _content = content;
-        }
+            this.content = content;
+        }*/
 
-        /// <summary>
+        /*/// <summary>
         /// GameLoop indítása
         /// </summary>
         public async void Start(){
-            if (_content == null){
+            if (content == null){
                 throw new ArgumentException("Content not loaded!");
             }
             // Tartalom betöltése
@@ -48,25 +73,25 @@ namespace PoP.classes
                 // Jelenlegi idő frissítése
                 _previousGameTime = _previousGameTime + GameTime;
                 // Tartalom frissítése
-                _content.Update(GameTime);
+                content.Update(GameTime);
 
                 // Frissítés 30fps-el
                 await Task.Delay(4);
             }
-        }
+        }*/
 
         /// <summary>
         /// GameLoop leállítása
         /// </summary>
-        public void Stop()
+        /*public void Stop()
         {
             Running = false;
-            _content.Unload();
+            content.Unload();
         }
 
         public void Draw(string[] content)
         {
-            _content.Draw(content);
-        }
+            content.Draw(content);
+        }*/
     }
 }
