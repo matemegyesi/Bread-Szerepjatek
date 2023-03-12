@@ -12,6 +12,7 @@ namespace PoP.classes
         /*
         private string[] content;
         */
+
         /// <summary>
         /// Képernyő frissítés állapota
         /// </summary>
@@ -40,6 +41,8 @@ namespace PoP.classes
                 if(elapsedTime >= 33.33)
                 {
                     lastTime = currentTime;
+
+                    display.render();
 
                     Console.WriteLine($"{++count}");
                 }

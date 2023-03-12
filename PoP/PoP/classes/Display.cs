@@ -11,20 +11,20 @@ namespace PoP.classes
         public const int WIDTH = 100;
         public const int HEIGHT = 100;
 
-        public string[,] content = new string[WIDTH,HEIGHT];
+        private string[,] content = new string[WIDTH,HEIGHT];
 
         public Display()
         {
             Console.CursorVisible = false;
         }
 
-        private void render()
+        public void render()
         {
             Console.SetCursorPosition(0, 0);
 
             Console.Write(GetContent());
         }
-        private void drawString(string e, int x, int y)
+        public void drawString(string e, int x, int y)
         {
             int count = 0;
             for (int i = 0; i < HEIGHT; i++)
