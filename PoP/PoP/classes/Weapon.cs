@@ -18,7 +18,7 @@ namespace PoP.classes
 
         public void Drop()
         {
-            //todo
+            Inventory.inventory.Remove(this);
         }
 
         public void Equip(Inventory.Slot slot)
