@@ -51,7 +51,7 @@ namespace PoP.classes
 
                     int c = 0;
 
-                    foreach (string item in FileInput.GetAllLinesAsList("D:\\My\\School\\Bread\\Bread-Szerepjatek\\PoP\\PoP\\res\\armorFile.txt"))
+                    foreach (string item in FileInput.GetAllLinesAsList("res\\armorFile.txt"))
                     {
 
                         Item a1 = null;

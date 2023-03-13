@@ -43,19 +43,12 @@ namespace PoP.classes
         }
         public void drawString(char[] e, int x, int y)
         {
-            for (int i = 0; i < HEIGHT; i++)
+
+            for (int h = 0; h < e.Length; h++)
             {
-                for (int j = 0; j < WIDTH; j++)
-                {
-                    if (i == y && j == x)
-                    {
-                        for (int h = 0; h < e.Length; h++)
-                        {
-                            content[i, j+h] = e.ElementAt(h);
-                        }
-                    }
-                }
+                content[y, x + h] = e.ElementAt(h);
             }
+
 
             drawStringCalled = true;
         }
