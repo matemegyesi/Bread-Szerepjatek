@@ -41,7 +41,7 @@ namespace PoP.classes
                 drawStringCalled = false;
             }
         }
-        public void drawString(char[] e, int x, int y)
+        public void DrawString(char[] e, int x, int y)
         {
 
             for (int h = 0; h < e.Length; h++)

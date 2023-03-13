@@ -71,7 +71,7 @@ namespace PoP.classes
                                 break;
                         }
 
-                        display.drawString(a1.ToString().ToCharArray(), 10, c++);
+                        display.DrawString(a1.ToString().ToCharArray(), 10, c++);
                     }
                 }
             }
