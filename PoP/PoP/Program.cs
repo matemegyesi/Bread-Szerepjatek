@@ -12,7 +12,7 @@ namespace PoP
         static void Main(string[] args)
         {
 
-            GameLoop gameLoop= new GameLoop();
+            GameLoop gameLoop = new GameLoop();
 
             if (false) // Állítsd true-ra ha le akarod tesztelni, hogy működnek-e a színek.
             {
