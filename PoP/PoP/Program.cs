@@ -14,6 +14,16 @@ namespace PoP
 
             GameLoop gameLoop= new GameLoop();
 
+            if (false) // Állítsd true-ra ha le akarod tesztelni, hogy működnek-e a színek.
+            {
+                Style.EnableStyling();
+                foreach (string line in Style.TestStyle())
+                {
+                    Console.WriteLine(line);
+                }
+                Console.ReadKey();
+            }
+
             gameLoop.Start();
 
         }

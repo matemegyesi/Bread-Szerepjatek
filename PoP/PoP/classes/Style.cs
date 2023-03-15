@@ -95,6 +95,15 @@ namespace PoP.classes
             }
         }
 
+        /// <summary>
+        /// String tömböt ad vissza, amiben a szöveg ki van színezve és formázva.
+        /// </summary>
+        public static string[] TestStyle()
+        {
+            string coloredText = $"╔═════════════════╤═════════════════╗\n║ {ColorFormat("GYŰRŰSPÁNCÉL", "CYAN", "UNDERLINE")}    │ {ColorFormat("ARANYKORONA", "CYAN", "UNDERLINE")}     ║\n║ {Color("Páncélzat", "DARK_CYAN")}       │ {Color("Páncélzat", "DARK_CYAN")}       ║\n║ {Color("Mellkas", "DARK_CYAN")}         │ {ColorFormat("Fej", "DARK_CYAN", "BOLD")}             ║\n║ {Color("- - - - - - - -", "DARK_GREY")} │ {Color("- - - - - - - -", "DARK_GREY")} ║\n║ {Format("Védelem", "BOLD")}: {ColorFormat("+50", "GREEN", "HIGHLIGHT")}    │ {Format("Védelem", "BOLD")}: {ColorFormat("+10", "GREEN", "HIGHLIGHT")}    ║\n║ Gyorsaság: {ColorFormat("-10", "ORANGE", "HIGHLIGHT")}  │ Stun: {ColorFormat("-10%", "GREEN", "HIGHLIGHT")}      ║\n║ Lopakodás: {ColorFormat("-5", "ORANGE", "HIGHLIGHT")}   │                 ║\n╚═════════════════╧═════════════════╝\n";
+            return coloredText.Split(new string[] { "\n" }, StringSplitOptions.None);
+        }
+
         #endregion
 
 
