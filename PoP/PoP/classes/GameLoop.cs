@@ -49,7 +49,7 @@ namespace PoP.classes
 
                     display.drawString(w1.ToString().ToCharArray(), 10, 10);*/
 
-                    int c = 0;
+                    /*int c = 0;
 
                     foreach (string item in FileInput.GetAllLinesAsList("res\\armorFile.txt"))
                     {
@@ -72,7 +72,7 @@ namespace PoP.classes
                         }
 
                         display.DrawString(a1.ToString().ToCharArray(), 10, c++);
-                    }
+                    }*/
                 }
             }
         }

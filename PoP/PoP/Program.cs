@@ -16,6 +16,7 @@ namespace PoP
 
             if (false) // Állítsd true-ra ha le akarod tesztelni, hogy működnek-e a színek.
             {
+                Console.OutputEncoding = Encoding.Unicode;
                 Style.EnableStyling();
                 foreach (string line in Style.TestStyle())
                 {
