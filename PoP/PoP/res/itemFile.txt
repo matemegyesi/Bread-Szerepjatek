@@ -1,0 +1,9 @@
+﻿Armor;Aranykorona;10;Head
+Armor;Szegecselt bőr;20;Chest
+Armor;Bocskor;30;Leg
+Armor;Maszk;40;Head
+Armor;Gyűrűspáncél;50;Chest
+Weapon;Tőr;10;Hand
+Weapon;Buzogány;20;Hand
+Weapon;Bronzgyűrű;15;Ring
+Weapon;Ezüstgyűrű;25;Ring
