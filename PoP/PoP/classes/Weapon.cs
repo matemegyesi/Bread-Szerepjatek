@@ -13,6 +13,20 @@ namespace PoP.classes
     {
         public float Damage { get; set; }
 
+        public Weapon(string name, Inventory.Slot weaponType, float damage)
+        {
+            switch (weaponType)
+            {
+                case Inventory.Slot.HAND:
+                case Inventory.Slot.RING:
+                    slot = weaponType;
+                    break;
+                default:
+                    throw new ArgumentException($"Ez nem egy weapon tipus: {weaponType}");
+            }
+            Name = name;
+            Damage = damage;
+        }
         public override void Collect()
         {
             Inventory.inventory.Add(this);
