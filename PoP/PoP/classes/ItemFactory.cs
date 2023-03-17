@@ -8,17 +8,17 @@ namespace PoP.classes
 {
     class ItemFactory
     {
-        public static Item CreateItem(ItemType type, string name, float damageOrDefense, Inventory.Slot armorSlot = Inventory.Slot.HEAD)
+        public static Item CreateItem(ItemType type, string name, float damageOrDefense, Inventory.Slot slot)
         {
             Item item = null;
 
             switch (type)
             {
                 case ItemType.Weapon:
-                    item = new Weapon { Name = name, Damage = damageOrDefense};
+                    item = new Weapon(name, slot, damageOrDefense);
                     break;
                 case ItemType.Armor:
-                    item = new Armor(name, armorSlot, damageOrDefense);
+                    item = new Armor(name, slot, damageOrDefense);
                     break;
                 default:
                     throw new ArgumentException("Invalid item type");
