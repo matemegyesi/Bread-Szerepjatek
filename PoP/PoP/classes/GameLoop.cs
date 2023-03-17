@@ -21,7 +21,11 @@ namespace PoP.classes
             display = new Display();
 
             Running = true;
+
+            ReadItemFile("res\\itemFile.txt");
+
             Update();
+
         }
 
         private void Update()
@@ -132,5 +136,50 @@ namespace PoP.classes
         {
             content.Draw(content);
         }*/
+
+        public void ReadItemFile(string filePath) {
+            foreach (string item in FileInput.GetAllLinesAsList(filePath))
+            {
+
+                Item a1 = null;
+                string[] itemT = item.Split(';');
+				switch (itemT[0])
+				{
+                    case "Armor":
+						switch (itemT[3])
+						{
+                            case "Head":
+                                a1 = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Inventory.Slot.HEAD);
+                                break;
+                            case "Chest":
+                                a1 = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Inventory.Slot.CHEST);
+                                break;
+                            case "Leg":
+                                a1 = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Inventory.Slot.LEG);
+                                break;
+                            default:
+								break;
+						}
+						break;
+                    case "Weapon":
+                        switch (itemT[3])
+                        {
+                            case "Hand":
+                                a1 = ItemFactory.CreateItem(ItemType.Weapon, itemT[1], float.Parse(itemT[2]), Inventory.Slot.HAND);
+                                break;
+                            case "Ring":
+                                a1 = ItemFactory.CreateItem(ItemType.Weapon, itemT[1], float.Parse(itemT[2]), Inventory.Slot.RING);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+					default:
+						break;
+				}
+                a1.Collect();
+
+            }
+        }
     }
 }
