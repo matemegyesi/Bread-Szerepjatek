@@ -112,12 +112,15 @@ namespace PoP.classes
                 drawStringCalled = false;
             }
         }
-        public void DrawString(char[] e, int x, int y)
+        public void DrawString(string e, int x, int y)
         {
-
+            char[] characters = contentList[y].ToCharArray();
             for (int h = 0; h < e.Length; h++)
             {
-                content[y, x + h] = e.ElementAt(h);
+                if (y>=0 && y<contentList.Count() && x+h < contentList[y].Length && x+h>0){ 
+                characters[x+h] = e[h];
+                contentList[y] = new string(characters);
+                }
             }
 
 
