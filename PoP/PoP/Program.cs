@@ -24,7 +24,6 @@ namespace PoP
                 }
                 Console.ReadKey();
             }
-
             gameLoop.Start();
 
         }

@@ -44,7 +44,7 @@ namespace PoP.classes
 
         public override string ToString()
         {
-            return $"{Name};{Damage}";
+            return $"{Name};{Damage};{slot}";
         }
     }
 }

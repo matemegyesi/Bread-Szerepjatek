@@ -42,7 +42,7 @@ namespace PoP.classes
         }
         public override string ToString()
         {
-            return $"{Name};{Defense}";
+            return $"{Name};{Defense};{slot}";
         }
     }
 }
