@@ -23,10 +23,11 @@ namespace PoP.classes
             Running = true;
 
             ReadItemFile("res\\itemFile.txt");
-
+            display.DrawString("INVENTORY", 203, 2);
+            /*
             string[] itemT = FileInput.GetAllLinesAsList("res\\itemFile.txt")[0].Split(';');
             Item a1 = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Inventory.Slot.HEAD);
-            display.DrawString(a1.ToString(), 20, 30);
+            display.DrawString(a1.ToString(), 20, 30);*/
 
             Update();
 
@@ -46,6 +47,12 @@ namespace PoP.classes
                     lastTime = currentTime;
 
                     display.Render();
+                    int c = 5;
+					foreach (Item item in Inventory.inventory)
+					{
+                        display.DrawString($"{item.Name} ({item.slot})", 200, c);
+                        c++;
+					}
                     /*Item w1 = ItemFactory.CreateItem(ItemType.Weapon, "Kard", 10);
                     Item w2 = ItemFactory.CreateItem(ItemType.Weapon, "Lándzsa", 20);
                     Item a1 = ItemFactory.CreateItem(ItemType.Armor, "Sisak", 5);
