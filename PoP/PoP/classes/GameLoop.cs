@@ -14,7 +14,7 @@ namespace PoP.classes
         /// </summary>
         public bool Running { get; private set; }
 
-        static Display display;
+        public static Display display;
 
         public void Start()
         {

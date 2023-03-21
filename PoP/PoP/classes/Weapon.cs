@@ -29,12 +29,17 @@ namespace PoP.classes
         }
         public override void Collect()
         {
-            Inventory.inventory.Add(this);
+            if(Inventory.inventory.Count < Inventory.inventoryLimit)
+            {
+                Inventory.inventory.Add(this);
+                GameLoop.display.DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
+            }
         }
 
         public override void Drop()
         {
             Inventory.inventory.Remove(this);
+            GameLoop.display.DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
         }
 
         public override void Equip(Slot slot)

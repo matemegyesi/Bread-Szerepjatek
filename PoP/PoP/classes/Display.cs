@@ -86,7 +86,7 @@ namespace PoP.classes
             Console.CursorVisible = false;
             Style.EnableStyling();
 
-            DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
+            DrawString("INVENTORY(0)", 212, 1);
             DrawString("STATISTICS", 167, 1);
             DrawString("MAP", 65, 1);
 

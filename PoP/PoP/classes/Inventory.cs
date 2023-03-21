@@ -18,6 +18,8 @@ namespace PoP
     class Inventory
     {
 
+        public const int inventoryLimit = 40;
+
         public static List<Item> inventory = new List<Item>();
 
         public static Dictionary<Slot, Item> gear = new Dictionary<Slot, Item>() {
