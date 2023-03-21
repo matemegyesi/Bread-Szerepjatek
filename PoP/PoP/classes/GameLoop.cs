@@ -14,7 +14,7 @@ namespace PoP.classes
         /// </summary>
         public bool Running { get; private set; }
 
-        Display display;
+        static Display display;
 
         public void Start()
         {
@@ -23,8 +23,8 @@ namespace PoP.classes
             Running = true;
 
             ReadItemFile("res\\itemFile.txt");
-            display.DrawString("INVENTORY", 203, 2);
-            int c = 5;
+            
+            int c = 3;
             foreach (Item item in Inventory.inventory)
             {
                 display.DrawString($"{item.Name} ({item.slot})", 200, c);
@@ -55,24 +55,24 @@ namespace PoP.classes
 
         public void ReadItemFile(string filePath)
         {
-            foreach (string item in FileInput.GetAllLinesAsList(filePath))
+            foreach (string str in FileInput.GetAllLinesAsList(filePath))
             {
 
-                Item a1 = null;
-                string[] itemT = item.Split(';');
+                Item item = null;
+                string[] itemT = str.Split(';');
                 switch (itemT[0])
                 {
                     case "Armor":
                         switch (itemT[3])
                         {
                             case "Head":
-                                a1 = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Inventory.Slot.HEAD);
+                                item = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Slot.HEAD);
                                 break;
                             case "Chest":
-                                a1 = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Inventory.Slot.CHEST);
+                                item = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Slot.CHEST);
                                 break;
                             case "Leg":
-                                a1 = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Inventory.Slot.LEG);
+                                item = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Slot.LEG);
                                 break;
                             default:
                                 break;
@@ -82,10 +82,10 @@ namespace PoP.classes
                         switch (itemT[3])
                         {
                             case "Hand":
-                                a1 = ItemFactory.CreateItem(ItemType.Weapon, itemT[1], float.Parse(itemT[2]), Inventory.Slot.HAND);
+                                item = ItemFactory.CreateItem(ItemType.Weapon, itemT[1], float.Parse(itemT[2]), Slot.HAND);
                                 break;
                             case "Ring":
-                                a1 = ItemFactory.CreateItem(ItemType.Weapon, itemT[1], float.Parse(itemT[2]), Inventory.Slot.RING);
+                                item = ItemFactory.CreateItem(ItemType.Weapon, itemT[1], float.Parse(itemT[2]), Slot.RING);
                                 break;
                             default:
                                 break;
@@ -94,7 +94,7 @@ namespace PoP.classes
                     default:
                         break;
                 }
-                a1.Collect();
+                item.Collect();
             }
         }
     }

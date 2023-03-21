@@ -8,7 +8,7 @@ namespace PoP.classes
 {
     class ItemFactory
     {
-        public static Item CreateItem(ItemType type, string name, float damageOrDefense, Inventory.Slot slot)
+        public static Item CreateItem(ItemType type, string name, float damageOrDefense, Slot slot)
         {
             Item item = null;
 

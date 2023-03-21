@@ -7,19 +7,25 @@ using System.Threading.Tasks;
 
 namespace PoP
 {
+    public enum Slot
+    {
+        HEAD,
+        CHEST,
+        LEG,
+        HAND,
+        RING
+    }
     class Inventory
     {
-        public enum Slot
-        {
-            HEAD,
-            CHEST,
-            LEG,
-            HAND,
-            RING
-        }
 
         public static List<Item> inventory = new List<Item>();
-        public static List<Armor> armorList = new List<Armor>();
 
+        public static Dictionary<Slot, Item> gear = new Dictionary<Slot, Item>() {
+            { Slot.HEAD, null},
+            { Slot.CHEST, null},
+            { Slot.LEG, null},
+            { Slot.HAND, null},
+            { Slot.RING, null}
+        };
     }
 }

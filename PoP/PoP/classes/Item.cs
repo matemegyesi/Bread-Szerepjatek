@@ -15,10 +15,10 @@ namespace PoP.classes
     {
         public string Name { get; set; }
 
-        public Inventory.Slot slot { get; set; }
+        public Slot slot { get; set; }
 
         public abstract void Collect();
         public abstract void Drop();
-        public abstract void Equip(Inventory.Slot slot);
+        public abstract void Equip(Slot slot);
     }
 }

@@ -10,62 +10,57 @@ namespace PoP.classes
 {
     class Display
     {
-        public const int WIDTH = 50;
-        public const int HEIGHT = 20;
-
-        private char[,] content = new char[HEIGHT,WIDTH];
-
-        public const int contentHeight = 63;
-        public const int contentWidth = 237;
-        public static List<string> contentList = new List<string>() {
-            $"╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╤══════════════════════════════════════════════════════════╗",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║                                                                                                                                                                                │                                                          ║",
-            $"║━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━║",
+        public const int HEIGHT = 63;
+        public const int WIDTH = 237;
+        public static List<string> content = new List<string>() {
+            $"╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╤════════════════════════════════════════════╤═════════════════════════════════════════╗",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━║",
             $"║                                                                                                                                                                                                                                           ║",
             $"║                                                                                                                                                                                                                                           ║",
             $"║                                                                                                                                                                                                                                           ║",
@@ -83,7 +78,7 @@ namespace PoP.classes
             $"╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝",
         };
 
-        private bool drawStringCalled = false;
+        public bool drawStringCalled = false;
 
         public Display()
         {
@@ -91,13 +86,9 @@ namespace PoP.classes
             Console.CursorVisible = false;
             Style.EnableStyling();
 
-            for (int i = 0; i < HEIGHT; i++)
-            {
-                for (int j = 0; j < WIDTH; j++)
-                {
-                    content[i,j] = '-';
-                }
-            }
+            DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
+            DrawString("STATISTICS", 167, 1);
+            DrawString("MAP", 65, 1);
 
             Console.Write(GetContent());
         }
@@ -114,15 +105,15 @@ namespace PoP.classes
         }
         public void DrawString(string e, int x, int y)
         {
-            char[] characters = contentList[y].ToCharArray();
+            char[] characters = content[y].ToCharArray();
             for (int h = 0; h < e.Length; h++)
             {
-                if (y>=0 && y<contentList.Count() && x+h < contentList[y].Length && x+h>0){ 
-                characters[x+h] = e[h];
-                contentList[y] = new string(characters);
+                if (y >= 0 && y < content.Count() && x + h < content[y].Length && x + h > 0)
+                {
+                    characters[x + h] = e[h];
+                    content[y] = new string(characters);
                 }
             }
-
 
             drawStringCalled = true;
         }
@@ -131,19 +122,10 @@ namespace PoP.classes
         {
             string result = "";
 
-            foreach (string str in contentList)
+            foreach (string str in content)
             {
                 result += str;
             }
-            /*for (int i = 0; i < HEIGHT; i++)
-            {
-                for (int j = 0; j < WIDTH; j++)
-                {
-                    result += content[i, j];
-                }
-                result+= "\n";
-            }
-            */
             return result;
         }
     }

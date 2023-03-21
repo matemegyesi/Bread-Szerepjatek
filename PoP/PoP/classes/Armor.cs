@@ -10,13 +10,13 @@ namespace PoP.classes
     {
         public float Defense { get; set; }
 
-        public Armor(string name,Inventory.Slot armorType, float defense)
+        public Armor(string name,Slot armorType, float defense)
         {
             switch (armorType)
             {
-                case Inventory.Slot.HEAD:
-                case Inventory.Slot.CHEST:
-                case Inventory.Slot.LEG:
+                case Slot.HEAD:
+                case Slot.CHEST:
+                case Slot.LEG:
                     slot = armorType;
                     break;
                 default:
@@ -36,7 +36,7 @@ namespace PoP.classes
             Inventory.inventory.Remove(this);
         }
 
-        public override void Equip(Inventory.Slot slot)
+        public override void Equip(Slot slot)
         {
             //todo
         }

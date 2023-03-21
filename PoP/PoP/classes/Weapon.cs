@@ -13,12 +13,12 @@ namespace PoP.classes
     {
         public float Damage { get; set; }
 
-        public Weapon(string name, Inventory.Slot weaponType, float damage)
+        public Weapon(string name, Slot weaponType, float damage)
         {
             switch (weaponType)
             {
-                case Inventory.Slot.HAND:
-                case Inventory.Slot.RING:
+                case Slot.HAND:
+                case Slot.RING:
                     slot = weaponType;
                     break;
                 default:
@@ -37,7 +37,7 @@ namespace PoP.classes
             Inventory.inventory.Remove(this);
         }
 
-        public override void Equip(Inventory.Slot slot)
+        public override void Equip(Slot slot)
         {
             //todo
         }
