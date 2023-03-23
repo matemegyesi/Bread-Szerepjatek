@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace PoP.classes
 {
@@ -18,6 +20,7 @@ namespace PoP.classes
 
         public void Start()
         {
+            Maximize();
             display = new Display();
 
             Running = true;
@@ -96,6 +99,14 @@ namespace PoP.classes
                 }
                 item.Collect();
             }
+        }
+
+        [DllImport("user32.dll")]
+        public static extern bool ShowWindow(IntPtr hWnd, int cmdShow);
+        private static void Maximize()
+        {
+            Process p = Process.GetCurrentProcess();
+            ShowWindow(p.MainWindowHandle, 3); //SW_MAXIMIZE = 3
         }
     }
 }
