@@ -14,7 +14,7 @@ namespace PoP
 
             GameLoop gameLoop = new GameLoop();
 
-            if (true) // Equip tesztelés (később törlöm)
+            if (false) // Equip tesztelés (később törlöm)
             {
                 gameLoop.ReadItemFile("res\\itemFile.txt");
 
@@ -28,6 +28,20 @@ namespace PoP
                 Inventory.inventory[2].Equip();
 
                 Console.WriteLine("\n(2)");
+                foreach (var item in Inventory.inventory)
+                {
+                    Console.WriteLine($">> {item}");
+                }
+
+                Console.WriteLine();
+                foreach (var gear in Inventory.gear)
+                {
+                    Console.WriteLine($"-- {gear}");
+                }
+
+                Inventory.gear[Slot.HEAD].Unequip();
+
+                Console.WriteLine("\n(3)");
                 foreach (var item in Inventory.inventory)
                 {
                     Console.WriteLine($">> {item}");

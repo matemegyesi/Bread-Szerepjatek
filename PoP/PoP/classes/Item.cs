@@ -23,19 +23,35 @@ namespace PoP.classes
         {
             if (Inventory.gear[slot] == null)
             {
-                Inventory.gear[slot] = this;
                 Inventory.inventory.Remove(this);
+                Inventory.gear[slot] = this;
             }
+            else
+            {
+                Inventory.gear[slot].UnequipAuto(Inventory.inventory.IndexOf(this));
+                Inventory.gear[slot] = this;
+            }
+
+            // TODO: statok és inventory frissítése
         }
 
         public void UnequipAuto(int inventoryIndex)
         {
+            Inventory.gear[slot] = null;
+            Inventory.inventory[inventoryIndex] = this;
 
+            // TODO: statok és inventory frissítése
         }
 
         public void Unequip()
         {
+            if (Inventory.inventory.Count < Inventory.inventoryLimit)
+            {
+                Inventory.gear[slot] = null;
+                Inventory.inventory.Add(this);
+            }
 
+            // TODO: statok és inventory frissítése
         }
     }
 }
