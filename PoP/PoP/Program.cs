@@ -14,6 +14,34 @@ namespace PoP
 
             GameLoop gameLoop = new GameLoop();
 
+            if (false) // Equip tesztelés (később törlöm)
+            {
+                gameLoop.ReadItemFile("res\\itemFile.txt");
+
+                Console.WriteLine("(1)");
+                foreach (var item in Inventory.inventory)
+                {
+                    Console.WriteLine($">> {item}");
+                }
+
+                Inventory.inventory[0].Equip(Slot.HEAD);
+                Inventory.inventory[2].Equip(Slot.HEAD);
+
+                Console.WriteLine("\n(2)");
+                foreach (var item in Inventory.inventory)
+                {
+                    Console.WriteLine($">> {item}");
+                }
+
+                Console.WriteLine();
+                foreach (var gear in Inventory.gear)
+                {
+                    Console.WriteLine($"-- {gear}");
+                }
+
+                Console.ReadKey();
+            }
+
             if (false) // Állítsd true-ra ha le akarod tesztelni, hogy működnek-e a színek.
             {
                 Console.OutputEncoding = Encoding.Unicode;
