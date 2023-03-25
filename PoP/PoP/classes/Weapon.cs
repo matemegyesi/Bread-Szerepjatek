@@ -32,7 +32,7 @@ namespace PoP.classes
             if(Inventory.inventory.Count < Inventory.inventoryLimit)
             {
                 Inventory.inventory.Add(this);
-                //GameLoop.display.DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
+                GameLoop.display.DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
             }
         }
 
@@ -44,7 +44,6 @@ namespace PoP.classes
 
         public override void Equip()
         {
-            //todo
             base.Equip();
         }
 
