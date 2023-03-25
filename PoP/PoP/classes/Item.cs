@@ -19,6 +19,10 @@ namespace PoP.classes
 
         public abstract void Collect();
         public abstract void Drop();
+
+        /// <summary>
+        /// Áthelyezi az item-et az inventory-ból a gear-be, automatikusan kicserélve a jelenlegi gear-t.
+        /// </summary>
         public virtual void Equip()
         {
             if (Inventory.gear[slot] == null)
@@ -34,7 +38,11 @@ namespace PoP.classes
 
             // TODO: statok és inventory frissítése
         }
-
+        
+        /// <summary>
+        /// Áthelyezi az item-et a gear-ből az inventory meghatározott indexére.
+        /// </summary>
+        /// <param name="inventoryIndex">Cél index.</param>
         public void UnequipAuto(int inventoryIndex)
         {
             Inventory.gear[slot] = null;
@@ -43,13 +51,20 @@ namespace PoP.classes
             // TODO: statok és inventory frissítése
         }
 
-        public void Unequip()
+        /// <summary>
+        /// Áthelyezi az item-et a gear-ből az inventory legvégére és igazat ad vissza, ha még nem telt meg.
+        /// </summary>
+        public bool Unequip()
         {
             if (Inventory.inventory.Count < Inventory.inventoryLimit)
             {
                 Inventory.gear[slot] = null;
                 Inventory.inventory.Add(this);
+
+                return true;
             }
+
+            return false;
 
             // TODO: statok és inventory frissítése
         }

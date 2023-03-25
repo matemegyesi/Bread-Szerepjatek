@@ -10,6 +10,6 @@ namespace PoP
     {
         void Equip();
         void UnequipAuto(int inventoryIndex);
-        void Unequip();
+        bool Unequip();
     }
 }
