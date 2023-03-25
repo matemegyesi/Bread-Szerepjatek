@@ -12,6 +12,10 @@ namespace PoP.classes
     {
         public const int HEIGHT = 63;
         public const int WIDTH = 237;
+
+        public const int MAPWIDTH = 148;
+        public const int MAPHEIGHT = 46;
+
         public static List<string> content = new List<string>() {
             $"╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╤════════════════════════════════════════════╤═════════════════════════════════════════╗",
             $"║                                                                                                                                                    │                                            │                                         ║",
@@ -89,6 +93,7 @@ namespace PoP.classes
             DrawString("INVENTORY(0)", 212, 1);
             DrawString("STATISTICS", 167, 1);
             DrawString("MAP", 65, 1);
+            DrawMap("res\\map.txt");
 
             Console.Write(GetContent());
         }
@@ -116,6 +121,19 @@ namespace PoP.classes
             }
 
             drawStringCalled = true;
+        }
+
+        public void DrawMap(string file)
+        {
+            string[] map = FileInput.GetAllLines(file);
+
+            int mapC = 0;
+
+            for (int i = 1; i < MAPHEIGHT+1; i++)
+            {
+                DrawString(map[mapC], 1, i);
+                mapC++;
+            }
         }
 
         private string GetContent()
