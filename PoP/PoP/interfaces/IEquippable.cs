@@ -8,6 +8,8 @@ namespace PoP
 {
     interface IEquippable
     {
-        void Equip(Slot slot);
+        void Equip();
+        void UnequipAuto(int inventoryIndex);
+        void Unequip();
     }
 }

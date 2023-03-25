@@ -19,13 +19,23 @@ namespace PoP.classes
 
         public abstract void Collect();
         public abstract void Drop();
-        public virtual void Equip(Slot slot)
+        public virtual void Equip()
         {
             if (Inventory.gear[slot] == null)
             {
                 Inventory.gear[slot] = this;
                 Inventory.inventory.Remove(this);
             }
+        }
+
+        public void UnequipAuto(int inventoryIndex)
+        {
+
+        }
+
+        public void Unequip()
+        {
+
         }
     }
 }

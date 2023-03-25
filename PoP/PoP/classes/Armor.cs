@@ -41,10 +41,10 @@ namespace PoP.classes
             GameLoop.display.DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
         }
 
-        public override void Equip(Slot slot)
+        public override void Equip()
         {
             //todo
-            base.Equip(slot);
+            base.Equip();
         }
         public override string ToString()
         {
