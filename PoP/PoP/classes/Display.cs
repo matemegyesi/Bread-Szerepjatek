@@ -94,6 +94,7 @@ namespace PoP.classes
             DrawString("STATISTICS", 167, 1);
             DrawString("MAP", 65, 1);
             DrawMap("res\\map.txt");
+            DrawCharacter();
 
             Console.Write(GetContent());
         }
@@ -121,6 +122,11 @@ namespace PoP.classes
             }
 
             drawStringCalled = true;
+        }
+
+        public void DrawCharacter()
+        {
+            
         }
 
         public void DrawMap(string file)
