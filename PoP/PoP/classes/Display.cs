@@ -98,7 +98,7 @@ namespace PoP.classes
             DrawString("MAP", 65, 1);
             DrawMap("res\\map.txt");
             DrawCharacter();
-
+            
             Console.Write(GetContent());
         }
 
@@ -115,11 +115,11 @@ namespace PoP.classes
         public void DrawString(string e, int x, int y)
         {
             char[] characters = content[y].ToCharArray();
-            for (int h = 0; h < e.Length; h++)
+            for (int i = 0; i < e.Length; i++)
             {
-                if (y >= 0 && y < content.Count() && x + h < content[y].Length && x + h > 0)
+                if (y >= 0 && y < content.Count() && x + i < content[y].Length && x + i > 0)
                 {
-                    characters[x + h] = e[h];
+                    characters[x + i] = e[i];
                     content[y] = new string(characters);
                 }
             }
