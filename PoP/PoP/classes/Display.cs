@@ -16,6 +16,9 @@ namespace PoP.classes
         public const int MAPWIDTH = 148;
         public const int MAPHEIGHT = 46;
 
+        public int KarX = 5;
+        public int KarY = 5;
+
         public static List<string> content = new List<string>() {
             $"╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╤════════════════════════════════════════════╤═════════════════════════════════════════╗",
             $"║                                                                                                                                                    │                                            │                                         ║",
@@ -126,7 +129,7 @@ namespace PoP.classes
 
         public void DrawCharacter()
         {
-            
+            DrawString("H", KarX, KarY);
         }
 
         public void DrawMap(string file)
