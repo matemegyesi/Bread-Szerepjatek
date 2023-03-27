@@ -18,6 +18,8 @@ namespace PoP.classes
 
         public static Display display;
 
+        public static KeyboardInput kI;
+
         public void Start()
         {
             Maximize();
@@ -26,6 +28,8 @@ namespace PoP.classes
             Running = true;
 
             ReadItemFile("res\\itemFile.txt");
+
+            
             
             int c = 3;
             foreach (Item item in Inventory.inventory)
@@ -33,6 +37,8 @@ namespace PoP.classes
                 display.DrawString($"{item.Name} ({item.slot})", 200, c);
                 c++;
             }
+
+            kI = new KeyboardInput();
 
             Update();
 
