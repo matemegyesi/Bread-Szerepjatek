@@ -22,7 +22,7 @@ namespace PoP.classes
 
         public void Start()
         {
-            Maximize();
+            //Maximize();
             display = new Display();
 
             Running = true;
