@@ -18,18 +18,16 @@ namespace PoP.classes
 
         public static Display display;
 
-        public static KeyboardInput kI;
+        public static KeyboardInput keyboardInput;
 
         public void Start()
         {
-            //Maximize();
+            Maximize();
             display = new Display();
 
             Running = true;
 
             ReadItemFile("res\\itemFile.txt");
-
-            
             
             int c = 3;
             foreach (Item item in Inventory.inventory)
@@ -38,7 +36,7 @@ namespace PoP.classes
                 c++;
             }
 
-            kI = new KeyboardInput();
+            keyboardInput = new KeyboardInput();
 
             Update();
 

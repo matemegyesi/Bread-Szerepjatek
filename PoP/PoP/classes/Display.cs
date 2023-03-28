@@ -96,7 +96,7 @@ namespace PoP.classes
             DrawString("INVENTORY(0)", 212, 1);
             DrawString("STATISTICS", 167, 1);
             DrawString("MAP", 65, 1);
-            DrawMap("res\\map.txt");
+            DrawMap("res\\volcano.txt");
             DrawCharacter();
             
             Console.Write(GetContent());
