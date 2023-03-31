@@ -16,20 +16,12 @@ namespace PoP.classes
         public const int MAPWIDTH = 148;
         public const int MAPHEIGHT = 46;
 
-        private int PlayerX = 10;
+        public int PlayerX = 10;
 
-	    public int playerX
-	    {
-	    	get { return PlayerX;}
-	    	set { PlayerX = value;}
-	    }
-        private int PlayerY = 10;
+	    
+        public int PlayerY = 10;
 
-	    public int playerY
-	    {
-	    	get { return PlayerY;}
-	    	set { PlayerY = value;}
-	    }
+	    
 
         
 
@@ -146,7 +138,7 @@ namespace PoP.classes
 
         public void DrawCharacter()
         {
-            DrawString("H", PlayerX, playerY);
+            DrawString("H", PlayerX, PlayerY);
             DrawString(PlayerX.ToString() ,11,11);
         }
 

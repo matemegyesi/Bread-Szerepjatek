@@ -25,7 +25,7 @@ namespace PoP.classes
                 input = Console.ReadKey();
                 if (input.Key == ConsoleKey.A)
                 {
-                    GameLoop.display.playerX++;
+                    GameLoop.display.PlayerX++;
                     GameLoop.display.DrawString("alma",12,12);
                 }
             } while (input.Key != ConsoleKey.X);
