@@ -16,14 +16,9 @@ namespace PoP.classes
         public const int MAPWIDTH = 148;
         public const int MAPHEIGHT = 46;
 
-        public int PlayerX = 10;
-
-	    
+        public int PlayerX = 10;   
         public int PlayerY = 10;
 
-	    
-
-        
 
         public static List<string> content = new List<string>() {
             $"╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╤════════════════════════════════════════════╤═════════════════════════════════════════╗",
@@ -117,7 +112,6 @@ namespace PoP.classes
             if (drawStringCalled)
             {
                 Console.Write(GetContent());
-                DrawCharacter();
                 drawStringCalled = false;
             }
         }
@@ -140,6 +134,7 @@ namespace PoP.classes
         {
             DrawString("H", PlayerX, PlayerY);
             DrawString(PlayerX.ToString() ,11,11);
+            Render();
         }
 
         public void DrawMap(string file)
