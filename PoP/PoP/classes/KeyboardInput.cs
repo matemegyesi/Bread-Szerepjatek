@@ -27,7 +27,6 @@ namespace PoP.classes
                 {
                     GameLoop.display.DrawString(" ",GameLoop.display.PlayerX,GameLoop.display.PlayerY);
                     GameLoop.display.PlayerX++;
-                    GameLoop.display.DrawString("alma",12,12);
                     GameLoop.display.DrawCharacter();
                 }
             } while (input.Key != ConsoleKey.X);
