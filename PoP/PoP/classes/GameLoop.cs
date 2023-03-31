@@ -25,9 +25,12 @@ namespace PoP.classes
             Maximize();
             display = new Display();
 
+
             Running = true;
 
             ReadItemFile("res\\itemFile.txt");
+
+            
             
             int c = 3;
             foreach (Item item in Inventory.inventory)
@@ -37,6 +40,8 @@ namespace PoP.classes
             }
 
             keyboardInput = new KeyboardInput();
+
+            
 
             Update();
 

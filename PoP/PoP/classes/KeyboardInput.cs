@@ -16,7 +16,7 @@ namespace PoP.classes
             inputThread.Start();
         }
 	
-        private void StartListening()
+        public void StartListening()
         {
             ConsoleKeyInfo input;
             int i = 0;
@@ -25,7 +25,8 @@ namespace PoP.classes
                 input = Console.ReadKey();
                 if (input.Key == ConsoleKey.A)
                 {
-                    GameLoop.display.DrawString(i++.ToString(), 12, 12);
+                    GameLoop.display.playerX++;
+                    GameLoop.display.DrawString("alma",12,12);
                 }
             } while (input.Key != ConsoleKey.X);
         }
