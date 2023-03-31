@@ -133,8 +133,8 @@ namespace PoP.classes
         public void DrawCharacter()
         {
             DrawString("H", PlayerX, PlayerY);
-            DrawString($"Playerx : {PlayerX.ToString()}",165,3);
-            DrawString($"Playery : {PlayerY.ToString()}",165,4);
+            //DrawString($"Playerx : {PlayerX.ToString()}",165,3);
+            //DrawString($"Playery : {PlayerY.ToString()}",165,4);
             Render();
         }
 
