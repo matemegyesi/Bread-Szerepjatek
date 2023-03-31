@@ -23,10 +23,28 @@ namespace PoP.classes
             do
             {
                 input = Console.ReadKey();
-                if (input.Key == ConsoleKey.A)
+                if (input.Key == ConsoleKey.D)
                 {
                     GameLoop.display.DrawString(" ",GameLoop.display.PlayerX,GameLoop.display.PlayerY);
                     GameLoop.display.PlayerX++;
+                    GameLoop.display.DrawCharacter();
+                }
+                else if (input.Key == ConsoleKey.A)
+                {
+                    GameLoop.display.DrawString(" ",GameLoop.display.PlayerX,GameLoop.display.PlayerY);
+                    GameLoop.display.PlayerX--;
+                    GameLoop.display.DrawCharacter();
+                }
+                else if (input.Key == ConsoleKey.W)
+                {
+                    GameLoop.display.DrawString(" ",GameLoop.display.PlayerX,GameLoop.display.PlayerY);
+                    GameLoop.display.PlayerY--;
+                    GameLoop.display.DrawCharacter();
+                }
+                else if (input.Key == ConsoleKey.S)
+                {
+                    GameLoop.display.DrawString(" ",GameLoop.display.PlayerX,GameLoop.display.PlayerY);
+                    GameLoop.display.PlayerY++;
                     GameLoop.display.DrawCharacter();
                 }
             } while (input.Key != ConsoleKey.X);
