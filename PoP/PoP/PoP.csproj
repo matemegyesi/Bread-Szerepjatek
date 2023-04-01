@@ -55,6 +55,7 @@
     <Compile Include="classes\Item.cs" />
     <Compile Include="classes\ItemFactory.cs" />
     <Compile Include="classes\KeyboardInput.cs" />
+    <Compile Include="classes\Location.cs" />
     <Compile Include="classes\Style.cs" />
     <Compile Include="classes\Weapon.cs" />
     <Compile Include="interfaces\ICatCollectible.cs" />
