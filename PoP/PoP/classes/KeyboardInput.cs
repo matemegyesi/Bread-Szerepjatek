@@ -16,6 +16,8 @@ namespace PoP.classes
             inputThread.Start();
         }
 	
+        private static List<string> InputHistory = new List<string>();
+
         public void StartListening()
         {
             ConsoleKeyInfo input;
@@ -27,24 +29,28 @@ namespace PoP.classes
                 {
                     GameLoop.display.DrawString(" ",GameLoop.display.PlayerX,GameLoop.display.PlayerY);
                     GameLoop.display.PlayerX++;
+                    InputHistory.Add(input.ToString());
                     GameLoop.display.DrawCharacter();
                 }
                 else if (input.Key == ConsoleKey.A)
                 {
                     GameLoop.display.DrawString(" ",GameLoop.display.PlayerX,GameLoop.display.PlayerY);
                     GameLoop.display.PlayerX--;
+                    InputHistory.Add(input.ToString());
                     GameLoop.display.DrawCharacter();
                 }
                 else if (input.Key == ConsoleKey.W)
                 {
                     GameLoop.display.DrawString(" ",GameLoop.display.PlayerX,GameLoop.display.PlayerY);
                     GameLoop.display.PlayerY--;
+                    InputHistory.Add(input.ToString());
                     GameLoop.display.DrawCharacter();
                 }
                 else if (input.Key == ConsoleKey.S)
                 {
                     GameLoop.display.DrawString(" ",GameLoop.display.PlayerX,GameLoop.display.PlayerY);
                     GameLoop.display.PlayerY++;
+                    InputHistory.Add(input.ToString());
                     GameLoop.display.DrawCharacter();
                 }
             } while (input.Key != ConsoleKey.X);
