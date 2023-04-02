@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\Armor.cs" />
+    <Compile Include="classes\Combat.cs" />
+    <Compile Include="classes\Dialogue.cs" />
     <Compile Include="classes\Display.cs" />
     <Compile Include="classes\FileInput.cs" />
     <Compile Include="classes\Game.cs" />
