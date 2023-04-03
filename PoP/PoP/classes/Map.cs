@@ -14,11 +14,12 @@ namespace PoP.classes
 	{
         public static List<Map> maps = new List<Map>();
 
+        public Map CurrentMap { get; set; }
         public int CurrentLocation { get; set; }
 
         public readonly string path;
 
-        public Dictionary<int, Location> locations = new Dictionary<int, Location>();
+        public List<Location> locations = new List<Location>();
 
         public Map(string path) 
         {
@@ -29,16 +30,17 @@ namespace PoP.classes
         public void LoadMap()
         {
             GameLoop.display.DrawMap(path);
+            CurrentMap = this;
         }
         public void AddLocation(int id, int x, int y, LocationType type)
         {
             switch (type)
             {
                 case LocationType.DIALOGUE:
-                    locations.Add(id, new Dialogue(id, x, y));
+                    locations.Add(new Dialogue(id, x, y));
                     break;
                 case LocationType.COMBAT:
-                    locations.Add(id, new Combat(id, x, y));
+                    locations.Add(new Combat(id, x, y));
                     break;
                 default:
                     break;

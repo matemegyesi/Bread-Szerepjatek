@@ -24,23 +24,9 @@ namespace PoP.classes
         {
             Maximize();
             display = new Display();
-
-
             Running = true;
-
-            ReadItemFile("res\\itemFile.txt");
-
-            
-            
-            int c = 3;
-            foreach (Item item in Inventory.inventory)
-            {
-                display.DrawString($"{item.Name} ({item.slot})", 200, c);
-                c++;
-            }
-
             keyboardInput = new KeyboardInput();
-
+            
             Map map1 = new Map("res\\map.txt");
             map1.AddLocation(1, 20, 5, LocationType.DIALOGUE);
             map1.AddLocation(2, 23, 5, LocationType.DIALOGUE);
@@ -49,8 +35,16 @@ namespace PoP.classes
             Map map2 = new Map("res\\map1.txt");
             Map map3 = new Map("res\\volcano.txt");
 
-            Map.maps[2].LoadMap();
+            ReadItemFile("res\\itemFile.txt");
 
+            int c = 3;
+            foreach (Item item in Inventory.inventory)
+            {
+                display.DrawString($"{item.Name} ({item.slot})", 200, c);
+                c++;
+            }
+
+            Map.maps[2].LoadMap();
             Update();
 
         }
