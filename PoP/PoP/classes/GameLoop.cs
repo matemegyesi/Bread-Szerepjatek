@@ -9,12 +9,19 @@ using System.Runtime.InteropServices;
 
 namespace PoP.classes
 {
+    enum GamePhase
+    {
+        ADVENTURE,
+        COMBAT,
+        DIALOGUE
+    }
     class GameLoop
     {
         /// <summary>
         /// Képernyő frissítés állapota
         /// </summary>
         public bool Running { get; private set; }
+        public static GamePhase Phase { get; set; }
 
         public static Display display;
 
@@ -43,7 +50,7 @@ namespace PoP.classes
 
             Map.maps[2].LoadMap();
             Update();
-
+            Phase = GamePhase.ADVENTURE;
         }
 
         private void Update()

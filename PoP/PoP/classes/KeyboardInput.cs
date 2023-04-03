@@ -9,7 +9,6 @@ namespace PoP.classes
 {
     class KeyboardInput
     {
-
         public KeyboardInput()
         {
             Thread inputThread = new Thread(StartListening);
@@ -24,51 +23,57 @@ namespace PoP.classes
             do
             {
                 input = Console.ReadKey();
-                if (input.Key == ConsoleKey.D)
+                #region Mozgás
+                if (GameLoop.Phase == GamePhase.ADVENTURE)
                 {
-                    if(Display.content[GameLoop.display.PlayerY][GameLoop.display.PlayerX+1] == ' ')
+                    if (input.Key == ConsoleKey.D)
                     {
-                        GameLoop.display.DrawString(" ",GameLoop.display.PlayerX,GameLoop.display.PlayerY);
-                        GameLoop.display.PlayerX++;
-                        InputHistory.Add(input.ToString());
-                        GameLoop.display.DrawCharacter();
+                        if (Display.content[GameLoop.display.PlayerY][GameLoop.display.PlayerX + 1] == ' ')
+                        {
+                            GameLoop.display.DrawString(" ", GameLoop.display.PlayerX, GameLoop.display.PlayerY);
+                            GameLoop.display.PlayerX++;
+                            InputHistory.Add(input.ToString());
+                            GameLoop.display.DrawCharacter();
+                        }
                     }
-                }
-                else if (input.Key == ConsoleKey.A)
-                {
-                    if (Display.content[GameLoop.display.PlayerY][GameLoop.display.PlayerX - 1] == ' ')
+                    else if (input.Key == ConsoleKey.A)
                     {
-                        GameLoop.display.DrawString(" ",GameLoop.display.PlayerX,GameLoop.display.PlayerY);
-                        GameLoop.display.PlayerX--;
-                        InputHistory.Add(input.ToString());
-                        GameLoop.display.DrawCharacter();
+                        if (Display.content[GameLoop.display.PlayerY][GameLoop.display.PlayerX - 1] == ' ')
+                        {
+                            GameLoop.display.DrawString(" ", GameLoop.display.PlayerX, GameLoop.display.PlayerY);
+                            GameLoop.display.PlayerX--;
+                            InputHistory.Add(input.ToString());
+                            GameLoop.display.DrawCharacter();
+                        }
                     }
-                }
-                else if (input.Key == ConsoleKey.W)
-                {
-                    if (Display.content[GameLoop.display.PlayerY - 1][GameLoop.display.PlayerX] == ' ')
+                    else if (input.Key == ConsoleKey.W)
                     {
-                        GameLoop.display.DrawString(" ",GameLoop.display.PlayerX,GameLoop.display.PlayerY);
-                        GameLoop.display.PlayerY--;
-                        InputHistory.Add(input.ToString());
-                        GameLoop.display.DrawCharacter();
+                        if (Display.content[GameLoop.display.PlayerY - 1][GameLoop.display.PlayerX] == ' ')
+                        {
+                            GameLoop.display.DrawString(" ", GameLoop.display.PlayerX, GameLoop.display.PlayerY);
+                            GameLoop.display.PlayerY--;
+                            InputHistory.Add(input.ToString());
+                            GameLoop.display.DrawCharacter();
+                        }
                     }
-                }
-                else if (input.Key == ConsoleKey.S)
-                {
-                    if (Display.content[GameLoop.display.PlayerY + 1][GameLoop.display.PlayerX] == ' ')
+                    else if (input.Key == ConsoleKey.S)
                     {
-                        GameLoop.display.DrawString(" ",GameLoop.display.PlayerX,GameLoop.display.PlayerY);
-                        GameLoop.display.PlayerY++;
-                        InputHistory.Add(input.ToString());
-                        GameLoop.display.DrawCharacter();
+                        if (Display.content[GameLoop.display.PlayerY + 1][GameLoop.display.PlayerX] == ' ')
+                        {
+                            GameLoop.display.DrawString(" ", GameLoop.display.PlayerX, GameLoop.display.PlayerY);
+                            GameLoop.display.PlayerY++;
+                            InputHistory.Add(input.ToString());
+                            GameLoop.display.DrawCharacter();
+                        }
                     }
-                }
 
-                if(Map.CurrentMap.locations.Where(x => x.positionX == GameLoop.display.PlayerX && x.positionY == GameLoop.display.PlayerY).ToList().Count == 1)
-                {
-                    Location.LoadLocation();
+                    if (Map.CurrentMap.locations.Where(x => x.positionX == GameLoop.display.PlayerX && x.positionY == GameLoop.display.PlayerY).ToList().Count == 1)
+                    {
+                        Location.LoadLocation();
+                    }
                 }
+                #endregion
+
             } while (input.Key != ConsoleKey.X);
         }
 	

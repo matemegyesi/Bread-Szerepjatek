@@ -27,6 +27,7 @@ namespace PoP.classes
 
         public static void LoadLocation()
         {
+            GameLoop.Phase = GamePhase.DIALOGUE;
             GameLoop.display.DrawString("loc", 10, 10);
         }
 
