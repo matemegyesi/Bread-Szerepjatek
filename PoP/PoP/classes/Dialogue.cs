@@ -12,5 +12,11 @@ namespace PoP.classes
         {
 
         }
+
+        public override void LoadLocation()
+        {
+            GameLoop.Phase = GamePhase.DIALOGUE;
+            GameLoop.display.DrawString("loc", 10, 10);
+        }
     }
 }

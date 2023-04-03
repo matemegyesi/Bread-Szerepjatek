@@ -25,11 +25,7 @@ namespace PoP.classes
             positionY = y;
         }
 
-        public static void LoadLocation()
-        {
-            GameLoop.Phase = GamePhase.DIALOGUE;
-            GameLoop.display.DrawString("loc", 10, 10);
-        }
+        public abstract void LoadLocation(); 
 
     }
 }

@@ -69,7 +69,7 @@ namespace PoP.classes
 
                     if (Map.CurrentMap.locations.Where(x => x.positionX == GameLoop.display.PlayerX && x.positionY == GameLoop.display.PlayerY).ToList().Count == 1)
                     {
-                        Location.LoadLocation();
+                        Map.CurrentMap.locations.Where(x => x.positionX == GameLoop.display.PlayerX && x.positionY == GameLoop.display.PlayerY).First().LoadLocation();
                     }
                 }
                 #endregion
