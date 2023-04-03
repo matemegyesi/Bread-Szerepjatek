@@ -99,7 +99,7 @@ namespace PoP.classes
             DrawString("INVENTORY(0)", 212, 1);
             DrawString("STATISTICS", 167, 1);
             DrawString("MAP", 65, 1);
-            DrawMap("res\\volcano.txt");
+            //DrawMap("res\\volcano.txt");
             DrawCharacter();
             
             Console.Write(GetContent());
@@ -152,11 +152,18 @@ namespace PoP.classes
         {
             string result = "";
 
-            foreach (string str in content)
+            try
             {
-                result += str;
+                foreach (string str in content)
+                {
+                    result += str;
+                }
+                return result;
             }
-            return result;
+            catch
+            {
+                return null;
+            }
         }
     }
 }

@@ -14,15 +14,17 @@ namespace PoP.classes
 
         public readonly string path;
 
-
         public Dictionary<string, Location> locations = new Dictionary<string, Location>();
 
-        public Map(string path, int CLocation) {
-
+        public Map(string path) 
+        {
             this.path = path;
-            CurrentLocation = CLocation;
 
             maps.Add(this);
+        }
+        public void LoadMap()
+        {
+            GameLoop.display.DrawMap(path);
         }
    } 
 }

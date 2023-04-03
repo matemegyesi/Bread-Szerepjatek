@@ -41,7 +41,11 @@ namespace PoP.classes
 
             keyboardInput = new KeyboardInput();
 
-            
+            Map map1 = new Map("res\\map.txt");
+            Map map2 = new Map("res\\map1.txt");
+            Map map3 = new Map("res\\volcano.txt");
+
+            Map.maps[2].LoadMap();
 
             Update();
 
