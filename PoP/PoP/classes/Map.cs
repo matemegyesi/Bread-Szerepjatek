@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace PoP.classes
 {
-    enum LocationType { 
-        DIALOGUE,
-        COMBAT
-    }
+
 	class Map
 	{
         public static List<Map> maps = new List<Map>();

@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace PoP.classes
 {
+    enum LocationType
+    {
+        DIALOGUE,
+        COMBAT
+    }
     internal abstract class Location
     {
 
