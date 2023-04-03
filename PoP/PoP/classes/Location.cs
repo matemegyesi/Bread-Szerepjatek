@@ -20,7 +20,7 @@ namespace PoP.classes
             positionY = y;
         }
 
-        public void LoadLocation()
+        public static void LoadLocation()
         {
             GameLoop.display.DrawString("loc", 10, 10);
         }

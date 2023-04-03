@@ -64,6 +64,11 @@ namespace PoP.classes
                         GameLoop.display.DrawCharacter();
                     }
                 }
+
+                if(Map.CurrentMap.locations.Where(x => x.positionX == GameLoop.display.PlayerX && x.positionY == GameLoop.display.PlayerY).ToList().Count == 1)
+                {
+                    Location.LoadLocation();
+                }
             } while (input.Key != ConsoleKey.X);
         }
 	

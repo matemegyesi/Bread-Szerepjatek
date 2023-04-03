@@ -14,8 +14,8 @@ namespace PoP.classes
 	{
         public static List<Map> maps = new List<Map>();
 
-        public Map CurrentMap { get; set; }
-        public int CurrentLocation { get; set; }
+        public static Map CurrentMap { get; set; }
+        public static int CurrentLocation { get; set; }
 
         public readonly string path;
 
