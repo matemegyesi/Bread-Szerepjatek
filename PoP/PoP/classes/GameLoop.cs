@@ -42,6 +42,10 @@ namespace PoP.classes
             keyboardInput = new KeyboardInput();
 
             Map map1 = new Map("res\\map.txt");
+            map1.AddLocation(1, 20, 5, LocationType.DIALOGUE);
+            map1.AddLocation(2, 23, 5, LocationType.DIALOGUE);
+            map1.AddLocation(3, 26, 5, LocationType.DIALOGUE);
+            
             Map map2 = new Map("res\\map1.txt");
             Map map3 = new Map("res\\volcano.txt");
 

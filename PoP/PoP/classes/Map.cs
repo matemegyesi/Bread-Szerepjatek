@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace PoP.classes
 {
+    enum LocationType { 
+        DIALOGUE,
+        COMBAT
+    }
 	class Map
 	{
         public static List<Map> maps = new List<Map>();
@@ -14,7 +18,7 @@ namespace PoP.classes
 
         public readonly string path;
 
-        public Dictionary<string, Location> locations = new Dictionary<string, Location>();
+        public Dictionary<int, Location> locations = new Dictionary<int, Location>();
 
         public Map(string path) 
         {
@@ -25,6 +29,20 @@ namespace PoP.classes
         public void LoadMap()
         {
             GameLoop.display.DrawMap(path);
+        }
+        public void AddLocation(int id, int x, int y, LocationType type)
+        {
+            switch (type)
+            {
+                case LocationType.DIALOGUE:
+                    locations.Add(id, new Dialogue(id, x, y));
+                    break;
+                case LocationType.COMBAT:
+                    locations.Add(id, new Combat(id, x, y));
+                    break;
+                default:
+                    break;
+            }
         }
    } 
 }
