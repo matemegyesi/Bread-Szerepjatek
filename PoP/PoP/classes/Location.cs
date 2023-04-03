@@ -14,13 +14,13 @@ namespace PoP.classes
     internal abstract class Location
     {
 
-        public readonly int Id;
-        public int positionX { get; private set; }
-        public int positionY { get; private set; }
+        public int id;
+        public int positionX { get; set; }
+        public int positionY { get; set; }
 
         public Location(int id, int x, int y)
         {
-            Id = id;
+            this.id = id;
             positionX = x;
             positionY = y;
         }
