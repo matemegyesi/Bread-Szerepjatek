@@ -19,15 +19,21 @@ namespace PoP.classes
             
         }
 
-        public override void Start()
+        public override void IncreaseDialogueIndex()
         {
-            
+            //not dialogue
         }
 
         public override void LoadLocation()
         {
+            Map.CurrentLocation = this;
             GameLoop.Phase = GamePhase.COMBAT;
             GameLoop.display.DrawString("loc", 10, 10);
+        }
+
+        public override void Start()
+        {
+            
         }
     }
 }

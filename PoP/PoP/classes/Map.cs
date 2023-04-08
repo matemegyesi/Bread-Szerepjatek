@@ -12,7 +12,7 @@ namespace PoP.classes
         public static List<Map> maps = new List<Map>();
 
         public static Map CurrentMap { get; set; }
-        public static int CurrentLocation { get; set; }
+        public static Location CurrentLocation { get; set; }
 
         public readonly string path;
 
