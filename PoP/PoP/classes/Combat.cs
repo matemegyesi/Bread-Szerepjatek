@@ -11,14 +11,14 @@ namespace PoP.classes
     {
         LOADOUT,
         PLAYER_TURN,
-        PLAYER_WIN,
         ENEMY_TURN,
-        ENEMY_WIN
+        LOSE,
+        WIN
     }
 
     class Combat : Location
     {
-        public CombatPhase combatPhase = CombatPhase.LOADOUT;
+        public CombatPhase combatPhase;
 
         Enemy enemy = new Enemy(); // kell majd rendes beolvasás
 
@@ -39,7 +39,6 @@ namespace PoP.classes
         {
             Map.CurrentLocation = this;
             GameLoop.Phase = GamePhase.COMBAT;
-            GameLoop.display.DrawString("loc", 10, 10);
 
             Start();
         }
@@ -64,7 +63,7 @@ namespace PoP.classes
         public void ChangeCombatPhase(CombatPhase newPhase)
         {
             combatPhase = newPhase;
-            GameLoop.display.WipeStringBox(1, 48, 14, Display.WIDTH - 2);
+            GameLoop.display.WipeTextBox();
 
             switch (combatPhase)
             {
@@ -91,7 +90,7 @@ namespace PoP.classes
 
                     break;
 
-                case CombatPhase.PLAYER_WIN:
+                case CombatPhase.WIN:
 
                     GameLoop.display.DrawString("Játékos megnyerte!", 4, 50);
 
@@ -99,7 +98,7 @@ namespace PoP.classes
 
                     break;
 
-                case CombatPhase.ENEMY_WIN:
+                case CombatPhase.LOSE:
 
                     //
 
@@ -111,7 +110,6 @@ namespace PoP.classes
 
         public void KeyPressed(ConsoleKey key)
         {
-            
             switch (combatPhase)
             {
                 case CombatPhase.LOADOUT:
@@ -131,7 +129,7 @@ namespace PoP.classes
 
                             Player.AttackWithWeapon(enemy);
                             //ChangeCombatPhase(CombatPhase.ENEMY_TURN);
-                            ChangeCombatPhase(CombatPhase.PLAYER_WIN);
+                            ChangeCombatPhase(CombatPhase.WIN);
 
                             break;
                         case ConsoleKey.W:
@@ -162,13 +160,13 @@ namespace PoP.classes
 
                     break;
 
-                case CombatPhase.PLAYER_WIN:
+                case CombatPhase.WIN:
 
                     //
 
                     break;
 
-                case CombatPhase.ENEMY_WIN:
+                case CombatPhase.LOSE:
 
                     //
 

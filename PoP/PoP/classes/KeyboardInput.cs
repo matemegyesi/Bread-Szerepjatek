@@ -85,12 +85,6 @@ namespace PoP.classes
                     }
                 }
                 #endregion
-                #region Combat
-                if (GameLoop.Phase == GamePhase.COMBAT)
-                {
-                    
-                }
-                #endregion
 
                 KeyPressed?.Invoke(input.Key);
 
