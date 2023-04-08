@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace PoP.classes
 {
-    internal class Dialogue : Location
+    class Dialogue : Location
     {
+        public string[] content;
+        public int dialogueIndex = 0;
+
         public Dialogue(int id, int x, int y) : base(id, x, y)
         {
 
@@ -15,8 +18,21 @@ namespace PoP.classes
 
         public override void LoadLocation()
         {
+            Map.CurrentLocation = this;
             GameLoop.Phase = GamePhase.DIALOGUE;
             GameLoop.display.DrawString("loc", 10, 10);
+        }
+
+        public override void Start()
+        {
+            while (dialogueIndex < content.Length)
+            {
+                GameLoop.display.DrawString(content[dialogueIndex], 100, 100);
+            }
+        }
+        public override void IncreaseDialogueIndex()
+        {
+            dialogueIndex += 1;
         }
     }
 }

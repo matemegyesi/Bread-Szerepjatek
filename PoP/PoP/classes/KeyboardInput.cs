@@ -23,7 +23,7 @@ namespace PoP.classes
             do
             {
                 input = Console.ReadKey();
-                #region Mozgás
+                #region Movement
                 if (GameLoop.Phase == GamePhase.ADVENTURE)
                 {
                     if (input.Key == ConsoleKey.D)
@@ -70,6 +70,15 @@ namespace PoP.classes
                     if (Map.CurrentMap.locations.Where(x => x.positionX == GameLoop.display.PlayerX && x.positionY == GameLoop.display.PlayerY).ToList().Count == 1)
                     {
                         Map.CurrentMap.locations.Where(x => x.positionX == GameLoop.display.PlayerX && x.positionY == GameLoop.display.PlayerY).First().LoadLocation();
+                    }
+                }
+                #endregion
+                #region Dialogue
+                if (GameLoop.Phase == GamePhase.DIALOGUE)
+                {
+                    if (input.Key == ConsoleKey.Spacebar)
+                    {
+                        Map.CurrentLocation.IncreaseDialogueIndex();
                     }
                 }
                 #endregion
