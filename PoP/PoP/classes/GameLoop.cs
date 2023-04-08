@@ -17,9 +17,6 @@ namespace PoP.classes
     }
     class GameLoop
     {
-        /// <summary>
-        /// Képernyő frissítés állapota
-        /// </summary>
         public static bool Running { get; private set; }
         public static GamePhase Phase { get; set; }
 
