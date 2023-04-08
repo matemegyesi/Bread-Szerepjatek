@@ -20,12 +20,13 @@ namespace PoP.classes
         /// <summary>
         /// Képernyő frissítés állapota
         /// </summary>
-        public bool Running { get; private set; }
+        public static bool Running { get; private set; }
         public static GamePhase Phase { get; set; }
 
         public static Display display;
 
         public static KeyboardInput keyboardInput;
+        private Movement playerMovement;
 
         public void Start()
         {
@@ -33,7 +34,8 @@ namespace PoP.classes
             display = new Display();
             Running = true;
             keyboardInput = new KeyboardInput();
-            
+            playerMovement = new Movement();
+
             Map map1 = new Map("res\\map.txt");
             Map map2 = new Map("res\\map1.txt");
             Map map3 = new Map("res\\volcano.txt");

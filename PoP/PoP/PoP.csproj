@@ -75,6 +75,7 @@
     <Compile Include="classes\KeyboardInput.cs" />
     <Compile Include="classes\Location.cs" />
     <Compile Include="classes\Map.cs" />
+    <Compile Include="classes\Movement.cs" />
     <Compile Include="classes\Player.cs" />
     <Compile Include="classes\Style.cs" />
     <Compile Include="classes\Weapon.cs" />

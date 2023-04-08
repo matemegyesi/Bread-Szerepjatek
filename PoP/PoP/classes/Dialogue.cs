@@ -26,12 +26,17 @@ namespace PoP.classes
 
         public override void Start()
         {
+            KeyboardInput.KeyPressed += KeyPressed;
             while (dialogueIndex < content.Length)
             {
                 GameLoop.display.DrawString(content[dialogueIndex], 100, 100);
             }
         }
-
+        public void KeyPressed(ConsoleKey key)
+        {
+            if (GameLoop.Phase == GamePhase.DIALOGUE && key == ConsoleKey.Spacebar)
+                Map.CurrentLocation.IncreaseDialogueIndex();
+        }
         public override void End()
         {
 
