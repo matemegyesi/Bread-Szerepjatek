@@ -27,6 +27,7 @@ namespace PoP.classes
 
         public abstract void LoadLocation(); 
         public abstract void Start();
+        public abstract void End();
         public abstract void IncreaseDialogueIndex();
 
     }

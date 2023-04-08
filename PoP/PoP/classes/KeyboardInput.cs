@@ -16,6 +16,9 @@ namespace PoP.classes
         }
 	
         private static List<string> InputHistory = new List<string>();
+        
+        public delegate void OnKeyPressed(ConsoleKey key);
+        static public OnKeyPressed KeyPressed;
 
         public void StartListening()
         {
@@ -85,15 +88,11 @@ namespace PoP.classes
                 #region Combat
                 if (GameLoop.Phase == GamePhase.COMBAT)
                 {
-                    if (input.Key == ConsoleKey.R)
-                    {
-                        
-                        GameLoop.display.WipeStringBox(1, 48, 14, Display.WIDTH - 2, ' ');
-
-
-                    }
+                    
                 }
                 #endregion
+
+                KeyPressed?.Invoke(input.Key);
 
             } while (input.Key != ConsoleKey.X);
         }

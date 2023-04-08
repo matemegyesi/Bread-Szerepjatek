@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static PoP.classes.KeyboardInput;
 
 namespace PoP.classes
 {
@@ -30,6 +31,12 @@ namespace PoP.classes
                 GameLoop.display.DrawString(content[dialogueIndex], 100, 100);
             }
         }
+
+        public override void End()
+        {
+
+        }
+
         public override void IncreaseDialogueIndex()
         {
             dialogueIndex += 1;
