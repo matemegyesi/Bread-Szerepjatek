@@ -17,12 +17,14 @@ namespace PoP.classes
         public int id;
         public int positionX { get; set; }
         public int positionY { get; set; }
+        public bool isCompleted { get; set; }
 
         public Location(int id, int x, int y)
         {
             this.id = id;
             positionX = x;
             positionY = y;
+            isCompleted = false;
         }
 
         public abstract void LoadLocation(); 

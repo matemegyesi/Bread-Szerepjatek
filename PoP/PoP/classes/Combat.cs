@@ -18,8 +18,8 @@ namespace PoP.classes
 
     class Combat : Location
     {
-        CombatPhase combatPhase = CombatPhase.LOADOUT;
-        Enemy enemy;
+        public CombatPhase combatPhase = CombatPhase.LOADOUT;
+        Enemy enemy = new Enemy(); // kell majd rendes beolvasás
 
         public Combat(int id, int x, int y, string enemyFile) : base(id, x, y)
         {
@@ -48,14 +48,16 @@ namespace PoP.classes
 
             KeyboardInput.KeyPressed += KeyPressed;
 
-            GameLoop.display.DrawString("Loadout kiválasztása", 4, 50);
-            GameLoop.display.DrawString("Csata megkezdése (SPACE)", 4, 51);
+            ChangeCombatPhase(CombatPhase.LOADOUT);
 
         }
 
         public override void End()
         {
             KeyboardInput.KeyPressed -= KeyPressed;
+
+            isCompleted = true;
+            GameLoop.Phase = GamePhase.ADVENTURE;
         }
 
         public void ChangeCombatPhase(CombatPhase newPhase)
@@ -67,8 +69,8 @@ namespace PoP.classes
             {
                 case CombatPhase.LOADOUT:
 
-                    //GameLoop.display.DrawString("Loadout kiválasztása", 4, 50);
-                    //GameLoop.display.DrawString("Csata megkezdése (SPACE)", 4, 51);
+                    GameLoop.display.DrawString("Loadout kiválasztása", 4, 50);
+                    GameLoop.display.DrawString("Csata megkezdése (SPACE)", 4, 51);
 
                     break;
 
@@ -90,7 +92,7 @@ namespace PoP.classes
 
                 case CombatPhase.PLAYER_WIN:
 
-                    //
+                    GameLoop.display.DrawString("Játékos megnyerte!", 4, 50);
 
                     End();
 
@@ -126,21 +128,26 @@ namespace PoP.classes
                     {
                         case ConsoleKey.Q:
 
-                            ChangeCombatPhase(CombatPhase.ENEMY_TURN);
+                            Player.AttackWithWeapon(enemy);
+                            //ChangeCombatPhase(CombatPhase.ENEMY_TURN);
+                            ChangeCombatPhase(CombatPhase.PLAYER_WIN);
 
                             break;
                         case ConsoleKey.W:
 
+                            Player.AttackWithSpell(enemy);
                             ChangeCombatPhase(CombatPhase.ENEMY_TURN);
 
                             break;
                         case ConsoleKey.E:
 
+                            Player.AttackWithSpell(enemy);
                             ChangeCombatPhase(CombatPhase.ENEMY_TURN);
 
                             break;
                         case ConsoleKey.R:
 
+                            Player.AttackWithSpell(enemy);
                             ChangeCombatPhase(CombatPhase.ENEMY_TURN);
 
                             break;
