@@ -25,7 +25,9 @@ namespace PoP.classes
             positionY = y;
         }
 
-        public abstract void LoadLocation(); 
+        public abstract void Start();
+
+        public abstract void LoadLocation();
 
     }
 }

@@ -19,7 +19,7 @@ namespace PoP.classes
             
         }
 
-        public void StartCombat()
+        public override void Start()
         {
             
         }

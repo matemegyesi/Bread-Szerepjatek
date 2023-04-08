@@ -37,7 +37,7 @@ namespace PoP.classes
                     locations.Add(new Dialogue(id, x, y));
                     break;
                 case LocationType.COMBAT:
-                    locations.Add(new Combat(id, x, y));
+                    locations.Add(new Combat(id, x, y, ""));
                     break;
                 default:
                     break;
