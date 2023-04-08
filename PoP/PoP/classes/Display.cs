@@ -95,8 +95,6 @@ namespace PoP.classes
             Console.CursorVisible = false;
             Style.EnableStyling();
 
-            
-
             DrawString("INVENTORY(0)", 212, 1);
             DrawString("STATISTICS", 167, 1);
             DrawString("MAP", 65, 1);

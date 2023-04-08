@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using CSInputs;
 
 namespace PoP.classes
 {
@@ -23,11 +24,15 @@ namespace PoP.classes
         public static Display display;
 
         public static KeyboardInput keyboardInput;
+
         private Movement playerMovement;
 
         public void Start()
         {
             Maximize();
+            //Maximalizálja F11-el
+            CSInputs.SendInput.Keyboard.Send(CSInputs.Enums.KeyboardKeys.F11);
+            
             display = new Display();
             Running = true;
             keyboardInput = new KeyboardInput();

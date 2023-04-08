@@ -51,6 +51,9 @@
     <Reference Include="Ansi, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ansi.1.0.3\lib\netstandard2.0\Ansi.dll</HintPath>
     </Reference>
+    <Reference Include="CSInputs, Version=1.0.3.0, Culture=neutral, PublicKeyToken=a590058c64c9d8cd, processorArchitecture=MSIL">
+      <HintPath>..\packages\CSInputs.1.0.3\lib\net48\CSInputs.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
