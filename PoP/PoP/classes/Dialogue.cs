@@ -16,11 +16,6 @@ namespace PoP.classes
 
         }
 
-        public override void Start()
-        {
-            
-        }
-
         public override void LoadLocation()
         {
             Map.CurrentLocation = this;

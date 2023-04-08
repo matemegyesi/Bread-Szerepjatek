@@ -115,6 +115,21 @@ namespace PoP.classes
                 drawStringCalled = false;
             }
         }
+
+        public void WipeStringBox(int x, int y, int height, int width, char fill = ' ')
+        {
+            string line = string.Empty;
+            for (int i = 0; i < width; i++)
+            {
+                line += fill;
+            }
+
+            for (int yCurrent = y; yCurrent < y + height; yCurrent++)
+            {
+                GameLoop.display.DrawString(line, x, yCurrent);
+            }
+        }
+
         public void DrawString(string e, int x, int y)
         {
             char[] characters = content[y].ToCharArray();

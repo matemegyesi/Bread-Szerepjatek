@@ -82,6 +82,18 @@ namespace PoP.classes
                     }
                 }
                 #endregion
+                #region Combat
+                if (GameLoop.Phase == GamePhase.COMBAT)
+                {
+                    if (input.Key == ConsoleKey.R)
+                    {
+                        
+                        GameLoop.display.WipeStringBox(1, 48, 14, Display.WIDTH - 2, ' ');
+
+
+                    }
+                }
+                #endregion
 
             } while (input.Key != ConsoleKey.X);
         }
