@@ -1,6 +1,7 @@
 ﻿using Ansi;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -127,6 +128,19 @@ namespace PoP.classes
             for (int yCurrent = y; yCurrent < y + height; yCurrent++)
             {
                 GameLoop.display.DrawString(line, x, yCurrent);
+            }
+        }
+
+        public void WipeTextBox()
+        {
+            string line = string.Empty;
+            for (int i = 0; i < WIDTH-2; i++)
+            {
+                line += ' ';
+            }
+            for (int i = 48; i < 62; i++)
+            {
+                GameLoop.display.DrawString(line, 1, i);
             }
         }
 

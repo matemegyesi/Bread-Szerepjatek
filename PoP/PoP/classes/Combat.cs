@@ -19,6 +19,7 @@ namespace PoP.classes
     class Combat : Location
     {
         public CombatPhase combatPhase = CombatPhase.LOADOUT;
+
         Enemy enemy = new Enemy(); // kell majd rendes beolvasás
 
         public Combat(int id, int x, int y, string enemyFile) : base(id, x, y)
