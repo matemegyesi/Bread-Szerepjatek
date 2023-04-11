@@ -69,18 +69,18 @@ namespace PoP.classes
             {
                 case CombatPhase.LOADOUT:
 
-                    GameLoop.display.DrawString("Loadout kiválasztása", 4, 50);
-                    GameLoop.display.DrawString("Csata megkezdése (SPACE)", 4, 51);
+                    GameLoop.display.DrawString("Loadout selection", 4, 50);
+                    GameLoop.display.DrawString("Begin encounter (SPACE)", 4, 51);
 
                     break;
 
                 case CombatPhase.PLAYER_TURN:
 
-                    GameLoop.display.DrawString("Játékos köre", 4, 50);
-                    GameLoop.display.DrawString("Fegyverrel támadás (Q)", 4, 51);
-                    GameLoop.display.DrawString("Spell 1 használata (W)", 4, 52);
-                    GameLoop.display.DrawString("Spell 2 használata (E)", 4, 53);
-                    GameLoop.display.DrawString("Spell 3 használata (R)", 4, 54);
+                    GameLoop.display.DrawString("Player's turn", 4, 50);
+                    GameLoop.display.DrawString("Weapon attack (Q)", 4, 51);
+                    GameLoop.display.DrawString("Use spell 1 (W)", 4, 52);
+                    GameLoop.display.DrawString("Use spell 2 (E)", 4, 53);
+                    GameLoop.display.DrawString("Use spell 3 (R)", 4, 54);
 
                     break;
 
@@ -92,7 +92,7 @@ namespace PoP.classes
 
                 case CombatPhase.WIN:
 
-                    GameLoop.display.DrawString("Játékos megnyerte!", 4, 50);
+                    GameLoop.display.DrawString("The player won!", 4, 50);
 
                     End();
 
