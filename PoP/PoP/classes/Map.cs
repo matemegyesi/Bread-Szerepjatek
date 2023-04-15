@@ -29,12 +29,12 @@ namespace PoP.classes
             GameLoop.display.DrawMap(path);
             CurrentMap = this;
         }
-        public void AddLocation(int id, int x, int y, LocationType type)
+        public void AddLocation(int id, int x, int y, LocationType type, string path)
         {
             switch (type)
             {
                 case LocationType.DIALOGUE:
-                    locations.Add(new Dialogue(id, x, y));
+                    locations.Add(new Dialogue(id, x, y, ""));
                     break;
                 case LocationType.COMBAT:
                     locations.Add(new Combat(id, x, y, ""));

@@ -12,7 +12,7 @@ namespace PoP.classes
         public string[] content;
         public int dialogueIndex = 0;
 
-        public Dialogue(int id, int x, int y) : base(id, x, y)
+        public Dialogue(int id, int x, int y, string path) : base(id, x, y)
         {
 
         }
@@ -21,7 +21,6 @@ namespace PoP.classes
         {
             Map.CurrentLocation = this;
             GameLoop.Phase = GamePhase.DIALOGUE;
-            GameLoop.display.DrawString("loc", 10, 10);
         }
 
         public override void Start()

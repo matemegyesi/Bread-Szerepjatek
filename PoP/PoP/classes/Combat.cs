@@ -22,7 +22,7 @@ namespace PoP.classes
 
         Enemy enemy = new Enemy(); // kell majd rendes beolvasás
 
-        public Combat(int id, int x, int y, string enemyFile) : base(id, x, y)
+        public Combat(int id, int x, int y, string path) : base(id, x, y)
         {
             this.id = id;
             positionX = x;
