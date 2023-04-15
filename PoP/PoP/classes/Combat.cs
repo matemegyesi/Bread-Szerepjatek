@@ -27,7 +27,7 @@ namespace PoP.classes
             this.id = id;
             positionX = x;
             positionY = y;
-            
+            Path = path;
         }
 
         public override void IncreaseDialogueIndex()
