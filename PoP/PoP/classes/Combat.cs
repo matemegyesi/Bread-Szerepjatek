@@ -30,11 +30,6 @@ namespace PoP.classes
             Path = path;
         }
 
-        public override void IncreaseDialogueIndex()
-        {
-            //not dialogue
-        }
-
         public override void LoadLocation()
         {
             Map.CurrentLocation = this;
