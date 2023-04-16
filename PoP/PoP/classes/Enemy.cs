@@ -12,7 +12,12 @@ namespace PoP.classes
         public double Damage { get; set; }
         public double Defence { get; set; }
         public double Health { get; set; }
-    
+        
+        public Enemy()
+        {
+
+        }
+
         public string TakeAction()
         {
             string action = $"The enemy dealt {Damage} damage.";

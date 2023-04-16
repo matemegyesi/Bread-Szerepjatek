@@ -20,7 +20,7 @@ namespace PoP.classes
     {
         public CombatPhase combatPhase;
 
-        Enemy enemy = new Enemy(); // kell majd rendes beolvasás
+        Enemy enemy; // kell majd rendes beolvasás
 
         public Combat(int id, int x, int y, string path) : base(id, x, y)
         {
@@ -28,6 +28,8 @@ namespace PoP.classes
             positionX = x;
             positionY = y;
             Path = path;
+
+            enemy = new Enemy(/* Path majd */);
         }
 
         public override void LoadLocation()
@@ -95,7 +97,7 @@ namespace PoP.classes
                 case CombatPhase.LOADOUT:
 
                     GameLoop.display.DrawString("Loadout selection", 4, 50);
-                    GameLoop.display.DrawString("Begin encounter (SPACE)", 4, 51);
+                    GameLoop.display.DrawString("Begin encounter (SPACE)", 4, 52);
 
                     break;
 
@@ -134,17 +136,16 @@ namespace PoP.classes
                 case CombatPhase.WIN:
 
                     GameLoop.display.DrawString("The player won!", 4, 50);
-
-                    End();
+                    GameLoop.display.DrawString("End encounter (SPACE)", 4, 52);
+                    // itt loot-ot kéne kapni
 
                     break;
 
                 case CombatPhase.LOSE:
 
                     GameLoop.display.DrawString("The player lost!", 4, 50);
+                    GameLoop.display.DrawString("End encounter (SPACE)", 4, 52);
                     // itt meg kéne hóni
-
-                    End();
 
                     break;
             }
@@ -211,6 +212,8 @@ namespace PoP.classes
                     if (key == ConsoleKey.Spacebar)
                     {
                         ChangeCombatPhase(CombatPhase.PLAYER_TURN);
+
+                        End();
                     }
 
                     break;
@@ -220,6 +223,8 @@ namespace PoP.classes
                     if (key == ConsoleKey.Spacebar)
                     {
                         ChangeCombatPhase(CombatPhase.PLAYER_TURN);
+
+                        End();
                     }
 
                     break;
