@@ -19,7 +19,6 @@ namespace PoP.classes
         public int positionY { get; set; }
         public bool isCompleted { get; set; }
         public string Path { get; set; }
-
         public Location(int id, int x, int y)
         {
             this.id = id;

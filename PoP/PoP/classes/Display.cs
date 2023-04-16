@@ -157,9 +157,8 @@ namespace PoP.classes
             drawStringCalled = true;
         }
 
-        public void DrawConversation(string e, int x, int y, string name)
+        public void DrawConversation(string e, int x, int y)
         {
-            GameLoop.display.DrawString(name, x, y - 2);
             e += " (Next: SPACE)"; 
             for (int i = 0; i < e.Length; i++)
             {
