@@ -32,6 +32,7 @@ namespace PoP.classes
 
         public override void LoadLocation()
         {
+            GameLoop.display.WipeTextBox();
             Map.CurrentLocation = this;
             GameLoop.Phase = GamePhase.COMBAT;
 
