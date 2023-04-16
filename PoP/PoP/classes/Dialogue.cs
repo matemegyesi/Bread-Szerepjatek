@@ -13,14 +13,17 @@ namespace PoP.classes
     {
         public Dictionary<string, string> conversation;
 
+        public string Name { get; set; }
+
         public int dialogueIndex = 0;
 
-        public Dialogue(int id, int x, int y, string path) : base(id, x, y)
+        public Dialogue(int id, int x, int y, string path, string name) : base(id, x, y)
         {
             this.id = id;
             positionX = x;
             positionY = y;
             Path = path;
+            Name = name;
 
             string json = File.ReadAllText(path);
             conversation = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
@@ -38,7 +41,7 @@ namespace PoP.classes
         public override void Start()
         {
             KeyboardInput.KeyPressed += KeyPressed;
-            GameLoop.display.DrawConversation(conversation[dialogueIndex.ToString()], 4, 50);
+            GameLoop.display.DrawConversation(conversation[dialogueIndex.ToString()], 4, 50, Name);
         }
 
         public void KeyPressed(ConsoleKey key)
@@ -50,7 +53,7 @@ namespace PoP.classes
                 if(dialogueIndex < conversation.Count)
                 {
                     GameLoop.display.WipeTextBox();
-                    GameLoop.display.DrawConversation(conversation[dialogueIndex.ToString()], 4, 50);
+                    GameLoop.display.DrawConversation(conversation[dialogueIndex.ToString()], 4, 50, Name);
                 }
                 else
                 {
