@@ -13,9 +13,18 @@ namespace PoP.classes
         public double Defence { get; set; }
         public double Health { get; set; }
     
+        public string TakeAction()
+        {
+            string action = $"The enemy dealt {Damage} damage.";
+
+            // itt lesz az AI-a majd az enemy-nek, egyelőre csak az EnemyAttack()-ot kell meghívni
+
+            return action;
+        }
+
         public void EnemyAttack()
         {
-
+            // Player TakeDamage()-ét kell meghívni, aminek a paramétere Damage
         }
 
         public void TakeDamage(int damage)

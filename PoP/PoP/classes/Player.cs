@@ -8,10 +8,10 @@ namespace PoP.classes
 {
     class Player
     {
-        public double Damage { get; set; }
-        public double Defence { get; set; }
-        public int Health { get; private set; }
-        public int Mana { get; private set; }
+        static public double Damage { get; set; }
+        static public double Defence { get; set; }
+        static public int Health { get; private set; }
+        static public int Mana { get; private set; }
 
         static public void AttackWithWeapon(Enemy target)
         {

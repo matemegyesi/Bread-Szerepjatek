@@ -56,6 +56,35 @@ namespace PoP.classes
             GameLoop.Phase = GamePhase.ADVENTURE;
         }
 
+        private List<string> GetPlayerInfo()
+        {
+            List<string> playerInfo = new List<string>();
+
+            playerInfo.Add("Player's name");
+            playerInfo.Add("");
+            playerInfo.Add("Health: " + Player.Health);
+            playerInfo.Add("Damage: " + Player.Damage);
+            playerInfo.Add("Defence: " + Player.Defence);
+            playerInfo.Add("Mana: " + Player.Mana);
+            // playerInfo.Add("Effektek: " + String.Join(", ", Player.Effects vagy ami a neve lesz));
+
+            return playerInfo;
+        }
+
+        private List<string> GetEnemyInfo()
+        {
+            List<string> enemyInfo = new List<string>();
+
+            enemyInfo.Add("Enemy's name");
+            enemyInfo.Add("");
+            enemyInfo.Add("Health: " + enemy.Health);
+            enemyInfo.Add("Damage: " + enemy.Damage);
+            enemyInfo.Add("Defence: " + enemy.Defence);
+            // playerInfo.Add("Effektek: " + String.Join(", ", enemy.Effects vagy ami a neve lesz));
+
+            return enemyInfo;
+        }
+
         public void ChangeCombatPhase(CombatPhase newPhase)
         {
             combatPhase = newPhase;
@@ -73,16 +102,32 @@ namespace PoP.classes
                 case CombatPhase.PLAYER_TURN:
 
                     GameLoop.display.DrawString("Player's turn", 4, 50);
-                    GameLoop.display.DrawString("Weapon attack (Q)", 4, 51);
-                    GameLoop.display.DrawString("Use spell 1 (W)", 4, 52);
-                    GameLoop.display.DrawString("Use spell 2 (E)", 4, 53);
-                    GameLoop.display.DrawString("Use spell 3 (R)", 4, 54);
+                    GameLoop.display.DrawString("Weapon attack (Q)", 4, 52);
+                    GameLoop.display.DrawString("Use spell 1 (W)", 4, 53);
+                    GameLoop.display.DrawString("Use spell 2 (E)", 4, 54);
+                    GameLoop.display.DrawString("Use spell 3 (R)", 4, 55);
+
+                    List<string> playerInfo = GetPlayerInfo();
+                    for (int i = 0; i < playerInfo.Count; i++)
+                    {
+                        GameLoop.display.DrawString(playerInfo[i], 40, 50 + i);
+                    }
+
+                    List<string> enemyInfo = GetEnemyInfo();
+                    for (int i = 0; i < enemyInfo.Count; i++)
+                    {
+                        GameLoop.display.DrawString(enemyInfo[i], 60, 50 + i);
+                    }
 
                     break;
 
                 case CombatPhase.ENEMY_TURN:
 
-                    //
+                    GameLoop.display.DrawString("Enemy's turn", 4, 50);
+                    GameLoop.display.DrawString("Next turn (SPACE)", 4, 52);
+
+                    string enemyAction = enemy.TakeAction();
+                    GameLoop.display.DrawString(enemyAction, 40, 50);
 
                     break;
 
@@ -96,7 +141,8 @@ namespace PoP.classes
 
                 case CombatPhase.LOSE:
 
-                    //
+                    GameLoop.display.DrawString("The player lost!", 4, 50);
+                    // itt meg kéne hóni
 
                     End();
 
@@ -143,7 +189,8 @@ namespace PoP.classes
                         case ConsoleKey.R:
 
                             Player.AttackWithSpell(enemy);
-                            ChangeCombatPhase(CombatPhase.ENEMY_TURN);
+                            //ChangeCombatPhase(CombatPhase.ENEMY_TURN);
+                            ChangeCombatPhase(CombatPhase.LOSE);
 
                             break;
                     }
@@ -152,19 +199,28 @@ namespace PoP.classes
 
                 case CombatPhase.ENEMY_TURN:
 
-                    //
+                    if (key == ConsoleKey.Spacebar)
+                    {
+                        ChangeCombatPhase(CombatPhase.PLAYER_TURN);
+                    }
 
                     break;
 
                 case CombatPhase.WIN:
 
-                    //
+                    if (key == ConsoleKey.Spacebar)
+                    {
+                        ChangeCombatPhase(CombatPhase.PLAYER_TURN);
+                    }
 
                     break;
 
                 case CombatPhase.LOSE:
 
-                    //
+                    if (key == ConsoleKey.Spacebar)
+                    {
+                        ChangeCombatPhase(CombatPhase.PLAYER_TURN);
+                    }
 
                     break;
             }
