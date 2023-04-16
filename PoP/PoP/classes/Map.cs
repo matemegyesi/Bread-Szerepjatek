@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
+using System.IO;
 
 namespace PoP.classes
 {
@@ -29,15 +31,15 @@ namespace PoP.classes
             GameLoop.display.DrawMap(path);
             CurrentMap = this;
         }
-        public void AddLocation(int id, int x, int y, LocationType type)
+        public void AddLocation(int id, int x, int y, LocationType type, string path)
         {
             switch (type)
             {
                 case LocationType.DIALOGUE:
-                    locations.Add(new Dialogue(id, x, y));
+                    locations.Add(new Dialogue(id, x, y, path));
                     break;
                 case LocationType.COMBAT:
-                    locations.Add(new Combat(id, x, y, ""));
+                    locations.Add(new Combat(id, x, y, path));
                     break;
                 default:
                     break;

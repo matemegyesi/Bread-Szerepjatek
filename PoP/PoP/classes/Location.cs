@@ -18,6 +18,7 @@ namespace PoP.classes
         public int positionX { get; set; }
         public int positionY { get; set; }
         public bool isCompleted { get; set; }
+        public string Path { get; set; }
 
         public Location(int id, int x, int y)
         {
@@ -30,7 +31,6 @@ namespace PoP.classes
         public abstract void LoadLocation(); 
         public abstract void Start();
         public abstract void End();
-        public abstract void IncreaseDialogueIndex();
 
     }
 }
