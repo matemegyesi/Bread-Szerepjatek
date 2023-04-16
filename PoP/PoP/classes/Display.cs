@@ -157,6 +157,24 @@ namespace PoP.classes
             drawStringCalled = true;
         }
 
+        public void DrawConversation(string e, int x, int y)
+        {
+            for (int i = 0; i < e.Length; i++)
+            {
+                if(x+i >= content[y].Length-1)
+                {
+                    y += 1;
+                    x -= i+1;
+                }
+                else
+                {
+                    char[] chars = content[y].ToCharArray();
+                    chars[x + i] = e[i];
+                    content[y] = new string(chars);
+                }
+            }
+            drawStringCalled = true;
+        }
         public void DrawCharacter()
         {
             DrawString("H", PlayerX, PlayerY);

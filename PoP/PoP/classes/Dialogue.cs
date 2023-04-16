@@ -38,7 +38,7 @@ namespace PoP.classes
         public override void Start()
         {
             KeyboardInput.KeyPressed += KeyPressed;
-            GameLoop.display.DrawString(conversation[dialogueIndex.ToString()], 4, 50);
+            GameLoop.display.DrawConversation(conversation[dialogueIndex.ToString()], 4, 50);
         }
 
         public void KeyPressed(ConsoleKey key)
@@ -50,7 +50,7 @@ namespace PoP.classes
                 if(dialogueIndex < conversation.Count)
                 {
                     GameLoop.display.WipeTextBox();
-                    GameLoop.display.DrawString(conversation[dialogueIndex.ToString()], 4, 50);
+                    GameLoop.display.DrawConversation(conversation[dialogueIndex.ToString()], 4, 50);
                 }
                 else
                 {
