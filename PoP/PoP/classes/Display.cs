@@ -159,6 +159,7 @@ namespace PoP.classes
 
         public void DrawConversation(string e, int x, int y)
         {
+            e += " (Next: SPACE)"; 
             for (int i = 0; i < e.Length; i++)
             {
                 if(x+i >= content[y].Length-1)
