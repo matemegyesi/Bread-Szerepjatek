@@ -192,6 +192,15 @@ namespace PoP.classes
                 mapC++;
             }
         }
+        public void DrawInventory()
+        {
+            int i = 3;
+            foreach (Item item in Inventory.inventory)
+            {
+                GameLoop.display.DrawString($"{item.Name} ({item.slot})", 200, i);
+                i+=1;
+            }
+        }
 
         private string GetContent()
         {

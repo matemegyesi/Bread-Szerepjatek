@@ -29,7 +29,6 @@ namespace PoP.classes
 
         public void Start()
         {
-            Maximize();
             //Maximalizálja F11-el
             CSInputs.SendInput.Keyboard.Send(CSInputs.Enums.KeyboardKeys.F11);
             
@@ -41,17 +40,12 @@ namespace PoP.classes
             Map map1 = new Map("res\\map.txt");
             Map map2 = new Map("res\\map1.txt");
             Map map3 = new Map("res\\volcano.txt");
+            Map map4 = new Map("res\\cave.txt");
             map3.AddLocation(1, 2, 2, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json");
             map3.AddLocation(2, 2, 12, LocationType.COMBAT, "");
-
+            
             ReadItemFile("res\\itemFile.txt");
-
-            int c = 3;
-            foreach (Item item in Inventory.inventory)
-            {
-                display.DrawString($"{item.Name} ({item.slot})", 200, c);
-                c++;
-            }
+            display.DrawInventory();
 
             Map.maps[2].LoadMap();
             Update();
