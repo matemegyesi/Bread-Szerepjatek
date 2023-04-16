@@ -41,7 +41,7 @@ namespace PoP.classes
             Map map1 = new Map("res\\map.txt");
             Map map2 = new Map("res\\map1.txt");
             Map map3 = new Map("res\\volcano.txt");
-            map3.AddLocation(1, 2, 2, LocationType.DIALOGUE, "res\\dialogue\\11.json");
+            map3.AddLocation(1, 2, 2, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json");
             map3.AddLocation(2, 2, 12, LocationType.COMBAT, "");
 
             ReadItemFile("res\\itemFile.txt");
