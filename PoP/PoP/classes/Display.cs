@@ -17,7 +17,7 @@ namespace PoP.classes
         public const int MAPWIDTH = 148;
         public const int MAPHEIGHT = 46;
 
-        public int PlayerX = 10;   
+        public int PlayerX = 10;
         public int PlayerY = 10;
 
 
@@ -100,7 +100,7 @@ namespace PoP.classes
             DrawString("MAP", 65, 1);
             //DrawMap("res\\volcano.txt");
             DrawCharacter();
-            
+
             Console.Write(GetContent());
         }
 
@@ -132,7 +132,7 @@ namespace PoP.classes
         public void WipeTextBox()
         {
             string line = string.Empty;
-            for (int i = 0; i < WIDTH-2; i++)
+            for (int i = 0; i < WIDTH - 2; i++)
             {
                 line += ' ';
             }
@@ -163,14 +163,14 @@ namespace PoP.classes
                 GameLoop.display.DrawString("Player", x, y - 2);
             else
                 GameLoop.display.DrawString(name, x, y - 2);
-            
-            e += " (Next: SPACE)"; 
+
+            e += " (Next: SPACE)";
             for (int i = 0; i < e.Length; i++)
             {
-                if(x+i >= content[y].Length-1)
+                if (x + i >= content[y].Length - 1)
                 {
                     y += 1;
-                    x -= i+1;
+                    x -= i + 1;
                 }
                 else
                 {
@@ -192,7 +192,7 @@ namespace PoP.classes
 
             int mapC = 0;
 
-            for (int i = 1; i < MAPHEIGHT+1; i++)
+            for (int i = 1; i < MAPHEIGHT + 1; i++)
             {
                 DrawString(map[mapC], 1, i);
                 mapC++;
@@ -204,7 +204,7 @@ namespace PoP.classes
             foreach (Item item in Inventory.inventory)
             {
                 GameLoop.display.DrawString($"{item.Name} ({item.slot})", 200, i);
-                i+=1;
+                i += 1;
             }
         }
 
