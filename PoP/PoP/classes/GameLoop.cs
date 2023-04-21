@@ -10,15 +10,36 @@ using CSInputs;
 
 namespace PoP.classes
 {
+    /// <summary>
+    /// Represents the different phases of the game.
+    /// </summary>
     enum GamePhase
     {
+        /// <summary>
+        /// The adventure phase, where the player explores the game world and interacts with NPCs.
+        /// </summary>
         ADVENTURE,
+
+        /// <summary>
+        /// The combat phase, where the player engages in battles with enemies.
+        /// </summary>
         COMBAT,
+
+        /// <summary>
+        /// The dialogue phase, where the player engages in conversations with NPCs progress the story.
+        /// </summary>
         DIALOGUE
     }
     class GameLoop
     {
+        /// <summary>
+        /// Gets or sets a value indicating whether the game is currently running.
+        /// </summary>
+        /// <value><c>true</c> if the game is running; otherwise, <c>false</c>.</value>
         public static bool Running { get; private set; }
+        /// <summary>
+        /// Gets or sets the current phase of the game.
+        /// </summary>
         public static GamePhase Phase { get; set; }
 
         public static Display display;
@@ -29,7 +50,7 @@ namespace PoP.classes
 
         public void Start()
         {
-            //Maximalizálja F11-el
+            //Maximizing the display
             CSInputs.SendInput.Keyboard.Send(CSInputs.Enums.KeyboardKeys.F11);
             
             display = new Display();
@@ -41,6 +62,7 @@ namespace PoP.classes
             Map map2 = new Map("res\\map1.txt");
             Map map3 = new Map("res\\volcano.txt");
             Map map4 = new Map("res\\cave.txt");
+
             map3.AddLocation(1, 2, 2, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json", "High Priest Of Rauðagnúpur");
             map3.AddLocation(1, 24, 23, LocationType.DIALOGUE, "res\\dialogue\\guiscardtalk.json", "Guiscard");
             map3.AddLocation(2, 2, 12, LocationType.COMBAT, "");
@@ -53,6 +75,9 @@ namespace PoP.classes
             Phase = GamePhase.ADVENTURE;
         }
 
+        /// <summary>
+        /// Updates the game state every frame at a rate of 60 FPS.
+        /// </summary>
         private void Update()
         {
             DateTime lastTime = DateTime.Now;
@@ -116,12 +141,12 @@ namespace PoP.classes
             }
         }
 
-        [DllImport("user32.dll")]
+        /*[DllImport("user32.dll")]
         public static extern bool ShowWindow(IntPtr hWnd, int cmdShow);
         private static void Maximize()
         {
             Process p = Process.GetCurrentProcess();
             ShowWindow(p.MainWindowHandle, 3); //SW_MAXIMIZE = 3
-        }
+        }*/
     }
 }
