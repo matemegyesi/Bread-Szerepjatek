@@ -50,29 +50,37 @@ namespace PoP.classes
 
         public void Start()
         {
-            //Maximizing the display
+            // Sends the F11 key input using the CSInputs library.
             CSInputs.SendInput.Keyboard.Send(CSInputs.Enums.KeyboardKeys.F11);
-            
+
+            // Initializes objects for the display, keyboard input, and player movement.
             display = new Display();
             Running = true;
             keyboardInput = new KeyboardInput();
             playerMovement = new Movement();
 
+            // Initializes maps with file paths and adds locations to map3 using the Map class.
             Map map1 = new Map("res\\map.txt");
             Map map2 = new Map("res\\map1.txt");
             Map map3 = new Map("res\\volcano.txt");
             Map map4 = new Map("res\\cave.txt");
-
             map3.AddLocation(1, 2, 2, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json", "High Priest Of Rauðagnúpur");
             map3.AddLocation(1, 24, 23, LocationType.DIALOGUE, "res\\dialogue\\guiscardtalk.json", "Guiscard");
             map3.AddLocation(2, 2, 12, LocationType.COMBAT, "");
             
             ReadItemFile("res\\itemFile.txt");
+
+            // Draws the initial inventory
             display.DrawInventory();
 
+            // Loads map2.
             Map.maps[2].LoadMap();
+
+            // Starts the Update loop
             Update();
-            Phase = GamePhase.ADVENTURE;
+
+            // Sets the game phase to the adventure phase.
+            Phase = GamePhase.ADVENTURE; 
         }
 
         /// <summary>
