@@ -1,0 +1,465 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PoP</name>
+    </assembly>
+    <members>
+        <member name="P:PoP.classes.Armor.Defense">
+            <summary>
+            The Defense property represents a float value that represents how many percent of the damage it can negate.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Armor.#ctor(System.String,PoP.Slot,System.Single)">
+            <summary>
+            Creates a new armor with the specified name, type, and defense.
+            </summary>
+            <param name="name">The name of the armor.</param>
+            <param name="armorType">The type of armor (head, chest, or leg).</param>
+            <param name="defense">The amount of defense the armor provides.</param>
+            <exception cref="T:System.ArgumentException">Thrown if an invalid armor type is specified.</exception>
+        </member>
+        <member name="M:PoP.classes.Armor.Collect">
+            <summary>
+            Adds the item to the player's inventory if there is space available.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Armor.Drop">
+            <summary>
+            Removes the item from the player's inventory.
+            </summary>
+        </member>
+        <member name="T:PoP.classes.CombatPhase">
+            <summary>
+            Represents the different phases of combat.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.CombatPhase.LOADOUT">
+            <summary>
+            The loadout phase, where the player can customize their spells.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.CombatPhase.PLAYER_TURN">
+            <summary>
+            The player turn phase, where the player can attack with spell or weapon.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.CombatPhase.ENEMY_TURN">
+            <summary>
+            The enemy turn phase, where the enemy takes action.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.CombatPhase.LOSE">
+            <summary>
+            The lose phase, where the player loses the game.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.CombatPhase.WIN">
+            <summary>
+            The win phase, where the player wins the game.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Combat.#ctor(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PoP.classes.Combat"/> class.
+            </summary>
+            <param name="id">The ID of the combat encounter.</param>
+            <param name="x">The X coordinate of the location of the combat encounter.</param>
+            <param name="y">The Y coordinate of the location of the combat encounter.</param>
+            <param name="path">The path to the combat encounter.</param>
+        </member>
+        <member name="M:PoP.classes.Combat.LoadLocation">
+            <summary>
+            Sets the <see cref="T:PoP.classes.Map"/>.CurrentLocation to this instance and starts the Combat
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Combat.Start">
+            <summary>
+            Starts the combat encounter.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Combat.End">
+            <summary>
+            Ends the combat encounter.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Combat.GetPlayerInfo">
+            <summary>
+            Generates a list of strings containing information about the player's current state.
+            </summary>
+            <returns>A list of strings containing player information.</returns>
+        </member>
+        <member name="M:PoP.classes.Combat.GetEnemyInfo">
+            <summary>
+            Generates a list of strings containing information about the enemy's current state.
+            </summary>
+            <returns>A list of strings containing enemy information.</returns>
+        </member>
+        <member name="M:PoP.classes.Combat.ChangeCombatPhase(PoP.classes.CombatPhase)">
+            <summary>
+            Changes the current combat phase of the game to the specified new phase.
+            </summary>
+            <param name="newPhase">The new CombatPhase enumeration value to change the current phase to.</param>
+        </member>
+        <member name="F:PoP.classes.Dialogue.conversation">
+            <summary>
+            A dictionary that represents the conversation in the game, mapping each dialogue ID to its corresponding text.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.Dialogue.dialogueIndex">
+            <summary>
+            The index of the current line of dialogue being displayed.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Dialogue.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Dialogue class with the specified ID, coordinates, file path, and name.
+            </summary>
+            <param name="id">The ID of the dialogue.</param>
+            <param name="x">The X coordinate of the dialogue.</param>
+            <param name="y">The Y coordinate of the dialogue.</param>
+            <param name="path">The file path of the JSON file containing the dialogue data.</param>
+            <param name="name">The name of the dialogue.</param>
+        </member>
+        <member name="M:PoP.classes.Dialogue.LoadLocation">
+            <summary>
+            Sets the <see cref="T:PoP.classes.Map"/>.CurrentLocation to this instance and starts the Dialogue
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Dialogue.Start">
+            <summary>
+            Starts the dialogue.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Display.#ctor">
+            <summary>
+            Initializes a new instance of the Display class, setting up the console window and displaying the initial game interface.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Display.Render">
+            <summary>
+            Renders the game interface to the console window.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Display.WipeStringBox(System.Int32,System.Int32,System.Int32,System.Int32,System.Char)">
+            <summary>
+            Clears a rectangular area of the console window by filling it with a specified character.
+            </summary>
+            <param name="x">The x-coordinate of the area.</param>
+            <param name="y">The y-coordinate of the area.</param>
+            <param name="height">The height of the rectangular area.</param>
+            <param name="width">The width of the rectangular area.</param>
+            <param name="fill">The character to fill the rectangular area with.</param>
+        </member>
+        <member name="M:PoP.classes.Display.WipeTextBox">
+            <summary>
+            Clears the dialogue text box by filling it with spaces.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Display.DrawString(System.String,System.Int32,System.Int32)">
+            <summary>
+            Replaces the characters at the specified position in the display buffer with the characters of the given string.
+            </summary>
+            <param name="e">The string to draw.</param>
+            <param name="x">The x-coordinate of the starting position.</param>
+            <param name="y">The y-coordinate of the starting position.</param>
+        </member>
+        <member name="M:PoP.classes.Display.DrawConversation(System.String,System.Int32,System.Int32,System.String,System.Int32)">
+            <summary>
+            Draws a conversation between two speakers, with the name of the second speaker.
+            </summary>
+            <param name="e">The conversation text to display.</param>
+            <param name="x">The x-coordinate of the starting position for the conversation text.</param>
+            <param name="y">The y-coordinate of the starting position for the conversation text.</param>
+            <param name="name">The name of the second speaker.</param>
+            <param name="person">An integer value indicating the current speaker (0 for player, 1 for other speaker).</param>
+        </member>
+        <member name="M:PoP.classes.Display.DrawMap(System.String)">
+            <summary>
+            Draws the map from the given file onto the display
+            </summary>
+            <param name="file">The file containing the map data</param>
+        </member>
+        <member name="M:PoP.classes.Display.DrawInventory">
+            <summary>
+            Draws the player's inventory onto the display
+            </summary>
+        </member>
+        <member name="T:PoP.classes.GamePhase">
+            <summary>
+            Represents the different phases of the game.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.GamePhase.ADVENTURE">
+            <summary>
+            The adventure phase, where the player explores the game world and interacts with NPCs.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.GamePhase.COMBAT">
+            <summary>
+            The combat phase, where the player engages in battles with enemies.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.GamePhase.DIALOGUE">
+            <summary>
+            The dialogue phase, where the player engages in conversations with NPCs progress the story.
+            </summary>
+        </member>
+        <member name="P:PoP.classes.GameLoop.Running">
+            <summary>
+            Gets or sets a value indicating whether the game is currently running.
+            </summary>
+            <value><c>true</c> if the game is running; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:PoP.classes.GameLoop.Phase">
+            <summary>
+            Gets or sets the current phase of the game.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.GameLoop.Update">
+            <summary>
+            Updates the game state every frame at a rate of 60 FPS.
+            </summary>
+        </member>
+        <member name="T:PoP.classes.ItemType">
+            <summary>
+            The type of an item: Weapon or Armor.
+            </summary>
+        </member>
+        <member name="P:PoP.classes.Item.Name">
+            <summary>
+            The name of the item.
+            </summary>
+        </member>
+        <member name="P:PoP.classes.Item.Slot">
+            <summary>
+            The slot where the item can be equipped.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Item.Equip">
+            <summary>
+            Equips the item to the appropriate gear slot.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Item.UnequipAuto(System.Int32)">
+            <summary>
+            Removes the item from the gear slot and adds it back to the inventory.
+            </summary>
+             <param name="inventoryIndex">The index of the item in the inventory list.</param>
+             <remarks>
+             This method is used to automatically unequip an item from the gear slot and move it to the inventory list.
+             The gear slot is set to null, and the item is added to the specified index in the inventory list.
+             </remarks>
+        </member>
+        <member name="M:PoP.classes.Item.Unequip">
+            <summary>
+            Unequips the item and adds it back to the inventory if there is enough space.
+            </summary>
+            <returns>
+            Returns true if the item was successfully unequipped and added to the inventory.
+            Returns false if the inventory is full and the item could not be unequipped.
+            </returns>
+        </member>
+        <member name="M:PoP.classes.ItemFactory.CreateItem(PoP.classes.ItemType,System.String,System.Single,PoP.Slot)">
+            <summary>
+            Creates a new item of the specified type with the given properties.
+            </summary>
+            <param name="type">The type of item to create (Weapon or Armor).</param>
+            <param name="name">The name of the item.</param>
+            <param name="damageOrDefense">The damage (if the item is a weapon) or defense (if the item is an armor) value of the item.</param>
+            <param name="slot">The slot where the item can be equipped.</param>
+            <returns>A new item of the specified type with the given properties.</returns>
+        </member>
+        <member name="M:PoP.classes.KeyboardInput.#ctor">
+            <summary>
+             Allows keyboard input to be listened to in a separate thread.
+            </summary>
+        </member>
+        <member name="T:PoP.classes.KeyboardInput.OnKeyPressed">
+            <summary>
+            A delegate for handling a key press event.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.KeyboardInput.KeyPressed">
+            <summary>
+            An event that is triggered when a key is pressed.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.KeyboardInput.StartListening">
+            <summary>
+            Listens for keyboard input and triggers the KeyPressed event.
+            </summary>
+        </member>
+        <member name="T:PoP.classes.LocationType">
+            <summary>
+             The type of location, either dialogue or combat.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.Location.id">
+            <summary>
+             The location ID.
+            </summary>
+        </member>
+        <member name="P:PoP.classes.Location.positionX">
+            <summary>
+             The x-coordinate of the location on the game map.
+            </summary>
+        </member>
+        <member name="P:PoP.classes.Location.positionY">
+            <summary>
+             The y-coordinate of the location on the game map.
+            </summary>
+        </member>
+        <member name="P:PoP.classes.Location.isCompleted">
+            <summary>
+             A flag indicating whether the location has been completed or not.
+            </summary>
+        </member>
+        <member name="P:PoP.classes.Location.Path">
+            <summary>
+             The path of the location.
+            </summary>
+        </member>
+        <member name="P:PoP.classes.Location.Name">
+            <summary>
+             The name of the location.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Location.LoadLocation">
+            <summary>
+             Loads the location.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Location.Start">
+            <summary>
+             Starts the location.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Location.End">
+            <summary>
+             Ends the location.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.Map.maps">
+            <summary> 
+            A list of all maps in the game
+            </summary>
+        </member>
+        <member name="P:PoP.classes.Map.CurrentMap">
+            <summary>
+            The current map the player is on
+            </summary>
+        </member>
+        <member name="P:PoP.classes.Map.CurrentLocation">
+            <summary>
+            The current location the player is on 
+            </summary>
+        </member>
+        <member name="F:PoP.classes.Map.path">
+            <summary>
+            The path to the image file of the map
+            </summary>
+        </member>
+        <member name="F:PoP.classes.Map.locations">
+            <summary>
+            A list of all the locations on the map
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Map.#ctor(System.String)">
+            <summary>
+            Constructs a new map with the given path and adds it to the game's list of maps.
+            </summary>
+            <param name="path">The path to the image file of the map</param>
+        </member>
+        <member name="M:PoP.classes.Map.LoadMap">
+            <summary>
+            Loads the map into the game by displaying its image and setting it as the current map.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Map.AddLocation(System.Int32,System.Int32,System.Int32,PoP.classes.LocationType,System.String,System.String)">
+            <summary>
+            Adds a new location to the map with the given properties.
+            </summary>
+            <param name="id">The ID of the location</param>
+            <param name="x">The x-coordinate of the location on the map</param>
+            <param name="y">The y-coordinate of the location on the map</param>
+            <param name="type">The type of the location (dialogue or combat)</param>
+            <param name="path">The path to the file containing the location's content</param>
+            <param name="name">The name of the speaker(optional, only in dialogue)</param>
+        </member>
+        <member name="M:PoP.classes.Movement.#ctor">
+            <summary>
+            The Movement class is responsible for handling the movement of the player character in the game.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Style.Color(System.String,System.String)">
+            <summary>
+            Körülveszi a szöveget ANSI escape kóddal, megváltoztatva a színét.
+            </summary>
+            <param name="text">Stilizálandó szöveg.</param>
+            <param name="color">Angolul, nagybetűkkel, space helyett alsóvonallal.</param>
+        </member>
+        <member name="M:PoP.classes.Style.Format(System.String,System.String)">
+            <summary>
+            Körülveszi a szöveget ANSI escape kóddal, megváltoztatva a dekorációját.
+            </summary>
+            <param name="text">Stilizálandó szöveg.</param>
+            <param name="format">BOLD / UNDERLINE / HIGHLIGHT</param>
+        </member>
+        <member name="M:PoP.classes.Style.ColorFormat(System.String,System.String,System.String)">
+            <summary>
+            Körülveszi a szöveget ANSI escape kóddal, megváltoztatva a színét és dekorációját.
+            </summary>
+            <param name="text">Stilizálandó szöveg.</param>
+            <param name="color">Angolul, nagybetűkkel, space helyett alsóvonallal.</param>
+            <param name="format">BOLD / UNDERLINE / HIGHLIGHT</param>
+        </member>
+        <member name="M:PoP.classes.Style.TestStyle">
+            <summary>
+            String tömböt ad vissza, amiben a szöveg ki van színezve és formázva.
+            </summary>
+        </member>
+        <member name="P:PoP.classes.Weapon.Damage">
+            <summary>
+            The damage the weapon adds to the player's statistics
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Weapon.#ctor(System.String,PoP.Slot,System.Single)">
+            <summary>
+            Constructor for a Weapon object, taking a name, weapon type, and damage value as parameters.
+            </summary>
+            <param name="name">The name of the weapon.</param>
+            <param name="weaponType">The type of slot that the weapon can be equipped to.</param>
+            <param name="damage">The amount of damage the weapon can inflict.</param>
+        </member>
+        <member name="M:PoP.classes.Weapon.Collect">
+            <summary>
+            Adds the item to the player's inventory if there is space available.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.Weapon.Drop">
+            <summary>
+            Removes the item from the player's inventory.
+            </summary>
+        </member>
+        <member name="T:PoP.Slot">
+            <summary>
+             An enumeration representing the different item slots in the inventory.
+             </summary>
+        </member>
+        <member name="F:PoP.Inventory.inventoryLimit">
+            <summary>
+             The maximum number of items that the inventory can hold.
+             </summary>
+        </member>
+        <member name="F:PoP.Inventory.inventory">
+            <summary>
+             The list of items in the inventory.
+             </summary>
+        </member>
+        <member name="F:PoP.Inventory.gear">
+            <summary>
+             A dictionary of gear slots and their corresponding equipped items.
+             </summary>
+        </member>
+    </members>
+</doc>
