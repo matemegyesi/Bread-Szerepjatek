@@ -26,14 +26,8 @@ namespace PoP.classes
         ///</summary>
         public Slot Slot { get; set; }
 
-        ///<summary>
-        ///Collects the item and adds it to the inventory.
-        ///</summary>
         public abstract void Collect();
-        
-        ///<summary>
-        ///Drops the item from the inventory.
-        ///</summary>
+
         public abstract void Drop();
 
         ///<summary>
