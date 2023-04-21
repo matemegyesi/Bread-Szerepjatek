@@ -81,17 +81,22 @@ namespace PoP.classes
         private void Update()
         {
             DateTime lastTime = DateTime.Now;
+            double frameTime = 16.67; // in milliseconds
+            double accumulatedTime = 0.0;
 
             while (Running)
             {
                 DateTime currentTime = DateTime.Now;
                 double elapsedTime = (currentTime - lastTime).TotalMilliseconds;
+                lastTime = currentTime;
 
-                if (elapsedTime >= 33.33)
+                accumulatedTime += elapsedTime;
+
+                // Update as many frames as needed to catch up with accumulated time
+                while (accumulatedTime >= frameTime)
                 {
-                    lastTime = currentTime;
-
                     display.Render();
+                    accumulatedTime -= frameTime;
                 }
             }
         }
@@ -141,12 +146,5 @@ namespace PoP.classes
             }
         }
 
-        /*[DllImport("user32.dll")]
-        public static extern bool ShowWindow(IntPtr hWnd, int cmdShow);
-        private static void Maximize()
-        {
-            Process p = Process.GetCurrentProcess();
-            ShowWindow(p.MainWindowHandle, 3); //SW_MAXIMIZE = 3
-        }*/
     }
 }
