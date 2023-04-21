@@ -19,7 +19,7 @@ namespace PoP.classes
             {
                 case Slot.HAND:
                 case Slot.RING:
-                    slot = weaponType;
+                    Slot = weaponType;
                     break;
                 default:
                     throw new ArgumentException($"Ez nem egy weapon tipus: {weaponType}");
@@ -49,7 +49,7 @@ namespace PoP.classes
 
         public override string ToString()
         {
-            return $"{Name};{Damage};{slot}";
+            return $"{Name};{Damage};{Slot}";
         }
     }
 }

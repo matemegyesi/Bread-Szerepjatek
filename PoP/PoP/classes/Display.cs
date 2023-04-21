@@ -273,7 +273,7 @@ namespace PoP.classes
             // Iterate through each item in the inventory and draw its name and slot onto the display
             foreach (Item item in Inventory.inventory)
             {
-                GameLoop.display.DrawString($"{item.Name} ({item.slot})", 200, i);
+                GameLoop.display.DrawString($"{item.Name} ({item.Slot})", 200, i);
                 i += 1;
             }
         }

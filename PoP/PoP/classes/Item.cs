@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace PoP.classes
 {
+    ///<summary>
+    ///The type of an item: Weapon or Armor.
+    ///</summary>
     public enum ItemType
     {
         Weapon,
@@ -13,52 +16,81 @@ namespace PoP.classes
     }
     abstract class Item : ICollectible, IEquippable
     {
+        ///<summary>
+        ///The name of the item.
+        ///</summary>
         public string Name { get; set; }
 
-        public Slot slot { get; set; }
+        ///<summary>
+        ///The slot where the item can be equipped.
+        ///</summary>
+        public Slot Slot { get; set; }
 
+        ///<summary>
+        ///Collects the item and adds it to the inventory.
+        ///</summary>
         public abstract void Collect();
+        
+        ///<summary>
+        ///Drops the item from the inventory.
+        ///</summary>
         public abstract void Drop();
 
-        /// <summary>
-        /// Áthelyezi az item-et az inventory-ból a gear-be, automatikusan kicserélve a jelenlegi gear-t.
-        /// </summary>
+        ///<summary>
+        ///Equips the item to the appropriate gear slot.
+        ///</summary>
         public virtual void Equip()
         {
-            if (Inventory.gear[slot] == null)
+            // If the gear slot is empty
+            if (Inventory.gear[Slot] == null)
             {
+                // Remove the item from the inventory
                 Inventory.inventory.Remove(this);
-                Inventory.gear[slot] = this;
+
+                // Add the item to the gear slot
+                Inventory.gear[Slot] = this;
             }
+            // If the gear slot is not empty
             else
             {
-                Inventory.gear[slot].UnequipAuto(Inventory.inventory.IndexOf(this));
-                Inventory.gear[slot] = this;
+                // Unequip the current gear in the same slot
+                Inventory.gear[Slot].UnequipAuto(Inventory.inventory.IndexOf(this));
+
+                // Add the new item to the gear slot
+                Inventory.gear[Slot] = this;
             }
 
             // TODO: statok és inventory frissítése
         }
-        
-        /// <summary>
-        /// Áthelyezi az item-et a gear-ből az inventory meghatározott indexére.
-        /// </summary>
-        /// <param name="inventoryIndex">Cél index.</param>
+
+        ///<summary>
+        ///Removes the item from the gear slot and adds it back to the inventory.
+        ///</summary>
+        /// <param name="inventoryIndex">The index of the item in the inventory list.</param>
+        /// <remarks>
+        /// This method is used to automatically unequip an item from the gear slot and move it to the inventory list.
+        /// The gear slot is set to null, and the item is added to the specified index in the inventory list.
+        /// </remarks>
         public void UnequipAuto(int inventoryIndex)
         {
-            Inventory.gear[slot] = null;
+            Inventory.gear[Slot] = null;
             Inventory.inventory[inventoryIndex] = this;
 
             // TODO: statok és inventory frissítése
         }
 
-        /// <summary>
-        /// Áthelyezi az item-et a gear-ből az inventory legvégére és igazat ad vissza, ha még nem telt meg.
-        /// </summary>
+        ///<summary>
+        ///Unequips the item and adds it back to the inventory if there is enough space.
+        ///</summary>
+        ///<returns>
+        ///Returns true if the item was successfully unequipped and added to the inventory.
+        ///Returns false if the inventory is full and the item could not be unequipped.
+        ///</returns>
         public bool Unequip()
         {
             if (Inventory.inventory.Count < Inventory.inventoryLimit)
             {
-                Inventory.gear[slot] = null;
+                Inventory.gear[Slot] = null;
                 Inventory.inventory.Add(this);
 
                 return true;

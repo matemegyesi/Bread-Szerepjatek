@@ -27,7 +27,7 @@ namespace PoP.classes
                 case Slot.HEAD:
                 case Slot.CHEST:
                 case Slot.LEG:
-                    slot = armorType;
+                    Slot = armorType;
                     break;
                 default:
                     throw new ArgumentException($"Ez nem egy armor tipus: {armorType}");
@@ -70,7 +70,7 @@ namespace PoP.classes
         }
         public override string ToString()
         {
-            return $"{Name};{Defense};{slot}";
+            return $"{Name};{Defense};{Slot}";
         }
     }
 }
