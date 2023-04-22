@@ -20,6 +20,7 @@ namespace PoP.classes
         /// <param name="name">The name of the weapon.</param>
         /// <param name="weaponType">The type of slot that the weapon can be equipped to.</param>
         /// <param name="damage">The amount of damage the weapon can inflict.</param>
+        /// <param name="main">Only needed for the MainSword</param>
         public Weapon(string name, Slot weaponType, float damage, bool main=false)
         {
             if (main)

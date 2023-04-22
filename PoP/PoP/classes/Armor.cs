@@ -19,6 +19,7 @@ namespace PoP.classes
         /// <param name="name">The name of the armor.</param>
         /// <param name="armorType">The type of armor (head, chest, or leg).</param>
         /// <param name="defense">The amount of defense the armor provides.</param>
+        /// <param name="main">Only needed for the MainCape</param>
         /// <exception cref="ArgumentException">Thrown if an invalid armor type is specified.</exception>
         public Armor(string name,Slot armorType, float defense, bool main=false)
         {
