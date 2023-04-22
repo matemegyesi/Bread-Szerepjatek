@@ -12,7 +12,7 @@ namespace PoP.classes
         /// <summary>
         /// The damage the weapon adds to the player's statistics
         /// </summary>
-        public float Damage { get; set; }
+        public double Damage { get; set; }
 
         /// <summary>
         /// Constructor for a Weapon object, taking a name, weapon type, and damage value as parameters.
@@ -21,7 +21,7 @@ namespace PoP.classes
         /// <param name="weaponType">The type of slot that the weapon can be equipped to.</param>
         /// <param name="damage">The amount of damage the weapon can inflict.</param>
         /// <param name="main">Only needed for the MainSword</param>
-        public Weapon(string name, Slot weaponType, float damage, bool main=false)
+        public Weapon(string name, Slot weaponType, double damage, bool main=false)
         {
             if (main)
             {

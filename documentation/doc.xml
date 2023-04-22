@@ -9,7 +9,7 @@
             The Defense property represents a float value that represents how many percent of the damage it can negate.
             </summary>
         </member>
-        <member name="M:PoP.classes.Armor.#ctor(System.String,PoP.Slot,System.Single,System.Boolean)">
+        <member name="M:PoP.classes.Armor.#ctor(System.String,PoP.Slot,System.Double,System.Boolean)">
             <summary>
             Creates a new armor with the specified name, type, and defense.
             </summary>
@@ -260,7 +260,7 @@
             Returns false if the inventory is full and the item could not be unequipped.
             </returns>
         </member>
-        <member name="M:PoP.classes.ItemFactory.CreateItem(PoP.classes.ItemType,System.String,System.Single,PoP.Slot)">
+        <member name="M:PoP.classes.ItemFactory.CreateItem(PoP.classes.ItemType,System.String,System.Double,PoP.Slot)">
             <summary>
             Creates a new item of the specified type with the given properties.
             </summary>
@@ -424,7 +424,7 @@
             The damage the weapon adds to the player's statistics
             </summary>
         </member>
-        <member name="M:PoP.classes.Weapon.#ctor(System.String,PoP.Slot,System.Single,System.Boolean)">
+        <member name="M:PoP.classes.Weapon.#ctor(System.String,PoP.Slot,System.Double,System.Boolean)">
             <summary>
             Constructor for a Weapon object, taking a name, weapon type, and damage value as parameters.
             </summary>

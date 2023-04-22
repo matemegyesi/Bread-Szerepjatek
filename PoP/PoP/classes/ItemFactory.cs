@@ -16,7 +16,7 @@ namespace PoP.classes
         ///<param name="damageOrDefense">The damage (if the item is a weapon) or defense (if the item is an armor) value of the item.</param>
         ///<param name="slot">The slot where the item can be equipped.</param>
         ///<returns>A new item of the specified type with the given properties.</returns>
-        public static Item CreateItem(ItemType type, string name, float damageOrDefense, Slot slot)
+        public static Item CreateItem(ItemType type, string name, double damageOrDefense, Slot slot)
         {
             Item item = null;
 

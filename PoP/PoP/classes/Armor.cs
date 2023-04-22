@@ -11,7 +11,7 @@ namespace PoP.classes
         /// <summary>
         /// The Defense property represents a float value that represents how many percent of the damage it can negate.
         /// </summary>
-        public float Defense { get; set; }
+        public double Defense { get; set; }
 
         /// <summary>
         /// Creates a new armor with the specified name, type, and defense.
@@ -21,7 +21,7 @@ namespace PoP.classes
         /// <param name="defense">The amount of defense the armor provides.</param>
         /// <param name="main">Only needed for the MainCape</param>
         /// <exception cref="ArgumentException">Thrown if an invalid armor type is specified.</exception>
-        public Armor(string name,Slot armorType, float defense, bool main=false)
+        public Armor(string name,Slot armorType, double defense, bool main=false)
         {
             if (main)
             {
