@@ -1,0 +1,32 @@
+[
+  {
+    "name" : "Mask",
+    "defense" : 10,
+    "type" : "Armor",
+    "slot" : "Head"
+  },
+  {
+    "name" : "Chainmail",
+    "defense" : 10,
+    "type" : "Armor",
+    "slot" : "Chest"
+  },
+  {
+    "name" : "Boots",
+    "defense": 10,
+    "type" : "Armor",
+    "slot" : "Leg"
+  },
+  {
+    "name" : "Dagger",
+    "damage" : 10,
+    "type": "Weapon",
+    "slot" : "Hand"
+  },
+  {
+    "name" : "Silver Ring",
+    "damage" : 10,
+    "type": "Weapon",
+    "slot" : "Ring" 
+  }
+]

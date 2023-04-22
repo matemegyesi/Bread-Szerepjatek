@@ -26,16 +26,16 @@ namespace PoP.classes
             if (main)
             {
                 Name = name;
-                Slot = Slot.MAINCAPE;
+                Slot = Slot.MainCape;
                 Defense = defense;
             }
             else
             {
                 switch (armorType)
                 {
-                    case Slot.HEAD:
-                    case Slot.CHEST:
-                    case Slot.LEG:
+                    case Slot.Head:
+                    case Slot.Chest:
+                    case Slot.Leg:
                         Slot = armorType;
                         break;
                     default:

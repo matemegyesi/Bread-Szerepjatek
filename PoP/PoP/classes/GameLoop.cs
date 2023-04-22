@@ -49,6 +49,8 @@ namespace PoP.classes
 
         private Movement playerMovement;
 
+        private Inventory inventory;
+
         public void Start()
         {
             // Sends the F11 key input using the CSInputs library.
@@ -59,6 +61,7 @@ namespace PoP.classes
             Running = true;
             keyboardInput = new KeyboardInput();
             playerMovement = new Movement();
+            inventory = new Inventory();
 
             // Initializes maps with file paths and adds locations to map3 using the Map class.
             Map map1 = new Map("res\\maps\\map.txt");
@@ -130,13 +133,13 @@ namespace PoP.classes
                         switch (itemT[3])
                         {
                             case "Head":
-                                item = ItemFactory.CreateItem(ItemType.ARMOR, itemT[1], float.Parse(itemT[2]), Slot.HEAD);
+                                item = ItemFactory.CreateItem(ItemType.ARMOR, itemT[1], float.Parse(itemT[2]), Slot.Head);
                                 break;
                             case "Chest":
-                                item = ItemFactory.CreateItem(ItemType.ARMOR, itemT[1], float.Parse(itemT[2]), Slot.CHEST);
+                                item = ItemFactory.CreateItem(ItemType.ARMOR, itemT[1], float.Parse(itemT[2]), Slot.Chest);
                                 break;
                             case "Leg":
-                                item = ItemFactory.CreateItem(ItemType.ARMOR, itemT[1], float.Parse(itemT[2]), Slot.LEG);
+                                item = ItemFactory.CreateItem(ItemType.ARMOR, itemT[1], float.Parse(itemT[2]), Slot.Leg);
                                 break;
                             default:
                                 break;
@@ -146,10 +149,10 @@ namespace PoP.classes
                         switch (itemT[3])
                         {
                             case "Hand":
-                                item = ItemFactory.CreateItem(ItemType.WEAPON, itemT[1], float.Parse(itemT[2]), Slot.HAND);
+                                item = ItemFactory.CreateItem(ItemType.WEAPON, itemT[1], float.Parse(itemT[2]), Slot.Hand);
                                 break;
                             case "Ring":
-                                item = ItemFactory.CreateItem(ItemType.WEAPON, itemT[1], float.Parse(itemT[2]), Slot.RING);
+                                item = ItemFactory.CreateItem(ItemType.WEAPON, itemT[1], float.Parse(itemT[2]), Slot.Ring);
                                 break;
                             default:
                                 break;

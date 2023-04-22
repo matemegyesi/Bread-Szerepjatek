@@ -27,15 +27,15 @@ namespace PoP.classes
             {
                 Name = name;
                 Damage = damage;
-                Slot = Slot.MAINSWORD;
+                Slot = Slot.MainSword;
             }
             else
             {
                 switch (weaponType)
                 {
                     // Check if the weapon can be equipped to the HAND or RING slot
-                    case Slot.HAND:
-                    case Slot.RING:
+                    case Slot.Hand:
+                    case Slot.Ring:
                         Slot = weaponType;
                         break;
 
