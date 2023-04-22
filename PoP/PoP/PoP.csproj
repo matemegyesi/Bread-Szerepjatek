@@ -37,14 +37,14 @@
     <Content Include="res\itemFile.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="res\map.txt">
+    <Content Include="res\maps\map.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="res\map1.txt">
+    <Content Include="res\maps\map1.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="res\targyak-spellek.txt" />
-    <Content Include="res\volcano.txt">
+    <Content Include="res\maps\volcano.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -54,7 +54,7 @@
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="res\cave.txt">
+    <None Update="res\maps\cave.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="res\dialogue\guiscardtalk.json">

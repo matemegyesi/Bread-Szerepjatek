@@ -1,6 +1,0 @@
-ICollectible
-IEffect
-IUsable
-IEquippable
-IUpgradeable
-ICatCollectible
