@@ -185,6 +185,11 @@
             Draws the player's inventory onto the display
             </summary>
         </member>
+        <member name="M:PoP.classes.Display.DrawGear">
+            <summary>
+            Draws/Updates the player's gear onto the display
+            </summary>
+        </member>
         <member name="T:PoP.classes.GamePhase">
             <summary>
             Represents the different phases of the game.

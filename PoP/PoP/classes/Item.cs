@@ -54,6 +54,8 @@ namespace PoP.classes
                 Inventory.gear[Slot] = this;
             }
 
+            GameLoop.display.DrawGear();
+
             // TODO: statok és inventory frissítése
         }
 
@@ -69,6 +71,8 @@ namespace PoP.classes
         {
             Inventory.gear[Slot] = null;
             Inventory.inventory[inventoryIndex] = this;
+
+            GameLoop.display.DrawGear();
 
             // TODO: statok és inventory frissítése
         }
@@ -87,9 +91,13 @@ namespace PoP.classes
                 Inventory.gear[Slot] = null;
                 Inventory.inventory.Add(this);
 
+                GameLoop.display.DrawGear();
+
                 return true;
             }
 
+            GameLoop.display.DrawGear();
+            
             return false;
 
             // TODO: statok és inventory frissítése

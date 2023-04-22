@@ -238,6 +238,10 @@ namespace PoP.classes
             // Set the drawStringCalled flag to true
             drawStringCalled = true;
         }
+
+        /// <summary>
+        /// Draws/Updates the character's position on the display
+        /// </summary>
         public void DrawCharacter()
         {
             DrawString("H", PlayerX, PlayerY);
@@ -278,12 +282,19 @@ namespace PoP.classes
             }
         }
 
+        /// <summary>
+        /// Draws/Updates the player's gear onto the display
+        /// </summary>
         public void DrawGear()
         {
             int yStart = 27;
             foreach(KeyValuePair<Slot, Item> kv in Inventory.gear)
             {
-                DrawString($"{kv.Key}: {kv.Value.Name}", 165, yStart);
+                if (kv.Value != null)
+                    DrawString($"{kv.Key}: {kv.Value.Name}", 165, yStart);
+                else
+                    DrawString($"{kv.Key}: Empty", 165, yStart);
+
                 yStart++;
             }
         }
