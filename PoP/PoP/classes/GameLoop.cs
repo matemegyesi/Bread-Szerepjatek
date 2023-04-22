@@ -64,14 +64,15 @@ namespace PoP.classes
             inventory = new Inventory();
 
             // Initializes maps with file paths and adds locations to map3 using the Map class.
-            Map map1 = new Map("res\\maps\\map.txt");
+            Map map1 = new Map("res\\maps\\Raudagnupur.txt");
             Map map2 = new Map("res\\maps\\map1.txt");
             Map map3 = new Map("res\\maps\\volcano.txt");
             Map map4 = new Map("res\\maps\\cave.txt");
 
-            map3.AddLocation(1, 2, 2, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json", "High Priest Of Rauðagnúpur");
-            map3.AddLocation(1, 24, 23, LocationType.DIALOGUE, "res\\dialogue\\guiscardtalk.json", "Guiscard");
-            map3.AddLocation(2, 2, 12, LocationType.COMBAT, "res\\enemies\\enemy.json");
+            map1.AddLocation(1, 76, 9, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json", "High Priest Of Rauðagnúpur");
+            map1.AddLocation(2, 54, 25, LocationType.DIALOGUE, "res\\dialogue\\blacksmith.json", "Blacksmith");
+            map1.AddLocation(3, 128, 31, LocationType.DIALOGUE, "res\\dialogue\\guiscardtalk.json", "Guiscard");
+            map1.AddLocation(4, 128, 30, LocationType.COMBAT, "res\\enemies\\enemy.json");
             
             ReadItemFile("res\\itemFile.txt");
 
@@ -85,7 +86,7 @@ namespace PoP.classes
             display.DrawGear();
 
             // Loads map2.
-            Map.maps[2].LoadMap();
+            Map.maps[0].LoadMap();
 
             // Starts the Update loop
             Update();

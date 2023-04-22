@@ -19,8 +19,8 @@ namespace PoP.classes
         public const int MAPHEIGHT = 46;
 
         // Player's current position in the game world.
-        public int PlayerX = 10;
-        public int PlayerY = 10;
+        public int PlayerX = 9;
+        public int PlayerY = 13;
 
 
         public static List<string> content = new List<string>() {
