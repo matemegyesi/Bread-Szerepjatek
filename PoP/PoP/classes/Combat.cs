@@ -58,7 +58,7 @@ namespace PoP.classes
             positionY = y;
             Path = path;
 
-            enemy = new Enemy(/* Path majd */);
+            enemy = new Enemy(path);
         }
 
         /// <summary>
@@ -123,8 +123,9 @@ namespace PoP.classes
         {
             List<string> enemyInfo = new List<string>();
 
-            enemyInfo.Add("Enemy's name");
-            enemyInfo.Add("");
+            enemyInfo.Add("Enemy: " + enemy.Name);
+            enemyInfo.Add(" ");
+            enemyInfo.Add("Level: " + enemy.Level);
             enemyInfo.Add("Health: " + enemy.Health);
             enemyInfo.Add("Damage: " + enemy.Damage);
             enemyInfo.Add("Defence: " + enemy.Defence);

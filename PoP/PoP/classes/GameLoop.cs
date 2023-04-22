@@ -66,7 +66,7 @@ namespace PoP.classes
             Map map4 = new Map("res\\cave.txt");
             map3.AddLocation(1, 2, 2, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json", "High Priest Of Rauðagnúpur");
             map3.AddLocation(1, 24, 23, LocationType.DIALOGUE, "res\\dialogue\\guiscardtalk.json", "Guiscard");
-            map3.AddLocation(2, 2, 12, LocationType.COMBAT, "");
+            map3.AddLocation(2, 2, 12, LocationType.COMBAT, "res\\enemies\\enemy.json");
             
             ReadItemFile("res\\itemFile.txt");
 

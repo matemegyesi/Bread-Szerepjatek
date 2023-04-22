@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Text.Json;
 
 namespace PoP.classes
 {
@@ -12,10 +14,18 @@ namespace PoP.classes
         public double Damage { get; set; }
         public double Defence { get; set; }
         public double Health { get; set; }
-        
-        public Enemy()
-        {
+        public int Level { get; set; }
 
+        public Dictionary<string, string> data { get; set; }
+        public Enemy(string path)
+        {
+            string json = File.ReadAllText(path);
+            data = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+            Name = data["name"];
+            Damage = double.Parse(data["damage"]);
+            Defence = double.Parse(data["defence"]);
+            Health = double.Parse(data["health"]);
+            Level = int.Parse(data["level"]);
         }
 
         public string TakeAction()
