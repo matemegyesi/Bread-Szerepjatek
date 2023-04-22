@@ -11,7 +11,13 @@ namespace PoP.classes
     ///</summary>
     public enum ItemType
     {
+        /// <summary>
+        /// Can be equipped to Hand or Ring
+        /// </summary>
         WEAPON,
+        /// <summary>
+        /// Can be equipped to Head, Chest or Leg
+        /// </summary>
         ARMOR
     }
     abstract class Item : ICollectible, IEquippable
