@@ -7,6 +7,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using CSInputs;
+using System.Text.Json;
 
 namespace PoP.classes
 {
@@ -73,6 +74,12 @@ namespace PoP.classes
 
             // Draws the initial inventory
             display.DrawInventory();
+
+            // Initialize character
+            display.DrawCharacter();
+
+            //Initialize gear
+            display.DrawGear();
 
             // Loads map2.
             Map.maps[2].LoadMap();

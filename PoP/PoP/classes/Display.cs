@@ -48,7 +48,7 @@ namespace PoP.classes
             $"║                                                                                                                                                    │                                            │                                         ║",
             $"║                                                                                                                                                    │                                            │                                         ║",
             $"║                                                                                                                                                    │                                            │                                         ║",
-            $"║                                                                                                                                                    │                                            │                                         ║",
+            $"║                                                                                                                                                    ├━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┤                                         ║",
             $"║                                                                                                                                                    │                                            │                                         ║",
             $"║                                                                                                                                                    │                                            │                                         ║",
             $"║                                                                                                                                                    │                                            │                                         ║",
@@ -101,11 +101,11 @@ namespace PoP.classes
             Console.CursorVisible = false;
             Style.EnableStyling();
 
-            // Enable console styling and display the game interface elements
+            // Display the game interface elements
             DrawString("INVENTORY(0)", 212, 1);
             DrawString("STATISTICS", 167, 1);
             DrawString("MAP", 65, 1);
-            DrawCharacter();
+            DrawString("GEAR", 170, 25);
 
             // Display the initial game content
             Console.Write(GetContent());
@@ -275,6 +275,16 @@ namespace PoP.classes
             {
                 GameLoop.display.DrawString($"{item.Name} ({item.Slot})", 200, i);
                 i += 1;
+            }
+        }
+
+        public void DrawGear()
+        {
+            int yStart = 27;
+            foreach(KeyValuePair<Slot, Item> kv in Inventory.gear)
+            {
+                DrawString($"{kv.Key}: {kv.Value.Name}", 165, yStart);
+                yStart++;
             }
         }
 

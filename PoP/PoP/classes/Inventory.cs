@@ -12,11 +12,16 @@ namespace PoP
     /// </summary>
     public enum Slot
     {
+        //Armor
         HEAD,
         CHEST,
         LEG,
+
+        //Weapon
         HAND,
         RING,
+
+        //Constant
         MAINSWORD,
         MAINCAPE
     }
