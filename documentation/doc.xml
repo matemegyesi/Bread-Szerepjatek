@@ -174,6 +174,11 @@
             <param name="name">The name of the second speaker.</param>
             <param name="person">An integer value indicating the current speaker (0 for player, 1 for other speaker).</param>
         </member>
+        <member name="M:PoP.classes.Display.DrawCharacter">
+            <summary>
+            Draws/Updates the character's position on the display
+            </summary>
+        </member>
         <member name="M:PoP.classes.Display.DrawMap(System.String)">
             <summary>
             Draws the map from the given file onto the display
@@ -229,6 +234,16 @@
         <member name="T:PoP.classes.ItemType">
             <summary>
             The type of an item: Weapon or Armor.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.ItemType.WEAPON">
+            <summary>
+            Can be equipped to Hand or Ring
+            </summary>
+        </member>
+        <member name="F:PoP.classes.ItemType.ARMOR">
+            <summary>
+            Can be equipped to Head, Chest or Leg
             </summary>
         </member>
         <member name="P:PoP.classes.Item.Name">

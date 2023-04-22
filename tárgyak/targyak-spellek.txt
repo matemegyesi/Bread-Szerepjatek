@@ -1,0 +1,103 @@
+Pusztító mágiák a történetben:
+
+Eorsairth
+Xylzroid
+
+
+
+Támadó spellek:
+
+Lávatócsa
+Villám
+Ikervillám
+Gömbvillám
+Vakító fény
+Artériaroppantás
+Szívzúzás
+Méregtócsa
+Méreg-köd
+Pokol-szakadék
+Tüzgolyó
+Meteor-zápor
+Gömb-Villám
+Gyors közleharci támadás
+Fényrobbanás
+Csillageső
+
+
+
+Védekező spellek:
+
+Manaszipolyozás
+Émelygőgáz
+Neocortex rongálás (erős enemy debuff, de 0 damage)
+Vashevítés (kard buff következő körre)
+Hóvihar
+Elmeuralom
+Illúziógerjesztés
+Jégfal
+Ködösítés
+
+
+
+
+Tárgyak:
+
+Maszk
+Süveg
+Lovagsisak
+Páncélsisak
+Aranykorona
+
+Bőr mellvért
+Szegecselt bőr
+Lemezvért
+Láncing
+Gyűrűspáncél
+Dombornyomos páncél
+
+Bocskor
+Csizma
+Magas csizma
+Lábszárvédő csizma
+
+Tőr
+Buzogány
+Kerek pajzs
+Tüskés pajzs
+Torony pajzs
+
+Bronzgyűrű
+Ezüstgyűrű
+Aranygyűrű
+
+Mana flaska
+Stamina ital
+Gyorsaság ital
+Regeneráló ital
+Méreg flaska
+
+Gyógyfű
+Kötszer
+Élelmiszer
+Robbanó kirstályok
+
+(
+(
+    Éteri Váltás
+    Kthonikus Düh
+    Arkanus Fátyol
+    Csillagösvényi Harmónia
+    Árnyékok Egyesülése
+    Egyuralmi Vihar
+    Kronomágiás Áldás
+    Prímordiális Láng
+    Fantom Kard
+    Illúziós Tükröződés
+    Arkanus Örvény
+    Elemi Áramlás
+    Csillagközi Vetítés
+    Nekró Embrionálás
+    Rejtvény Zárása
+)
+)
