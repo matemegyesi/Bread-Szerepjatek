@@ -22,10 +22,10 @@ namespace PoP.classes
 
             switch (type)
             {
-                case ItemType.Weapon:
+                case ItemType.WEAPON:
                     item = new Weapon(name, slot, damageOrDefense);
                     break;
-                case ItemType.Armor:
+                case ItemType.ARMOR:
                     item = new Armor(name, slot, damageOrDefense);
                     break;
                 default:

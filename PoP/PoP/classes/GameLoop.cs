@@ -122,13 +122,13 @@ namespace PoP.classes
                         switch (itemT[3])
                         {
                             case "Head":
-                                item = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Slot.HEAD);
+                                item = ItemFactory.CreateItem(ItemType.ARMOR, itemT[1], float.Parse(itemT[2]), Slot.HEAD);
                                 break;
                             case "Chest":
-                                item = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Slot.CHEST);
+                                item = ItemFactory.CreateItem(ItemType.ARMOR, itemT[1], float.Parse(itemT[2]), Slot.CHEST);
                                 break;
                             case "Leg":
-                                item = ItemFactory.CreateItem(ItemType.Armor, itemT[1], float.Parse(itemT[2]), Slot.LEG);
+                                item = ItemFactory.CreateItem(ItemType.ARMOR, itemT[1], float.Parse(itemT[2]), Slot.LEG);
                                 break;
                             default:
                                 break;
@@ -138,10 +138,10 @@ namespace PoP.classes
                         switch (itemT[3])
                         {
                             case "Hand":
-                                item = ItemFactory.CreateItem(ItemType.Weapon, itemT[1], float.Parse(itemT[2]), Slot.HAND);
+                                item = ItemFactory.CreateItem(ItemType.WEAPON, itemT[1], float.Parse(itemT[2]), Slot.HAND);
                                 break;
                             case "Ring":
-                                item = ItemFactory.CreateItem(ItemType.Weapon, itemT[1], float.Parse(itemT[2]), Slot.RING);
+                                item = ItemFactory.CreateItem(ItemType.WEAPON, itemT[1], float.Parse(itemT[2]), Slot.RING);
                                 break;
                             default:
                                 break;

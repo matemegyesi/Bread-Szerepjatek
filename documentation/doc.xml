@@ -9,7 +9,7 @@
             The Defense property represents a float value that represents how many percent of the damage it can negate.
             </summary>
         </member>
-        <member name="M:PoP.classes.Armor.#ctor(System.String,PoP.Slot,System.Single)">
+        <member name="M:PoP.classes.Armor.#ctor(System.String,PoP.Slot,System.Single,System.Boolean)">
             <summary>
             Creates a new armor with the specified name, type, and defense.
             </summary>
@@ -423,7 +423,7 @@
             The damage the weapon adds to the player's statistics
             </summary>
         </member>
-        <member name="M:PoP.classes.Weapon.#ctor(System.String,PoP.Slot,System.Single)">
+        <member name="M:PoP.classes.Weapon.#ctor(System.String,PoP.Slot,System.Single,System.Boolean)">
             <summary>
             Constructor for a Weapon object, taking a name, weapon type, and damage value as parameters.
             </summary>

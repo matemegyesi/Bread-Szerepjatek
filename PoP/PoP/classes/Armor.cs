@@ -20,20 +20,29 @@ namespace PoP.classes
         /// <param name="armorType">The type of armor (head, chest, or leg).</param>
         /// <param name="defense">The amount of defense the armor provides.</param>
         /// <exception cref="ArgumentException">Thrown if an invalid armor type is specified.</exception>
-        public Armor(string name,Slot armorType, float defense)
+        public Armor(string name,Slot armorType, float defense, bool main=false)
         {
-            switch (armorType)
+            if (main)
             {
-                case Slot.HEAD:
-                case Slot.CHEST:
-                case Slot.LEG:
-                    Slot = armorType;
-                    break;
-                default:
-                    throw new ArgumentException($"Ez nem egy armor tipus: {armorType}");
+                Name = name;
+                Slot = Slot.MAINCAPE;
+                Defense = defense;
             }
-            Name = name;
-            Defense = defense;
+            else
+            {
+                switch (armorType)
+                {
+                    case Slot.HEAD:
+                    case Slot.CHEST:
+                    case Slot.LEG:
+                        Slot = armorType;
+                        break;
+                    default:
+                        throw new ArgumentException($"Ez nem egy armor tipus: {armorType}");
+                }
+                Name = name;
+                Defense = defense;
+            }
         }
 
         /// <summary>

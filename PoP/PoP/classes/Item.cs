@@ -11,8 +11,8 @@ namespace PoP.classes
     ///</summary>
     public enum ItemType
     {
-        Weapon,
-        Armor
+        WEAPON,
+        ARMOR
     }
     abstract class Item : ICollectible, IEquippable
     {

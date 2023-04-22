@@ -13,6 +13,11 @@ namespace PoP.classes
         static public int Health { get; private set; }
         static public int Mana { get; private set; }
 
+        public Player()
+        {
+            
+        }
+
         static public void AttackWithWeapon(Enemy target)
         {
             // target TakeDamage() meghívása, sebzése a Inventory.gear[Slot.HAND]

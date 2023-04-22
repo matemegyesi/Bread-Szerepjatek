@@ -20,23 +20,33 @@ namespace PoP.classes
         /// <param name="name">The name of the weapon.</param>
         /// <param name="weaponType">The type of slot that the weapon can be equipped to.</param>
         /// <param name="damage">The amount of damage the weapon can inflict.</param>
-        public Weapon(string name, Slot weaponType, float damage)
+        public Weapon(string name, Slot weaponType, float damage, bool main=false)
         {
-            switch (weaponType)
+            if (main)
             {
-                // Check if the weapon can be equipped to the HAND or RING slot
-                case Slot.HAND:
-                case Slot.RING:
-                    Slot = weaponType;
-                    break;
-
-                // Throw an ArgumentException if the weaponType is HAND or RING
-                default:
-                    throw new ArgumentException($"Ez nem egy weapon tipus: {weaponType}");
+                Name = name;
+                Damage = damage;
+                Slot = Slot.MAINSWORD;
             }
-            Name = name;
-            Damage = damage;
+            else
+            {
+                switch (weaponType)
+                {
+                    // Check if the weapon can be equipped to the HAND or RING slot
+                    case Slot.HAND:
+                    case Slot.RING:
+                        Slot = weaponType;
+                        break;
+
+                    // Throw an ArgumentException if the weaponType is HAND or RING
+                    default:
+                        throw new ArgumentException($"Ez nem egy weapon tipus: {weaponType}");
+                }
+                Name = name;
+                Damage = damage;
+            }
         }
+
         /// <summary>
         /// Adds the item to the player's inventory if there is space available.
         /// </summary>

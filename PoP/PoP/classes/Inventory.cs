@@ -16,7 +16,9 @@ namespace PoP
         CHEST,
         LEG,
         HAND,
-        RING
+        RING,
+        MAINSWORD,
+        MAINCAPE
     }
     class Inventory
     {
@@ -40,5 +42,8 @@ namespace PoP
             { Slot.HAND, null},
             { Slot.RING, null}
         };
+
+        public static Weapon MainSword { get; set; } = new Weapon("Myrkrsverð", Slot.MAINSWORD, 10, true);
+        public static Armor MainCape { get; set; } = new Armor("Varnarmantill", Slot.MAINCAPE, 10, true);
     }
 }
