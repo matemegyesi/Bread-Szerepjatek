@@ -16,6 +16,7 @@
             <param name="name">The name of the armor.</param>
             <param name="armorType">The type of armor (head, chest, or leg).</param>
             <param name="defense">The amount of defense the armor provides.</param>
+            <param name="main">Only needed for the MainCape</param>
             <exception cref="T:System.ArgumentException">Thrown if an invalid armor type is specified.</exception>
         </member>
         <member name="M:PoP.classes.Armor.Collect">
@@ -430,6 +431,7 @@
             <param name="name">The name of the weapon.</param>
             <param name="weaponType">The type of slot that the weapon can be equipped to.</param>
             <param name="damage">The amount of damage the weapon can inflict.</param>
+            <param name="main">Only needed for the MainSword</param>
         </member>
         <member name="M:PoP.classes.Weapon.Collect">
             <summary>
