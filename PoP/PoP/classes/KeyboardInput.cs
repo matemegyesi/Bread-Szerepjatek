@@ -36,6 +36,9 @@ namespace PoP.classes
             while (GameLoop.Running)
             {
                 ConsoleKeyInfo input = Console.ReadKey();
+                if (input.Key == ConsoleKey.Escape)
+                    Environment.Exit(0);
+
                 KeyPressed?.Invoke(input.Key);
             }
         }
