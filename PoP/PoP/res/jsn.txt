@@ -9,3 +9,10 @@
   "a": "Thank you, bye!",
   "3": "Bye!"
 }
+
+[
+  {"actor" : "Player", "text": "Hi", "action" : "getitem"},
+  {"actor" : "Blacksmith", "text": "Here is your sword!"},
+  {"actor" : "Player", "text" : "Thank you, bye!"},
+  {"actor" : "Blacksmith", "text" : "Bye!"}
+]
