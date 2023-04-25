@@ -1,20 +1,74 @@
-{
-  "0": "Greetings, retired High Priest Guiscard. I have come seeking your wisdom about the events that occurred five years ago in the Sorcerer Order.",
-  "1": "What do you want?",
-  "2": "I want to know what caused the changes in the Sorcerer Order. Why did it become more radical and strict?",
-  "3": "Why should I tell you? You are not a member of our order anymore. You abandoned us to pursue your own selfish interests.",
-  "4": "I left because I disagreed with the direction the order was taking. I want to understand why it happened.",
-  "5": "It happened because too many people like you were more interested in their own egos than in the good of the order. You think you know better than the High Priests who have dedicated their entire lives to studying magic and the spirits.",
-  "6": "I'm sorry you feel that way. I just want to understand.",
-  "7": "Fine. The changes began with a magical event that erupted in a wave of power throughout the realm. The Sorcerer Order was not immune to its effects.",
-  "8": "What kind of magical event?",
-  "9": "It was a spell, but not one of this realm. Its origin was from beyond our world. The power it unleashed was immense, and it caused many sorcerers to seek out new sources of power and knowledge.",
-  "10": "So, the changes were a result of this new quest for power?",
-  "11": "Yes, that was part of it. But the new organization that emerged, promising quick results and instant gratification, was also a factor. Many young sorcerers were lured away by the promise of greater power and knowledge, even though it came at a cost.",
-  "12": "What cost?",
-  "13": "The cost of adhering to a particular set of beliefs and practices. The new organization was more radical and strict in its teachings, and many of our members were unable to accept its dogma.",
-  "14": "Is there anything else you can tell me about the spell that caused the eruption?",
-  "15": "Only that its origin lies in the Baharuth Empire, in the Ermir's Volcano and its Black Desert. If you seek to unravel the mystery of the spell, that is where you should begin.",
-  "16": "Thank you for your help, Guiscard.",
-  "17": "Don't thank me. Just remember, you left the order for a reason. Don't think you can come crawling back now just because you want answers."
-}
+[
+  {
+    "actor": "Player",
+    "text": "Greetings, retired High Priest Guiscard. I have come seeking your wisdom about the events that occurred five years ago in the Sorcerer Order."
+  },
+  {
+    "actor": "retired High Priest Guiscard",
+    "text": "What do you want?"
+  },
+  {
+    "actor": "Player",
+    "text": "I want to know what caused the changes in the Sorcerer Order. Why did it become more radical and strict?"
+  },
+  {
+    "actor": "Guiscard",
+    "text": "Why should I tell you? You are not a member of our order anymore. You abandoned us to pursue your own selfish interests."
+  },
+  {
+    "actor": "Player",
+    "text": "I left because I disagreed with the direction the order was taking. I want to understand why it happened."
+  },
+  {
+    "actor": "Guiscard",
+    "text": "It happened because too many people like you were more interested in their own egos than in the good of the order. You think you know better than the High Priests who have} dedicated their entire lives to studying magic and the spirits."
+  },
+  {
+    "actor": "Player",
+    "text": "I'm sorry you feel that way. I just want to understand."
+  },
+  {
+    "actor": "Guiscard",
+    "text": "Fine. The changes began with a magical event that erupted in a wave of power throughout the realm. The Sorcerer Order was not immune to its effects."
+  },
+  {
+    "actor": "Player",
+    "text": "What kind of magical event?"
+  },
+  {
+    "actor": "Guiscard",
+    "text": "It was a spell, but not one of this realm. Its origin was from beyond our world. The power it unleashed was immense, and it caused many sorcerers to seek out new sources of power} and knowledge."
+  },
+  {
+    "actor": "Player",
+    "text": "So, the changes were a result of this new quest for power?"
+  },
+  {
+    "actor": "Guiscard",
+    "text": "Yes, that was part of it. But the new organization that emerged, promising quick results and instant gratification, was also a factor. Many young sorcerers were lured away by the} promise of greater power and knowledge, even though it came at a cost."
+  },
+  {
+    "actor": "Player",
+    "text": "What cost?"
+  },
+  {
+    "actor": "Guiscard",
+    "text": "The cost of adhering to a particular set of beliefs and practices. The new organization was more radical and strict in its teachings, and many of our members were unable to accep}t its dogma."
+  },
+  {
+    "actor": "Player",
+    "text": "Is there anything else you can tell me about the spell that caused the eruption?"
+  },
+  {
+    "actor": "Guiscard",
+    "text": "Only that its origin lies in the Baharuth Empire, in the Ermir's Volcano and its Black Desert. If you seek to unravel the mystery of the spell, that is where you should begin."
+  },
+  {
+    "actor": "Player",
+    "text": "Thank you for your help, Guiscard."
+  },
+  {
+    "actor": "Guiscard",
+    "text": "Don't thank me. Just remember, you left the order for a reason. Don't think you can come crawling back now just because you want answers."
+  }
+]

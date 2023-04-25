@@ -67,14 +67,13 @@ namespace PoP.classes
         /// <param name="y">The y-coordinate of the location on the map</param>
         /// <param name="type">The type of the location (dialogue or combat)</param>
         /// <param name="path">The path to the file containing the location's content</param>
-        /// <param name="name">The name of the speaker(optional, only in dialogue)</param>
-        public void AddLocation(int id, int x, int y, LocationType type, string path, string name = "")
+        public void AddLocation(int id, int x, int y, LocationType type, string path)
         {
             switch (type)
             {
                 // If the location is a dialogue location, add a new Dialogue object to the locations list
                 case LocationType.DIALOGUE:
-                    locations.Add(new Dialogue(id, x, y, path, name));
+                    locations.Add(new Dialogue(id, x, y, path));
                     break;
 
                 // If the location is a combat location, add a new Combat object to the locations list

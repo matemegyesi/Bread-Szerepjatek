@@ -40,11 +40,6 @@ namespace PoP.classes
         /// The path of the location.
         ///</summary>
         public string Path { get; set; }
-
-        ///<summary>
-        /// The name of the location.
-        ///</summary>
-        public string Name { get; set; }
         public Location(int id, int x, int y)
         {
             this.id = id;

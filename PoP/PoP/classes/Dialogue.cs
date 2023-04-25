@@ -14,7 +14,7 @@ namespace PoP.classes
         /// <summary>
         /// A dictionary that represents the conversation in the game, mapping each dialogue ID to its corresponding text.
         /// </summary>
-        public Dictionary<string, string> conversation;
+        public List<Dictionary<string, object>> conversation;
 
         /// <summary>
         /// The index of the current line of dialogue being displayed.
@@ -31,17 +31,16 @@ namespace PoP.classes
         /// <param name="y">The Y coordinate of the dialogue.</param>
         /// <param name="path">The file path of the JSON file containing the dialogue data.</param>
         /// <param name="name">The name of the dialogue.</param>
-        public Dialogue(int id, int x, int y, string path, string name) : base(id, x, y)
+        public Dialogue(int id, int x, int y, string path) : base(id, x, y)
         {
             this.id = id;
             positionX = x;
             positionY = y;
             Path = path;
-            Name = name;
             personID = 0;
 
             string json = File.ReadAllText(path);
-            conversation = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+            conversation = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(json);
         }
 
         /// <summary>
@@ -62,7 +61,7 @@ namespace PoP.classes
         public override void Start()
         {
             KeyboardInput.KeyPressed += KeyPressed;
-            GameLoop.display.DrawConversation(conversation[dialogueIndex.ToString()], 4, 50, Name, personID++);
+            GameLoop.display.DrawConversation(conversation[dialogueIndex]["text"].ToString(), 4, 50, conversation[dialogueIndex]["actor"].ToString());
         }
 
         public void KeyPressed(ConsoleKey key)
@@ -79,7 +78,7 @@ namespace PoP.classes
                 {
                     // Clear the text box and display the next line of dialogue
                     GameLoop.display.WipeTextBox();
-                    GameLoop.display.DrawConversation(conversation[dialogueIndex.ToString()], 4, 50, Name, personID++);
+                    GameLoop.display.DrawConversation(conversation[dialogueIndex]["text"].ToString(), 4, 50, conversation[dialogueIndex]["actor"].ToString());
                 }
                 else
                 {

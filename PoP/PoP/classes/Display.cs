@@ -206,13 +206,10 @@ namespace PoP.classes
         /// <param name="y">The y-coordinate of the starting position for the conversation text.</param>
         /// <param name="name">The name of the second speaker.</param>
         /// <param name="person">An integer value indicating the current speaker (0 for player, 1 for other speaker).</param>
-        public void DrawConversation(string e, int x, int y, string name, int person)
+        public void DrawConversation(string e, int x, int y, string name)
         {
             // Draw speaker name above conversation text
-            if (person++ % 2 == 0)
-                GameLoop.display.DrawString("Player", x, y - 2);
-            else
-                GameLoop.display.DrawString(name, x, y - 2);
+            DrawString(name, x, y - 2);
 
             // Add "(Next: SPACE)" to the end of the conversation text
             e += " (Next: SPACE)";

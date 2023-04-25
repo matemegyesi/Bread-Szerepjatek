@@ -111,7 +111,7 @@
             The index of the current line of dialogue being displayed.
             </summary>
         </member>
-        <member name="M:PoP.classes.Dialogue.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.String)">
+        <member name="M:PoP.classes.Dialogue.#ctor(System.Int32,System.Int32,System.Int32,System.String)">
             <summary>
             Initializes a new instance of the Dialogue class with the specified ID, coordinates, file path, and name.
             </summary>
@@ -164,7 +164,7 @@
             <param name="x">The x-coordinate of the starting position.</param>
             <param name="y">The y-coordinate of the starting position.</param>
         </member>
-        <member name="M:PoP.classes.Display.DrawConversation(System.String,System.Int32,System.Int32,System.String,System.Int32)">
+        <member name="M:PoP.classes.Display.DrawConversation(System.String,System.Int32,System.Int32,System.String)">
             <summary>
             Draws a conversation between two speakers, with the name of the second speaker.
             </summary>
@@ -340,11 +340,6 @@
              The path of the location.
             </summary>
         </member>
-        <member name="P:PoP.classes.Location.Name">
-            <summary>
-             The name of the location.
-            </summary>
-        </member>
         <member name="M:PoP.classes.Location.LoadLocation">
             <summary>
              Loads the location.
@@ -396,7 +391,7 @@
             Loads the map into the game by displaying its image and setting it as the current map.
             </summary>
         </member>
-        <member name="M:PoP.classes.Map.AddLocation(System.Int32,System.Int32,System.Int32,PoP.classes.LocationType,System.String,System.String)">
+        <member name="M:PoP.classes.Map.AddLocation(System.Int32,System.Int32,System.Int32,PoP.classes.LocationType,System.String)">
             <summary>
             Adds a new location to the map with the given properties.
             </summary>
@@ -405,7 +400,6 @@
             <param name="y">The y-coordinate of the location on the map</param>
             <param name="type">The type of the location (dialogue or combat)</param>
             <param name="path">The path to the file containing the location's content</param>
-            <param name="name">The name of the speaker(optional, only in dialogue)</param>
         </member>
         <member name="M:PoP.classes.Movement.#ctor">
             <summary>
