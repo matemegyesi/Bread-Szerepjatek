@@ -119,7 +119,6 @@
             <param name="x">The X coordinate of the dialogue.</param>
             <param name="y">The Y coordinate of the dialogue.</param>
             <param name="path">The file path of the JSON file containing the dialogue data.</param>
-            <param name="name">The name of the dialogue.</param>
         </member>
         <member name="M:PoP.classes.Dialogue.LoadLocation">
             <summary>

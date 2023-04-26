@@ -11,11 +11,9 @@ namespace PoP.classes
         /// <summary>
         /// The Movement class is responsible for handling the movement of the player character in the game.
         /// </summary>
-        public Movement() 
+        public Movement()
         {
-            /// <summary>
-            /// Initializes a new instance of the Movement class and subscribes to the KeyboardInput.KeyPressed event.
-            /// </summary>
+            // Initializes a new instance of the Movement class and subscribes to the KeyboardInput.KeyPressed event.
             KeyboardInput.KeyPressed += KeyPressed;    
         }
         public void KeyPressed(ConsoleKey key)
@@ -23,6 +21,9 @@ namespace PoP.classes
             // Check if the game is currently in the adventure phase
             if (GameLoop.Phase == GamePhase.ADVENTURE)
             {
+                //Wipe text box and display options
+                GameLoop.display.WipeTextBox();
+                GameLoop.display.DrawString("Open Inventory: I", 5, 50);
                 // Check which key was pressed and move the player accordingly
                 switch (key)
                 {

@@ -21,8 +21,6 @@ namespace PoP.classes
         /// </summary>
         public int dialogueIndex = 0;
 
-        private int personID;
-
         /// <summary>
         /// Initializes a new instance of the Dialogue class with the specified ID, coordinates, file path, and name.
         /// </summary>
@@ -30,14 +28,12 @@ namespace PoP.classes
         /// <param name="x">The X coordinate of the dialogue.</param>
         /// <param name="y">The Y coordinate of the dialogue.</param>
         /// <param name="path">The file path of the JSON file containing the dialogue data.</param>
-        /// <param name="name">The name of the dialogue.</param>
         public Dialogue(int id, int x, int y, string path) : base(id, x, y)
         {
             this.id = id;
             positionX = x;
             positionY = y;
             Path = path;
-            personID = 0;
 
             string json = File.ReadAllText(path);
             conversation = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(json);
