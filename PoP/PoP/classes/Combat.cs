@@ -78,7 +78,7 @@ namespace PoP.classes
         /// </summary>
         public override void Start()
         {
-
+            base.Start();
             KeyboardInput.KeyPressed += KeyPressed;
 
             ChangeCombatPhase(CombatPhase.LOADOUT);
@@ -90,6 +90,7 @@ namespace PoP.classes
         /// </summary>
         public override void End()
         {
+            base.End();
             KeyboardInput.KeyPressed -= KeyPressed;
 
             isCompleted = true;

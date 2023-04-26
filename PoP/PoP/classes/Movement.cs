@@ -19,8 +19,8 @@ namespace PoP.classes
         public void KeyPressed(ConsoleKey key)
         {
             // Check if the game is currently in the adventure phase
-            if (GameLoop.Phase == GamePhase.ADVENTURE)
-            {
+            //if (GameLoop.Phase == GamePhase.ADVENTURE)
+            //{
                 //Wipe text box and display options
                 GameLoop.display.WipeTextBox();
                 GameLoop.display.DrawString("Open Inventory: I", 5, 50);
@@ -76,7 +76,16 @@ namespace PoP.classes
                 {
                     Map.CurrentMap.locations.Where(x => x.positionX == GameLoop.display.PlayerX && x.positionY == GameLoop.display.PlayerY && !x.isCompleted).First().LoadLocation();
                 }
-            }
+            //}
+        }
+
+        public void UnsubKeyPressed()
+        {
+            KeyboardInput.KeyPressed -= KeyPressed;
+        }
+        public void SubKeyPressed()
+        {
+            KeyboardInput.KeyPressed += KeyPressed;
         }
     }
 }

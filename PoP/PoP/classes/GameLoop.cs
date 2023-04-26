@@ -47,9 +47,9 @@ namespace PoP.classes
 
         public static KeyboardInput keyboardInput;
 
-        private Movement playerMovement;
+        public static Movement playerMovement;
 
-        private Inventory inventory;
+        public static Inventory inventory;
 
         private Action action;
 

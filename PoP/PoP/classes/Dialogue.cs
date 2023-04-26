@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using static PoP.classes.KeyboardInput;
 using System.IO;
+using System.Windows.Markup;
 
 namespace PoP.classes
 {
@@ -56,6 +57,7 @@ namespace PoP.classes
         /// </summary>
         public override void Start()
         {
+            base.Start();
             KeyboardInput.KeyPressed += KeyPressed;
             GameLoop.display.DrawConversation(conversation[dialogueIndex]["text"].ToString(), 4, 50, conversation[dialogueIndex]["actor"].ToString());
         }
@@ -89,6 +91,7 @@ namespace PoP.classes
         }
         public override void End()
         {
+            base.End();
             KeyboardInput.KeyPressed -= KeyPressed;
             isCompleted = true;
             GameLoop.Phase = GamePhase.ADVENTURE;

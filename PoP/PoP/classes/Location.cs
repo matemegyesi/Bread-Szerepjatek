@@ -56,12 +56,18 @@ namespace PoP.classes
         ///<summary>
         /// Starts the location.
         ///</summary>
-        public abstract void Start();
+        public virtual void Start()
+        {
+            GameLoop.playerMovement.UnsubKeyPressed();
+        }
 
         ///<summary>
         /// Ends the location.
         ///</summary>
-        public abstract void End();
+        public virtual void End()
+        {
+            GameLoop.playerMovement.SubKeyPressed();
+        }
 
     }
 }
