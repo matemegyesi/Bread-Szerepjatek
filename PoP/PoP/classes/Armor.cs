@@ -36,6 +36,7 @@ namespace PoP.classes
                     case Slot.Head:
                     case Slot.Chest:
                     case Slot.Leg:
+                    case Slot.MainCape:
                         Slot = armorType;
                         break;
                     default:
@@ -58,7 +59,7 @@ namespace PoP.classes
                 Inventory.inventory.Add(this);
 
                 // Update the display to show the current inventory count.
-                GameLoop.display.DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
+                GameLoop.display.DrawInventory();
             }
         }
 
@@ -71,7 +72,7 @@ namespace PoP.classes
             Inventory.inventory.Remove(this);
 
             // Update the display to show the current inventory count.
-            GameLoop.display.DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
+            GameLoop.display.DrawInventory();
         }
 
         public override void Equip()

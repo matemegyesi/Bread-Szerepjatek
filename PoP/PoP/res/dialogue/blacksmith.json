@@ -13,6 +13,13 @@
   },
   {
     "actor": "Blacksmith",
-    "text": "Bye!"
+    "text": "Bye!",
+    "action": "getitem",
+    "param": [
+      "weapon",
+      "Myrkrsverð",
+      "10",
+      "MainSword"
+    ]
   }
 ]

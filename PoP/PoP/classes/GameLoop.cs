@@ -51,6 +51,8 @@ namespace PoP.classes
 
         private Inventory inventory;
 
+        private Action action;
+
         public void Start()
         {
             // Sends the F11 key input using the CSInputs library.
@@ -62,6 +64,7 @@ namespace PoP.classes
             keyboardInput = new KeyboardInput();
             playerMovement = new Movement();
             inventory = new Inventory();
+            action = new Action();
 
             // Initializes maps with file paths and adds locations to map3 using the Map class.
             Map map1 = new Map("res\\maps\\Raudagnupur.txt");
@@ -69,12 +72,12 @@ namespace PoP.classes
             Map map3 = new Map("res\\maps\\volcano.txt");
             Map map4 = new Map("res\\maps\\cave.txt");
 
-            map1.AddLocation(1, 76, 9, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json");
             map1.AddLocation(2, 54, 25, LocationType.DIALOGUE, "res\\dialogue\\blacksmith.json");
+            map1.AddLocation(1, 76, 9, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json");
             map1.AddLocation(3, 128, 31, LocationType.DIALOGUE, "res\\dialogue\\guiscardtalk.json");
             map1.AddLocation(4, 128, 30, LocationType.COMBAT, "res\\enemies\\enemy.json");
             
-            ReadItemFile("res\\itemFile.txt");
+            //ReadItemFile("res\\itemFile.txt");
 
             // Draws the initial inventory
             display.DrawInventory();

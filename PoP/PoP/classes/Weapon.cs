@@ -36,6 +36,7 @@ namespace PoP.classes
                     // Check if the weapon can be equipped to the HAND or RING slot
                     case Slot.Hand:
                     case Slot.Ring:
+                    case Slot.MainSword:
                         Slot = weaponType;
                         break;
 
@@ -60,7 +61,7 @@ namespace PoP.classes
                 Inventory.inventory.Add(this);
 
                 // Update the display to show the current inventory count.
-                GameLoop.display.DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
+                GameLoop.display.DrawInventory();
             }
         }
 
@@ -73,7 +74,7 @@ namespace PoP.classes
             Inventory.inventory.Remove(this);
 
             // Update the display to show the current inventory count.
-            GameLoop.display.DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
+            GameLoop.display.DrawInventory();
         }
 
         public override void Equip()

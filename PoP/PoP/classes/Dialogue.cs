@@ -66,6 +66,9 @@ namespace PoP.classes
 
         public void KeyPressed(ConsoleKey key)
         {
+            if (conversation[dialogueIndex].ContainsKey("action")) {
+                Action.actions[conversation[dialogueIndex]["action"].ToString()](conversation[dialogueIndex]["param"]);
+            }
             // Check if the game is currently in the dialogue phase and if the spacebar key was pressed
             if (GameLoop.Phase == GamePhase.DIALOGUE && key == ConsoleKey.Spacebar)
             {

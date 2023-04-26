@@ -269,6 +269,9 @@ namespace PoP.classes
         ///</summary>
         public void DrawInventory()
         {
+            //Update inventory count
+            DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
+
             int i = 3;
 
             // Iterate through each item in the inventory and draw its name and slot onto the display

@@ -34,5 +34,15 @@ namespace PoP.classes
 
             return item;
         }
+        
+        public static Weapon CreateWeapon(string name, double damageOrDefense, Slot slot)
+        {
+            return (Weapon)CreateItem(ItemType.WEAPON, name, damageOrDefense, slot);
+        }
+
+        public static Armor CreateArmor(string name, double damageOrDefense, Slot slot)
+        {
+            return (Armor)CreateItem(ItemType.ARMOR, name, damageOrDefense, slot);
+        }
     }
 }
