@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.IO;
+using System.Reflection;
 
 namespace PoP
 {
@@ -29,6 +30,7 @@ namespace PoP
     }
     class Inventory
     {
+        public bool IsOpened { get; set; } = false;
         ///<summary>
         /// The maximum number of items that the inventory can hold.
         /// </summary>
@@ -50,47 +52,48 @@ namespace PoP
             { Slot.Ring, null}
         };
 
-        public static Dictionary<int, string> keys = new Dictionary<int, string>() {
-            {0,"A"},
-            {1,"B"},
-            {2,"C"},
-            {3,"D"},
-            {4,"E"},
-            {5,"F"},
-            {6,"G"},
-            {7,"H"},
-            {8,"/"},
-            {9,"J"},
-            {10,"K"},
-            {11,"L"},
-            {12,"M"},
-            {13,"N"},
-            {14,"O"},
-            {15,"P"},
-            {16,"Q"},
-            {17,"R"},
-            {18,"S"},
-            {19,"T"},
-            {20,"U"},
-            {21,"V"},
-            {22,"W"},
-            {23,"X"},
-            {24,"Y"},
-            {25,"Z"},
-            {26,"1"},
-            {27,"2"},
-            {28,"3"},
-            {29,"4"},
-            {30,"5"},
-            {31,"6"},
-            {32,"7"},
-            {33,"8"},
-            {34,"9"},
-            {35,"F1"},
-            {36,"F2"},
-            {37,"F3"},
-            {38,"F4"},
-            {39,"F5"}
+        private Dictionary<int, int> keys = new Dictionary<int, int>()
+        {
+            {65,0},
+            {66,1},
+            {67,2},
+            {68,3},
+            {69,4},
+            {70,5},
+            {71,6},
+            {72,7},
+            {73,8},
+            {74,9},
+            {75,10},
+            {76,11},
+            {77,12},
+            {78,13},
+            {79,14},
+            {80,15},
+            {81,16},
+            {82,17},
+            {83,18},
+            {84,19},
+            {85,20},
+            {86,21},
+            {87,22},
+            {88,23},
+            {89,24},
+            {90,25},
+            {49,26},
+            {50,27},
+            {51,28},
+            {52,29},
+            {53,30},
+            {54,31},
+            {55,32},
+            {56,33},
+            {57,34},
+            {112,35},
+            {113,36},
+            {114,37},
+            {115,38},
+            {116,39}
         };
 
         public static Weapon MainSword { get; set; } = new Weapon("Myrkrsverð", Slot.MainSword, 10, true);
@@ -135,7 +138,29 @@ namespace PoP
 
         public void KeyPressed(ConsoleKey key)
         {
-            
+            if (GameLoop.Phase == GamePhase.ADVENTURE)
+            {
+                if (!IsOpened)
+                {
+                    if (key == ConsoleKey.F12)
+                    {
+                       IsOpened = true;
+                       GameLoop.playerMovement.DisableMovement();
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        int i = keys[(int)key];
+                        inventory[i].Equip();
+                    }
+                    catch (Exception) { }
+
+                    IsOpened = false;
+                    GameLoop.playerMovement.EnableMovement();
+                }
+            }
         }
     }
 }

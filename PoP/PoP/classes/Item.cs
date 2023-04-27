@@ -61,6 +61,7 @@ namespace PoP.classes
             }
 
             GameLoop.display.DrawGear();
+            GameLoop.display.DrawInventory();
 
             // TODO: statok és inventory frissítése
         }
@@ -79,6 +80,7 @@ namespace PoP.classes
             Inventory.inventory[inventoryIndex] = this;
 
             GameLoop.display.DrawGear();
+            GameLoop.display.DrawInventory();
 
             // TODO: statok és inventory frissítése
         }
@@ -103,6 +105,7 @@ namespace PoP.classes
             }
 
             GameLoop.display.DrawGear();
+            GameLoop.display.DrawInventory();
             
             return false;
 

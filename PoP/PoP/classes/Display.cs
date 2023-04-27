@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -87,6 +88,49 @@ namespace PoP.classes
             $"║                                                                                                                                                                                                                                           ║",
             $"║                                                                                                                                                                                                                                           ║",
             $"╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝",
+        };
+
+        public static Dictionary<int, string> keys = new Dictionary<int, string>() {
+            {65,"A"},
+            {66,"B"},
+            {67,"C"},
+            {68,"D"},
+            {69,"E"},
+            {70,"F"},
+            {71,"G"},
+            {72,"H"},
+            {73,"I"},
+            {74,"J"},
+            {75,"K"},
+            {76,"L"},
+            {77,"M"},
+            {78,"N"},
+            {79,"O"},
+            {80,"P"},
+            {81,"Q"},
+            {82,"R"},
+            {83,"S"},
+            {84,"T"},
+            {85,"U"},
+            {86,"V"},
+            {87,"W"},
+            {88,"X"},
+            {89,"Y"},
+            {90,"Z"},
+            {49,"1"},
+            {50,"2"},
+            {51,"3"},
+            {52,"4"},
+            {53,"5"},
+            {54,"6"},
+            {55,"7"},
+            {56,"8"},
+            {57,"9"},
+            {112,"F1"},
+            {113,"F2"},
+            {114,"F3"},
+            {115,"F4"},
+            {116,"F5"}
         };
 
         public bool drawStringCalled = false;
@@ -269,16 +313,21 @@ namespace PoP.classes
         ///</summary>
         public void DrawInventory()
         {
+            GameLoop.display.DrawString("Use: F12 then value next to item", 200, 2);
+            //Reset inventory box
+            WipeStringBox(WIDTH-42, 3, MAPHEIGHT-2, 40, ' ');
+
             //Update inventory count
             DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
 
-            int i = 3;
-
+            int y = 3;
+            int counter = 0;
             // Iterate through each item in the inventory and draw its name and slot onto the display
             foreach (Item item in Inventory.inventory)
             {
-                GameLoop.display.DrawString($"{item.Name} ({item.Slot})", 200, i);
-                i += 1;
+                GameLoop.display.DrawString($"{item.Name} ({item.Slot}) - {keys.ElementAt(counter).Value}", 200, y);
+                y += 1;
+                counter++;
             }
         }
 

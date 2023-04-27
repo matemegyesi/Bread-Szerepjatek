@@ -78,9 +78,6 @@ namespace PoP.classes
         }
         public void EnableMovement()
         {
-            GameLoop.display.WipeTextBox();
-            GameLoop.display.DrawString("Open Inventory: I", 5, 50);
-
             KeyboardInput.KeyPressed += KeyPressed;
         }
     }
