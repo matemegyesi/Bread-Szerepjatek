@@ -81,7 +81,7 @@ namespace PoP.classes
         }
         public override string ToString()
         {
-            return $"{Name};{Defense};{Slot}";
+            return $"{Name} / {Defense} / {Slot}";
         }
     }
 }

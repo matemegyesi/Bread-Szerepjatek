@@ -58,7 +58,7 @@ namespace PoP.classes
         ///</summary>
         public virtual void Start()
         {
-            GameLoop.playerMovement.UnsubKeyPressed();
+            GameLoop.playerMovement.DisableMovement();
         }
 
         ///<summary>
@@ -66,7 +66,7 @@ namespace PoP.classes
         ///</summary>
         public virtual void End()
         {
-            GameLoop.playerMovement.SubKeyPressed();
+            GameLoop.playerMovement.EnableMovement();
         }
 
     }

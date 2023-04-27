@@ -24,9 +24,15 @@
     "slot" : "Hand"
   },
   {
-    "name" : "Silver Ring",
-    "damage" : 10,
+    "name": "Silver Ring",
+    "damage": 10,
     "type": "Weapon",
-    "slot" : "Ring" 
+    "slot": "Ring"
+  },
+  {
+    "name": "Lance",
+    "damage": 1,
+    "type": "weapon",
+    "slot" : "Hand"
   }
 ]
