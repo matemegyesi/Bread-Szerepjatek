@@ -315,7 +315,7 @@ namespace PoP.classes
         {
             GameLoop.display.DrawString("Use: F12 then value next to item", 200, 2);
             //Reset inventory box
-            WipeStringBox(WIDTH-42, 3, MAPHEIGHT-2, 40, ' ');
+            WipeStringBox(WIDTH-42, 3, MAPHEIGHT-2, 40);
 
             //Update inventory count
             DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
@@ -336,13 +336,28 @@ namespace PoP.classes
         /// </summary>
         public void DrawGear()
         {
+            WipeStringBox(150, 27, 20, 44);
             int yStart = 27;
             foreach(KeyValuePair<Slot, Item> kv in Inventory.gear)
             {
                 if (kv.Value != null)
-                    DrawString($"{kv.Key}: {kv.Value.Name}", 165, yStart);
+                {
+                    if (kv.Value.GetType().Name == "Armor")
+                    {
+                        Armor item = kv.Value as Armor;
+                        DrawString($"{kv.Key}: {item.Name}", 153, yStart);
+                        DrawString($"Defense: {item.Defense}", 180, yStart);
+                    }
+                    else
+                    {
+                        Weapon item = kv.Value as Weapon;
+                        DrawString($"{kv.Key}: {kv.Value.Name}", 153, yStart);
+                        DrawString($"Damage: {item.Damage}", 180, yStart);
+                    }
+
+                }
                 else
-                    DrawString($"{kv.Key}: Empty", 165, yStart);
+                    DrawString($"{kv.Key}: Empty", 153, yStart);
 
                 yStart++;
             }
