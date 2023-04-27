@@ -49,7 +49,9 @@ namespace PoP
             { Slot.Chest, null},
             { Slot.Leg, null},
             { Slot.Hand, null},
-            { Slot.Ring, null}
+            { Slot.Ring, null},
+            { Slot.MainSword, null},
+            { Slot.MainCape, null}
         };
 
         private Dictionary<int, int> keys = new Dictionary<int, int>()
