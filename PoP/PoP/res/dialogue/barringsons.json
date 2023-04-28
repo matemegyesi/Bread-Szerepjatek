@@ -1,0 +1,46 @@
+﻿[
+  {
+    "actor": "Commander Roman, General of the Grand Fleet",
+    "text": "Welcome back, my friend. I hear you've been isolating yourself from the world of men, what brought you back?"
+  },
+  {
+    "actor": "Player",
+    "text": "It's good to see you Roman. I've been continuing my \"research\" on Nouzur. I couldn't make contact with someone who is not from Amaranthinos, to avoid casualties."
+  },
+  {
+    "actor": "Commander Roman, General of the Grand Fleet",
+    "text": "But if you are back that means something changed?"
+  },
+  {
+    "actor": "Player",
+    "text": "Sadly, yes. Things were different 5 years ago. The Sorcerer Order wasn't this radical and hot-headed, so I decided to investigate what happened."
+  },
+  {
+    "actor": "Commander Roman, General of the Grand Fleet",
+    "text": "I get it, you just couldn't let it go like everybody else, could ya?"
+  },
+  {
+    "actor": "Player",
+    "text": "You know me, my thirst for knowledge is both a gift and a curse. But knowing you is a gift right now."
+  },
+  {
+    "actor": "Commander Roman, General of the Grand Fleet",
+    "text": "How is that?"
+  },
+  {
+    "actor": "Player",
+    "text": "I need to get to Ermir's Volcano, but the Baharuth Empire is still strict about who can enter the Empire. I need an Empire Jewel, but it costs 20.0000 emerald crystals. You wouldn't know where I could get that fortune?"
+  },
+  {
+    "actor": "Commander Roman, General of the Grand Fleet",
+    "text": "You wouldn't believe if I told you I have the job perfect for you. It's about cleansing a nearby a lake, which the locals consider as sacred. No adventurer could do it for 2 years now and it starts to cause other problems in the wild life."
+  },
+  {
+    "actor": "Player",
+    "text": "I shall have a look at it then."
+  },
+  {
+    "actor": "Commander Roman, General of the Grand Fleet",
+    "text": "Always pleasue doing business with you, my friend. Farðu vel, vinur minn!"
+  }
+]
