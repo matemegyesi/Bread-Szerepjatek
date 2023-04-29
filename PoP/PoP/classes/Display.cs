@@ -183,11 +183,7 @@ namespace PoP.classes
         public void WipeStringBox(int x, int y, int height, int width, char fill = ' ')
         {
             // Create a string of the specified fill character with the same width as the rectangular area
-            string line = string.Empty;
-            for (int i = 0; i < width; i++)
-            {
-                line += fill;
-            }
+            string line = new(fill, width);
 
             // Draw the fill string at each y-coordinate in the rectangular area
             for (int yCurrent = y; yCurrent < y + height; yCurrent++)
@@ -202,11 +198,7 @@ namespace PoP.classes
         public void WipeTextBox()
         {
             // Create a string of spaces with a width of WIDTH - 2 (to account for the textbox borders)
-            string line = string.Empty;
-            for (int i = 0; i < WIDTH - 2; i++)
-            {
-                line += ' ';
-            }
+            string line = new(' ', WIDTH-2);
 
             // Fill the dialogue text box with the space string, except for the borders
             for (int i = 48; i < 62; i++)
