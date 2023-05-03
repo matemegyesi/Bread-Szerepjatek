@@ -16,62 +16,6 @@ namespace PoP.classes
             // Initializes a new instance of the Movement class and subscribes to the KeyboardInput.KeyPressed event.
             EnableMovement();
         }
-        public void KeyPressed(ConsoleKey key)
-        {
-            // Check which key was pressed and move the player accordingly
-            switch (key)
-            {
-                case ConsoleKey.D:
-                    // Check if the tile to the right of the player is empty
-                    if (Display.content[GameLoop.display.PlayerY][GameLoop.display.PlayerX + 1] == ' ')
-                    {
-                        // Erase the player's current position, move them one tile to the right, and redraw the player
-                        GameLoop.display.DrawString(" ", GameLoop.display.PlayerX, GameLoop.display.PlayerY);
-                        GameLoop.display.PlayerX++;
-                        GameLoop.display.DrawCharacter();
-                    }
-                    break;
-                case ConsoleKey.A:
-                    // Check if the tile to the left of the player is empty
-                    if (Display.content[GameLoop.display.PlayerY][GameLoop.display.PlayerX - 1] == ' ')
-                    {
-                        // Erase the player's current position, move them one tile to the left, and redraw the player
-                        GameLoop.display.DrawString(" ", GameLoop.display.PlayerX, GameLoop.display.PlayerY);
-                        GameLoop.display.PlayerX--;
-                        GameLoop.display.DrawCharacter();
-                    }
-                    break;
-                case ConsoleKey.W:
-                    // Check if the tile above the player is empty
-                    if (Display.content[GameLoop.display.PlayerY - 1][GameLoop.display.PlayerX] == ' ')
-                    {
-                        // Erase the player's current position, move them one tile up, and redraw the player
-                        GameLoop.display.DrawString(" ", GameLoop.display.PlayerX, GameLoop.display.PlayerY);
-                        GameLoop.display.PlayerY--;
-                        GameLoop.display.DrawCharacter();
-                    }
-                    break;
-                case ConsoleKey.S:
-                    // Check if the tile below the player is empty
-                    if (Display.content[GameLoop.display.PlayerY + 1][GameLoop.display.PlayerX] == ' ')
-                    {
-                        // Erase the player's current position, move them one tile down, and redraw the player
-                        GameLoop.display.DrawString(" ", GameLoop.display.PlayerX, GameLoop.display.PlayerY);
-                        GameLoop.display.PlayerY++;
-                        GameLoop.display.DrawCharacter();
-                    }
-                    break;
-                default:
-                    break;
-            }
-
-            // Check if the player is standing on a location and load it if they are
-            if (Map.CurrentMap.locations.Where(x => x.positionX == GameLoop.display.PlayerX && x.positionY == GameLoop.display.PlayerY && !x.isCompleted).ToList().Count == 1)
-            {
-                Map.CurrentMap.locations.Where(x => x.positionX == GameLoop.display.PlayerX && x.positionY == GameLoop.display.PlayerY && !x.isCompleted).First().LoadLocation();
-            }
-        }
-
         public void DisableMovement()
         {
             KeyboardInput.KeyPressed -= KeyPressed;
@@ -79,6 +23,47 @@ namespace PoP.classes
         public void EnableMovement()
         {
             KeyboardInput.KeyPressed += KeyPressed;
+        }
+        public void KeyPressed(ConsoleKey key)
+        {
+            // Get the player's current position.
+            int x = GameLoop.display.PlayerX;
+            int y = GameLoop.display.PlayerY;
+
+            // Check which key was pressed and move the player accordingly.
+            switch (key)
+            {
+                case ConsoleKey.D:
+                    x++;
+                    break;
+                case ConsoleKey.A:
+                    x--;
+                    break;
+                case ConsoleKey.W:
+                    y--;
+                    break;
+                case ConsoleKey.S:
+                    y++;
+                    break;
+                default:
+                    return;
+            }
+
+            // Check if the new position is empty.
+            if (Display.content[y][x] != ' ')
+            {
+                return;
+            }
+
+            // Erase the player's current position, move them to the new position, and redraw the player.
+            GameLoop.display.DrawString(" ", GameLoop.display.PlayerX, GameLoop.display.PlayerY);
+            GameLoop.display.PlayerX = x;
+            GameLoop.display.PlayerY = y;
+            GameLoop.display.DrawCharacter();
+
+            // Check if the player is standing on a location and load it if they are.
+            var location = Map.CurrentMap.locations.FirstOrDefault(l => l.positionX == x && l.positionY == y && !l.isCompleted);
+            location?.LoadLocation();
         }
     }
 }
