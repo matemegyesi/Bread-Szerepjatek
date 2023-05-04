@@ -1,0 +1,22 @@
+[
+	{
+		"actor" : "Guards of Vaett",
+		"text" : "Stop adventurer! What business takes you to Vaett?"
+	},
+	{
+		"actor" : "Player",
+		"text" : "Hi there! I'm a sorcerer and I have a meeting with Stigandr, I believe you know him."
+	},
+	{
+		"actor" : "Guards of Vaett",
+		"text" : "A one-day pass in Vaett for adventurers who don't plan on staying here is 20 emerald crystals."
+	},
+	{
+		"actor" : "Player",
+		"text" : "Fine, here it is."
+	},
+	{
+		"actor" : "Player",
+		"text" : "Welcome to Vaett! Enjoy your stay!"
+	}
+]
