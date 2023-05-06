@@ -1,0 +1,34 @@
+[
+	{
+		"actor" : "Player",
+		"text" : "Gudleikur, what happened?"
+	},
+	{
+		"actor" : "Gudleikur",
+		"text" : "It was a demon. He imprisoned my mind and tried to ..."
+	},
+	{
+		"actor" : "...",
+		"text" : "The Maw emerges and shut Gudleikur's mouth with a curse."
+	},
+	{
+		"actor" : "Player",
+		"text" : "Adavesa, my darling, are you okay?"
+	},
+	{
+		"actor" : "Adavesa",
+		"text" : "I wish I could say that. A lot happened since we last met. Before I got trapped by Gudleikur, I sent my right hand to the dwarfs to craft me an armor, which allows me to go on land. But he never returned. I wished to see you with urgent matters, honestly, but I had no opportunity till now."
+	},
+	{
+		"actor" : "Player",
+		"text" : "It's okay, we can talk now. I'll find your servant don't worry, but until I return, take security measures."
+	},
+	{
+		"actor" : "Adavesa",
+		"text" : "I'll see to it."
+	},
+	{
+		"actor" : "Player",
+		"text" : "Expect my return in 7 days, till then, Meeth Ást!"
+	}
+]
