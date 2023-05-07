@@ -14,12 +14,19 @@ namespace PoP
 
             GameLoop gameLoop = new GameLoop();
 
-            if (false) // Állítsd true-ra ha le akarod tesztelni, hogy működnek-e a színek.
+            if (false) // Testing new rendering system
             {
                 Console.OutputEncoding = Encoding.Unicode;
                 Style.EnableStyling();
 
-                Console.WriteLine(Style.GetDashedLine(20) + $"It {Style.ColorFormat("works", ColorAnsi.RED, FormatAnsi.UNDERLINE)}!");
+                string str = Style.GetDashedLine(21) + $"It {Style.ColorFormat("works", ColorAnsi.RED, FormatAnsi.UNDERLINE)}!";
+                Border border = new Border();
+                Intersection intersection = new Intersection(BorderSide.Right, 1, '$');
+                border.IntersectionList.Add(intersection);
+                foreach (var item in border.Surround(new List<string>() { str }, 21 + "It works!".Length))
+                {
+                    Console.WriteLine(item);
+                }
 
                 Console.ReadKey();
             }
