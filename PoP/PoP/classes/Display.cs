@@ -361,9 +361,9 @@ namespace PoP.classes
 
             try
             {
-                foreach (string str in content)
+                foreach (string line in WindowRenderer.Get())
                 {
-                    result += str;
+                    result += line;
                 }
                 return result;
             }
