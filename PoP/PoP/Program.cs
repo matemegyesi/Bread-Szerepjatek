@@ -33,8 +33,16 @@ namespace PoP
                 WindowRenderer.Map.LocationList.Add(combat1);
 
                 WindowRenderer.Map.MoveCharacterMarker(16, 16);
-                
 
+                List<Item> itemList = new List<Item>();
+                for (int i = 0; i < 10; i++)
+                {
+                    itemList.Add(new Armor("asd" + i + "asd" + i, Slot.Leg, i * 4.5));
+                    itemList.Add(new Weapon("qweqwe" + i + i, Slot.Hand, i * 0.8));
+                }
+                WindowRenderer.Inventory.UpdateItemList(itemList);
+                WindowRenderer.Inventory.PreviousPage();
+                WindowRenderer.Inventory.ToggleInUse();
 
                 WindowRenderer.Map.ImportMap("res\\maps\\Raudagnupur.txt");
 
