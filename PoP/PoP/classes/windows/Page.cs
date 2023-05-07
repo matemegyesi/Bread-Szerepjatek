@@ -19,6 +19,10 @@ namespace PoP.classes.windows
             remainingSpace = AvailableSpace;
         }
 
+        /// <summary>
+        /// (Re)creates the pages of items for the inventory.
+        /// </summary>
+        /// <param name="itemList">The changed list of items.</param>
         public static void CreatePages(List<Item> itemList)
         {
             List.Clear();

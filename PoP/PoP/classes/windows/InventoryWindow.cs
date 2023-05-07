@@ -249,6 +249,9 @@ namespace PoP.classes.windows
             return pageIndicatorLineList;
         }
 
+        /// <summary>
+        /// It turns the inventory to the next page. If it's already the last page, it'll loop around.
+        /// </summary>
         public void NextPage()
         {
             Page.CreatePages(itemList);
@@ -268,6 +271,9 @@ namespace PoP.classes.windows
             HasChanged = true;
         }
 
+        /// <summary>
+        /// It turns the inventory to the previous page. If it's the first page, it'll loop around.
+        /// </summary>
         public void PreviousPage()
         {
             Page.CreatePages(itemList);
@@ -287,6 +293,9 @@ namespace PoP.classes.windows
             HasChanged = true;
         }
 
+        /// <summary>
+        /// Toggles the color of the equipment keys next to the item names.
+        /// </summary>
         public void ToggleInUse()
         {
             if (!InUse)
@@ -302,6 +311,10 @@ namespace PoP.classes.windows
             HasChanged = true;
         }
 
+        /// <summary>
+        /// Overrites the local item list of the inventory.
+        /// </summary>
+        /// <param name="newItemList">The changed list.</param>
         public void UpdateItemList(List<Item> newItemList)
         {
             itemList = newItemList;
