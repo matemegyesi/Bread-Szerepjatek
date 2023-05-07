@@ -19,10 +19,6 @@ namespace PoP.classes
         public const int MAPWIDTH = 148;
         public const int MAPHEIGHT = 46;
 
-        // Player's current position in the game world.
-        public int PlayerX = 9;
-        public int PlayerY = 13;
-
 
         public static List<string> content = new List<string>() {
             $"╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╤════════════════════════════════════════════╤═════════════════════════════════════════╗",
@@ -152,7 +148,7 @@ namespace PoP.classes
             DrawString("GEAR", 170, 25);
 
             // Display the initial game content
-            Console.Write(GetContent());
+            //Console.Write(GetContent());
         }
 
         /// <summary>
@@ -164,7 +160,7 @@ namespace PoP.classes
             Console.SetCursorPosition(0, 0);
 
             // If the DrawString method was called since the last rendering
-            if (drawStringCalled)
+            if (WindowRenderer.NeedUpdate)
             {
                 // Refresh the game interface by printing the current game content
                 Console.Write(GetContent());
@@ -277,7 +273,7 @@ namespace PoP.classes
         /// </summary>
         public void DrawCharacter()
         {
-            DrawString("H", PlayerX, PlayerY);
+            //DrawString("H", PlayerX, PlayerY);
         }
 
         ///<summary>

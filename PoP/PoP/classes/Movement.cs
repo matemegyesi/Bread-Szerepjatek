@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PoP.classes.windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,20 @@ namespace PoP.classes
 {
     class Movement
     {
+        // Player's current position in the game world.
+        public int PlayerX { get; private set; }
+        public int PlayerY { get; private set; }
+
         /// <summary>
         /// The Movement class is responsible for handling the movement of the player character in the game.
         /// </summary>
-        public Movement()
+        public Movement(int startPositionX, int startPositionY)
         {
             // Initializes a new instance of the Movement class and subscribes to the KeyboardInput.KeyPressed event.
             EnableMovement();
+
+            PlayerX = startPositionX + 1;
+            PlayerY = startPositionY + 1;
         }
         public void DisableMovement()
         {
@@ -27,8 +35,8 @@ namespace PoP.classes
         public void KeyPressed(ConsoleKey key)
         {
             // Get the player's current position.
-            int x = GameLoop.display.PlayerX;
-            int y = GameLoop.display.PlayerY;
+            int x = PlayerX;
+            int y = PlayerY;
 
             // Check which key was pressed and move the player accordingly.
             switch (key)
@@ -50,16 +58,15 @@ namespace PoP.classes
             }
 
             // Check if the new position is empty.
-            if (Display.content[y][x] != ' ')
+            if (MapWindow.Map[y - 1, x - 1].Char != ' ')
             {
                 return;
             }
 
             // Erase the player's current position, move them to the new position, and redraw the player.
-            GameLoop.display.DrawString(" ", GameLoop.display.PlayerX, GameLoop.display.PlayerY);
-            GameLoop.display.PlayerX = x;
-            GameLoop.display.PlayerY = y;
-            GameLoop.display.DrawCharacter();
+            PlayerX = x;
+            PlayerY = y;
+            WindowRenderer.Map.MoveCharacterMarker(x - 1, y - 1);
 
             // Check if the player is standing on a location and load it if they are.
             var location = Map.CurrentMap.locations.FirstOrDefault(l => l.positionX == x && l.positionY == y && !l.isCompleted);

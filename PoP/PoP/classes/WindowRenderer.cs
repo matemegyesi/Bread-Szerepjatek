@@ -13,6 +13,21 @@ namespace PoP.classes
         public static int Height { get; private set; } = 63;
         public static int Width { get; private set; } = 237;
 
+        public static bool NeedUpdate
+        {
+            get
+            {
+                if (Map.HasChanged || Stats.HasChanged || Gear.HasChanged || Inventory.HasChanged || Dialogue.HasChanged)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
         private static List<string> windowLines = new List<string>(Height);
 
         public static MapWindow Map = new MapWindow();

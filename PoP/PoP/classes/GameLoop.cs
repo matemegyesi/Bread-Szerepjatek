@@ -72,7 +72,7 @@ namespace PoP.classes
             display = new Display();
             Running = true;
             keyboardInput = new KeyboardInput();
-            playerMovement = new Movement();
+            playerMovement = new Movement(9, 13);
             inventory = new Inventory();
             action = new Action();
 
@@ -93,7 +93,7 @@ namespace PoP.classes
             display.DrawInventory();
 
             // Initialize character
-            display.DrawCharacter();
+            WindowRenderer.Map.MoveCharacterMarker(9, 13);
 
             //Initialize gear
             display.DrawGear();

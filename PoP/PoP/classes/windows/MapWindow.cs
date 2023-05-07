@@ -9,7 +9,7 @@ namespace PoP.classes.windows
 {
     internal class MapWindow : Window
     {
-        static private Tile[,] map = new Tile[46, 147];
+        public static Tile[,] Map { get; private set; } = new Tile[46, 147];
         private bool isMapLoaded;
         public List<Location> LocationList = new List<Location>();
 
@@ -42,7 +42,7 @@ namespace PoP.classes.windows
                 {
                     LineList.Clear();
 
-                    for (int row = 0; row < map.GetLength(0); row++)
+                    for (int row = 0; row < Map.GetLength(0); row++)
                     {
                         string newLine = GenerateRow(row);
 
@@ -90,51 +90,51 @@ namespace PoP.classes.windows
                 {
                     _cardPosX += 4;
 
-                    map[loc.positionY, _cardPosX].Char = Border.SINGLE_TO_DOUBLE_T_RIGHT;
-                    map[loc.positionY, _cardPosX + _innerText.Length + 1].Char = Border.SINGLE_VERTICAL;
+                    Map[loc.positionY, _cardPosX].Char = Border.SINGLE_TO_DOUBLE_T_RIGHT;
+                    Map[loc.positionY, _cardPosX + _innerText.Length + 1].Char = Border.SINGLE_VERTICAL;
                 }
                 else
                 {
                     _cardPosX -= (4 + _innerText.Length + 1);
 
-                    map[loc.positionY, _cardPosX].Char = Border.SINGLE_VERTICAL;
-                    map[loc.positionY, _cardPosX + _innerText.Length + 1].Char = Border.SINGLE_TO_DOUBLE_T_LEFT;
+                    Map[loc.positionY, _cardPosX].Char = Border.SINGLE_VERTICAL;
+                    Map[loc.positionY, _cardPosX + _innerText.Length + 1].Char = Border.SINGLE_TO_DOUBLE_T_LEFT;
                 }
 
-                map[loc.positionY, _cardPosX].SetStartStyle(Style.GetColor(color));
+                Map[loc.positionY, _cardPosX].SetStartStyle(Style.GetColor(color));
 
                 // -- Top border
                 for (int i = 0; i < _innerText.Length + 2; i++)
                 {
                     if (i == 0)
                     {
-                        map[loc.positionY - 1, _cardPosX + i].Char = Border.CURVED_TOPLEFT;
-                        map[loc.positionY - 1, _cardPosX + i].SetStartStyle(Style.GetColor(color));
+                        Map[loc.positionY - 1, _cardPosX + i].Char = Border.CURVED_TOPLEFT;
+                        Map[loc.positionY - 1, _cardPosX + i].SetStartStyle(Style.GetColor(color));
                     }
                     else if (i == _innerText.Length + 1)
                     {
-                        map[loc.positionY - 1, _cardPosX + i].Char = Border.CURVED_TOPRIGHT;
-                        map[loc.positionY - 1, _cardPosX + i].SetEndStyle(Style.END);
+                        Map[loc.positionY - 1, _cardPosX + i].Char = Border.CURVED_TOPRIGHT;
+                        Map[loc.positionY - 1, _cardPosX + i].SetEndStyle(Style.END);
                     }
                     else
                     {
-                        map[loc.positionY - 1, _cardPosX + i].Char = Border.SINGLE_HORIZONTAL;
+                        Map[loc.positionY - 1, _cardPosX + i].Char = Border.SINGLE_HORIZONTAL;
                     }
                 }
 
                 // -- Inner text
                 for (int i = 0; i < _innerText.Length; i++)
                 {
-                    map[loc.positionY, _cardPosX + i + 1].Char = _innerText[i];
+                    Map[loc.positionY, _cardPosX + i + 1].Char = _innerText[i];
 
                     if (i == 0)
                     {
-                        map[loc.positionY, _cardPosX + 1].SetStartStyle(Style.GetFormat(FormatAnsi.HIGHLIGHT));
+                        Map[loc.positionY, _cardPosX + 1].SetStartStyle(Style.GetFormat(FormatAnsi.HIGHLIGHT));
                     }
 
                     if (i == _innerText.Length - 1)
                     {
-                        map[loc.positionY, _cardPosX + i + 1].SetEndStyle(Style.END);
+                        Map[loc.positionY, _cardPosX + i + 1].SetEndStyle(Style.END);
                     }
                 }
 
@@ -143,22 +143,22 @@ namespace PoP.classes.windows
                 {
                     if (i == 0)
                     {
-                        map[loc.positionY + 1, _cardPosX + i].Char = Border.CURVED_BOTTOMLEFT;
-                        map[loc.positionY + 1, _cardPosX + i].SetStartStyle(Style.GetColor(color));
+                        Map[loc.positionY + 1, _cardPosX + i].Char = Border.CURVED_BOTTOMLEFT;
+                        Map[loc.positionY + 1, _cardPosX + i].SetStartStyle(Style.GetColor(color));
                     }
                     else if (i == _innerText.Length + 1)
                     {
-                        map[loc.positionY + 1, _cardPosX + i].Char = Border.CURVED_BOTTOMRIGHT;
-                        map[loc.positionY + 1, _cardPosX + i].SetEndStyle(Style.END);
+                        Map[loc.positionY + 1, _cardPosX + i].Char = Border.CURVED_BOTTOMRIGHT;
+                        Map[loc.positionY + 1, _cardPosX + i].SetEndStyle(Style.END);
                     }
                     else
                     {
-                        map[loc.positionY + 1, _cardPosX + i].Char = Border.SINGLE_HORIZONTAL;
+                        Map[loc.positionY + 1, _cardPosX + i].Char = Border.SINGLE_HORIZONTAL;
                     }
                 }
 
-                map[loc.positionY, _cardPosX + _innerText.Length + 1].SetStartStyle(Style.GetColor(color));
-                map[loc.positionY, _cardPosX + _innerText.Length + 1].SetEndStyle(Style.END);
+                Map[loc.positionY, _cardPosX + _innerText.Length + 1].SetStartStyle(Style.GetColor(color));
+                Map[loc.positionY, _cardPosX + _innerText.Length + 1].SetEndStyle(Style.END);
 
                 // Writing the arrow
                 string _arrow = Style.GetBlankLine(2, Border.DOUBLE_HORIZONTAL);
@@ -175,12 +175,12 @@ namespace PoP.classes.windows
                     _arrowPosX -= 3;
                 }
 
-                map[loc.positionY, _arrowPosX].SetStartStyle(Style.GetColor(color));
+                Map[loc.positionY, _arrowPosX].SetStartStyle(Style.GetColor(color));
                 for (int i = 0; i < _arrow.Length; i++)
                 {
-                    map[loc.positionY, _arrowPosX + i].Char = _arrow[i];
+                    Map[loc.positionY, _arrowPosX + i].Char = _arrow[i];
                 }
-                map[loc.positionY, _arrowPosX + _arrow.Length - 1].SetEndStyle(Style.END);
+                Map[loc.positionY, _arrowPosX + _arrow.Length - 1].SetEndStyle(Style.END);
 
                 //map[loc.positionY, loc.positionX].Char = '×';
 
@@ -193,10 +193,10 @@ namespace PoP.classes.windows
 
         private string GenerateRow(int rowIndex)
         {
-            Tile[] row = Enumerable.Range(0, map.GetLength(1)).Select(x => map[rowIndex, x]).ToArray();
+            Tile[] row = Enumerable.Range(0, Map.GetLength(1)).Select(x => Map[rowIndex, x]).ToArray();
             string newLine = string.Empty;
 
-            for (int col = 0; col < map.GetLength(1); col++)
+            for (int col = 0; col < Map.GetLength(1); col++)
             {
 
                 if (rowIndex == PosY && col == PosX)
@@ -256,7 +256,7 @@ namespace PoP.classes.windows
                 int _colIndex = 0;
                 foreach (char col in row)
                 {
-                    map[_rowIndex, _colIndex] = new Tile(col);
+                    Map[_rowIndex, _colIndex] = new Tile(col);
 
                     _colIndex++;
                 }
