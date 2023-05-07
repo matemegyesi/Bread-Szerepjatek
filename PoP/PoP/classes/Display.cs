@@ -129,8 +129,6 @@ namespace PoP.classes
             {116,"F5"}
         };
 
-        public bool drawStringCalled = false;
-
         /// <summary>
         /// Initializes a new instance of the Display class, setting up the console window and displaying the initial game interface.
         /// </summary>
@@ -139,13 +137,9 @@ namespace PoP.classes
             // Set the console output encoding and hide the cursor
             Console.OutputEncoding = Encoding.Unicode;
             Console.CursorVisible = false;
-            Style.EnableStyling();
 
-            // Display the game interface elements
-            DrawString("INVENTORY(0)", 212, 1);
-            DrawString("STATISTICS", 167, 1);
-            DrawString("MAP", 65, 1);
-            DrawString("GEAR", 170, 25);
+            // Enabling the recognition of ANSI escape codes
+            Style.EnableStyling();
 
             // Display the initial game content
             //Console.Write(GetContent());
@@ -164,7 +158,6 @@ namespace PoP.classes
             {
                 // Refresh the game interface by printing the current game content
                 Console.Write(GetContent());
-                //drawStringCalled = false;
             }
         }
 
@@ -184,7 +177,7 @@ namespace PoP.classes
             // Draw the fill string at each y-coordinate in the rectangular area
             for (int yCurrent = y; yCurrent < y + height; yCurrent++)
             {
-                GameLoop.display.DrawString(line, x, yCurrent);
+                //GameLoop.display.DrawString(line, x, yCurrent);
             }
         }
 
@@ -199,7 +192,7 @@ namespace PoP.classes
             // Fill the dialogue text box with the space string, except for the borders
             for (int i = 48; i < 62; i++)
             {
-                GameLoop.display.DrawString(line, 1, i);
+                //GameLoop.display.DrawString(line, 1, i);
             }
         }
 
@@ -225,9 +218,6 @@ namespace PoP.classes
                     content[y] = new string(characters);
                 }
             }
-
-            // Set a flag to indicate that a draw string operation has been called
-            drawStringCalled = true;
         }
 
         /// <summary>
@@ -241,7 +231,7 @@ namespace PoP.classes
         public void DrawConversation(string e, int x, int y, string name)
         {
             // Draw speaker name above conversation text
-            DrawString(name, x, y - 2);
+            //DrawString(name, x, y - 2);
 
             // Add "(Next: SPACE)" to the end of the conversation text
             e += " (Next: SPACE)";
@@ -263,9 +253,6 @@ namespace PoP.classes
                     content[y] = new string(chars);
                 }
             }
-
-            // Set the drawStringCalled flag to true
-            drawStringCalled = true;
         }
 
         /// <summary>
@@ -291,7 +278,7 @@ namespace PoP.classes
             // Draw each line of the map onto the display
             for (int i = 1; i < MAPHEIGHT + 1; i++)
             {
-                DrawString(map[mapC], 1, i);
+                //DrawString(map[mapC], 1, i);
                 mapC++;
             }
         }
@@ -301,19 +288,19 @@ namespace PoP.classes
         ///</summary>
         public void DrawInventory()
         {
-            GameLoop.display.DrawString("Use: F12 then value next to item", 200, 2);
+            //GameLoop.display.DrawString("Use: F12 then value next to item", 200, 2);
             //Reset inventory box
-            WipeStringBox(WIDTH-42, 3, MAPHEIGHT-2, 40);
+            //WipeStringBox(WIDTH-42, 3, MAPHEIGHT-2, 40);
 
             //Update inventory count
-            DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
+            //DrawString($"INVENTORY({Inventory.inventory.Count})", 212, 1);
 
             int y = 3;
             int counter = 0;
             // Iterate through each item in the inventory and draw its name and slot onto the display
             foreach (Item item in Inventory.inventory)
             {
-                GameLoop.display.DrawString($"{item.Name} ({item.Slot}) - {keys.ElementAt(counter).Value}", 200, y);
+                //GameLoop.display.DrawString($"{item.Name} ({item.Slot}) - {keys.ElementAt(counter).Value}", 200, y);
                 y += 1;
                 counter++;
             }
@@ -324,7 +311,7 @@ namespace PoP.classes
         /// </summary>
         public void DrawGear()
         {
-            WipeStringBox(150, 27, 20, 44);
+            //WipeStringBox(150, 27, 20, 44);
             int yStart = 27;
             foreach(KeyValuePair<Slot, Item> kv in Inventory.gear)
             {
@@ -333,19 +320,19 @@ namespace PoP.classes
                     if (kv.Value.GetType().Name == "Armor")
                     {
                         Armor item = kv.Value as Armor;
-                        DrawString($"{kv.Key}: {item.Name}", 153, yStart);
-                        DrawString($"Defense: {item.Defense}", 180, yStart);
+                        //DrawString($"{kv.Key}: {item.Name}", 153, yStart);
+                        //DrawString($"Defense: {item.Defense}", 180, yStart);
                     }
                     else
                     {
                         Weapon item = kv.Value as Weapon;
-                        DrawString($"{kv.Key}: {kv.Value.Name}", 153, yStart);
-                        DrawString($"Damage: {item.Damage}", 180, yStart);
+                        //DrawString($"{kv.Key}: {kv.Value.Name}", 153, yStart);
+                        //DrawString($"Damage: {item.Damage}", 180, yStart);
                     }
 
                 }
                 else
-                    DrawString($"{kv.Key}: Empty", 153, yStart);
+                    //DrawString($"{kv.Key}: Empty", 153, yStart);
 
                 yStart++;
             }

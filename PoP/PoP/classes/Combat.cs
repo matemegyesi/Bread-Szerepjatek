@@ -162,17 +162,7 @@ namespace PoP.classes
                     Wire.Dialogue.ProgressCombat("PLAYER'S TURN", new List<string>() { "Weapon attack (Q)", "Use spell 1 (W)", "Use spell 2 (E)", "Use spell 3 (R)" }, ColorAnsi.RED);
 
                     // Display the player and enemy information
-                    List<string> playerInfo = GetPlayerInfo();
-                    for (int i = 0; i < playerInfo.Count; i++)
-                    {
-                        GameLoop.display.DrawString(playerInfo[i], 40, 50 + i);
-                    }
-
-                    List<string> enemyInfo = GetEnemyInfo();
-                    for (int i = 0; i < enemyInfo.Count; i++)
-                    {
-                        GameLoop.display.DrawString(enemyInfo[i], 60, 50 + i);
-                    }
+                    // ...
 
                     break;
 

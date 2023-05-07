@@ -58,15 +58,8 @@ namespace PoP.classes
             // Sends the F11 key input using the CSInputs library.
             CSInputs.SendInput.Keyboard.Send(CSInputs.Enums.KeyboardKeys.F11);
 
-
-
-            // Enables the ANSI coloring
-            Style.EnableStyling();
-
             // Initializes the Window Renderer
             Wire.Initialize();
-
-
 
             // Initializes objects for the display, keyboard input, and player movement.
             display = new Display();
