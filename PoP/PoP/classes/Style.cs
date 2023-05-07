@@ -359,7 +359,7 @@ namespace PoP.classes
         /// <returns>Dashed line.</returns>
         public static string GetDashedLine(int lineLength)
         {
-            char border = '-';
+            char border = Border.SINGLE_HORIZONTAL;
 
             string newLine = string.Empty;
             if (lineLength % 2 != 0)
