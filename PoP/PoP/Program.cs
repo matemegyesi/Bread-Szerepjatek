@@ -39,6 +39,19 @@ namespace PoP
                 {
                     itemList.Add(new Armor("asd" + i + "asd" + i, Slot.Leg, i * 4.5));
                     itemList.Add(new Weapon("qweqwe" + i + i, Slot.Hand, i * 0.8));
+
+                    switch (i)
+                    {
+                        case 1:
+                            Inventory.gear[Slot.Chest] = new Armor("Mellkasvédő", Slot.Leg, i * 4.5);
+                            break;
+                        case 2:
+                            Inventory.gear[Slot.Ring] = new Armor("Egy Gyűrű", Slot.Leg, i * 8.5);
+                            break;
+                        case 3:
+                            Inventory.gear[Slot.Hand] = new Weapon("Vipera", Slot.Hand, i * 0.5);
+                            break;
+                    }
                 }
                 WindowRenderer.Inventory.UpdateItemList(itemList);
                 WindowRenderer.Inventory.PreviousPage();
