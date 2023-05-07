@@ -19,7 +19,7 @@ namespace PoP
                 Console.OutputEncoding = Encoding.Unicode;
                 Style.EnableStyling();
 
-                Console.WriteLine($"It {Style.ColorFormat("works", ColorAnsi.RED, FormatAnsi.UNDERLINE)}!");
+                Console.WriteLine(Style.GetDashedLine(20) + $"It {Style.ColorFormat("works", ColorAnsi.RED, FormatAnsi.UNDERLINE)}!");
 
                 Console.ReadKey();
             }
