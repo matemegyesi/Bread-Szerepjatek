@@ -54,6 +54,7 @@ namespace PoP.classes
         {
             // Display the map's image
             GameLoop.display.DrawMap(path);
+            WindowRenderer.Map.ImportMap("res\\maps\\Raudagnupur.txt");
 
             // Set the current map to this map
             CurrentMap = this;

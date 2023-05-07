@@ -60,7 +60,7 @@ namespace PoP.classes
         /// <summary>
         /// Gives back the ANSI escape code that stops every styling.
         /// </summary>
-        private const string END = "\u001b[0m";
+        public const string END = "\u001b[0m";
 
 
         #region Public methods

@@ -36,6 +36,9 @@ namespace PoP.classes
         ///</summary>
         public bool isCompleted { get; set; }
 
+        public bool isHidden { get; set; }
+        public string Name { get; set; }
+
         ///<summary>
         /// The path of the location.
         ///</summary>
