@@ -60,10 +60,8 @@ namespace PoP.classes
                 Inventory.gear[Slot] = this;
             }
 
-            GameLoop.display.DrawGear();
+            WindowRenderer.Gear.ForceUpdate();
             WindowRenderer.Inventory.UpdateItemList(Inventory.inventory);
-
-            // TODO: statok és inventory frissítése
         }
 
         ///<summary>
@@ -79,10 +77,8 @@ namespace PoP.classes
             Inventory.gear[Slot] = null;
             Inventory.inventory[inventoryIndex] = this;
 
-            GameLoop.display.DrawGear();
+            WindowRenderer.Gear.UpdateGear();
             WindowRenderer.Inventory.UpdateItemList(Inventory.inventory);
-
-            // TODO: statok és inventory frissítése
         }
 
         ///<summary>
@@ -99,17 +95,15 @@ namespace PoP.classes
                 Inventory.gear[Slot] = null;
                 Inventory.inventory.Add(this);
 
-                GameLoop.display.DrawGear();
+                WindowRenderer.Gear.UpdateGear();
 
                 return true;
             }
 
-            GameLoop.display.DrawGear();
+            WindowRenderer.Gear.UpdateGear();
             WindowRenderer.Inventory.UpdateItemList(Inventory.inventory);
 
             return false;
-
-            // TODO: statok és inventory frissítése
         }
     }
 }

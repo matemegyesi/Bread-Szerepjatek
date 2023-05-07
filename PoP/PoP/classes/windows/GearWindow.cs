@@ -24,36 +24,94 @@ namespace PoP.classes.windows
 
         protected override List<string> GenerateLines()
         {
-            LineList.Clear();
 
-            // Gear header
-            AddBlankLine();
-            AlignedText _header = Style.AlignCenterSpaces(Title, Width);
-            AddLine(_header.Before + Style.ColorFormat(Title, ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT) + _header.After);
-
-            AddBlankLine();
-            AddLine(Style.Color(Style.GetDashedLine(Width), ColorAnsi.GREY));
-            AddBlankLine();
-
-            // Overall info
-            string _defTitle = " OVERALL DEFENCE: ";
-            int _defSum = 43;
-            AddLine(Style.GetBlankLine(9) + _defTitle + Style.GetRemainingSpace(_defTitle, 18) + Style.ColorFormat(_defSum + " def", ColorAnsi.TEAL, FormatAnsi.HIGHLIGHT));
-
-            string _dmgTitle = " OVERALL DAMAGE: ";
-            int _dmgSum = 25;
-            AddLine(Style.GetBlankLine(9) + _dmgTitle + Style.GetRemainingSpace(_dmgTitle, 18) + Style.ColorFormat(_dmgSum + " hp", ColorAnsi.RUST, FormatAnsi.HIGHLIGHT));
-
-            AddBlankLine();
-
-            // Individual info
-            foreach (var item in Inventory.gear)
+            if (CachedLineList.Count != Height)
             {
-                AddLine(GenerateGearCard(item.Key, item.Value));
-                AddBlankLine();
+                LineList.Clear();
+
+                // Gear header
+                foreach (string line in GenerateHeader())
+                {
+                    AddLine(line);
+                }
+
+                // Overall info
+                foreach (string line in GenerateOverallInfo())
+                {
+                    AddLine(line);
+                }
+
+                // Individual info
+                foreach (var item in Inventory.gear)
+                {
+                    AddLine(GenerateGearCard(item.Key, item.Value));
+                    AddBlankLine();
+                }
+            }
+            else
+            {
+                LineList.RemoveRange(5, LineList.Count - 5);
+
+                // Overall info
+                foreach (string line in GenerateOverallInfo())
+                {
+                    AddLine(line);
+                }
+
+                // Individual info
+                foreach (var item in Inventory.gear)
+                {
+                    AddLine(GenerateGearCard(item.Key, item.Value));
+                    AddBlankLine();
+                }
             }
 
             return LineList;
+        }
+
+        private List<string> GenerateHeader()
+        {
+            List<string> headerLineList = new List<string>();
+
+            AddBlankLineLocal(ref headerLineList);
+            AlignedText _header = Style.AlignCenterSpaces(Title, Width);
+            AddLineLocal(ref headerLineList, _header.Before + Style.ColorFormat(Title, ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT) + _header.After);
+
+            AddBlankLineLocal(ref headerLineList);
+            AddLineLocal(ref headerLineList, Style.Color(Style.GetDashedLine(Width), ColorAnsi.GREY));
+            AddBlankLineLocal(ref headerLineList);
+
+            return headerLineList;
+        }
+
+        private List<string> GenerateOverallInfo()
+        {
+            List<string> overallInfoLineList = new List<string>();
+
+            double _dmgSum = 0;
+            double _defSum = 0;
+
+            foreach (var item in Inventory.gear)
+            {
+                if (item.Value is Weapon)
+                {
+                    _dmgSum += (item.Value as Weapon).Damage;
+                }
+                else if (item.Value is Armor)
+                {
+                    _defSum += (item.Value as Armor).Defense;
+                }
+            }
+
+            string _dmgTitle = " OVERALL DAMAGE: ";
+            AddLineLocal(ref overallInfoLineList, Style.GetBlankLine(9) + _dmgTitle + Style.GetRemainingSpace(_dmgTitle, 18) + Style.ColorFormat(_dmgSum + " hp", ColorAnsi.RUST, FormatAnsi.HIGHLIGHT));
+
+            string _defTitle = " OVERALL DEFENCE: ";
+            AddLineLocal(ref overallInfoLineList, Style.GetBlankLine(9) + _defTitle + Style.GetRemainingSpace(_defTitle, 18) + Style.ColorFormat(_defSum + " def", ColorAnsi.TEAL, FormatAnsi.HIGHLIGHT));
+            
+            AddBlankLineLocal(ref overallInfoLineList);
+
+            return overallInfoLineList;
         }
 
         private string GenerateGearCard(Slot slot, Item item)
@@ -89,6 +147,14 @@ namespace PoP.classes.windows
             }
 
             return gearLine;
+        }
+
+        /// <summary>
+        /// It notifies the window for the next render that the gear has changed.
+        /// </summary>
+        public void UpdateGear()
+        {
+            HasChanged = true;
         }
     }
 }

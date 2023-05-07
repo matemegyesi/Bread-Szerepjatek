@@ -92,9 +92,6 @@ namespace PoP.classes
             // Initialize character
             WindowRenderer.Map.SetCharacterPosition(9, 13);
 
-            //Initialize gear
-            display.DrawGear();
-
             // Loads map2.
             Map.maps[0].LoadMap();
             

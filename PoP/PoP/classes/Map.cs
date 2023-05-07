@@ -53,7 +53,6 @@ namespace PoP.classes
         public void LoadMap()
         {
             // Display the map's image
-            GameLoop.display.DrawMap(path);
             WindowRenderer.Map.ImportMap(path);
 
             // Set the current map to this map
