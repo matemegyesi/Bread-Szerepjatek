@@ -7,49 +7,78 @@ using Ansi;
 
 namespace PoP.classes
 {
+    enum ColorAnsi
+    {
+        DARK_RED = 88,
+        RED = 160,
+        LIGHT_RED = 210,
+
+        PURPLE = 93,
+        MAGENTA = 169,
+        PINK = 219,
+
+        DARK_BLUE = 25,
+        BLUE = 27,
+        LIGHT_BLUE = 39,
+        CYAN = 87,
+        AQUA = 43,
+        TEAL = 73,
+
+        DARK_GREEN = 64,
+        GREEN = 41,
+        LIGHT_GREEN = 119,
+
+        WHEAT = 186,
+        YELLOW = 227,
+        CORAL = 214,
+        ORANGE = 208,
+        RUST = 131,
+
+        GREY = 8,
+        GRAY = 8,
+        DARK_GREY = 239,
+        DARK_GRAY = 239,
+        WHITE = 15,
+        BLACK = 0
+    }
+
+    enum FormatAnsi
+    {
+        UNDERLINE = 4,
+        HIGHLIGHT = 7
+    }
+
+    struct AlignedText
+    {
+        public string Before;
+        public string After;
+    }
+
     internal class Style
     {
-
-        private static readonly Dictionary<string, byte> ansiCodes = new Dictionary<string, byte>()
-        {
-            { "RED", 9 },
-            { "PINK", 13 },
-            { "BLUE", 12 },
-            { "CYAN", 14 },
-            { "DARK_CYAN", 6 },
-            { "GREEN", 42 },
-            { "YELLOW", 11 },
-            { "ORANGE", 214 },
-            { "DARK_GREY", 8 },
-            { "DARK_GRAY", 8 },
-            { "WHITE", 15 },
-            { "BLACK", 0 },
-
-            { "BOLD", 1 }, // csak színezetlen szövegen van értelme
-            { "UNDERLINE", 4 },
-            { "HIGHLIGHT", 7 }
-        };
 
         private const string END = "\u001b[0m";
 
 
-        #region Publikus metódusok
+        #region Public methods
 
         public static void EnableStyling()
         {
             WindowsConsole.TryEnableVirtualTerminalProcessing();
         }
 
+        // Coloring
+
         /// <summary>
-        /// Körülveszi a szöveget ANSI escape kóddal, megváltoztatva a színét.
+        /// Surrounds the text with ANSI escape code, changing its color.
         /// </summary>
-        /// <param name="text">Stilizálandó szöveg.</param>
-        /// <param name="color">Angolul, nagybetűkkel, space helyett alsóvonallal.</param>
-        public static string Color(string text, string color)
+        /// <param name="text">The text that needs to be stylized.</param>
+        /// <param name="color">Enum of the color.</param>
+        public static string Color(string text, ColorAnsi color)
         {
             try
             {
-                string formattedText = AnsiColor(ansiCodes[color]) + text + END;
+                string formattedText = AnsiColor((byte)color) + text + END;
                 return formattedText;
             }
             catch
@@ -58,16 +87,18 @@ namespace PoP.classes
             }
         }
 
+        // Formatting
+
         /// <summary>
-        /// Körülveszi a szöveget ANSI escape kóddal, megváltoztatva a dekorációját.
+        /// Surrounds the text with ANSI escape code, changing its format.
         /// </summary>
-        /// <param name="text">Stilizálandó szöveg.</param>
-        /// <param name="format">BOLD / UNDERLINE / HIGHLIGHT</param>
-        public static string Format(string text, string format)
+        /// <param name="text">The text that needs to be stylized.</param>
+        /// <param name="format">Enum of the format.</param>
+        public static string Format(string text, FormatAnsi format)
         {
             try
             {
-                string formattedText = AnsiFormat(ansiCodes[format]) + text + END;
+                string formattedText = AnsiFormat((byte)format) + text + END;
                 return formattedText;
             }
             catch
@@ -76,17 +107,19 @@ namespace PoP.classes
             }
         }
 
+        // Coloring & Formatting
+
         /// <summary>
-        /// Körülveszi a szöveget ANSI escape kóddal, megváltoztatva a színét és dekorációját.
+        /// Surrounds the text with ANSI escape code, changing its color and format.
         /// </summary>
-        /// <param name="text">Stilizálandó szöveg.</param>
-        /// <param name="color">Angolul, nagybetűkkel, space helyett alsóvonallal.</param>
-        /// <param name="format">BOLD / UNDERLINE / HIGHLIGHT</param>
-        public static string ColorFormat(string text, string color, string format)
+        /// <param name="text">The text that needs to be stylized.</param>
+        /// <param name="color">Enum of the color.</param>
+        /// <param name="format">Enum of the format.</param>
+        public static string ColorFormat(string text, ColorAnsi color, FormatAnsi format)
         {
             try
             {
-                string formattedText = AnsiColor(ansiCodes[color]) + AnsiFormat(ansiCodes[format]) + text + END;
+                string formattedText = AnsiColor((byte)color) + AnsiFormat((byte)format) + text + END;
                 return formattedText;
             }
             catch
@@ -94,15 +127,7 @@ namespace PoP.classes
                 return string.Empty;
             }
         }
-
-        /// <summary>
-        /// String tömböt ad vissza, amiben a szöveg ki van színezve és formázva.
-        /// </summary>
-        public static string[] TestStyle()
-        {
-            string coloredText = $"╔═════════════════╤═════════════════╗\n║ {ColorFormat("GYŰRŰSPÁNCÉL", "CYAN", "UNDERLINE")}    │ {ColorFormat("ARANYKORONA", "CYAN", "UNDERLINE")}     ║\n║ {Color("Páncélzat", "DARK_CYAN")}       │ {Color("Páncélzat", "DARK_CYAN")}       ║\n║ {Color("Mellkas", "DARK_CYAN")}         │ {ColorFormat("Fej", "DARK_CYAN", "BOLD")}             ║\n║ {Color("- - - - - - - -", "DARK_GREY")} │ {Color("- - - - - - - -", "DARK_GREY")} ║\n║ {Format("Védelem", "BOLD")}: {ColorFormat("+50", "GREEN", "HIGHLIGHT")}    │ {Format("Védelem", "BOLD")}: {ColorFormat("+10", "GREEN", "HIGHLIGHT")}    ║\n║ Gyorsaság: {ColorFormat("-10", "ORANGE", "HIGHLIGHT")}  │ Stun: {ColorFormat("-10%", "GREEN", "HIGHLIGHT")}      ║\n║ Lopakodás: {ColorFormat("-5", "ORANGE", "HIGHLIGHT")}   │                 ║\n╚═════════════════╧═════════════════╝\nY:{Display.content.Count} X:{Display.content[0].Length}";
-            return coloredText.Split(new string[] { "\n" }, StringSplitOptions.None);
-        }
+        
 
         #endregion
 

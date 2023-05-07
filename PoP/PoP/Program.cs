@@ -18,10 +18,9 @@ namespace PoP
             {
                 Console.OutputEncoding = Encoding.Unicode;
                 Style.EnableStyling();
-                foreach (string line in Style.TestStyle())
-                {
-                    Console.WriteLine(line);
-                }
+
+                Console.WriteLine($"It {Style.ColorFormat("works", ColorAnsi.RED, FormatAnsi.UNDERLINE)}!");
+
                 Console.ReadKey();
             }
             gameLoop.Start();
