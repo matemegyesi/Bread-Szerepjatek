@@ -164,7 +164,7 @@ namespace PoP.classes
             {
                 // Refresh the game interface by printing the current game content
                 Console.Write(GetContent());
-                drawStringCalled = false;
+                //drawStringCalled = false;
             }
         }
 

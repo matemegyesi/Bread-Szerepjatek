@@ -71,7 +71,7 @@ namespace PoP.classes.windows
 
         }
 
-        private void GenerateLocationMarker(Location loc, ColorAnsi color = ColorAnsi.DARK_BLUE)
+        private void GenerateLocation(Location loc, ColorAnsi color = ColorAnsi.DARK_BLUE)
         {
             if (isMapLoaded && !loc.isHidden)
             {
@@ -218,7 +218,7 @@ namespace PoP.classes.windows
         /// </summary>
         /// <param name="newPosX">X position index.</param>
         /// <param name="newPosY">Y position index.</param>
-        public void MoveCharacterMarker(int newPosX, int newPosY)
+        public void SetCharacterPosition(int newPosX, int newPosY)
         {
             if (newPosY != PosY)
             {
@@ -237,9 +237,9 @@ namespace PoP.classes.windows
         /// </summary>
         /// <param name="loc">The location that will be changed.</param>
         /// <param name="color">The color the marker will have when the Location isn't completed or hidden.</param>
-        public void UpdateLocationMarker(Location loc, ColorAnsi color = ColorAnsi.DARK_BLUE)
+        public void UpdateLocation(Location loc, ColorAnsi color = ColorAnsi.DARK_BLUE)
         {
-            GenerateLocationMarker(loc, color);
+            GenerateLocation(loc, color);
 
             HasChanged = true;
         }
@@ -268,7 +268,7 @@ namespace PoP.classes.windows
 
             foreach (Location loc in LocationList)
             {
-                GenerateLocationMarker(loc);
+                GenerateLocation(loc);
             }
 
             LineList.Clear();

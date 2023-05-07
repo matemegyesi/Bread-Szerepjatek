@@ -21,8 +21,8 @@ namespace PoP.classes
             // Initializes a new instance of the Movement class and subscribes to the KeyboardInput.KeyPressed event.
             EnableMovement();
 
-            PlayerX = startPositionX + 1;
-            PlayerY = startPositionY + 1;
+            PlayerX = startPositionX;
+            PlayerY = startPositionY;
         }
         public void DisableMovement()
         {
@@ -58,7 +58,7 @@ namespace PoP.classes
             }
 
             // Check if the new position is empty.
-            if (MapWindow.Map[y - 1, x - 1].Char != ' ')
+            if (MapWindow.Map[y, x].Char != ' ')
             {
                 return;
             }
@@ -66,7 +66,7 @@ namespace PoP.classes
             // Erase the player's current position, move them to the new position, and redraw the player.
             PlayerX = x;
             PlayerY = y;
-            WindowRenderer.Map.MoveCharacterMarker(x - 1, y - 1);
+            WindowRenderer.Map.SetCharacterPosition(x, y);
 
             // Check if the player is standing on a location and load it if they are.
             var location = Map.CurrentMap.locations.FirstOrDefault(l => l.positionX == x && l.positionY == y && !l.isCompleted);

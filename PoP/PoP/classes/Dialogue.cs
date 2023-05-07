@@ -29,7 +29,7 @@ namespace PoP.classes
         /// <param name="x">The X coordinate of the dialogue.</param>
         /// <param name="y">The Y coordinate of the dialogue.</param>
         /// <param name="path">The file path of the JSON file containing the dialogue data.</param>
-        public Dialogue(int id, int x, int y, string path) : base(id, x, y)
+        public Dialogue(int id, int x, int y, bool isHidden, string path) : base(id, x, y)
         {
             this.id = id;
             positionX = x;
@@ -38,6 +38,8 @@ namespace PoP.classes
 
             string json = File.ReadAllText(path);
             conversation = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(json);
+
+            this.isHidden = isHidden;
         }
 
         /// <summary>
@@ -93,7 +95,9 @@ namespace PoP.classes
         {
             base.End();
             KeyboardInput.KeyPressed -= KeyPressed;
+
             isCompleted = true;
+            WindowRenderer.Map.UpdateLocation(this);
             GameLoop.Phase = GamePhase.ADVENTURE;
         }
     }

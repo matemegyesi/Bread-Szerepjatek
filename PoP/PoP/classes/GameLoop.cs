@@ -82,10 +82,10 @@ namespace PoP.classes
             Map map3 = new Map("res\\maps\\volcano.txt");
             Map map4 = new Map("res\\maps\\cave.txt");
 
-            map1.AddLocation(2, 54, 25, LocationType.DIALOGUE, "res\\dialogue\\blacksmith.json");
-            map1.AddLocation(1, 76, 9, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json");
-            map1.AddLocation(3, 128, 31, LocationType.DIALOGUE, "res\\dialogue\\guiscardtalk.json");
-            map1.AddLocation(4, 128, 30, LocationType.COMBAT, "res\\enemies\\enemy.json");
+            map1.AddLocation(2, 53, 24, false, LocationType.DIALOGUE, "res\\dialogue\\blacksmith.json");
+            map1.AddLocation(1, 75, 8, false, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json");
+            map1.AddLocation(3, 127, 30, false, LocationType.DIALOGUE, "res\\dialogue\\guiscardtalk.json");
+            map1.AddLocation(4, 127, 29, true, LocationType.COMBAT, "res\\enemies\\enemy.json");
             
             //ReadItemFile("res\\itemFile.txt");
 
@@ -93,7 +93,7 @@ namespace PoP.classes
             display.DrawInventory();
 
             // Initialize character
-            WindowRenderer.Map.MoveCharacterMarker(9, 13);
+            WindowRenderer.Map.SetCharacterPosition(9, 13);
 
             //Initialize gear
             display.DrawGear();

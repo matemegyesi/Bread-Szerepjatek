@@ -22,17 +22,17 @@ namespace PoP
                 WindowRenderer.Initialize();
                 //
 
-                Dialogue dialogue1 = new Dialogue(2, 53, 24, "res\\dialogue\\blacksmith.json");
+                Dialogue dialogue1 = new Dialogue(2, 53, 24, false, "res\\dialogue\\blacksmith.json");
                 WindowRenderer.Map.LocationList.Add(dialogue1);
-                Dialogue dialogue2 = new Dialogue(1, 75, 8, "res\\dialogue\\talkwithhighpriest.json");
+                Dialogue dialogue2 = new Dialogue(1, 75, 8, false, "res\\dialogue\\talkwithhighpriest.json");
                 WindowRenderer.Map.LocationList.Add(dialogue2);
-                Dialogue dialogue3 = new Dialogue(3, 127, 30, "res\\dialogue\\guiscardtalk.json");
+                Dialogue dialogue3 = new Dialogue(3, 127, 30, false, "res\\dialogue\\guiscardtalk.json");
                 WindowRenderer.Map.LocationList.Add(dialogue3);
-                Combat combat1 = new Combat(4, 127, 30, "res\\enemies\\enemy.json");
+                Combat combat1 = new Combat(4, 127, 30, true, "res\\enemies\\enemy.json");
                 combat1.isHidden = true;
                 WindowRenderer.Map.LocationList.Add(combat1);
 
-                WindowRenderer.Map.MoveCharacterMarker(16, 16);
+                WindowRenderer.Map.SetCharacterPosition(16, 16);
 
                 List<Item> itemList = new List<Item>();
                 for (int i = 0; i < 20; i++)
