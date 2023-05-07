@@ -59,6 +59,11 @@ namespace PoP
 
                 WindowRenderer.Map.ImportMap("res\\maps\\Raudagnupur.txt");
 
+                WindowRenderer.Dialogue.ProgressDialogue("Name", "Lorem ipsum dolor amet.", ColorAnsi.CORAL);
+                WindowRenderer.Dialogue.ClearDialogue();
+                WindowRenderer.Dialogue.ProgressDialogue("Player", "Hi, I'm the player. I wanna learn something fun today!", ColorAnsi.CORAL);
+                WindowRenderer.Dialogue.ProgressDialogue("...", "Lorentz transformations are a six-parameter family of linear transformations from a coordinate frame in spacetime to another frame that moves at a constant velocity relative to the former. The respective inverse transformation is then parameterized by the negative of this velocity. The transformations are named after the Dutch physicist Hendrik Lorentz.");
+                WindowRenderer.Dialogue.ProgressDialogue("Player", "God help.", ColorAnsi.CORAL);
 
                 //
                 List<string> strList = WindowRenderer.Get();
