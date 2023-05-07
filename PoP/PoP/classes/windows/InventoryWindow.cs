@@ -219,6 +219,15 @@ namespace PoP.classes.windows
             {
                 int _remainingLineCount = Height - 9;
                 int _valueCounter = 0;
+
+                if (currentPage != 1)
+                {
+                    for (int i = 0; i < currentPage - 1; i++)
+                    {
+                        _valueCounter += Page.List[i].ContainedItems.Count;
+                    }
+                }
+
                 foreach (Item item in Page.List[currentPage - 1].ContainedItems)
                 {
                     _remainingLineCount -= CalculateItemCardHeight(item);

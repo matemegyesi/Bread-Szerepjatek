@@ -35,7 +35,7 @@ namespace PoP
                 WindowRenderer.Map.MoveCharacterMarker(16, 16);
 
                 List<Item> itemList = new List<Item>();
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 20; i++)
                 {
                     itemList.Add(new Armor("asd" + i + "asd" + i, Slot.Leg, i * 4.5));
                     itemList.Add(new Weapon("qweqwe" + i + i, Slot.Hand, i * 0.8));
