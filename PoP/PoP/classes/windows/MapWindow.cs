@@ -213,6 +213,11 @@ namespace PoP.classes.windows
             return newLine + ' ';
         }
 
+        /// <summary>
+        /// Moves the Player (H) to the specified position for the next render.
+        /// </summary>
+        /// <param name="newPosX">X position index.</param>
+        /// <param name="newPosY">Y position index.</param>
         public void MoveCharacterMarker(int newPosX, int newPosY)
         {
             if (newPosY != PosY)
@@ -227,6 +232,11 @@ namespace PoP.classes.windows
             HasChanged = true;
         }
 
+        /// <summary>
+        /// Updates the specified Location's marker for the next render.
+        /// </summary>
+        /// <param name="loc">The location that will be changed.</param>
+        /// <param name="color">The color the marker will have when the Location isn't completed or hidden.</param>
         public void UpdateLocationMarker(Location loc, ColorAnsi color = ColorAnsi.DARK_BLUE)
         {
             GenerateLocationMarker(loc, color);
@@ -234,6 +244,10 @@ namespace PoP.classes.windows
             HasChanged = true;
         }
 
+        /// <summary>
+        /// Imports the map with the specified path into the window's map matrix.
+        /// </summary>
+        /// <param name="filePath">The path to the ASCII art map file.</param>
         public void ImportMap(string filePath)
         {
             int _rowIndex = 0;
