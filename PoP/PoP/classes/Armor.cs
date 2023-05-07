@@ -59,7 +59,7 @@ namespace PoP.classes
                 Inventory.inventory.Add(this);
 
                 // Update the display to show the current inventory count.
-                WindowRenderer.Inventory.UpdateItemList(Inventory.inventory);
+                Wire.Inventory.UpdateItemList(Inventory.inventory);
             }
         }
 
@@ -72,7 +72,7 @@ namespace PoP.classes
             Inventory.inventory.Remove(this);
 
             // Update the display to show the current inventory count.
-            WindowRenderer.Inventory.UpdateItemList(Inventory.inventory);
+            Wire.Inventory.UpdateItemList(Inventory.inventory);
         }
 
         public override void Equip()

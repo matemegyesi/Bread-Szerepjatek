@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PoP.classes
 {
-    internal class WindowRenderer
+    internal class Wire
     {
         public static int Height { get; private set; } = 63;
         public static int Width { get; private set; } = 237;

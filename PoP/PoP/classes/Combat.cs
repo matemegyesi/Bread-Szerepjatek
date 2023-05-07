@@ -68,7 +68,6 @@ namespace PoP.classes
         /// </summary>
         public override void LoadLocation()
         {
-            GameLoop.display.WipeTextBox();
             Map.CurrentLocation = this;
             GameLoop.Phase = GamePhase.COMBAT;
 
@@ -96,7 +95,7 @@ namespace PoP.classes
             KeyboardInput.KeyPressed -= KeyPressed;
 
             isCompleted = true;
-            WindowRenderer.Map.UpdateLocation(this);
+            Wire.Map.UpdateLocation(this);
             GameLoop.Phase = GamePhase.ADVENTURE;
         }
 
@@ -150,13 +149,16 @@ namespace PoP.classes
             switch (combatPhase)
             {
                 case CombatPhase.LOADOUT:
+
                     // Display the loadout selection screen
+                    Wire.
                     GameLoop.display.DrawString("Loadout selection", 4, 50);
                     GameLoop.display.DrawString("Begin encounter (SPACE)", 4, 52);
 
                     break;
 
                 case CombatPhase.PLAYER_TURN:
+
                     // Display the player's turn screen
                     GameLoop.display.DrawString("Player's turn", 4, 50);
                     GameLoop.display.DrawString("Weapon attack (Q)", 4, 52);

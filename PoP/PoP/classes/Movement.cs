@@ -66,7 +66,7 @@ namespace PoP.classes
             // Erase the player's current position, move them to the new position, and redraw the player.
             PlayerX = x;
             PlayerY = y;
-            WindowRenderer.Map.SetCharacterPosition(x, y);
+            Wire.Map.SetCharacterPosition(x, y);
 
             // Check if the player is standing on a location and load it if they are.
             var location = Map.CurrentMap.locations.FirstOrDefault(l => l.positionX == x && l.positionY == y && !l.isCompleted);

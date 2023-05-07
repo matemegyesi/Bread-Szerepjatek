@@ -160,7 +160,7 @@ namespace PoP.classes
             Console.SetCursorPosition(0, 0);
 
             // If the DrawString method was called since the last rendering
-            if (WindowRenderer.NeedUpdate)
+            if (Wire.NeedUpdate)
             {
                 // Refresh the game interface by printing the current game content
                 Console.Write(GetContent());
@@ -357,7 +357,7 @@ namespace PoP.classes
 
             try
             {
-                foreach (string line in WindowRenderer.Get())
+                foreach (string line in Wire.Get())
                 {
                     result += line;
                 }

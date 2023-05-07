@@ -60,8 +60,8 @@ namespace PoP.classes
                 Inventory.gear[Slot] = this;
             }
 
-            WindowRenderer.Gear.ForceUpdate();
-            WindowRenderer.Inventory.UpdateItemList(Inventory.inventory);
+            Wire.Gear.ForceUpdate();
+            Wire.Inventory.UpdateItemList(Inventory.inventory);
         }
 
         ///<summary>
@@ -77,8 +77,8 @@ namespace PoP.classes
             Inventory.gear[Slot] = null;
             Inventory.inventory[inventoryIndex] = this;
 
-            WindowRenderer.Gear.UpdateGear();
-            WindowRenderer.Inventory.UpdateItemList(Inventory.inventory);
+            Wire.Gear.UpdateGear();
+            Wire.Inventory.UpdateItemList(Inventory.inventory);
         }
 
         ///<summary>
@@ -95,13 +95,13 @@ namespace PoP.classes
                 Inventory.gear[Slot] = null;
                 Inventory.inventory.Add(this);
 
-                WindowRenderer.Gear.UpdateGear();
+                Wire.Gear.UpdateGear();
 
                 return true;
             }
 
-            WindowRenderer.Gear.UpdateGear();
-            WindowRenderer.Inventory.UpdateItemList(Inventory.inventory);
+            Wire.Gear.UpdateGear();
+            Wire.Inventory.UpdateItemList(Inventory.inventory);
 
             return false;
         }

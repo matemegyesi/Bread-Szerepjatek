@@ -53,7 +53,7 @@ namespace PoP.classes
         public void LoadMap()
         {
             // Display the map's image
-            WindowRenderer.Map.ImportMap(path);
+            Wire.Map.ImportMap(path);
 
             // Set the current map to this map
             CurrentMap = this;
@@ -75,13 +75,13 @@ namespace PoP.classes
                 // If the location is a dialogue location, add a new Dialogue object to the locations list
                 case LocationType.DIALOGUE:
                     locations.Add(new Dialogue(id, x, y, isHidden, path));
-                    WindowRenderer.Map.LocationList.Add(new Dialogue(id, x, y, isHidden, path));
+                    Wire.Map.LocationList.Add(new Dialogue(id, x, y, isHidden, path));
                     break;
 
                 // If the location is a combat location, add a new Combat object to the locations list
                 case LocationType.COMBAT:
                     locations.Add(new Combat(id, x, y, isHidden, path));
-                    WindowRenderer.Map.LocationList.Add(new Combat(id, x, y, isHidden, path));
+                    Wire.Map.LocationList.Add(new Combat(id, x, y, isHidden, path));
                     break;
 
                 // If the location type is not recognized, do nothing

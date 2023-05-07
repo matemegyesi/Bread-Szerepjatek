@@ -61,7 +61,7 @@ namespace PoP.classes
         {
             base.Start();
             KeyboardInput.KeyPressed += KeyPressed;
-            WindowRenderer.Dialogue.ProgressDialogue(conversation[dialogueIndex]["actor"].ToString(), conversation[dialogueIndex]["text"].ToString());
+            Wire.Dialogue.ProgressDialogue(conversation[dialogueIndex]["actor"].ToString(), conversation[dialogueIndex]["text"].ToString());
         }
 
         public void KeyPressed(ConsoleKey key)
@@ -80,12 +80,12 @@ namespace PoP.classes
                 if(dialogueIndex < conversation.Count)
                 {
                     // Display the next line of dialogue
-                    WindowRenderer.Dialogue.ProgressDialogue(conversation[dialogueIndex]["actor"].ToString(), conversation[dialogueIndex]["text"].ToString());
+                    Wire.Dialogue.ProgressDialogue(conversation[dialogueIndex]["actor"].ToString(), conversation[dialogueIndex]["text"].ToString());
                 }
                 else
                 {
                     // Clear the text box and end the dialogue phase
-                    WindowRenderer.Dialogue.ClearDialogue();
+                    Wire.Dialogue.ClearDialogue();
                     End();
                 }
             }
@@ -96,7 +96,7 @@ namespace PoP.classes
             KeyboardInput.KeyPressed -= KeyPressed;
 
             isCompleted = true;
-            WindowRenderer.Map.UpdateLocation(this);
+            Wire.Map.UpdateLocation(this);
             GameLoop.Phase = GamePhase.ADVENTURE;
         }
     }

@@ -64,7 +64,7 @@ namespace PoP.classes
             Style.EnableStyling();
 
             // Initializes the Window Renderer
-            WindowRenderer.Initialize();
+            Wire.Initialize();
 
 
 
@@ -90,7 +90,7 @@ namespace PoP.classes
             //ReadItemFile("res\\itemFile.txt");
 
             // Initialize character
-            WindowRenderer.Map.SetCharacterPosition(9, 13);
+            Wire.Map.SetCharacterPosition(9, 13);
 
             // Loads map2.
             Map.maps[0].LoadMap();

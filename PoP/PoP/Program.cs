@@ -19,20 +19,20 @@ namespace PoP
                 Console.OutputEncoding = Encoding.Unicode;
                 Style.EnableStyling();
 
-                WindowRenderer.Initialize();
+                Wire.Initialize();
                 //
 
                 Dialogue dialogue1 = new Dialogue(2, 53, 24, false, "res\\dialogue\\blacksmith.json");
-                WindowRenderer.Map.LocationList.Add(dialogue1);
+                Wire.Map.LocationList.Add(dialogue1);
                 Dialogue dialogue2 = new Dialogue(1, 75, 8, false, "res\\dialogue\\talkwithhighpriest.json");
-                WindowRenderer.Map.LocationList.Add(dialogue2);
+                Wire.Map.LocationList.Add(dialogue2);
                 Dialogue dialogue3 = new Dialogue(3, 127, 30, false, "res\\dialogue\\guiscardtalk.json");
-                WindowRenderer.Map.LocationList.Add(dialogue3);
+                Wire.Map.LocationList.Add(dialogue3);
                 Combat combat1 = new Combat(4, 127, 30, true, "res\\enemies\\enemy.json");
                 combat1.isHidden = true;
-                WindowRenderer.Map.LocationList.Add(combat1);
+                Wire.Map.LocationList.Add(combat1);
 
-                WindowRenderer.Map.SetCharacterPosition(16, 16);
+                Wire.Map.SetCharacterPosition(16, 16);
 
                 List<Item> itemList = new List<Item>();
                 for (int i = 0; i < 20; i++)
@@ -53,20 +53,20 @@ namespace PoP
                             break;
                     }
                 }
-                WindowRenderer.Inventory.UpdateItemList(itemList);
-                WindowRenderer.Inventory.PreviousPage();
-                WindowRenderer.Inventory.ToggleInUse();
+                Wire.Inventory.UpdateItemList(itemList);
+                Wire.Inventory.PreviousPage();
+                Wire.Inventory.ToggleInUse();
 
-                WindowRenderer.Map.ImportMap("res\\maps\\Raudagnupur.txt");
+                Wire.Map.ImportMap("res\\maps\\Raudagnupur.txt");
 
-                WindowRenderer.Dialogue.ProgressDialogue("Name", "Lorem ipsum dolor amet.", ColorAnsi.CORAL);
-                WindowRenderer.Dialogue.ClearDialogue();
-                WindowRenderer.Dialogue.ProgressDialogue("Player", "Hi, I'm the player. I wanna learn something fun today!", ColorAnsi.CORAL);
-                WindowRenderer.Dialogue.ProgressDialogue("...", "Lorentz transformations are a six-parameter family of linear transformations from a coordinate frame in spacetime to another frame that moves at a constant velocity relative to the former. The respective inverse transformation is then parameterized by the negative of this velocity. The transformations are named after the Dutch physicist Hendrik Lorentz.");
-                WindowRenderer.Dialogue.ProgressDialogue("Player", "God help.", ColorAnsi.CORAL);
+                Wire.Dialogue.ProgressDialogue("Name", "Lorem ipsum dolor amet.", ColorAnsi.CORAL);
+                Wire.Dialogue.ClearDialogue();
+                Wire.Dialogue.ProgressDialogue("Player", "Hi, I'm the player. I wanna learn something fun today!", ColorAnsi.CORAL);
+                Wire.Dialogue.ProgressDialogue("...", "Lorentz transformations are a six-parameter family of linear transformations from a coordinate frame in spacetime to another frame that moves at a constant velocity relative to the former. The respective inverse transformation is then parameterized by the negative of this velocity. The transformations are named after the Dutch physicist Hendrik Lorentz.");
+                Wire.Dialogue.ProgressDialogue("Player", "God help.", ColorAnsi.CORAL);
 
                 //
-                List<string> strList = WindowRenderer.Get();
+                List<string> strList = Wire.Get();
                 string str = string.Empty;
                 foreach (var item in strList)
                 {
