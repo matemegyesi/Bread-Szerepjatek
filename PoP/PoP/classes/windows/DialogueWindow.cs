@@ -87,6 +87,12 @@ namespace PoP.classes.windows
             }
         }
 
+        /// <summary>
+        /// Adds a new dialogue line to the bottom.
+        /// </summary>
+        /// <param name="actor">Name of the actor. (Should be "..." if it's narration.)</param>
+        /// <param name="line">The line of dialogue/narration.</param>
+        /// <param name="color">The color of the actor's name.</param>
         public void ProgressDialogue(string actor, string line, ColorAnsi color = ColorAnsi.WHITE)
         {
 
@@ -145,6 +151,12 @@ namespace PoP.classes.windows
             HasChanged = true;
         }
 
+        /// <summary>
+        /// Adds a new combat line to the bottom.
+        /// </summary>
+        /// <param name="name">Left side of the combat line.</param>
+        /// <param name="lineList">Right side of the combat line.</param>
+        /// <param name="color">The color of the feft side of the combat line.</param>
         public void ProgressCombat(string name, List<string> lineList, ColorAnsi color = ColorAnsi.WHITE)
         {
             List<string> actorLines = new List<string>();
@@ -171,6 +183,9 @@ namespace PoP.classes.windows
             HasChanged = true;
         }
 
+        /// <summary>
+        /// Clears the dialogue box.
+        /// </summary>
         public void ClearDialogue()
         {
             history.Clear();
