@@ -83,7 +83,6 @@ namespace PoP.classes
             KeyboardInput.KeyPressed += KeyPressed;
 
             ChangeCombatPhase(CombatPhase.LOADOUT);
-
         }
 
         /// <summary>
@@ -93,6 +92,8 @@ namespace PoP.classes
         {
             base.End();
             KeyboardInput.KeyPressed -= KeyPressed;
+
+            Wire.Dialogue.ClearDialogue();
 
             isCompleted = true;
             Wire.Map.UpdateLocation(this);
@@ -144,27 +145,21 @@ namespace PoP.classes
         public void ChangeCombatPhase(CombatPhase newPhase)
         {
             combatPhase = newPhase;
-            GameLoop.display.WipeTextBox();
+            Wire.Dialogue.ClearDialogue();
 
             switch (combatPhase)
             {
                 case CombatPhase.LOADOUT:
 
                     // Display the loadout selection screen
-                    Wire.
-                    GameLoop.display.DrawString("Loadout selection", 4, 50);
-                    GameLoop.display.DrawString("Begin encounter (SPACE)", 4, 52);
+                    Wire.Dialogue.ProgressCombat("LOADOUT SELECTION", new List<string>() { "Begin encounter (SPACE)" });
 
                     break;
 
                 case CombatPhase.PLAYER_TURN:
 
                     // Display the player's turn screen
-                    GameLoop.display.DrawString("Player's turn", 4, 50);
-                    GameLoop.display.DrawString("Weapon attack (Q)", 4, 52);
-                    GameLoop.display.DrawString("Use spell 1 (W)", 4, 53);
-                    GameLoop.display.DrawString("Use spell 2 (E)", 4, 54);
-                    GameLoop.display.DrawString("Use spell 3 (R)", 4, 55);
+                    Wire.Dialogue.ProgressCombat("PLAYER'S TURN", new List<string>() { "Weapon attack (Q)", "Use spell 1 (W)", "Use spell 2 (E)", "Use spell 3 (R)" }, ColorAnsi.RED);
 
                     // Display the player and enemy information
                     List<string> playerInfo = GetPlayerInfo();
@@ -183,27 +178,26 @@ namespace PoP.classes
 
                 case CombatPhase.ENEMY_TURN:
                     // Display the enemy's turn screen
-                    GameLoop.display.DrawString("Enemy's turn", 4, 50);
-                    GameLoop.display.DrawString("Next turn (SPACE)", 4, 52);
 
-                    // Get the enemy's action and display it
                     string enemyAction = enemy.TakeAction();
-                    GameLoop.display.DrawString(enemyAction, 40, 50);
+                    Wire.Dialogue.ProgressCombat("ENEMY'S TURN", new List<string>() { enemyAction, "", "Next turn (SPACE)" }, ColorAnsi.GREEN);
 
                     break;
 
                 case CombatPhase.WIN:
+
                     // Display the win screen and prompt to end encounter
-                    GameLoop.display.DrawString("The player won!", 4, 50);
-                    GameLoop.display.DrawString("End encounter (SPACE)", 4, 52);
+                    Wire.Dialogue.ProgressCombat("...", new List<string>() { "The player won!", "", "End encounter (SPACE)" });
+
                     // itt loot-ot kéne kapni
 
                     break;
 
                 case CombatPhase.LOSE:
+
                     // Display the lose screen and prompt to end encounter
-                    GameLoop.display.DrawString("The player lost!", 4, 50);
-                    GameLoop.display.DrawString("End encounter (SPACE)", 4, 52);
+                    Wire.Dialogue.ProgressCombat("...", new List<string>() { "The player lost!", "", "End encounter (SPACE)" });
+                    
                     // itt meg kéne hóni
 
                     break;
