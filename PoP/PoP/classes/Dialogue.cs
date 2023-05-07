@@ -61,7 +61,7 @@ namespace PoP.classes
         {
             base.Start();
             KeyboardInput.KeyPressed += KeyPressed;
-            GameLoop.display.DrawConversation(conversation[dialogueIndex]["text"].ToString(), 4, 50, conversation[dialogueIndex]["actor"].ToString());
+            WindowRenderer.Dialogue.ProgressDialogue(conversation[dialogueIndex]["actor"].ToString(), conversation[dialogueIndex]["text"].ToString());
         }
 
         public void KeyPressed(ConsoleKey key)
@@ -79,14 +79,13 @@ namespace PoP.classes
                 //Check whether if it is the end of the conversation
                 if(dialogueIndex < conversation.Count)
                 {
-                    // Clear the text box and display the next line of dialogue
-                    GameLoop.display.WipeTextBox();
-                    GameLoop.display.DrawConversation(conversation[dialogueIndex]["text"].ToString(), 4, 50, conversation[dialogueIndex]["actor"].ToString());
+                    // Display the next line of dialogue
+                    WindowRenderer.Dialogue.ProgressDialogue(conversation[dialogueIndex]["actor"].ToString(), conversation[dialogueIndex]["text"].ToString());
                 }
                 else
                 {
                     // Clear the text box and end the dialogue phase
-                    GameLoop.display.WipeTextBox();
+                    WindowRenderer.Dialogue.ClearDialogue();
                     End();
                 }
             }
