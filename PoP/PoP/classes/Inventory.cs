@@ -136,6 +136,8 @@ namespace PoP
             }
 
             KeyboardInput.KeyPressed += KeyPressed;
+
+            WindowRenderer.Inventory.UpdateItemList(Inventory.inventory);
         }
 
         public void KeyPressed(ConsoleKey key)
@@ -148,6 +150,18 @@ namespace PoP
                     {
                        IsOpened = true;
                        GameLoop.playerMovement.DisableMovement();
+                       WindowRenderer.Inventory.ToggleInUse();
+                    }
+                    else
+                    {
+                        if (key == ConsoleKey.Q)
+                        {
+                            WindowRenderer.Inventory.PreviousPage();
+                        }
+                        else if (key == ConsoleKey.E)
+                        {
+                            WindowRenderer.Inventory.NextPage();
+                        }
                     }
                 }
                 else
@@ -156,11 +170,13 @@ namespace PoP
                     {
                         int i = keys[(int)key];
                         inventory[i].Equip();
+                        WindowRenderer.Inventory.UpdateItemList(inventory);
                     }
                     catch (Exception) { }
 
                     IsOpened = false;
                     GameLoop.playerMovement.EnableMovement();
+                    WindowRenderer.Inventory.ToggleInUse();
                 }
             }
         }

@@ -337,7 +337,7 @@ namespace PoP.classes.windows
             headerChanged = true;
             itemCardsChanged = true;
             pageIndicatorChanged = true;
-            //HasChanged = true;
+            HasChanged = true;
         }
     }
 }

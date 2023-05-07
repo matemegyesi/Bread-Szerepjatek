@@ -89,9 +89,6 @@ namespace PoP.classes
             
             //ReadItemFile("res\\itemFile.txt");
 
-            // Draws the initial inventory
-            display.DrawInventory();
-
             // Initialize character
             WindowRenderer.Map.SetCharacterPosition(9, 13);
 
@@ -100,7 +97,7 @@ namespace PoP.classes
 
             // Loads map2.
             Map.maps[0].LoadMap();
-
+            
             // Starts the Update loop
             Update();
 
