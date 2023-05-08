@@ -266,18 +266,21 @@ namespace PoP.classes.windows
             Page.CreatePages(itemList);
             pageAmount = Page.List.Count;
 
-            if (currentPage == pageAmount)
+            if (pageAmount != 1)
             {
-                currentPage = 1;
-            }
-            else
-            {
-                currentPage += 1;
-            }
+                if (currentPage == pageAmount)
+                {
+                    currentPage = 1;
+                }
+                else
+                {
+                    currentPage += 1;
+                }
 
-            pageIndicatorChanged = true;
-            itemCardsChanged = true;
-            HasChanged = true;
+                pageIndicatorChanged = true;
+                itemCardsChanged = true;
+                HasChanged = true;
+            }
         }
 
         /// <summary>
@@ -288,18 +291,21 @@ namespace PoP.classes.windows
             Page.CreatePages(itemList);
             pageAmount = Page.List.Count;
 
-            if (currentPage == 1)
+            if (pageAmount != 1)
             {
-                currentPage = pageAmount;
-            }
-            else
-            {
-                currentPage -= 1;
-            }
+                if (currentPage == 1)
+                {
+                    currentPage = pageAmount;
+                }
+                else
+                {
+                    currentPage -= 1;
+                }
 
-            pageIndicatorChanged = true;
-            itemCardsChanged = true;
-            HasChanged = true;
+                pageIndicatorChanged = true;
+                itemCardsChanged = true;
+                HasChanged = true;
+            }
         }
 
         /// <summary>
