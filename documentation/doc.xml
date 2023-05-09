@@ -29,6 +29,14 @@
             Removes the item from the player's inventory.
             </summary>
         </member>
+        <member name="M:PoP.classes.Border.Surround(System.Collections.Generic.List{System.String},System.Int32)">
+            <summary>
+            Depending on the settings, it surrounds a list of strings with walls.
+            </summary>
+            <param name="content">The list that needs borders around it.</param>
+            <param name="lineLength">The length a line.</param>
+            <returns>A list where the content is surrounded.</returns>
+        </member>
         <member name="T:PoP.classes.CombatPhase">
             <summary>
             Represents the different phases of combat.
@@ -59,7 +67,7 @@
             The win phase, where the player wins the game.
             </summary>
         </member>
-        <member name="M:PoP.classes.Combat.#ctor(System.Int32,System.Int32,System.Int32,System.String)">
+        <member name="M:PoP.classes.Combat.#ctor(System.Int32,System.Int32,System.Int32,System.Boolean,System.String)">
             <summary>
             Initializes a new instance of the <see cref="T:PoP.classes.Combat"/> class.
             </summary>
@@ -111,7 +119,7 @@
             The index of the current line of dialogue being displayed.
             </summary>
         </member>
-        <member name="M:PoP.classes.Dialogue.#ctor(System.Int32,System.Int32,System.Int32,System.String)">
+        <member name="M:PoP.classes.Dialogue.#ctor(System.Int32,System.Int32,System.Int32,System.Boolean,System.String)">
             <summary>
             Initializes a new instance of the Dialogue class with the specified ID, coordinates, file path, and name.
             </summary>
@@ -228,6 +236,31 @@
         <member name="M:PoP.classes.GameLoop.Update">
             <summary>
             Updates the game state every frame at a rate of 60 FPS.
+            </summary>
+        </member>
+        <member name="T:PoP.classes.BorderSide">
+            <summary>
+            The possible sides of a wall.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.BorderSide.Top">
+            <summary>
+            Top side of the wall.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.BorderSide.Right">
+            <summary>
+            Right side of the wall.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.BorderSide.Bottom">
+            <summary>
+            Bottom side of the wall.
+            </summary>
+        </member>
+        <member name="F:PoP.classes.BorderSide.Left">
+            <summary>
+            Left side of the wall.
             </summary>
         </member>
         <member name="T:PoP.classes.ItemType">
@@ -390,47 +423,175 @@
             Loads the map into the game by displaying its image and setting it as the current map.
             </summary>
         </member>
-        <member name="M:PoP.classes.Map.AddLocation(System.Int32,System.Int32,System.Int32,PoP.classes.LocationType,System.String)">
+        <member name="M:PoP.classes.Map.AddLocation(System.Int32,System.Int32,System.Int32,System.Boolean,PoP.classes.LocationType,System.String)">
             <summary>
             Adds a new location to the map with the given properties.
             </summary>
             <param name="id">The ID of the location</param>
             <param name="x">The x-coordinate of the location on the map</param>
             <param name="y">The y-coordinate of the location on the map</param>
+            <param name="isHidden">The visibility of the location</param>
             <param name="type">The type of the location (dialogue or combat)</param>
             <param name="path">The path to the file containing the location's content</param>
         </member>
-        <member name="M:PoP.classes.Movement.#ctor">
+        <member name="M:PoP.classes.Movement.#ctor(System.Int32,System.Int32)">
             <summary>
             The Movement class is responsible for handling the movement of the player character in the game.
             </summary>
         </member>
-        <member name="M:PoP.classes.Style.Color(System.String,System.String)">
+        <member name="F:PoP.classes.Style.END">
             <summary>
-            Körülveszi a szöveget ANSI escape kóddal, megváltoztatva a színét.
+            Gives back the ANSI escape code that stops every styling.
             </summary>
-            <param name="text">Stilizálandó szöveg.</param>
-            <param name="color">Angolul, nagybetűkkel, space helyett alsóvonallal.</param>
         </member>
-        <member name="M:PoP.classes.Style.Format(System.String,System.String)">
+        <member name="M:PoP.classes.Style.Color(System.String,PoP.classes.ColorAnsi)">
             <summary>
-            Körülveszi a szöveget ANSI escape kóddal, megváltoztatva a dekorációját.
+            Surrounds the text with ANSI escape code, changing its color.
             </summary>
-            <param name="text">Stilizálandó szöveg.</param>
-            <param name="format">BOLD / UNDERLINE / HIGHLIGHT</param>
+            <param name="text">The text that needs to be stylized.</param>
+            <param name="color">Enum of the color.</param>
         </member>
-        <member name="M:PoP.classes.Style.ColorFormat(System.String,System.String,System.String)">
+        <member name="M:PoP.classes.Style.Color(System.Char,PoP.classes.ColorAnsi)">
             <summary>
-            Körülveszi a szöveget ANSI escape kóddal, megváltoztatva a színét és dekorációját.
+            Surrounds the character with ANSI escape code, changing its color.
             </summary>
-            <param name="text">Stilizálandó szöveg.</param>
-            <param name="color">Angolul, nagybetűkkel, space helyett alsóvonallal.</param>
-            <param name="format">BOLD / UNDERLINE / HIGHLIGHT</param>
+            <param name="character">The character that needs to be stylized.</param>
+            <param name="color">Enum of the color.</param>
         </member>
-        <member name="M:PoP.classes.Style.TestStyle">
+        <member name="M:PoP.classes.Style.Color(System.Int32,PoP.classes.ColorAnsi)">
             <summary>
-            String tömböt ad vissza, amiben a szöveg ki van színezve és formázva.
+            Surrounds the number with ANSI escape code, changing its color.
             </summary>
+            <param name="number">The number that needs to be stylized.</param>
+            <param name="color">Enum of the color.</param>
+        </member>
+        <member name="M:PoP.classes.Style.GetColor(PoP.classes.ColorAnsi)">
+            <summary>
+            Creates an ANSI escape code of the parameter.
+            </summary>
+            <param name="color">Enum of the color.</param>
+            <returns>ANSI escape code of the specified color.</returns>
+        </member>
+        <member name="M:PoP.classes.Style.Format(System.String,PoP.classes.FormatAnsi)">
+            <summary>
+            Surrounds the text with ANSI escape code, changing its format.
+            </summary>
+            <param name="text">The text that needs to be stylized.</param>
+            <param name="format">Enum of the format.</param>
+        </member>
+        <member name="M:PoP.classes.Style.Format(System.Char,PoP.classes.FormatAnsi)">
+            <summary>
+            Surrounds the character with ANSI escape code, changing its format.
+            </summary>
+            <param name="character">The character that needs to be stylized.</param>
+            <param name="format">Enum of the format.</param>
+        </member>
+        <member name="M:PoP.classes.Style.Format(System.Int32,PoP.classes.FormatAnsi)">
+            <summary>
+            Surrounds the number with ANSI escape code, changing its format.
+            </summary>
+            <param name="number">The number that needs to be stylized.</param>
+            <param name="format">Enum of the format.</param>
+        </member>
+        <member name="M:PoP.classes.Style.GetFormat(PoP.classes.FormatAnsi)">
+            <summary>
+            Creates an ANSI escape code of the parameter.
+            </summary>
+            <param name="format">Enum of the format.</param>
+            <returns>ANSI escape code of the specified format.</returns>
+        </member>
+        <member name="M:PoP.classes.Style.ColorFormat(System.String,PoP.classes.ColorAnsi,PoP.classes.FormatAnsi)">
+            <summary>
+            Surrounds the text with ANSI escape code, changing its color and format.
+            </summary>
+            <param name="text">The text that needs to be stylized.</param>
+            <param name="color">Enum of the color.</param>
+            <param name="format">Enum of the format.</param>
+        </member>
+        <member name="M:PoP.classes.Style.ColorFormat(System.Char,PoP.classes.ColorAnsi,PoP.classes.FormatAnsi)">
+            <summary>
+            Surrounds the character with ANSI escape code, changing its color and format.
+            </summary>
+            <param name="character">The character that needs to be stylized.</param>
+            <param name="color">Enum of the color.</param>
+            <param name="format">Enum of the format.</param>
+        </member>
+        <member name="M:PoP.classes.Style.ColorFormat(System.Int32,PoP.classes.ColorAnsi,PoP.classes.FormatAnsi)">
+            <summary>
+            Surrounds the number with ANSI escape code, changing its color and format.
+            </summary>
+            <param name="number">The number that needs to be stylized.</param>
+            <param name="color">Enum of the color.</param>
+            <param name="format">Enum of the format.</param>
+        </member>
+        <member name="M:PoP.classes.Style.AlignCenterSpaces(System.String,System.Int32)">
+            <summary>
+            [OBSOLETE] Gives back the space before and after the text that is aligned in the center.
+            </summary>
+            <param name="text">The text that needs to be aligned in the center.</param>
+            <param name="lineLength">The length of the line.</param>
+            <returns>An AlignedText class.</returns>
+        </member>
+        <member name="M:PoP.classes.Style.GetRemainingSpace(System.String,System.Int32)">
+            <summary>
+            Gives back the remaining space of a line that already has some text taking up space of it.
+            </summary>
+            <param name="text">The text that takes up some space.</param>
+            <param name="lineLength">The length of the line.</param>
+            <returns>A string of spaces.</returns>
+        </member>
+        <member name="M:PoP.classes.Style.GetRemainingSpace(System.Int32,System.Int32)">
+            <summary>
+            Gives back the remaining space of a line that already has some text taking up space of it.
+            </summary>
+            <param name="textLength">The amount of space that the text that takes up.</param>
+            <param name="lineLength">The length of the line.</param>
+            <returns>A string of spaces.</returns>
+        </member>
+        <member name="M:PoP.classes.Style.GetBlankLine(System.Int32)">
+            <summary>
+            Gives back a line with the specified length made up of spaces.
+            </summary>
+            <param name="lineLength">The length of the line.</param>
+            <returns>The blank line.</returns>
+        </member>
+        <member name="M:PoP.classes.Style.GetBlankLine(System.Int32,System.Char)">
+            <summary>
+            Gives back a line with the specified length of the specified character.
+            </summary>
+            <param name="lineLength">The length of the line.</param>
+            <param name="fill">The cahracter that the line should be filled up with.</param>
+            <returns>The filled line.</returns>
+        </member>
+        <member name="M:PoP.classes.Style.GetDashedLine(System.Int32)">
+            <summary>
+            Gives back a dashed line.
+            </summary>
+            <param name="lineLength">The length of the line.</param>
+            <returns>Dashed line.</returns>
+        </member>
+        <member name="M:PoP.classes.Style.BreakLine(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Word wraps the text.
+            </summary>
+            <param name="text">The text that is longer than the width.</param>
+            <param name="width">The max width of a line.</param>
+            <param name="hasMargin">Adds indent to the beginning of the texts.</param>
+            <returns>The word wrapped list of text.</returns>
+        </member>
+        <member name="M:PoP.classes.Style.AddPadding(System.String)">
+            <summary>
+            Adds a space to the beginning and to the ending of the text.
+            </summary>
+            <param name="text">The text that needs to be padded.</param>
+            <returns>The padded text.</returns>
+        </member>
+        <member name="M:PoP.classes.Style.PurgeAnsi(System.String)">
+            <summary>
+            Exterminates the ANSI escape code from the specified text.
+            </summary>
+            <param name="corruptedText">The text plagued with heresy.</param>
+            <returns>Holy text.</returns>
         </member>
         <member name="P:PoP.classes.Weapon.Damage">
             <summary>
@@ -454,6 +615,143 @@
         <member name="M:PoP.classes.Weapon.Drop">
             <summary>
             Removes the item from the player's inventory.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.windows.DialogueWindow.ProgressDialogue(System.String,System.String,PoP.classes.ColorAnsi)">
+            <summary>
+            Adds a new dialogue line to the bottom.
+            </summary>
+            <param name="actor">Name of the actor. (Should be "..." if it's narration.)</param>
+            <param name="line">The line of dialogue/narration.</param>
+            <param name="color">The color of the actor's name.</param>
+        </member>
+        <member name="M:PoP.classes.windows.DialogueWindow.ProgressCombat(System.String,System.Collections.Generic.List{System.String},PoP.classes.ColorAnsi)">
+            <summary>
+            Adds a new combat line to the bottom.
+            </summary>
+            <param name="name">Left side of the combat line.</param>
+            <param name="lineList">Right side of the combat line.</param>
+            <param name="color">The color of the feft side of the combat line.</param>
+        </member>
+        <member name="M:PoP.classes.windows.DialogueWindow.ClearDialogue">
+            <summary>
+            Clears the dialogue box.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.windows.GearWindow.UpdateGear">
+            <summary>
+            It notifies the window for the next render that the gear has changed.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.windows.InventoryWindow.NextPage">
+            <summary>
+            It turns the inventory to the next page. If it's already the last page, it'll loop around.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.windows.InventoryWindow.PreviousPage">
+            <summary>
+            It turns the inventory to the previous page. If it's the first page, it'll loop around.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.windows.InventoryWindow.ToggleInUse">
+            <summary>
+            Toggles the color of the equipment keys next to the item names.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.windows.InventoryWindow.UpdateItemList(System.Collections.Generic.List{PoP.classes.Item})">
+            <summary>
+            Overrites the local item list of the inventory.
+            </summary>
+            <param name="newItemList">The changed list.</param>
+        </member>
+        <member name="M:PoP.classes.windows.MapWindow.SetCharacterPosition(System.Int32,System.Int32)">
+            <summary>
+            Moves the Player (H) to the specified position for the next render.
+            </summary>
+            <param name="newPosX">X position index.</param>
+            <param name="newPosY">Y position index.</param>
+        </member>
+        <member name="M:PoP.classes.windows.MapWindow.UpdateLocation(PoP.classes.Location,PoP.classes.ColorAnsi)">
+            <summary>
+            Updates the specified Location's marker for the next render.
+            </summary>
+            <param name="loc">The location that will be changed.</param>
+            <param name="color">The color the marker will have when the Location isn't completed or hidden.</param>
+        </member>
+        <member name="M:PoP.classes.windows.MapWindow.ImportMap(System.String)">
+            <summary>
+            Imports the map with the specified path into the window's map matrix.
+            </summary>
+            <param name="filePath">The path to the ASCII art map file.</param>
+        </member>
+        <member name="M:PoP.classes.windows.Page.CreatePages(System.Collections.Generic.List{PoP.classes.Item})">
+            <summary>
+            (Re)creates the pages of items for the inventory.
+            </summary>
+            <param name="itemList">The changed list of items.</param>
+        </member>
+        <member name="P:PoP.classes.windows.Window.GetLines">
+            <summary>
+            It gives a list of the lines of the window.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.windows.Window.GenerateLines">
+            <summary>
+            Generates the uncached or changed parts of the window.
+            </summary>
+            <returns>A list of the lines of the window.</returns>
+        </member>
+        <member name="M:PoP.classes.windows.Window.AddBlankLine">
+            <summary>
+            Appends a line full of spaces to the bottom of the window.
+            </summary>
+        </member>
+        <member name="M:PoP.classes.windows.Window.AddBlankLineLocal(System.Collections.Generic.List{System.String}@)">
+            <summary>
+            Appends a line full of spaces to the bottom of the window.
+            </summary>
+            <param name="localList">The local list that will be changed.</param>
+        </member>
+        <member name="M:PoP.classes.windows.Window.AddLine(System.String,System.Boolean)">
+            <summary>
+            Appends a line (or lines if the text is too long) to the bottom of the window.
+            </summary>
+            <param name="text">The content of the line(s).</param>
+            <param name="hasMargin">Optionally adds an indent to the beginning of the line(s).</param>
+        </member>
+        <member name="M:PoP.classes.windows.Window.AddLineLocal(System.Collections.Generic.List{System.String}@,System.String,System.Boolean)">
+            <summary>
+            Appends a line (or lines if the text is too long) to the bottom of a local list.
+            </summary>
+            <param name="localList">The local list that will be changed.</param>
+            <param name="text">The content of the line(s).</param>
+            <param name="hasMargin">Optionally adds an indent to the beginning of the line(s).</param>
+        </member>
+        <member name="M:PoP.classes.windows.Window.InsertBlankLine(System.Int32)">
+            <summary>
+            Inserts a line full of spaces to the specified index of the window.
+            </summary>
+            <param name="index">The index of where it should be inserted to.</param>
+        </member>
+        <member name="M:PoP.classes.windows.Window.InsertLine(System.Int32,System.String,System.Boolean)">
+            <summary>
+            Inserts a line (or lines if the text is too long) to the specified index of the window.
+            </summary>
+            <param name="index">The index of where it should be inserted to.</param>
+            <param name="text">The content of the line(s).</param>
+            <param name="hasMargin">Optionally adds an indent to the beginning of the line(s).</param>
+        </member>
+        <member name="M:PoP.classes.windows.Window.InsertLineRange(System.Int32,System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            Inserts a range of lines starting from the specified index of the window.
+            </summary>
+            <param name="index">The index of where it should be inserted to.</param>
+            <param name="textRange">The content of the lines.</param>
+            <param name="hasMargin">Optionally adds an indent to the beginning of the line(s).</param>
+        </member>
+        <member name="M:PoP.classes.windows.Window.ForceUpdate">
+            <summary>
+            It forces the window to look for changes at the next render.
             </summary>
         </member>
         <member name="T:PoP.Slot">

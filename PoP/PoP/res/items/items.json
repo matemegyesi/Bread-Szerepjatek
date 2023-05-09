@@ -1,0 +1,332 @@
+[
+  {
+    "name": "Blazeheart Band",
+    "damage": 75,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Frostshard Loop",
+    "damage": 82,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Thunderbolt Circle",
+    "damage": 91,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Venomfang Loop",
+    "damage": 64,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Celestial Circlet",
+    "damage": 55,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Shadowweave Ring",
+    "damage": 72,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Telekinetic Halo",
+    "damage": 87,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Nightfall Blade",
+    "damage": 93,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Stormbreaker Maul",
+    "damage": 88,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Frostbite Bow",
+    "damage": 81,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Lifebane Scythe",
+    "damage": 97,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Dragonclaw Sword",
+    "damage": 69,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Plaguebearer Staff",
+    "damage": 78,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Tempest War Axe",
+    "damage": 85,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Phoenixfire Ring",
+    "damage": 63,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Dragonheart Loop",
+    "damage": 76,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Chaos Stone",
+    "damage": 44,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Mystic Band",
+    "damage": 57,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Bloodmoon Circle",
+    "damage": 83,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Sunfire Loop",
+    "damage": 92,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Stormwatcher Ring",
+    "damage": 68,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Starlight Halo",
+    "damage": 71,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Flametongue Blade",
+    "damage": 86,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Thorned Whip",
+    "damage": 58,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Soulreaper Scythe",
+    "damage": 96,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Starfall Bow",
+    "damage": 78,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Necrotic Wand",
+    "damage": 89,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Aurora Blade",
+    "damage": 75,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Darkmoon Maul",
+    "damage": 97,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Skullcrusher Hammer",
+    "damage": 84,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Venomous Bow",
+    "damage": 62,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Thunderstrike Axe",
+    "damage": 91,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Void Staff",
+    "damage": 79,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Frostfire Greatsword",
+    "damage": 94,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Chaos Stone",
+    "damage": 20,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Mystic Band",
+    "damage": 25,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Venomfang Loop",
+    "damage": 30,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Celestial Circlet",
+    "damage": 35,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Phoenixfire Ring",
+    "damage": 40,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Dragonheart Loop",
+    "damage": 45,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Starlight Halo",
+    "damage": 50,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Thunderbolt Circle",
+    "damage": 60,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Bloodmoon Circle",
+    "damage": 65,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Sunfire Loop",
+    "damage": 70,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Shadowweave Ring",
+    "damage": 75,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Blazeheart Band",
+    "damage": 80,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Frostshard Loop",
+    "damage": 85,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Telekinetic Halo",
+    "damage": 90,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Stormwatcher Ring",
+    "damage": 95,
+    "slot": "ring",
+    "type": "weapon"
+  },
+  {
+    "name": "Dragonclaw Sword",
+    "damage": 100,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Thorned Whip",
+    "damage": 110,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Frostbite Bow",
+    "damage": 120,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Plaguebearer Staff",
+    "damage": 130,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Flametongue Blade",
+    "damage": 140,
+    "slot": "hand",
+    "type": "weapon"
+  },
+  {
+    "name": "Starfall Bow",
+    "damage": 150,
+    "slot": "hand",
+    "type": "weapon"
+  }
+]
