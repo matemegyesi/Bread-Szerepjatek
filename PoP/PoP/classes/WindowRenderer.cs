@@ -28,8 +28,6 @@ namespace PoP.classes
             }
         }
 
-        private static List<string> windowLines = new List<string>(Height);
-
         public static MapWindow Map = new MapWindow();
         public static StatsWindow Stats = new StatsWindow();
         public static GearWindow Gear = new GearWindow();
@@ -47,11 +45,11 @@ namespace PoP.classes
 
         public static List<string> Get()
         {
-            windowLines.Clear();
+            List<string> windows = new List<string>(Height);
 
             for (int _ = 0; _ < Height - 1; _++)
             {
-                windowLines.Add(string.Empty);
+                windows.Add(string.Empty);
             }
 
             // MMM § I      CCC S I
@@ -59,23 +57,22 @@ namespace PoP.classes
             // DDDDDDD      DDDDDDD
 
             Border border = new Border(true, false, false, true);
-            Border borderFull = new Border(false, true, true, false);
 
             if (Map.IsEnabled)
             {
-                AddWindow(border.Surround(Map.GetLines, Map.Width));
+                AddWindow(ref windows, border.Surround(Map.GetLines, Map.Width));
             }
 
             if (Stats.IsEnabled)
             {
                 border.TopLeft = Border.DOUBLE_T_TOP;
-                AddWindow(border.Surround(Stats.GetLines, Stats.Width));
+                AddWindow(ref windows, border.Surround(Stats.GetLines, Stats.Width));
             }
 
             if (Gear.IsEnabled)
             {
                 border.TopLeft = Border.DOUBLE_T_LEFT;
-                AddWindow(border.Surround(Gear.GetLines, Gear.Width), Stats.Height + 2);
+                AddWindow(ref windows, border.Surround(Gear.GetLines, Gear.Width), Stats.Height + 2);
             }
 
             if (Inventory.IsEnabled)
@@ -83,7 +80,7 @@ namespace PoP.classes
                 border.IntersectionList.Add(new Intersection(BorderSide.Left, Stats.Height + 1, Border.DOUBLE_T_RIGHT));
 
                 border.TopLeft = Border.DOUBLE_T_TOP;
-                AddWindow(border.Surround(Inventory.GetLines, Inventory.Width));
+                AddWindow(ref windows, border.Surround(Inventory.GetLines, Inventory.Width));
                 border.IntersectionList.Clear();
             }
 
@@ -93,22 +90,23 @@ namespace PoP.classes
                 border.IntersectionList.Add(new Intersection(BorderSide.Top, Map.Width + Stats.Width + 2, Border.DOUBLE_T_BOTTOM));
 
                 border.TopLeft = Border.DOUBLE_T_LEFT;
-                AddWindow(border.Surround(Dialogue.GetLines, Dialogue.Width), Map.Height + 2);
+                AddWindow(ref windows, border.Surround(Dialogue.GetLines, Dialogue.Width), Map.Height + 2);
                 border.IntersectionList.Clear();
             }
 
+            Border borderFull = new Border(false, true, true, false);
 
             borderFull.IntersectionList.Add(new Intersection(BorderSide.Right, 0, Border.DOUBLE_TOPRIGHT));
             borderFull.IntersectionList.Add(new Intersection(BorderSide.Right, Inventory.Height + 1, Border.DOUBLE_T_RIGHT));
             borderFull.IntersectionList.Add(new Intersection(BorderSide.Bottom, 0, Border.DOUBLE_BOTTOMLEFT));
-            return borderFull.Surround(windowLines, Width - 1);
+            return borderFull.Surround(windows, Width - 1);
         }
 
-        private static void AddWindow(List<string> lineList, int startIndex = 1)
+        private static void AddWindow(ref List<string> windowLineList, List<string> lineList, int startIndex = 1)
         {
             for (int i = 0; i < lineList.Count; i++)
             {
-                windowLines[i + (startIndex - 1)] += lineList[i];
+                windowLineList[i + (startIndex - 1)] += lineList[i];
             }
         }
 
