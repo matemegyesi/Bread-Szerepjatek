@@ -82,6 +82,9 @@ namespace PoP.classes
             base.Start();
             KeyboardInput.KeyPressed += KeyPressed;
 
+            Wire.Disable(Wire.Map);
+            Wire.Enable(Wire.Combat);
+
             ChangeCombatPhase(CombatPhase.LOADOUT);
         }
 
@@ -94,6 +97,8 @@ namespace PoP.classes
             KeyboardInput.KeyPressed -= KeyPressed;
 
             Wire.Dialogue.ClearDialogue();
+            Wire.Disable(Wire.Combat);
+            Wire.Enable(Wire.Map);
 
             isCompleted = true;
             Wire.Map.UpdateLocation(this);

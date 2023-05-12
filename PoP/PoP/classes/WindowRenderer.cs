@@ -33,6 +33,7 @@ namespace PoP.classes
         public static GearWindow Gear = new GearWindow();
         public static InventoryWindow Inventory = new InventoryWindow();
         public static DialogueWindow Dialogue = new DialogueWindow();
+        public static CombatWindow Combat = new CombatWindow();
 
         public static void Initialize()
         {
@@ -41,6 +42,7 @@ namespace PoP.classes
             Gear.IsEnabled = true;
             Inventory.IsEnabled = true;
             Dialogue.IsEnabled = true;
+            Combat.IsEnabled = false;
         }
 
         public static List<string> Get()
@@ -61,6 +63,11 @@ namespace PoP.classes
             if (Map.IsEnabled)
             {
                 AddWindow(ref windows, border.Surround(Map.GetLines, Map.Width));
+            }
+
+            if (Combat.IsEnabled)
+            {
+                AddWindow(ref windows, border.Surround(Combat.GetLines, Combat.Width));
             }
 
             if (Stats.IsEnabled)
