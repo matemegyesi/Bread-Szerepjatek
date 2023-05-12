@@ -71,9 +71,10 @@ namespace PoP.classes
 
             // Initializes maps with file paths and adds locations to map3 using the Map class.
             Map map1 = new Map("res\\maps\\Raudagnupur.txt");
-            Map map2 = new Map("res\\maps\\map1.txt");
             Map map3 = new Map("res\\maps\\volcano.txt");
-            Map map4 = new Map("res\\maps\\cave.txt");
+            //Map map2 = new Map("res\\maps\\map1.txt");
+            //Map map4 = new Map("res\\maps\\cave.txt");
+            //Map map5 = new Map("res\\maps\\Capital.txt");
 
             map1.AddLocation(2, 53, 24, false, LocationType.DIALOGUE, "res\\dialogue\\blacksmith.json");
             map1.AddLocation(1, 75, 8, false, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json");
@@ -86,7 +87,7 @@ namespace PoP.classes
             Wire.Map.SetCharacterPosition(9, 13);
 
             // Loads map2.
-            Map.maps[0].LoadMap();
+            Map.maps[1].LoadMap();
             
             // Starts the Update loop
             Update();
