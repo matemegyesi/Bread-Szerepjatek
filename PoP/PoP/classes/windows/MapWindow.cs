@@ -9,10 +9,12 @@ namespace PoP.classes.windows
 {
     internal class MapWindow : Window
     {
-        public static Tile[,] Map { get; private set; } = new Tile[46, 147];
+        const int HEIGHT = 46;
+        const int WIDTH = 148;
+        public static Tile[,] Map { get; private set; } = new Tile[HEIGHT, WIDTH];
         private bool isMapLoaded;
         public List<Location> LocationList = new List<Location>();
-
+        
         public int PosX { get; set; }
         public int PosY { get; set; }
 
@@ -42,7 +44,7 @@ namespace PoP.classes.windows
                 {
                     LineList.Clear();
 
-                    for (int row = 0; row < Map.GetLength(0); row++)
+                    for (int row = 0; row < HEIGHT; row++)
                     {
                         string newLine = GenerateRow(row);
 
@@ -196,7 +198,7 @@ namespace PoP.classes.windows
             Tile[] row = Enumerable.Range(0, Map.GetLength(1)).Select(x => Map[rowIndex, x]).ToArray();
             string newLine = string.Empty;
 
-            for (int col = 0; col < Map.GetLength(1); col++)
+            for (int col = 0; col < WIDTH; col++)
             {
 
                 if (rowIndex == PosY && col == PosX)
@@ -210,7 +212,7 @@ namespace PoP.classes.windows
 
             }
 
-            return newLine + ' ';
+            return newLine;
         }
 
         /// <summary>
@@ -250,22 +252,59 @@ namespace PoP.classes.windows
         /// <param name="filePath">The path to the ASCII art map file.</param>
         public void ImportMap(string filePath)
         {
+            // Reads the map file
+            string[] _fileContent = File.ReadAllLines(filePath, Encoding.UTF8);
+
+            // Generates the map from the read file
             int _rowIndex = 0;
-            foreach (string row in File.ReadAllLines(filePath, Encoding.UTF8))
+            foreach (string row in _fileContent)
             {
                 int _colIndex = 0;
                 foreach (char col in row)
                 {
-                    Map[_rowIndex, _colIndex] = new Tile(col);
+                    if (_rowIndex < HEIGHT && _colIndex < WIDTH)
+                    {
+                        Map[_rowIndex, _colIndex] = new Tile(col);
+                    }
 
                     _colIndex++;
+                }
+
+                int _colRemaining = WIDTH - _colIndex;
+                if (_colIndex < WIDTH)
+                {
+                    for (int i = 0; i < _colRemaining; i++)
+                    {
+                        if (_colIndex + i != WIDTH - 1 && _colIndex + i != 0)
+                        {
+                            Map[_rowIndex, _colIndex + i] = new Tile(' ');
+                        }
+                        else
+                        {
+                            Map[_rowIndex, _colIndex + i] = new Tile('#');
+                        }
+                    }
                 }
 
                 _rowIndex++;
             }
 
+            // Fills up remaining lines
+            if (_fileContent.Length != HEIGHT)
+            {
+                int _rowRemaining = HEIGHT - _rowIndex;
+                for (int row = 0; row < _rowRemaining; row++)
+                {
+                    for (int col = 0; col < WIDTH; col++)
+                    {
+                        Map[_rowIndex + row, col] = new Tile('#');
+                    }
+                }
+            }
+
             isMapLoaded = true;
 
+            // Adds all the locations
             foreach (Location loc in LocationList)
             {
                 GenerateLocation(loc);
