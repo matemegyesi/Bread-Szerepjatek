@@ -1,83 +1,87 @@
 [
 	{
-		"actor" : "Player",
-		"text" : "Stigandr, am I interrupting something?"
+		"locationName": "...",
+		"isHidden": true
 	},
 	{
-		"actor" : "Stigandr",
-		"text" : "My friend, you've come just at the right time, my apprentice is just about to leave. What can I help you with?"
+		"actor": "Player",
+		"text": "Stigandr, am I interrupting something?"
 	},
 	{
-		"actor" : "Player",
-		"text" : "What can you tell me about the the Thirteen?"
+		"actor": "Stigandr",
+		"text": "My friend, you've come just at the right time, my apprentice is just about to leave. What can I help you with?"
 	},
 	{
-		"actor" : "Stigandr",
-		"text" : "What makes you think I know anything?"
+		"actor": "Player",
+		"text": "What can you tell me about the the Thirteen?"
 	},
 	{
-		"actor" : "Player",
-		"text" : "Seriously? I've known you for over 20 years and I know you have little birds everywhere chirping to you. Also, you never miss out on a shady deal in Algengur."
+		"actor": "Stigandr",
+		"text": "What makes you think I know anything?"
 	},
 	{
-		"actor" : "Stigandr",
-		"text" : "Okay, fine, you know me too well. Where do I start?"
+		"actor": "Player",
+		"text": "Seriously? I've known you for over 20 years and I know you have little birds everywhere chirping to you. Also, you never miss out on a shady deal in Algengur."
 	},
 	{
-		"actor" : "Player",
-		"text" : "Preferably from the start."
+		"actor": "Stigandr",
+		"text": "Okay, fine, you know me too well. Where do I start?"
 	},
 	{
-		"actor" : "Stigandr",
-		"text" : "Let me tell you the reason for the sudden changes of The Order. It began 5 years ago. I'm sure you felt it too. A magical wave swept through Algengur."
+		"actor": "Player",
+		"text": "Preferably from the start."
 	},
 	{
-		"actor" : "Player",
-		"text" : "It was hard to miss."
+		"actor": "Stigandr",
+		"text": "Let me tell you the reason for the sudden changes of The Order. It began 5 years ago. I'm sure you felt it too. A magical wave swept through Algengur."
 	},
 	{
-		"actor" : "Stigandr",
-		"text" : "The Thirteen aren't themselfs since then, like their whole being changed. I started investigating and found interesting things. Sinister things..."
+		"actor": "Player",
+		"text": "It was hard to miss."
 	},
 	{
-		"actor" : "Stigandr",
-		"text" : "I've found the traces of Nouzur all across Vaett, which is not pleasing. It was no ordinary magic. I've found out it was a demon from The Maw, who caused it."
+		"actor": "Stigandr",
+		"text": "The Thirteen aren't themselfs since then, like their whole being changed. I started investigating and found interesting things. Sinister things..."
 	},
 	{
-		"actor" : "Player",
-		"text" : "I've found a Realm Portal in the black dunes of Ermir's Vulcano. Azzinoth stood guard, but I managed annihilate him."
+		"actor": "Stigandr",
+		"text": "I've found the traces of Nouzur all across Vaett, which is not pleasing. It was no ordinary magic. I've found out it was a demon from The Maw, who caused it."
 	},
 	{
-		"actor" : "Stigandr",
-		"text" : "So that's where it came from. I've successfully found out the identity of the demon."
+		"actor": "Player",
+		"text": "I've found a Realm Portal in the black dunes of Ermir's Vulcano. Azzinoth stood guard, but I managed annihilate him."
 	},
 	{
-		"actor" : "Stigandr",
-		"text" : "His name is Rirgrollath. The only tales I found where ancient tales about a General of the Demon Legions. I believe he is that general."
+		"actor": "Stigandr",
+		"text": "So that's where it came from. I've successfully found out the identity of the demon."
 	},
 	{
-		"actor" : "Player",
-		"text" : "That complicates it. Nouzur is home to some unpleasant magic and if he is the one controlling the Order, than it will be harder to nullify than I expected."
+		"actor": "Stigandr",
+		"text": "His name is Rirgrollath. The only tales I found where ancient tales about a General of the Demon Legions. I believe he is that general."
 	},
 	{
-		"actor" : "Player",
-		"text" : "I will have to personally make a visit to the Thirteens. I'll start with Gudleikur."
+		"actor": "Player",
+		"text": "That complicates it. Nouzur is home to some unpleasant magic and if he is the one controlling the Order, than it will be harder to nullify than I expected."
 	},
 	{
-		"actor" : "Stigandr",
-		"text" : "Take this, it's a Stone of Resurrection. In case things get... wild.",
-		"action" : "getpotion",
-		"param" : [
+		"actor": "Player",
+		"text": "I will have to personally make a visit to the Thirteens. I'll start with Gudleikur."
+	},
+	{
+		"actor": "Stigandr",
+		"text": "Take this, it's a Stone of Resurrection. In case things get... wild.",
+		"action": "getpotion",
+		"param": [
 			"potion",
 			"Stone of Resurrection"
 		]
 	},
 	{
-		"actor" : "Player",
-		"text" : "Thanks! I'll see you after I get things in order. Ég mun sjá thig!"
+		"actor": "Player",
+		"text": "Thanks! I'll see you after I get things in order. Ég mun sjá thig!"
 	},
 	{
-		"actor" : "Stigandr",
-		"text" : "See you later friend!"
+		"actor": "Stigandr",
+		"text": "See you later friend!"
 	}
 ]

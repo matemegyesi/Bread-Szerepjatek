@@ -1,5 +1,9 @@
 ﻿[
   {
+    "locationName": "...",
+    "isHidden": true
+  },
+  {
     "actor": "Commander Roman, General of the Grand Fleet",
     "text": "Welcome back, my friend. I hear you've been isolating yourself from the world of men, what brought you back?"
   },

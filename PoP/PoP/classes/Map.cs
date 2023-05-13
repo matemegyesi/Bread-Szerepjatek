@@ -68,20 +68,20 @@ namespace PoP.classes
         /// <param name="isHidden">The visibility of the location</param>
         /// <param name="type">The type of the location (dialogue or combat)</param>
         /// <param name="path">The path to the file containing the location's content</param>
-        public void AddLocation(int id, int x, int y, bool isHidden, LocationType type, string path)
+        public void AddLocation(int id, int x, int y, LocationType type, string path)
         {
             switch (type)
             {
                 // If the location is a dialogue location, add a new Dialogue object to the locations list
                 case LocationType.DIALOGUE:
-                    locations.Add(new Dialogue(id, x, y, isHidden, path));
-                    Wire.Map.LocationList.Add(new Dialogue(id, x, y, isHidden, path));
+                    locations.Add(new Dialogue(id, x, y, path));
+                    Wire.Map.LocationList.Add(new Dialogue(id, x, y, path));
                     break;
 
                 // If the location is a combat location, add a new Combat object to the locations list
                 case LocationType.COMBAT:
-                    locations.Add(new Combat(id, x, y, isHidden, path));
-                    Wire.Map.LocationList.Add(new Combat(id, x, y, isHidden, path));
+                    locations.Add(new Combat(id, x, y, path));
+                    Wire.Map.LocationList.Add(new Combat(id, x, y, path));
                     break;
 
                 // If the location type is not recognized, do nothing

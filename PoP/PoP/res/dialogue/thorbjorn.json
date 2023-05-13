@@ -1,50 +1,54 @@
 [
 	{
-		"actor" : "Thórbjörn",
-		"text" : "What takes you to my empire my friend? I believe you are not here to chat about some herbs and alchemy."
+		"locationName": "...",
+		"isHidden": true
 	},
 	{
-		"actor" : "Player",
-		"text" : "King Thórbjörn, sadly not. I have reasons to suspect Queen Adavesa's emissary went missing on his way to you."
+		"actor": "Thórbjörn",
+		"text": "What takes you to my empire my friend? I believe you are not here to chat about some herbs and alchemy."
 	},
 	{
-		"actor" : "Thórbjörn",
-		"text" : "You coulnd't be more right. He did arrive, but immediately a Hellish Triad appeared out of nowhere and took him."
+		"actor": "Player",
+		"text": "King Thórbjörn, sadly not. I have reasons to suspect Queen Adavesa's emissary went missing on his way to you."
 	},
 	{
-		"actor" : "Player",
-		"text" : "Just as I feared... I believe they were from Nouzur."
+		"actor": "Thórbjörn",
+		"text": "You coulnd't be more right. He did arrive, but immediately a Hellish Triad appeared out of nowhere and took him."
 	},
 	{
-		"actor" : "Thórbjörn",
-		"text" : "After they took him, something appeared at their place. I can tell you, it was not of this realm. His aura reeked terror. He could have easily defeated our strongest Runewarrior."
+		"actor": "Player",
+		"text": "Just as I feared... I believe they were from Nouzur."
 	},
 	{
-		"actor" : "Player",
-		"text" : "Then why didn't you contact Adavesa, or me?"
+		"actor": "Thórbjörn",
+		"text": "After they took him, something appeared at their place. I can tell you, it was not of this realm. His aura reeked terror. He could have easily defeated our strongest Runewarrior."
 	},
 	{
-		"actor" : "Thórbjörn",
-		"text" : "I wanted to... but He forbed us to tell anybody what happened. Until now only 14 dwarf knew about this, me and the Fenix Grav. Our empire started to rot and decay and I couldn't do anything against it, he decided my every movement before me."
+		"actor": "Player",
+		"text": "Then why didn't you contact Adavesa, or me?"
 	},
 	{
-		"actor" : "Player",
-		"text" : "But I'm here now. Gather your strongest Runewarriors, assemble the Royal Dwarf Army. I'm planning on performing a rather forceful spell. "
+		"actor": "Thórbjörn",
+		"text": "I wanted to... but He forbed us to tell anybody what happened. Until now only 14 dwarf knew about this, me and the Fenix Grav. Our empire started to rot and decay and I couldn't do anything against it, he decided my every movement before me."
 	},
 	{
-		"actor" : "...",
-		"text" : "Royal Dwarf Army arrives in full armor. The Fenix Grav, the King's 12 strongest warriors, who protect the Empire, also arrive."
+		"actor": "Player",
+		"text": "But I'm here now. Gather your strongest Runewarriors, assemble the Royal Dwarf Army. I'm planning on performing a rather forceful spell. "
 	},
 	{
-		"actor" : "...",
-		"text" : "The spell takes 7 days, Superior Magic - Nature's Shelter, which we successfully perform. The dwarfs' blood is infused with Rune Magic, which makes it far more easier to do a spell this caliber."
+		"actor": "...",
+		"text": "Royal Dwarf Army arrives in full armor. The Fenix Grav, the King's 12 strongest warriors, who protect the Empire, also arrive."
 	},
 	{
-		"actor" : "Player",
-		"text" : "It's done. This is the magic, which was used by a \"nomad\", who sealed a kraken of the Tegritse Ocean. I'm going to try to bring back the emissary, but for that I need a holy creature. Luckily it happens I know one very well. Meet me in Nazjatar, the Queen will be pleased with your arrival. Until then!"
+		"actor": "...",
+		"text": "The spell takes 7 days, Superior Magic - Nature's Shelter, which we successfully perform. The dwarfs' blood is infused with Rune Magic, which makes it far more easier to do a spell this caliber."
 	},
 	{
-		"actor" : "Thórbjörn",
-		"text" : "Be careful my friend!"
+		"actor": "Player",
+		"text": "It's done. This is the magic, which was used by a \"nomad\", who sealed a kraken of the Tegritse Ocean. I'm going to try to bring back the emissary, but for that I need a holy creature. Luckily it happens I know one very well. Meet me in Nazjatar, the Queen will be pleased with your arrival. Until then!"
+	},
+	{
+		"actor": "Thórbjörn",
+		"text": "Be careful my friend!"
 	}
 ]

@@ -1,54 +1,58 @@
 [
 	{
-		"actor" : "...",
-		"text" : "After defeating Trykxezz, you send Hjalmar to find out the names of the 3 members of the Hellish Triad."
+		"locationName": "...",
+		"isHidden": true
 	},
 	{
-		"actor" : "...",
-		"text" : "The ritual was a success, the emissary is back, now you can return to Nazjatar, to Adavesa."
+		"actor": "...",
+		"text": "After defeating Trykxezz, you send Hjalmar to find out the names of the 3 members of the Hellish Triad."
 	},
 	{
-		"actor" : "...",
-		"text" : "She already gather the army, who practice the Nagalana fighting style."
+		"actor": "...",
+		"text": "The ritual was a success, the emissary is back, now you can return to Nazjatar, to Adavesa."
 	},
 	{
-		"actor" : "Adavesa",
-		"text" : "Oh darling, I'm relieved you're back. Was your mission a success?"
+		"actor": "...",
+		"text": "She already gather the army, who practice the Nagalana fighting style."
 	},
 	{
-		"actor" : "Player",
-		"text" : "Luckily, it was."
+		"actor": "Adavesa",
+		"text": "Oh darling, I'm relieved you're back. Was your mission a success?"
 	},
 	{
-		"actor" : "Adavesa",
-		"text" : "Then let me tell you something, that my spied discovered. Rirgrollath is trying to achieve tyranny. With the help of Nouzur, he will be able to achieve this."
+		"actor": "Player",
+		"text": "Luckily, it was."
 	},
 	{
-		"actor" : "...",
-		"text" : "You sent 2 letters to Trykxezz and Gudleikur to come to Nazjatar to discuss further actions."
+		"actor": "Adavesa",
+		"text": "Then let me tell you something, that my spied discovered. Rirgrollath is trying to achieve tyranny. With the help of Nouzur, he will be able to achieve this."
 	},
 	{
-		"actor" : "Player",
-		"text" : "Friends, we have to speed up the process, we have to free another 5 members of the Order, I can't do it alone."
+		"actor": "...",
+		"text": "You sent 2 letters to Trykxezz and Gudleikur to come to Nazjatar to discuss further actions."
 	},
 	{
-		"actor" : "Thórbjörn",
-		"text" : "We are here, just tell us where to go and we will make peace in their minds."
+		"actor": "Player",
+		"text": "Friends, we have to speed up the process, we have to free another 5 members of the Order, I can't do it alone."
 	},
 	{
-		"actor" : "Player",
-		"text" : "Thank you, but first let me give you some things. Trykxezz, here is your double-bladed dagger, Gudleikur, a Crystal for you and a hammer to you Thorbjron."
+		"actor": "Thórbjörn",
+		"text": "We are here, just tell us where to go and we will make peace in their minds."
 	},
 	{
-		"actor" : "Player",
-		"text" : "Adavesa my love, a ring for you, use it well. These are relics of the Ancient Days, they can store magic up to level 9. Use it as a last resort. "
+		"actor": "Player",
+		"text": "Thank you, but first let me give you some things. Trykxezz, here is your double-bladed dagger, Gudleikur, a Crystal for you and a hammer to you Thorbjron."
 	},
 	{
-		"actor" : "Player",
-		"text" : "My dear, come here for a second. I don't wanna lose you and I know how difficult is fighting alone for you some let me give you some company. Sol'gazath, arise! He is the general of my armies and the last representative of a forgotten species."
+		"actor": "Player",
+		"text": "Adavesa my love, a ring for you, use it well. These are relics of the Ancient Days, they can store magic up to level 9. Use it as a last resort. "
 	},
 	{
-		"actor" : "Player",
-		"text" : "Meet me at Mgaeshki's Lighthouse after. Gangi thér vel!"
+		"actor": "Player",
+		"text": "My dear, come here for a second. I don't wanna lose you and I know how difficult is fighting alone for you some let me give you some company. Sol'gazath, arise! He is the general of my armies and the last representative of a forgotten species."
+	},
+	{
+		"actor": "Player",
+		"text": "Meet me at Mgaeshki's Lighthouse after. Gangi thér vel!"
 	}
 ]

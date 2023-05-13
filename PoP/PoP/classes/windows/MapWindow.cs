@@ -75,7 +75,7 @@ namespace PoP.classes.windows
 
         private void GenerateLocation(Location loc, ColorAnsi color = ColorAnsi.DARK_BLUE)
         {
-            if (isMapLoaded && !loc.isHidden)
+            if (isMapLoaded && !loc.IsHidden)
             {
                 // Setting the color
                 if (loc.isCompleted)

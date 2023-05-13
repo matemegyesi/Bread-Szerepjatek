@@ -1,5 +1,9 @@
 [
   {
+    "locationName": "Church",
+    "isHidden": false
+  },
+  {
     "actor": "Player",
     "text": "Good day, High Priest. I have been curious about the sudden changes that occurred in the Sorcerer Order five years ago. Can you shed some light on the matter?"
   },

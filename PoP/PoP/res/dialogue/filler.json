@@ -1,14 +1,18 @@
 [
 	{
-		"actor" : "...",
-		"text" : "...The Hellish Triad isn't blessed by Dragtuna, they are weak to Holy magic. Holy magic is on another level, when performed by holy creatures, such as Trykxezz, who happens to be a member of the Sorcerer Order."
+		"locationName": "...",
+		"isHidden": true
 	},
 	{
-		"actor" : "...",
-		"text" : "You return to Barringsons Port, where you learn Trykxezz's clan is trying to summon Nefaris Elemental at the moment."
+		"actor": "...",
+		"text": "...The Hellish Triad isn't blessed by Dragtuna, they are weak to Holy magic. Holy magic is on another level, when performed by holy creatures, such as Trykxezz, who happens to be a member of the Sorcerer Order."
 	},
 	{
-		"actor" : "...",
-		"text" : "You board a ship, heading to the Genesis Sea. After taking of in the middle of the ocean, you perform a revealing spell, which reveals an island. A moving island. You head to the jackals and ask Trykxezz to come with you, but suddenly, he attacks you..."
+		"actor": "...",
+		"text": "You return to Barringsons Port, where you learn Trykxezz's clan is trying to summon Nefaris Elemental at the moment."
+	},
+	{
+		"actor": "...",
+		"text": "You board a ship, heading to the Genesis Sea. After taking of in the middle of the ocean, you perform a revealing spell, which reveals an island. A moving island. You head to the jackals and ask Trykxezz to come with you, but suddenly, he attacks you..."
 	}
 ]
