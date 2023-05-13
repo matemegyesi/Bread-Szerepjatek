@@ -51,11 +51,11 @@ namespace PoP.classes
         /// <param name="x">The X coordinate of the location of the combat encounter.</param>
         /// <param name="y">The Y coordinate of the location of the combat encounter.</param>
         /// <param name="path">The path to the combat encounter.</param>
-        public Combat(int id, int x, int y, string path) : base(id, x, y)
+        public Combat(int id, string path) : base(id)
         {
             this.id = id;
-            positionX = x;
-            positionY = y;
+            positionX = 127;
+            positionY = 29;
             Path = path;
 
             enemy = new Enemy(path);

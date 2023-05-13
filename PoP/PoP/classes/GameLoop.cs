@@ -76,10 +76,10 @@ namespace PoP.classes
             //Map map4 = new Map("res\\maps\\cave.txt");
             //Map map5 = new Map("res\\maps\\Capital.txt");
 
-            map1.AddLocation(2, 53, 24, LocationType.DIALOGUE, "res\\dialogue\\blacksmith.json");
-            map1.AddLocation(1, 75, 8, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json");
-            map1.AddLocation(3, 127, 30, LocationType.DIALOGUE, "res\\dialogue\\guiscardtalk.json");
-            map1.AddLocation(4, 127, 29, LocationType.COMBAT, "res\\enemies\\enemy.json");
+            map1.AddLocation(2, LocationType.DIALOGUE, "res\\dialogue\\blacksmith.json");
+            map1.AddLocation(1, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json");
+            map1.AddLocation(3, LocationType.DIALOGUE, "res\\dialogue\\guiscardtalk.json");
+            map1.AddLocation(4, LocationType.COMBAT, "res\\enemies\\enemy.json");
             
             //ReadItemFile("res\\itemFile.txt");
 

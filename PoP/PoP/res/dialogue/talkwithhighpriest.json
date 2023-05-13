@@ -1,7 +1,9 @@
 [
   {
-    "locationName": "Church",
-    "isHidden": false
+    "posX": 75,
+    "posY": 8,
+    "isHidden": false,
+    "locationName": "Church"
   },
   {
     "actor": "Player",

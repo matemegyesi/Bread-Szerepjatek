@@ -1,7 +1,9 @@
 ﻿[
   {
-    "locationName": "...",
-    "isHidden": true
+    "posX": 0,
+    "posY": 0,
+    "isHidden": true,
+    "locationName": "..."
   },
   {
     "actor": "Commander Roman, General of the Grand Fleet",

@@ -1,7 +1,9 @@
 [
   {
-    "locationName": "Cave",
-    "isHidden": false
+    "posX": 127,
+    "posY": 30,
+    "isHidden": false,
+    "locationName": "Cave"
   },
   {
     "actor": "Player",

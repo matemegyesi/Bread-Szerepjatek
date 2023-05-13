@@ -1,7 +1,9 @@
 [
   {
-    "locationName": "Blacksmith",
-    "isHidden": false
+    "posX": 53,
+    "posY": 24,
+    "isHidden": false,
+    "locationName": "Blacksmith"
   },
   {
     "actor": "Player",

@@ -29,16 +29,17 @@ namespace PoP.classes
         /// <param name="x">The X coordinate of the dialogue.</param>
         /// <param name="y">The Y coordinate of the dialogue.</param>
         /// <param name="path">The file path of the JSON file containing the dialogue data.</param>
-        public Dialogue(int id, int x, int y, string path) : base(id, x, y)
+        public Dialogue(int id, string path) : base(id)
         {
             this.id = id;
-            positionX = x;
-            positionY = y;
             Path = path;
 
             string json = File.ReadAllText(path);
             conversation = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(json);
-
+            
+            positionX = int.Parse(conversation[0]["posX"].ToString());
+            positionY = int.Parse(conversation[0]["posY"].ToString());
+            
             bool isHidden;
             if (bool.TryParse(conversation[0]["isHidden"].ToString(), out isHidden))
             {
