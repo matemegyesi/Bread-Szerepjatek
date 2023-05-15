@@ -11,9 +11,11 @@ namespace PoP.classes
         static public double Damage { get; set; }
         static public double Defence { get; set; }
 
-        static public double Health { get; private set; }
+        static public double MaxHealth { get; private set; } = 50;
+        static public double Health { get; private set; } = 44;
 
-        static public int Mana { get; private set; }
+        static public int MaxMana { get; private set; } = 20;
+        static public int Mana { get; private set; } = 9;
 
         public Player()
         {

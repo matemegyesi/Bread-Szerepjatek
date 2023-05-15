@@ -51,6 +51,27 @@ namespace PoP.classes.windows
         {
             List<string> infoList = new List<string>();
 
+            // Hp bar
+            int _hpLength = 30;
+            double _hpPercent = Player.Health / (double)Player.MaxHealth;
+            ColorAnsi _hpColor = ColorAnsi.LIGHT_BLUE;
+
+            infoList.Add(Style.Color($"HEALTH [{Player.Health}/{Player.MaxHealth}]", ColorAnsi.WHITE));
+            infoList.Add(Style.Color('┇', _hpColor) + Style.GetSlider(_hpLength, _hpPercent, _hpColor) + Style.Color('┇', _hpColor));
+
+            // Break
+            infoList.Add(string.Empty);
+
+            // Mana bar
+            int _manaLength = 30;
+            double _manaPercent = Player.Mana / (double)Player.MaxMana;
+            ColorAnsi _manaColor = ColorAnsi.PURPLE;
+
+            infoList.Add(Style.Color($"MANA [{Player.Mana}/{Player.MaxMana}]", ColorAnsi.WHITE));
+            infoList.Add(Style.Color('┇', _manaColor) + Style.GetSlider(_manaLength, _manaPercent, _manaColor) + Style.Color('┇', _manaColor));
+
+
+
             return infoList;
         }
 
