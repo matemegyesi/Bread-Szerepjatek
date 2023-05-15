@@ -10,7 +10,9 @@ namespace PoP.classes
     {
         static public double Damage { get; set; }
         static public double Defence { get; set; }
-        static public int Health { get; private set; }
+
+        static public double Health { get; private set; }
+
         static public int Mana { get; private set; }
 
         public Player()

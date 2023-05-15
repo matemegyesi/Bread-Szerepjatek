@@ -28,15 +28,43 @@ namespace PoP.classes.windows
         {
             Height = 46;
             Width = 148;
+
+
         }
 
         protected override List<string> GenerateLines()
         {
             LineList.Clear();
 
+            AddBlankLine();
 
+            string _infoPadding = Style.GetBlankLine(6);
+            foreach (var item in GeneratePlayerInfo())
+            {
+                AddLine(_infoPadding + item);
+            }
 
             return LineList;
+        }
+
+        public List<string> GeneratePlayerInfo()
+        {
+            List<string> infoList = new List<string>();
+
+            return infoList;
+        }
+
+        public List<string> GenerateEnemyInfo()
+        {
+            List<string> infoList = new List<string>();
+
+
+
+
+
+
+
+            return infoList;
         }
 
         public void ShowLoadout()

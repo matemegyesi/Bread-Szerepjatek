@@ -65,7 +65,7 @@ namespace PoP.classes
             display = new Display();
             Running = true;
             keyboardInput = new KeyboardInput();
-            playerMovement = new Movement(9, 13);
+            playerMovement = new Movement(127, 27); // 9, 13 or 127, 27 //
             inventory = new Inventory();
             action = new Action();
 
@@ -84,7 +84,7 @@ namespace PoP.classes
             //ReadItemFile("res\\itemFile.txt");
 
             // Initialize character
-            Wire.Map.SetCharacterPosition(9, 13);
+            Wire.Map.SetCharacterPosition(127, 27); // 9, 13 or 127, 27 //
 
             // Loads map2.
             Map.maps[0].LoadMap();

@@ -43,6 +43,11 @@ namespace PoP.classes
         public const char CURVED_TOPRIGHT = '╮';
         public const char CURVED_BOTTOMRIGHT = '╯';
         public const char CURVED_BOTTOMLEFT = '╰';
+
+        public const char SHADE_FULL = '█';
+        public const char SHADE_DARK = '▓';
+        public const char SHADE_MEDIUM = '▒';
+        public const char SHADE_LIGHT = '░';
         #endregion
 
         public bool HasTop;
