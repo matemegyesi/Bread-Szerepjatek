@@ -458,7 +458,13 @@ namespace PoP.classes
             return brokenText;
         }
 
-
+        /// <summary>
+        /// Gives back a slider.
+        /// </summary>
+        /// <param name="length">The full length of the slider.</param>
+        /// <param name="percent">Number between 0 and 1.</param>
+        /// <param name="color">The color of the slider.</param>
+        /// <returns>A string of the slider.</returns>
         public static string GetSlider(int length, double percent, ColorAnsi color/*, bool showPercentage = true*/)
         {
             string sliderText = string.Empty;

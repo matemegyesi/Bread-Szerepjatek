@@ -121,6 +121,7 @@ namespace PoP.classes.windows
         /// <param name="localList">The local list that will be changed.</param>
         /// <param name="text">The content of the line(s).</param>
         /// <param name="hasMargin">Optionally adds an indent to the beginning of the line(s).</param>
+        /// <param name="alignedLeft">The alignment of the content.</param>
         protected virtual void AddLineLocal(ref List<string> localList, string text, bool alignedLeft = true, bool hasMargin = false)
         {
             string textAnsiPurged = Style.PurgeAnsi(text);

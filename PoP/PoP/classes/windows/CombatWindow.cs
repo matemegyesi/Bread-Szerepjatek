@@ -51,7 +51,7 @@ namespace PoP.classes.windows
             return LineList;
         }
 
-        public List<string> GenerateInfo(string name, bool alignedLeft)
+        private List<string> GenerateInfo(string name, bool alignedLeft)
         {
             List<string> infoList = new List<string>();
             Width = 68;
@@ -84,19 +84,5 @@ namespace PoP.classes.windows
             return infoList;
         }
 
-        public void ShowLoadout()
-        {
-
-        }
-
-        public void ShowCombat()
-        {
-
-        }
-
-        public void ShowResolution()
-        {
-
-        }
     }
 }
