@@ -132,7 +132,7 @@ namespace PoP.classes.windows
             AddLineLocal(ref headerLineList, _header.Before + Style.ColorFormat(Title, ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT) + _header.After);
 
             AddBlankLineLocal(ref headerLineList);
-            AddLineLocal(ref headerLineList, HowToUse + Style.GetRemainingSpace(HowToUse.Length + 1, Width), true);
+            AddLineLocal(ref headerLineList, HowToUse, true);
             AddLineLocal(ref headerLineList, Style.Color(Style.GetDashedLine(Width), ColorAnsi.GREY));
 
             AddBlankLineLocal(ref headerLineList);

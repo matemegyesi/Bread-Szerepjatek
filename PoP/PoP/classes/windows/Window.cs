@@ -87,21 +87,27 @@ namespace PoP.classes.windows
         /// Appends a line (or lines if the text is too long) to the bottom of the window.
         /// </summary>
         /// <param name="text">The content of the line(s).</param>
-        /// <param name="hasMargin">Optionally adds an indent to the beginning of the line(s).</param>
-        protected virtual void AddLine(string text, bool hasMargin = false) // If the text is multi-line long, then the formatting will be removed. // Don't use: \n \t
+        /// <param name="alignedLeft">The alignment of the content.</param>
+        protected virtual void AddLine(string text, bool alignedLeft = true) // If the text is multi-line long, then the formatting will be removed. // Don't use: \n \t
         {
             string textAnsiPurged = Style.PurgeAnsi(text);
 
             if (textAnsiPurged.Length > Width)
             {
-                foreach (string line in Style.BreakLine(textAnsiPurged, Width, hasMargin))
+                foreach (string line in Style.BreakLine(textAnsiPurged, Width))
                 {
-                    LineList.Add(line + Style.GetRemainingSpace(line, Width));
+                    if (alignedLeft)
+                        LineList.Add(line + Style.GetRemainingSpace(line, Width));
+                    else
+                        LineList.Add(Style.GetRemainingSpace(line, Width) + line);
                 }
             }
             else if (textAnsiPurged.Length < Width)
             {
-                LineList.Add(text + Style.GetRemainingSpace(textAnsiPurged, Width));
+                if (alignedLeft)
+                    LineList.Add(text + Style.GetRemainingSpace(textAnsiPurged, Width));
+                else
+                    LineList.Add(Style.GetRemainingSpace(textAnsiPurged, Width) + text);
             }
             else if (textAnsiPurged.Length == Width)
             {
@@ -115,7 +121,7 @@ namespace PoP.classes.windows
         /// <param name="localList">The local list that will be changed.</param>
         /// <param name="text">The content of the line(s).</param>
         /// <param name="hasMargin">Optionally adds an indent to the beginning of the line(s).</param>
-        protected virtual void AddLineLocal(ref List<string> localList, string text, bool hasMargin = false)
+        protected virtual void AddLineLocal(ref List<string> localList, string text, bool alignedLeft = true, bool hasMargin = false)
         {
             string textAnsiPurged = Style.PurgeAnsi(text);
 
@@ -123,12 +129,18 @@ namespace PoP.classes.windows
             {
                 foreach (string line in Style.BreakLine(textAnsiPurged, Width, hasMargin))
                 {
-                    localList.Add(line + Style.GetRemainingSpace(line, Width));
+                    if (alignedLeft)
+                        localList.Add(line + Style.GetRemainingSpace(line, Width));
+                    else
+                        localList.Add(Style.GetRemainingSpace(line, Width) + line);
                 }
             }
             else if (textAnsiPurged.Length < Width)
             {
-                localList.Add(text + Style.GetRemainingSpace(textAnsiPurged, Width));
+                if (alignedLeft)
+                    localList.Add(text + Style.GetRemainingSpace(textAnsiPurged, Width));
+                else
+                    localList.Add(Style.GetRemainingSpace(textAnsiPurged, Width) + text);
             }
             else if (textAnsiPurged.Length == Width)
             {

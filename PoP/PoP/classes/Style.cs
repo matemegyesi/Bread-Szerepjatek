@@ -465,7 +465,7 @@ namespace PoP.classes
             
             if (percent >= 1.0 || percent <= 0.0)
             {
-                string fill = GetBlankLine((int)Math.Round(30 * percent), Border.SHADE_FULL);
+                string fill = GetBlankLine((int)Math.Round(length * percent), Border.SHADE_FULL);
                 string blank = GetBlankLine(length - fill.Length, Border.SHADE_LIGHT);
                 sliderText = GetColor(color) + fill + blank + END;
             }
@@ -473,7 +473,7 @@ namespace PoP.classes
             {
                 string percentText = percent.ToString(" 0% ");
 
-                string fill = GetBlankLine((int)Math.Round(30 * percent) - percentText.Length, Border.SHADE_FULL);
+                string fill = GetBlankLine((int)Math.Round(length * percent) - percentText.Length, Border.SHADE_FULL);
                 string blank = GetBlankLine(length - (fill.Length + percentText.Length), Border.SHADE_LIGHT);
                 sliderText = GetColor(color) + fill + Format(percentText, FormatAnsi.HIGHLIGHT) + GetColor(color) + blank + END;
             }
@@ -481,7 +481,7 @@ namespace PoP.classes
             {
                 string percentText = percent.ToString(Border.SHADE_LIGHT + "0%" + Border.SHADE_LIGHT);
 
-                string fill = GetBlankLine((int)Math.Round(30 * percent), Border.SHADE_FULL);
+                string fill = GetBlankLine((int)Math.Round(length * percent), Border.SHADE_FULL);
                 string blank = GetBlankLine(length - (fill.Length + percentText.Length), Border.SHADE_LIGHT);
                 sliderText = GetColor(color) + fill + percentText + blank + END;
             }
