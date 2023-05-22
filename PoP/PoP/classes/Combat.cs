@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-    
+using System.IO;
+using System.Text.Json;
+
 
 namespace PoP.classes
 {
@@ -54,13 +56,31 @@ namespace PoP.classes
         public Combat(int id, string path) : base(id)
         {
             this.id = id;
-            positionX = 127;
-            positionY = 29;
             Path = path;
 
-            enemy = new Enemy(path);
+            string json = File.ReadAllText(path);
+            List<Dictionary<string, object>> engagement = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(json);
 
-            this.IsHidden = true;
+            positionX = int.Parse(engagement[0]["posX"].ToString());
+            positionY = int.Parse(engagement[0]["posY"].ToString());
+
+            bool isHidden;
+            if (bool.TryParse(engagement[0]["isHidden"].ToString(), out isHidden))
+            {
+                IsHidden = isHidden;
+            }
+            else
+            {
+                IsHidden = false;
+            }
+
+            if (!IsHidden)
+            {
+                Name = engagement[0]["locationName"].ToString();
+            }
+
+            enemy = new Enemy(engagement[1]);
+            Wire.Combat.SetEnemy(enemy);
         }
 
         /// <summary>

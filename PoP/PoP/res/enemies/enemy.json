@@ -1,7 +1,14 @@
-{
-  "name": "Dragon",
-  "damage": "5",
-  "defence": "10",
-  "health": "10",
-  "level": "1"
-}
+[
+  {
+    "posX": 127,
+    "posY": 29,
+    "isHidden": true
+  },
+  {
+    "name": "Dragon",
+    "damage": "5",
+    "defence": "10",
+    "health": "10",
+    "level": "1"
+  }
+]

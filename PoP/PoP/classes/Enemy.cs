@@ -17,15 +17,13 @@ namespace PoP.classes
         public int Level { get; set; }
 
         public Dictionary<string, string> data { get; set; }
-        public Enemy(string path)
+        public Enemy(Dictionary<string, object> data)
         {
-            string json = File.ReadAllText(path);
-            data = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
-            Name = data["name"];
-            Damage = double.Parse(data["damage"]);
-            Defence = double.Parse(data["defence"]);
-            Health = double.Parse(data["health"]);
-            Level = int.Parse(data["level"]);
+            Name = data["name"].ToString();
+            Damage = double.Parse(data["damage"].ToString());
+            Defence = double.Parse(data["defence"].ToString());
+            Health = double.Parse(data["health"].ToString());
+            Level = int.Parse(data["level"].ToString());
         }
 
         public string TakeAction()

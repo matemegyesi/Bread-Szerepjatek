@@ -25,12 +25,14 @@ namespace PoP.classes.windows
             }
         }
 
+        private Enemy enemy;
+
         public CombatWindow()
         {
             Height = 46;
             Width = 148;
 
-
+            
         }
 
         protected override List<string> GenerateLines()
@@ -82,6 +84,11 @@ namespace PoP.classes.windows
 
             Width = 148;
             return infoList;
+        }
+
+        public void SetEnemy(Enemy enemy)
+        {
+            this.enemy = enemy;
         }
 
     }
