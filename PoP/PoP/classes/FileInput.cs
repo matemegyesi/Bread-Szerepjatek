@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Text.Json;
 
 namespace PoP.classes
 {
@@ -16,6 +17,18 @@ namespace PoP.classes
         public static List<string> GetAllLinesAsList(string filePath)
         {
             return File.ReadAllLines(filePath, Encoding.UTF8).ToList();
+        }
+
+        public static Dictionary<string, object> GetJsonDict(string filePath)
+        {
+            string json = File.ReadAllText(filePath);
+            return JsonSerializer.Deserialize<Dictionary<string, object>>(json);
+        }
+
+        public static List<Dictionary<string, object>> GetJsonDictList(string filePath)
+        {
+            string json = File.ReadAllText(filePath);
+            return JsonSerializer.Deserialize<List<Dictionary<string, object>>>(json);
         }
     }
 }

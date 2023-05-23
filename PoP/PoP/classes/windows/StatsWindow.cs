@@ -36,6 +36,27 @@ namespace PoP.classes.windows
 
             AddBlankLine();
 
+
+
+            //
+
+            AddBlankLine();
+            foreach (var item in Inventory.SpellList)
+            {
+                AddLine($"{Style.Color(item.Name, ColorAnsi.CORAL)} ({item.ManaCost} mana) --- Effect: {item.Effects}");
+                string _dmg = item.Damage > 0 ? Style.Color(item.Damage.ToString(), ColorAnsi.LIGHT_RED) + " dmg" : "";
+                string _hp = item.Damage > 0 ? Style.Color("+" + item.Heal.ToString(), ColorAnsi.AQUA) + " hp" : "";
+                if (_dmg != "" || _hp != "")
+                {
+                    AddLine($"{_dmg} | {_hp}");
+                }
+                AddBlankLine();
+            }
+
+            //
+
+
+
             // Fills the remaining lines
             int remainingLineCount = Height - LineList.Count;
             for (int i = 0; i < remainingLineCount; i++)

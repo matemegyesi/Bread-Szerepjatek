@@ -6,33 +6,31 @@ using System.Threading.Tasks;
 
 namespace PoP.classes
 {
-    class Spell : Player
+    class Spell
     {
-        private Player player;
-
         // The name of the spell
-        string Name { get; }
+        public string Name { get; }
 
         // The mana cost of the spell
-        int ManaCost { get; }
+        public double ManaCost { get; }
 
-        // The cooldown time of the spell
-        float Cooldown { get; }
+        public double Damage { get; }
+        public double Heal { get; }
+        public string Effects { get; }
 
-        // The current cooldown timer of the spell
-        private double cooldownTimer { get; set; }
+        public int LvL { get; }
+        public string Description { get; }
 
-        public bool IsReady()
+        public Spell(string name, double mana, double damage, double heal, string effects, int level, string description)
         {
-            return cooldownTimer <= 0;
+            Name = name;
+            ManaCost = mana;
+            Damage = damage;
+            Heal = heal;
+            Effects = effects;
+            LvL = level;
+            Description = description;
         }
-
         
     }
-
-
-
-
 }
-
-

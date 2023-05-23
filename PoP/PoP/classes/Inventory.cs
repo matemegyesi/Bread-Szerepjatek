@@ -98,6 +98,8 @@ namespace PoP
             {116,39}
         };
 
+        static public List<Spell> SpellList = new List<Spell>();
+
         public static Weapon MainSword { get; set; } = new Weapon("Myrkrsverð", Slot.MainSword, 10, true);
         public static Armor MainCape { get; set; } = new Armor("Varnarmantill", Slot.MainCape, 10, true);
 
@@ -135,9 +137,12 @@ namespace PoP
                 }
             }
 
+            // Create and add starting spells
+            SpellList.AddRange(SpellFactory.CreateSpellRange(FileInput.GetJsonDictList("res\\spells.json")));
+
             KeyboardInput.KeyPressed += KeyPressed;
 
-            Wire.Inventory.UpdateItemList(Inventory.inventory);
+            Wire.Inventory.UpdateItemList(inventory);
         }
 
         public void KeyPressed(ConsoleKey key)
