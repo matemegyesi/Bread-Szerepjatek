@@ -18,7 +18,7 @@ namespace PoP.classes.windows
 
         public GearWindow()
         {
-            Height = 22;
+            Height = 30;
             Width = 44;
         }
 
@@ -41,10 +41,17 @@ namespace PoP.classes.windows
                     AddLine(line);
                 }
 
-                // Individual info
+                // Individual item info
                 foreach (var item in Inventory.gear)
                 {
                     AddLine(GenerateGearCard(item.Key, item.Value));
+                    AddBlankLine();
+                }
+
+                // Individual spell info
+                foreach (var spell in Inventory.spells)
+                {
+                    AddLine(GenerateSpellCard(spell.Key, spell.Value));
                     AddBlankLine();
                 }
             }
@@ -58,10 +65,17 @@ namespace PoP.classes.windows
                     AddLine(line);
                 }
 
-                // Individual info
+                // Individual item info
                 foreach (var item in Inventory.gear)
                 {
                     AddLine(GenerateGearCard(item.Key, item.Value));
+                    AddBlankLine();
+                }
+
+                // Individual spell info
+                foreach (var spell in Inventory.spells)
+                {
+                    AddLine(GenerateSpellCard(spell.Key, spell.Value));
                     AddBlankLine();
                 }
             }
@@ -139,7 +153,7 @@ namespace PoP.classes.windows
                 }
 
                 gearLine += Style.GetRemainingSpace(_slot.Length + 2, 14) + _slot.ToUpper() + ": " + Style.ColorFormat(_name, ColorAnsi.WHEAT, FormatAnsi.UNDERLINE);
-                gearLine += Style.GetRemainingSpace(14 + _name.Length, 30) + Style.Color($"+{_value} {_unit}", _color);
+                gearLine += Style.GetRemainingSpace(14 + _name.Length, 35) + Style.Color($"+{_value} {_unit}", _color);
             }
             else
             {
@@ -147,6 +161,28 @@ namespace PoP.classes.windows
             }
 
             return gearLine;
+        }
+
+        private string GenerateSpellCard(SpellSlot slot, Spell spell)
+        {
+            string spellLine = string.Empty;
+
+            string _slot = slot.ToString();
+
+            if (spell != null)
+            {
+                string _cost = spell.ManaCost.ToString("0 mana");
+
+                spellLine += Style.GetRemainingSpace(_slot.Length + 2, 14) + _slot.ToUpper() + ": " + Style.ColorFormat(spell.Name, ColorAnsi.PINK, FormatAnsi.UNDERLINE);
+
+                spellLine += Style.GetRemainingSpace(14 + spell.Name.Length, 35) + Style.Color(_cost, ColorAnsi.PURPLE);
+            }
+            else
+            {
+                spellLine += Style.GetRemainingSpace(_slot.Length + 2, 14) + _slot.ToUpper() + ": " + Style.Color("(Empty)", ColorAnsi.RUST);
+            }
+
+            return spellLine;
         }
 
         /// <summary>

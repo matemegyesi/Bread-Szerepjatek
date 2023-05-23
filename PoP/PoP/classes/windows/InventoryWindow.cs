@@ -21,9 +21,17 @@ namespace PoP.classes.windows
         {
             get
             {
-                return "USE: press F12, then the value next to the item.";
+                if (ShowingItems)
+                {
+                    return "USE: press [F12], then the key of the item or [SPACE] to switch to SPELLS";
+                }
+                else
+                {
+                    return "USE: press [F12], then the key of to the spell or [SPACE] to switch to ITEMS";
+                }
             }
         }
+        public bool ShowingItems { get; private set; }
 
         public bool InUse { get; private set; }
 
@@ -41,6 +49,7 @@ namespace PoP.classes.windows
             Width = 41;
 
             Page.AvailableSpace = Height - 9;
+            ShowingItems = true;
 
             currentPage = 1;
         }
@@ -132,7 +141,7 @@ namespace PoP.classes.windows
             AddLineLocal(ref headerLineList, _header.Before + Style.ColorFormat(Title, ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT) + _header.After);
 
             AddBlankLineLocal(ref headerLineList);
-            AddLineLocal(ref headerLineList, HowToUse, true);
+            AddLineLocal(ref headerLineList, HowToUse, true, true);
             AddLineLocal(ref headerLineList, Style.Color(Style.GetDashedLine(Width), ColorAnsi.GREY));
 
             AddBlankLineLocal(ref headerLineList);

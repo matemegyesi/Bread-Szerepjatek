@@ -28,6 +28,15 @@ namespace PoP
         MainSword,
         MainCape
     }
+
+    public enum SpellSlot
+    {
+        Spell1,
+        Spell2,
+        Spell3,
+        Spell4
+    }
+
     class Inventory
     {
         public bool IsOpened { get; set; } = false;
@@ -98,7 +107,13 @@ namespace PoP
             {116,39}
         };
 
-        static public List<Spell> SpellList = new List<Spell>();
+        static public Dictionary<SpellSlot, Spell> spells = new Dictionary<SpellSlot, Spell>()
+        {
+            { SpellSlot.Spell1, null },
+            { SpellSlot.Spell2, null },
+            { SpellSlot.Spell3, null },
+            { SpellSlot.Spell4, null }
+        };
 
         public static Weapon MainSword { get; set; } = new Weapon("Myrkrsverð", Slot.MainSword, 10, true);
         public static Armor MainCape { get; set; } = new Armor("Varnarmantill", Slot.MainCape, 10, true);
@@ -138,7 +153,10 @@ namespace PoP
             }
 
             // Create and add starting spells
-            SpellList.AddRange(SpellFactory.CreateSpellRange(FileInput.GetJsonDictList("res\\spells.json")));
+            List<Spell> readSpells = SpellFactory.CreateSpellRange(FileInput.GetJsonDictList("res\\spells.json"));
+            spells[SpellSlot.Spell1] = readSpells[0];
+            spells[SpellSlot.Spell3] = readSpells[4];
+            spells[SpellSlot.Spell2] = readSpells[7];
 
             KeyboardInput.KeyPressed += KeyPressed;
 
