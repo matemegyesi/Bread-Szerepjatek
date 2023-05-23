@@ -42,8 +42,8 @@ namespace PoP.classes.windows
             AddBlankLine();
             AddBlankLine();
 
-            List<string> playerInfo = GenerateInfo("Player", true);
-            List<string> enemyInfo = GenerateInfo("Enemy", false);
+            List<string> playerInfo = GenerateInfo("Player", Player.Health, Player.MaxHealth, Player.Mana, Player.MaxMana, true);
+            List<string> enemyInfo = GenerateInfo("Enemy", enemy.Health, enemy.MaxHealth, enemy.Mana, enemy.MaxMana, false);
 
             for (int i = 0; i < playerInfo.Count; i++)
             {
@@ -53,7 +53,7 @@ namespace PoP.classes.windows
             return LineList;
         }
 
-        private List<string> GenerateInfo(string name, bool alignedLeft)
+        private List<string> GenerateInfo(string name, double hp, double hpMax, int mana, int manaMax, bool alignedLeft, bool isCat = false)
         {
             List<string> infoList = new List<string>();
             Width = 68;
@@ -65,20 +65,36 @@ namespace PoP.classes.windows
 
             // Hp bar
             int _hpLength = 40;
-            double _hpPercent = Player.Health / (double)Player.MaxHealth;
+            double _hpPercent;
+            if (hpMax != 0)
+            {
+                _hpPercent = hp / hpMax;
+            }
+            else
+            {
+                _hpPercent = 0;
+            }
             ColorAnsi _hpColor = ColorAnsi.LIGHT_BLUE;
 
-            AddLineLocal(ref infoList, Style.Color($"HEALTH [{Player.Health}/{Player.MaxHealth}]", ColorAnsi.WHITE), alignedLeft);
+            AddLineLocal(ref infoList, Style.Color($"HEALTH [{hp}/{hpMax}]", ColorAnsi.WHITE), alignedLeft);
             AddLineLocal(ref infoList, Style.Color('┇', _hpColor) + Style.GetSlider(_hpLength, _hpPercent, _hpColor) + Style.Color('┇', _hpColor), alignedLeft);
 
             AddLineLocal(ref infoList, string.Empty);
 
             // Mana bar
             int _manaLength = 40;
-            double _manaPercent = Player.Mana / (double)Player.MaxMana;
+            double _manaPercent;
+            if (manaMax != 0)
+            {
+                _manaPercent = (double)mana / manaMax;
+            }
+            else
+            {
+                _manaPercent = 0;
+            }
             ColorAnsi _manaColor = ColorAnsi.PURPLE;
 
-            AddLineLocal(ref infoList, Style.Color($"MANA [{Player.Mana}/{Player.MaxMana}]", ColorAnsi.WHITE), alignedLeft);
+            AddLineLocal(ref infoList, Style.Color($"MANA [{mana}/{manaMax}]", ColorAnsi.WHITE), alignedLeft);
             AddLineLocal(ref infoList, Style.Color('┇', _manaColor) + Style.GetSlider(_manaLength, _manaPercent, _manaColor) + Style.Color('┇', _manaColor), alignedLeft);
 
 

@@ -13,7 +13,13 @@ namespace PoP.classes
         public string Name { get; set; }
         public double Damage { get; set; }
         public double Defence { get; set; }
+
+        public double MaxHealth { get; set; }
         public double Health { get; set; }
+
+        public int MaxMana { get; set; }
+        public int Mana { get; set; }
+
         public int Level { get; set; }
 
         public Dictionary<string, string> data { get; set; }
@@ -22,7 +28,8 @@ namespace PoP.classes
             Name = data["name"].ToString();
             Damage = double.Parse(data["damage"].ToString());
             Defence = double.Parse(data["defence"].ToString());
-            Health = double.Parse(data["health"].ToString());
+            MaxHealth = double.Parse(data["health"].ToString());
+            Health = MaxHealth;
             Level = int.Parse(data["level"].ToString());
         }
 
