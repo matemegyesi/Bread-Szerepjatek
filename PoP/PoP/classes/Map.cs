@@ -11,6 +11,7 @@ namespace PoP.classes
 
 	class Map
 	{
+        public int ID { get; set; }
         /// <summary> 
         /// A list of all maps in the game
         /// </summary>
@@ -40,9 +41,10 @@ namespace PoP.classes
         /// Constructs a new map with the given path and adds it to the game's list of maps.
         /// </summary>
         /// <param name="path">The path to the image file of the map</param>
-        public Map(string path) 
+        public Map(string path, int id) 
         {
             this.path = path;
+            ID = id;
 
             maps.Add(this);
         }
@@ -65,7 +67,7 @@ namespace PoP.classes
         /// <param name="id">The ID of the location</param>
         /// <param name="type">The type of the location (dialogue or combat)</param>
         /// <param name="path">The path to the file containing the location's content</param>
-        public void AddLocation(int id, LocationType type, string path)
+        public void AddLocation(int id, LocationType type, string path, int travelid = 0)
         {
             switch (type)
             {
@@ -79,6 +81,10 @@ namespace PoP.classes
                 case LocationType.COMBAT:
                     locations.Add(new Combat(id, path));
                     Wire.Map.LocationList.Add(new Combat(id, path));
+                    break;
+                case LocationType.TRAVEL:
+                    locations.Add(new Travel(id, travelid));
+                    Wire.Map.LocationList.Add(new Travel(id, travelid));
                     break;
 
                 // If the location type is not recognized, do nothing

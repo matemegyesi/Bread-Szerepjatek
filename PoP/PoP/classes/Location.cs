@@ -12,7 +12,8 @@ namespace PoP.classes
     enum LocationType
     {
         DIALOGUE,
-        COMBAT
+        COMBAT,
+        TRAVEL
     }
     internal abstract class Location
     {
