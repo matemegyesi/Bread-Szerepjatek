@@ -80,7 +80,7 @@ namespace PoP.classes
             map1.AddLocation(1, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json");
             map1.AddLocation(3, LocationType.DIALOGUE, "res\\dialogue\\guiscardtalk.json");
             map1.AddLocation(4, LocationType.COMBAT, "res\\enemies\\enemy.json");
-            map1.AddLocation(5, LocationType.TRAVEL, "res\\maps\\travel1.json", 1);
+            map1.AddLocation(5, LocationType.TRAVEL, "res\\maps\\rudtovolcano.json", 1);
             
             //ReadItemFile("res\\itemFile.txt");
 
@@ -89,7 +89,7 @@ namespace PoP.classes
 
             // Loads map2.
             Map.maps[0].LoadMap();
-            
+
             // Starts the Update loop
             Update();
 
@@ -122,51 +122,5 @@ namespace PoP.classes
                 }
             }
         }
-
-        public void ReadItemFile(string filePath)
-        {
-            foreach (string str in FileInput.GetAllLinesAsList(filePath))
-            {
-
-                Item item = null;
-                string[] itemT = str.Split(';');
-                switch (itemT[0])
-                {
-                    case "Armor":
-                        switch (itemT[3])
-                        {
-                            case "Head":
-                                item = ItemFactory.CreateItem(ItemType.ARMOR, itemT[1], float.Parse(itemT[2]), Slot.Head);
-                                break;
-                            case "Chest":
-                                item = ItemFactory.CreateItem(ItemType.ARMOR, itemT[1], float.Parse(itemT[2]), Slot.Chest);
-                                break;
-                            case "Leg":
-                                item = ItemFactory.CreateItem(ItemType.ARMOR, itemT[1], float.Parse(itemT[2]), Slot.Leg);
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    case "Weapon":
-                        switch (itemT[3])
-                        {
-                            case "Hand":
-                                item = ItemFactory.CreateItem(ItemType.WEAPON, itemT[1], float.Parse(itemT[2]), Slot.Hand);
-                                break;
-                            case "Ring":
-                                item = ItemFactory.CreateItem(ItemType.WEAPON, itemT[1], float.Parse(itemT[2]), Slot.Ring);
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-                item.Collect();
-            }
-        }
-
     }
 }

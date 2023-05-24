@@ -83,8 +83,8 @@ namespace PoP.classes
                     Wire.Map.LocationList.Add(new Combat(id, path));
                     break;
                 case LocationType.TRAVEL:
-                    locations.Add(new Travel(id, travelid));
-                    Wire.Map.LocationList.Add(new Travel(id, travelid));
+                    locations.Add(new Travel(id, travelid, path));
+                    Wire.Map.LocationList.Add(new Travel(id, travelid, path));
                     break;
 
                 // If the location type is not recognized, do nothing
