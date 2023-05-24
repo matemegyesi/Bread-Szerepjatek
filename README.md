@@ -2,6 +2,9 @@
 
 https://docs.google.com/document/d/1RJXIG7m1GWG94v9OHNh9r357Ei1kBk_attzL5wzLHV4/edit?usp=sharing
 
+## ASCII Art Site
+https://kirilllive.github.io/ASCII_Art_Paint/ascii_paint.html
+
 Birodalomban a mágia szinteződik. Ez 1-9-ig megy, felette van a *Felsőbbrendű Mágia* és az *Isteni Mágia*.
 
 ### A célunk a történetben
