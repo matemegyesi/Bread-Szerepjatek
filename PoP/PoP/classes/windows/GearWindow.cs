@@ -186,7 +186,7 @@ namespace PoP.classes.windows
         }
 
         /// <summary>
-        /// It notifies the window for the next render that the gear has changed.
+        /// Notifies the window for the next render that the gear has changed.
         /// </summary>
         public void UpdateGear()
         {

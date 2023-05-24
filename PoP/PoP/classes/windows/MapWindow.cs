@@ -13,7 +13,7 @@ namespace PoP.classes.windows
         const int WIDTH = 148;
         public static Tile[,] Map { get; private set; } = new Tile[HEIGHT, WIDTH];
         private bool isMapLoaded;
-        public List<Location> LocationList = new List<Location>();
+        public List<Location> LocationList { get; private set; } = new List<Location>();
         
         public int PosX { get; set; }
         public int PosY { get; set; }
@@ -311,6 +311,16 @@ namespace PoP.classes.windows
             }
 
             LineList.Clear();
+            HasChanged = true;
+        }
+
+        /// <summary>
+        /// Updates the local list of locations.
+        /// </summary>
+        /// <param name="locList">The list containing the Locations of the current map.</param>
+        public void UpdateLocationList(List<Location> locList)
+        {
+            LocationList = locList;
             HasChanged = true;
         }
     }

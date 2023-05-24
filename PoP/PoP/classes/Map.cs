@@ -41,6 +41,7 @@ namespace PoP.classes
         /// Constructs a new map with the given path and adds it to the game's list of maps.
         /// </summary>
         /// <param name="path">The path to the image file of the map</param>
+        /// <param name="id">The ID of the new map</param>
         public Map(string path, int id) 
         {
             this.path = path;
@@ -55,6 +56,7 @@ namespace PoP.classes
         public void LoadMap()
         {
             // Display the map's image
+            Wire.Map.UpdateLocationList(locations);
             Wire.Map.ImportMap(path);
 
             // Set the current map to this map
@@ -73,18 +75,20 @@ namespace PoP.classes
             {
                 // If the location is a dialogue location, add a new Dialogue object to the locations list
                 case LocationType.DIALOGUE:
-                    locations.Add(new Dialogue(id, path));
-                    Wire.Map.LocationList.Add(new Dialogue(id, path));
+                    Dialogue dialogueLoc = new Dialogue(travelid, path);
+                    locations.Add(dialogueLoc);
                     break;
 
                 // If the location is a combat location, add a new Combat object to the locations list
                 case LocationType.COMBAT:
-                    locations.Add(new Combat(id, path));
-                    Wire.Map.LocationList.Add(new Combat(id, path));
+                    Combat combatLoc = new Combat(travelid, path);
+                    locations.Add(combatLoc);
                     break;
+
+                // If the location is a travel location, add a new Travel object to the locations list
                 case LocationType.TRAVEL:
-                    locations.Add(new Travel(id, travelid, path));
-                    Wire.Map.LocationList.Add(new Travel(id, travelid, path));
+                    Travel travelLoc = new Travel(id, travelid, path);
+                    locations.Add(travelLoc);
                     break;
 
                 // If the location type is not recognized, do nothing
