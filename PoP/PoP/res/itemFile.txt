@@ -1,9 +1,0 @@
-﻿Armor;Golden crown;10;Head
-Armor;Studded leather;20;Chest
-Armor;Sandal;30;Leg
-Armor;Mask;40;Head
-Armor;Chain mail;50;Chest
-Weapon;Dagger;10;Hand
-Weapon;Mace;20;Hand
-Weapon;Bronze ring;15;Ring
-Weapon;Silver ring;25;Ring
