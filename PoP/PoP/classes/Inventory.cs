@@ -119,9 +119,12 @@ namespace PoP
         public static Weapon MainSword { get; set; } = new Weapon("Myrkrsverð", Slot.MainSword, 10, true);
         public static Armor MainCape { get; set; } = new Armor("Varnarmantill", Slot.MainCape, 10, true);
 
+        public static bool ShowingItems;
+
         public Inventory()
         {
             // Create starting items and equip
+            ShowingItems = true;
             string json = File.ReadAllText("res\\items\\startinggear.json");
             List<Dictionary<string, object>> items = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(json);
             foreach (Dictionary<string, object> item in items)
@@ -190,13 +193,47 @@ namespace PoP
                 }
                 else
                 {
-                    try
+                    if (key == ConsoleKey.Spacebar)
                     {
-                        int i = keys[(int)key];
-                        inventory[i].Equip();
-                        Wire.Inventory.UpdateItemList(inventory);
+                        if (ShowingItems)
+                        {
+                            ShowingItems = false;
+
+                            Wire.Disable(Wire.Inventory);
+                            Wire.Enable(Wire.Sorcery);
+                        }
+                        else
+                        {
+                            ShowingItems = true;
+
+                            Wire.Disable(Wire.Sorcery);
+                            Wire.Enable(Wire.Inventory);
+                        }
                     }
-                    catch (Exception) { }
+                    else
+                    {
+                        if (ShowingItems)
+                        {
+                            try
+                            {
+                                int i = keys[(int)key];
+                                inventory[i].Equip();
+                                Wire.Inventory.UpdateItemList(inventory);
+                            }
+                            catch (Exception) { }
+                        }
+                        else
+                        {
+                            try
+                            {
+                                //int i = keys[(int)key];
+                                //sorcery[i].Equip();
+                                //Wire Update
+                            }
+                            catch (Exception) { }
+                        }
+                    }
+
 
                     IsOpened = false;
                     GameLoop.playerMovement.EnableMovement();

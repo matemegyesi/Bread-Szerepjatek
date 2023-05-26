@@ -15,7 +15,7 @@ namespace PoP.classes.windows
         {
             get
             {
-                return $" &@> Sorcery ({spellList.Count}/{sorceryLimit}) <@& ";
+                return $" &ß> Sorcery ({spellList.Count}/{sorceryLimit}) <ß& ";
             }
         }
         public string HowToUse
@@ -53,7 +53,10 @@ namespace PoP.classes.windows
             LineList.Clear();
 
             // Header & how-to-use
-
+            foreach (string line in GenerateHeader())
+            {
+                AddLine(line);
+            }
 
             // Spell cards
 
@@ -74,5 +77,23 @@ namespace PoP.classes.windows
 
             return LineList;
         }
+
+        private List<string> GenerateHeader()
+        {
+            List<string> headerLineList = new List<string>();
+
+            AddBlankLineLocal(ref headerLineList);
+            AlignedText _header = Style.AlignCenterSpaces(Title, Width);
+            AddLineLocal(ref headerLineList, _header.Before + Style.ColorFormat(Title, ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT) + _header.After);
+
+            AddBlankLineLocal(ref headerLineList);
+            AddLineLocal(ref headerLineList, HowToUse, true, true);
+            AddLineLocal(ref headerLineList, Style.Color(Style.GetDashedLine(Width), ColorAnsi.GREY));
+
+            AddBlankLineLocal(ref headerLineList);
+
+            return headerLineList;
+        }
+
     }
 }

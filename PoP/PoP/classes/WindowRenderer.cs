@@ -92,6 +92,15 @@ namespace PoP.classes
                 border.IntersectionList.Clear();
             }
 
+            if (Sorcery.IsEnabled)
+            {
+                border.IntersectionList.Add(new Intersection(BorderSide.Left, Stats.Height + 1, Border.DOUBLE_T_RIGHT));
+
+                border.TopLeft = Border.DOUBLE_T_TOP;
+                AddWindow(ref windows, border.Surround(Sorcery.GetLines, Sorcery.Width));
+                border.IntersectionList.Clear();
+            }
+
             if (Dialogue.IsEnabled)
             {
                 border.IntersectionList.Add(new Intersection(BorderSide.Top, Map.Width + 1, Border.DOUBLE_T_BOTTOM));
