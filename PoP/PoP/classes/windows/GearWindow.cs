@@ -49,7 +49,7 @@ namespace PoP.classes.windows
                 }
 
                 // Individual spell info
-                foreach (var spell in Inventory.spells)
+                foreach (var spell in Inventory.sorcery)
                 {
                     AddLine(GenerateSpellCard(spell.Key, spell.Value));
                     AddBlankLine();
@@ -73,7 +73,7 @@ namespace PoP.classes.windows
                 }
 
                 // Individual spell info
-                foreach (var spell in Inventory.spells)
+                foreach (var spell in Inventory.sorcery)
                 {
                     AddLine(GenerateSpellCard(spell.Key, spell.Value));
                     AddBlankLine();

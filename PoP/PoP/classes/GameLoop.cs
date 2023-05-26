@@ -60,7 +60,7 @@ namespace PoP.classes
 
             // Initializes the Window Renderer
             Wire.Initialize();
-
+            
             // Initializes objects for the display, keyboard input, and player movement.
             display = new Display();
             Running = true;

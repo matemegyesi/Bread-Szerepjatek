@@ -31,9 +31,10 @@ namespace PoP.classes
         public static MapWindow Map = new MapWindow();
         public static StatsWindow Stats = new StatsWindow();
         public static GearWindow Gear = new GearWindow();
-        public static InventoryWindow Inventory = new InventoryWindow();
+        public static InventoryWindow Inventory = new InventoryWindow(PoP.Inventory.inventoryLimit);
         public static DialogueWindow Dialogue = new DialogueWindow();
         public static CombatWindow Combat = new CombatWindow();
+        public static SorceryWindow Sorcery = new SorceryWindow(PoP.Inventory.sorceryLimit);
 
         public static void Initialize()
         {
@@ -53,9 +54,9 @@ namespace PoP.classes
             {
                 windows.Add(string.Empty);
             }
-
-            // MMM § I      CCC S I
-            // MMM G I      CCC S I
+            
+            // MMM G I      CCC G S
+            // MMM G I      CCC G S
             // DDDDDDD      DDDDDDD
 
             Border border = new Border(true, false, false, true);
@@ -75,7 +76,7 @@ namespace PoP.classes
                 border.TopLeft = Border.DOUBLE_T_TOP;
                 AddWindow(ref windows, border.Surround(Stats.GetLines, Stats.Width));
             }
-
+            
             if (Gear.IsEnabled)
             {
                 border.TopLeft = Border.DOUBLE_T_LEFT;

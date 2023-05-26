@@ -107,7 +107,8 @@ namespace PoP
             {116,39}
         };
 
-        static public Dictionary<SpellSlot, Spell> spells = new Dictionary<SpellSlot, Spell>()
+        public const int sorceryLimit = 40;
+        static public Dictionary<SpellSlot, Spell> sorcery = new Dictionary<SpellSlot, Spell>()
         {
             { SpellSlot.Spell1, null },
             { SpellSlot.Spell2, null },
@@ -154,9 +155,9 @@ namespace PoP
 
             // Create and add starting spells
             List<Spell> readSpells = SpellFactory.CreateSpellRange(FileInput.GetJsonDictList("res\\spells.json"));
-            spells[SpellSlot.Spell1] = readSpells[0];
-            spells[SpellSlot.Spell3] = readSpells[4];
-            spells[SpellSlot.Spell2] = readSpells[7];
+            sorcery[SpellSlot.Spell1] = readSpells[0];
+            sorcery[SpellSlot.Spell3] = readSpells[4];
+            sorcery[SpellSlot.Spell2] = readSpells[7];
 
             KeyboardInput.KeyPressed += KeyPressed;
 

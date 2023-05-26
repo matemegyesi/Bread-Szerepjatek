@@ -8,30 +8,23 @@ namespace PoP.classes.windows
 {
     internal class InventoryWindow : Window
     {
-        static public List<Item> itemList = new List<Item>(); //
+        static public List<Item> itemList = new List<Item>();
+        private readonly int inventoryLimit;
 
         public string Title
         {
             get
             {
-                return $" §$> Inventory ({itemList.Count}/{Inventory.inventoryLimit}) <$§ ";
+                return $" §$> Inventory ({itemList.Count}/{inventoryLimit}) <$§ ";
             }
         }
         public string HowToUse
         {
             get
             {
-                if (ShowingItems)
-                {
-                    return "USE: press [F12], then the key of the item or [SPACE] to switch to SPELLS";
-                }
-                else
-                {
-                    return "USE: press [F12], then the key of to the spell or [SPACE] to switch to ITEMS";
-                }
+                return "USE: press [F12], then the key of the item or [SPACE] to switch to SPELLS";
             }
         }
-        public bool ShowingItems { get; private set; }
 
         public bool InUse { get; private set; }
 
@@ -43,13 +36,14 @@ namespace PoP.classes.windows
         private bool itemCardsChanged;
         private bool pageIndicatorChanged;
 
-        public InventoryWindow()
+        public InventoryWindow(int limit)
         {
             Height = 46;
             Width = 41;
 
+            inventoryLimit = limit;
+
             Page.AvailableSpace = Height - 9;
-            ShowingItems = true;
 
             currentPage = 1;
         }
