@@ -181,6 +181,7 @@ namespace PoP
                 {
                     if (key == ConsoleKey.F12)
                     {
+                        // Activates the F12 (equip) mode
                         IsOpened = true;
                         GameLoop.playerMovement.DisableMovement();
 
@@ -209,6 +210,7 @@ namespace PoP
                 }
                 else
                 {
+                    // Switches between the items and the spells
                     if (key == ConsoleKey.Spacebar)
                     {
                         if (ShowingItems)
@@ -230,6 +232,7 @@ namespace PoP
                     }
                     else
                     {
+                        // Tries to equip the item/spell
                         if (ShowingItems)
                         {
                             try
@@ -257,13 +260,10 @@ namespace PoP
                             Wire.Sorcery.ToggleInUse();
                     }
 
+                    // Deactivates the F12 (equip) mode
                     IsOpened = false;
                     GameLoop.playerMovement.EnableMovement();
                 }
-            }
-            if (key == ConsoleKey.Enter)
-            {
-                Console.WriteLine(Wire.Sorcery.HasChanged);
             }
         }
     }

@@ -67,7 +67,7 @@ namespace PoP.classes.windows
                 AddLine(line);
             }
 
-            // Fills the remaining lines between the items and the page number indicator
+            // Fills the remaining lines between the spells and the page number indicator
             int _beforeLineCount = LineList.Count;
             for (int i = 0; i < Height - _beforeLineCount - 2; i++)
             {
@@ -185,7 +185,7 @@ namespace PoP.classes.windows
 
         private List<string> GenerateSpellCardInterface()
         {
-            List<string> itemCardList = new List<string>();
+            List<string> spellCardList = new List<string>();
 
             if (pageList.Count > 0)
             {
@@ -205,18 +205,18 @@ namespace PoP.classes.windows
                     _remainingLineCount -= CalculateSpellCardHeight(spell);
                     if (_remainingLineCount >= 2)
                     {
-                        itemCardList.AddRange(GenerateSpellCard(spell, _valueCounter));
+                        spellCardList.AddRange(GenerateSpellCard(spell, _valueCounter));
                         ++_valueCounter;
                     }
                     else if (_remainingLineCount >= -1)
                     {
-                        itemCardList.AddRange(GenerateSpellCard(spell, _valueCounter, false));
+                        spellCardList.AddRange(GenerateSpellCard(spell, _valueCounter, false));
                         ++_valueCounter;
                     }
                 }
             }
 
-            return itemCardList;
+            return spellCardList;
         }
 
         private List<string> GeneratePageIndicator(int currentPage, int pageCount)
@@ -230,6 +230,9 @@ namespace PoP.classes.windows
             return pageIndicatorLineList;
         }
 
+        /// <summary>
+        /// It turns the inventory to the next page. If it's already the last page, it'll loop around.
+        /// </summary>
         public void NextPage()
         {
             //Page.CreatePages(spellList);
@@ -252,6 +255,9 @@ namespace PoP.classes.windows
             }
         }
 
+        /// <summary>
+        /// It turns the inventory to the previous page. If it's the first page, it'll loop around.
+        /// </summary>
         public void PreviousPage()
         {
             //Page.CreatePages(spellList);
@@ -274,6 +280,9 @@ namespace PoP.classes.windows
             }
         }
 
+        /// <summary>
+        /// Toggles the InUse boolean, toggling the color of the equipment keys next to the spell names.
+        /// </summary>
         public void ToggleInUse()
         {
             if (!InUse)
@@ -289,6 +298,10 @@ namespace PoP.classes.windows
             HasChanged = true;
         }
 
+        /// <summary>
+        /// Sets the InUse boolean, setting the color of the equipment keys next to the spell names.
+        /// </summary>
+        /// <param name="isInUse">True activates, false deactivates.</param>
         public void SetInUse(bool isInUse)
         {
             if (InUse != isInUse)
@@ -300,6 +313,10 @@ namespace PoP.classes.windows
             }
         }
 
+        /// <summary>
+        /// Overrides the local spell list of the inventory.
+        /// </summary>
+        /// <param name="newSpellList">The changed list.</param>
         public void UpdateSpellList(List<Spell> newSpellList)
         {
             spellList = newSpellList;

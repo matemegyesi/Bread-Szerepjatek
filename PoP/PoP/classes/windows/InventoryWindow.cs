@@ -315,7 +315,7 @@ namespace PoP.classes.windows
         }
 
         /// <summary>
-        /// Toggles the color of the equipment keys next to the item names.
+        /// Toggles the InUse boolean, toggling the color of the equipment keys next to the item names.
         /// </summary>
         public void ToggleInUse()
         {
@@ -332,6 +332,10 @@ namespace PoP.classes.windows
             HasChanged = true;
         }
 
+        /// <summary>
+        /// Sets the InUse boolean, setting the color of the equipment keys next to the item names.
+        /// </summary>
+        /// <param name="isInUse">True activates, false deactivates.</param>
         public void SetInUse(bool isInUse)
         {
             if (InUse != isInUse)
@@ -344,7 +348,7 @@ namespace PoP.classes.windows
         }
 
         /// <summary>
-        /// Overrites the local item list of the inventory.
+        /// Overrides the local item list of the inventory.
         /// </summary>
         /// <param name="newItemList">The changed list.</param>
         public void UpdateItemList(List<Item> newItemList)
