@@ -31,6 +31,6 @@ namespace PoP.classes
             LvL = level;
             Description = description;
         }
-        
+
     }
 }

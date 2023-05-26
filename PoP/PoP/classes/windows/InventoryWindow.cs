@@ -31,6 +31,10 @@ namespace PoP.classes.windows
         private int currentPage;
         private int pageAmount;
 
+        // Page management
+        private int pageAvailableSpace;
+        private List<Page> pageList = new List<Page>();
+
         // Change detection
         private bool headerChanged;
         private bool itemCardsChanged;
@@ -43,8 +47,7 @@ namespace PoP.classes.windows
 
             inventoryLimit = limit;
 
-            Page.AvailableSpace = Height - 9;
-
+            pageAvailableSpace = Height - 9;
             currentPage = 1;
         }
 
@@ -74,7 +77,7 @@ namespace PoP.classes.windows
                 }
 
                 // Page number indicator
-                pageAmount = Page.List.Count;
+                pageAmount = pageList.Count;
                 foreach (string line in GeneratePageIndicator(currentPage, pageAmount))
                 {
                     AddLine(line);
@@ -95,7 +98,7 @@ namespace PoP.classes.windows
 
                 if (itemCardsChanged)
                 {
-                    LineList.RemoveRange(7, Page.AvailableSpace);
+                    LineList.RemoveRange(7, pageAvailableSpace);
                     InsertLineRange(7, GenerateItemCardInterface());
 
                     //Fills the remaining lines between the items and the page number indicator
@@ -112,7 +115,7 @@ namespace PoP.classes.windows
                 {
                     LineList.RemoveRange(LineList.Count - 2, 2);
 
-                    pageAmount = Page.List.Count;
+                    pageAmount = pageList.Count;
                     foreach (string line in GeneratePageIndicator(currentPage, pageAmount))
                     {
                         AddLine(line);
@@ -218,7 +221,7 @@ namespace PoP.classes.windows
         {
             List<string> itemCardList = new List<string>();
 
-            if (Page.List.Count > 0)
+            if (pageList.Count > 0)
             {
                 int _remainingLineCount = Height - 9;
                 int _valueCounter = 0;
@@ -227,11 +230,11 @@ namespace PoP.classes.windows
                 {
                     for (int i = 0; i < currentPage - 1; i++)
                     {
-                        _valueCounter += Page.List[i].ContainedItems.Count;
+                        _valueCounter += pageList[i].ContainedItems.Count;
                     }
                 }
 
-                foreach (Item item in Page.List[currentPage - 1].ContainedItems)
+                foreach (Item item in pageList[currentPage - 1].ContainedItems)
                 {
                     _remainingLineCount -= CalculateItemCardHeight(item);
                     if (_remainingLineCount >= 2)
@@ -266,8 +269,8 @@ namespace PoP.classes.windows
         /// </summary>
         public void NextPage()
         {
-            Page.CreatePages(itemList);
-            pageAmount = Page.List.Count;
+            Page.CreatePages(ref pageList, pageAvailableSpace, itemList);
+            pageAmount = pageList.Count;
 
             if (pageAmount != 1)
             {
@@ -291,8 +294,8 @@ namespace PoP.classes.windows
         /// </summary>
         public void PreviousPage()
         {
-            Page.CreatePages(itemList);
-            pageAmount = Page.List.Count;
+            Page.CreatePages(ref pageList, pageAvailableSpace, itemList);
+            pageAmount = pageList.Count;
 
             if (pageAmount != 1)
             {
@@ -336,9 +339,9 @@ namespace PoP.classes.windows
         public void UpdateItemList(List<Item> newItemList)
         {
             itemList = newItemList;
-
-            Page.CreatePages(itemList);
-            if (currentPage > Page.List.Count)
+            
+            Page.CreatePages(ref pageList, pageAvailableSpace, itemList);
+            if (currentPage > pageList.Count)
             {
                 currentPage = 1;
             }

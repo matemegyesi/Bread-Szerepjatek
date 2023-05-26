@@ -108,7 +108,8 @@ namespace PoP
         };
 
         public const int sorceryLimit = 40;
-        static public Dictionary<SpellSlot, Spell> sorcery = new Dictionary<SpellSlot, Spell>()
+        public static List<Spell> spellList = new List<Spell>();
+        public static Dictionary<SpellSlot, Spell> sorcery = new Dictionary<SpellSlot, Spell>()
         {
             { SpellSlot.Spell1, null },
             { SpellSlot.Spell2, null },
@@ -177,17 +178,22 @@ namespace PoP
                     {
                        IsOpened = true;
                        GameLoop.playerMovement.DisableMovement();
-                       Wire.Inventory.ToggleInUse();
+                        if (ShowingItems)
+                            Wire.Inventory.ToggleInUse();
+                        else
+                            Wire.Sorcery.ToggleInUse();
                     }
                     else
                     {
                         if (key == ConsoleKey.Q)
                         {
-                            Wire.Inventory.PreviousPage();
+                            if (ShowingItems)
+                                Wire.Inventory.PreviousPage();
                         }
                         else if (key == ConsoleKey.E)
                         {
-                            Wire.Inventory.NextPage();
+                            if (ShowingItems)
+                                Wire.Inventory.NextPage();
                         }
                     }
                 }
@@ -200,6 +206,7 @@ namespace PoP
                             ShowingItems = false;
 
                             Wire.Disable(Wire.Inventory);
+                            Wire.Inventory.ToggleInUse();
                             Wire.Enable(Wire.Sorcery);
                         }
                         else
@@ -207,6 +214,7 @@ namespace PoP
                             ShowingItems = true;
 
                             Wire.Disable(Wire.Sorcery);
+                            Wire.Sorcery.ToggleInUse();
                             Wire.Enable(Wire.Inventory);
                         }
                     }

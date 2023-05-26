@@ -31,6 +31,10 @@ namespace PoP.classes.windows
         private int currentPage;
         private int pageAmount;
 
+        // Page management
+        private int pageAvailableSpace;
+        private List<Page> pageList = new List<Page>();
+
         // Change detection
         private bool headerChanged;
         private bool spellCardsChanged;
@@ -43,8 +47,7 @@ namespace PoP.classes.windows
 
             sorceryLimit = limit;
 
-            Page.AvailableSpace = Height - 9;
-
+            pageAvailableSpace = Height - 9;
             currentPage = 1;
         }
 
@@ -93,6 +96,86 @@ namespace PoP.classes.windows
             AddBlankLineLocal(ref headerLineList);
 
             return headerLineList;
+        }
+
+        public static int CalculateSpellCardHeight(Spell spell)
+        {
+            int _lineCount = 0;
+            _lineCount += 3;
+
+            if (spell.Damage > 0)
+            {
+                _lineCount += 1;
+            }
+            if (spell.Heal != 0)
+            {
+                _lineCount += 1;
+            }
+            if (spell.Effects != string.Empty)
+            {
+                _lineCount += 1;
+            }
+
+            return _lineCount + 1;
+        }
+
+        public void NextPage()
+        {
+            //Page.CreatePages(spellList);
+            pageAmount = pageList.Count;
+
+            if (pageAmount != 1)
+            {
+                if (currentPage == pageAmount)
+                {
+                    currentPage = 1;
+                }
+                else
+                {
+                    currentPage += 1;
+                }
+
+                pageIndicatorChanged = true;
+                spellCardsChanged = true;
+                HasChanged = true;
+            }
+        }
+
+        public void PreviousPage()
+        {
+            //Page.CreatePages(spellList);
+            pageAmount = pageList.Count;
+
+            if (pageAmount != 1)
+            {
+                if (currentPage == 1)
+                {
+                    currentPage = pageAmount;
+                }
+                else
+                {
+                    currentPage -= 1;
+                }
+
+                pageIndicatorChanged = true;
+                spellCardsChanged = true;
+                HasChanged = true;
+            }
+        }
+
+        public void ToggleInUse()
+        {
+            if (!InUse)
+            {
+                InUse = true;
+            }
+            else
+            {
+                InUse = false;
+            }
+
+            spellCardsChanged = true;
+            HasChanged = true;
         }
 
     }
