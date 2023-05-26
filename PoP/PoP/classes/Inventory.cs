@@ -159,6 +159,11 @@ namespace PoP
 
             // Create and add starting spells
             List<Spell> readSpells = SpellFactory.CreateSpellRange(FileInput.GetJsonDictList("res\\spells.json"));
+            foreach (var item in readSpells)
+            {
+                item.Collect();
+            }
+
             sorcery[SpellSlot.Spell1] = readSpells[0];
             sorcery[SpellSlot.Spell3] = readSpells[4];
             sorcery[SpellSlot.Spell2] = readSpells[7];
@@ -189,11 +194,15 @@ namespace PoP
                         {
                             if (ShowingItems)
                                 Wire.Inventory.PreviousPage();
+                            else
+                                Wire.Sorcery.PreviousPage();
                         }
                         else if (key == ConsoleKey.E)
                         {
                             if (ShowingItems)
                                 Wire.Inventory.NextPage();
+                            else
+                                Wire.Sorcery.NextPage();
                         }
                     }
                 }

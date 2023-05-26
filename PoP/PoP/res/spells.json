@@ -45,6 +45,15 @@
     "description": ""
   },
   {
+    "name": "Healbuff",
+    "mana": 60,
+    "damage": 0,
+    "heal": 50,
+    "effects": "Buff",
+    "level": 1,
+    "description": ""
+  },
+  {
     "name": "Bone cracking",
     "mana": 75,
     "damage": 50,
@@ -59,15 +68,6 @@
     "damage": 0,
     "heal": 0,
     "effects": "Debuff",
-    "level": 1,
-    "description": ""
-  },
-  {
-    "name": "Illusion stimulation",
-    "mana": 50,
-    "damage": 0,
-    "heal": 0,
-    "effects": "Buff",
     "level": 1,
     "description": ""
   }

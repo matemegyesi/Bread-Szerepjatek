@@ -21,7 +21,7 @@ namespace PoP.classes
         public int LvL { get; }
         public string Description { get; }
 
-        public Spell(string name, double mana, double damage, double heal, string effects, int level, string description)
+        public Spell(string name, double mana, double damage, double heal, string effects, int level, string description = "")
         {
             Name = name;
             ManaCost = mana;
@@ -32,5 +32,14 @@ namespace PoP.classes
             Description = description;
         }
 
+        public void Collect()
+        {
+            if (Inventory.spellList.Count < Inventory.sorceryLimit)
+            {
+                Inventory.spellList.Add(this);
+
+                Wire.Sorcery.UpdateSpellList(Inventory.spellList);
+            }
+        }
     }
 }
