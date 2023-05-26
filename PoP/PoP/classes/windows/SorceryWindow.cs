@@ -75,11 +75,11 @@ namespace PoP.classes.windows
             }
 
             // Page number indicator
-            //pageAmount = Page.List.Count;
-            //foreach (string line in GeneratePageIndicator(currentPage, pageAmount))
-            //{
-            //    AddLine(line);
-            //}
+            pageAmount = pageList.Count;
+            foreach (string line in GeneratePageIndicator(currentPage, pageAmount))
+            {
+                AddLine(line);
+            }
 
             return LineList;
         }
@@ -217,6 +217,17 @@ namespace PoP.classes.windows
             }
 
             return itemCardList;
+        }
+
+        private List<string> GeneratePageIndicator(int currentPage, int pageCount)
+        {
+            List<string> pageIndicatorLineList = new List<string>();
+
+            pageIndicatorLineList.Add(Style.Color(Style.GetBlankLine(8, Border.DOUBLE_HORIZONTAL) + Border.DOUBLE_TO_SINGLE_T_TOP + Style.GetBlankLine(23, Border.DOUBLE_HORIZONTAL) + Border.DOUBLE_TO_SINGLE_T_TOP + Style.GetBlankLine(8, Border.DOUBLE_HORIZONTAL), ColorAnsi.DARK_GREY));
+
+            pageIndicatorLineList.Add(Style.GetBlankLine(8) + Style.Color(Border.SINGLE_VERTICAL, ColorAnsi.DARK_GREY) + Style.GetRemainingSpace(currentPage.ToString().Length + 7, 11) + Style.Color("◄[Q]◄ ", (currentPage != 1) ? ColorAnsi.CYAN : ColorAnsi.TEAL) + Style.Color(currentPage + " / " + pageCount, ColorAnsi.WHITE) + Style.Color(" ►[E]►", (currentPage != pageCount) ? ColorAnsi.CYAN : ColorAnsi.TEAL) + Style.GetRemainingSpace(pageCount.ToString().Length + 7, 11) + Style.Color(Border.SINGLE_VERTICAL, ColorAnsi.DARK_GREY) + Style.GetBlankLine(8));
+
+            return pageIndicatorLineList;
         }
 
         public void NextPage()
