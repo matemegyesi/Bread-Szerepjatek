@@ -205,7 +205,7 @@ namespace PoP.classes.windows
             if (item is Armor)
             {
                 string _def = " DEFENCE: ";
-                AddLineLocal(ref itemCardLineList, Style.GetRemainingSpace(_def, 15) + _def + Style.Color((item as Armor).Defense.ToString("0.##") + " def", ColorAnsi.AQUA));
+                AddLineLocal(ref itemCardLineList, Style.GetRemainingSpace(_def, 15) + _def + Style.Color((item as Armor).Defence.ToString("0.##") + " def", ColorAnsi.AQUA));
             }
 
             // Equip

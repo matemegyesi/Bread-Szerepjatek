@@ -101,27 +101,12 @@ namespace PoP.classes.windows
         private List<string> GenerateOverallInfo()
         {
             List<string> overallInfoLineList = new List<string>();
-
-            double _dmgSum = 0;
-            double _defSum = 0;
-
-            foreach (var item in Inventory.gear)
-            {
-                if (item.Value is Weapon)
-                {
-                    _dmgSum += (item.Value as Weapon).Damage;
-                }
-                else if (item.Value is Armor)
-                {
-                    _defSum += (item.Value as Armor).Defense;
-                }
-            }
-
+            
             string _dmgTitle = " OVERALL DAMAGE: ";
-            AddLineLocal(ref overallInfoLineList, Style.GetBlankLine(9) + _dmgTitle + Style.GetRemainingSpace(_dmgTitle, 18) + Style.ColorFormat(_dmgSum + " hp", ColorAnsi.RUST, FormatAnsi.HIGHLIGHT));
+            AddLineLocal(ref overallInfoLineList, Style.GetBlankLine(9) + _dmgTitle + Style.GetRemainingSpace(_dmgTitle, 18) + Style.ColorFormat(" " + Player.Damage.ToString("0.#") + " dmg ", ColorAnsi.RUST, FormatAnsi.HIGHLIGHT));
 
             string _defTitle = " OVERALL DEFENCE: ";
-            AddLineLocal(ref overallInfoLineList, Style.GetBlankLine(9) + _defTitle + Style.GetRemainingSpace(_defTitle, 18) + Style.ColorFormat(_defSum + " def", ColorAnsi.TEAL, FormatAnsi.HIGHLIGHT));
+            AddLineLocal(ref overallInfoLineList, Style.GetBlankLine(9) + _defTitle + Style.GetRemainingSpace(_defTitle, 18) + Style.ColorFormat(" " + Player.Defence.ToString("0.#") + " def ", ColorAnsi.TEAL, FormatAnsi.HIGHLIGHT));
             
             AddBlankLineLocal(ref overallInfoLineList);
 
@@ -147,7 +132,7 @@ namespace PoP.classes.windows
                 }
                 else if (item is Armor)
                 {
-                    _value = (item as Armor).Defense;
+                    _value = (item as Armor).Defence;
                     _unit = "def";
                     _color = ColorAnsi.AQUA;
                 }
