@@ -332,6 +332,17 @@ namespace PoP.classes.windows
             HasChanged = true;
         }
 
+        public void SetInUse(bool isInUse)
+        {
+            if (InUse != isInUse)
+            {
+                InUse = isInUse;
+
+                itemCardsChanged = true;
+                HasChanged = true;
+            }
+        }
+
         /// <summary>
         /// Overrites the local item list of the inventory.
         /// </summary>

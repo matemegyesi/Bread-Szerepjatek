@@ -31,7 +31,7 @@ namespace PoP.classes
             LvL = level;
             Description = description;
         }
-
+        
         public void Collect()
         {
             if (Inventory.spellList.Count < Inventory.sorceryLimit)
@@ -40,6 +40,16 @@ namespace PoP.classes
 
                 Wire.Sorcery.UpdateSpellList(Inventory.spellList);
             }
+        }
+
+        public void Equip()
+        {
+
+        }
+
+        public void EquipSpecific(SpellSlot spellSlot)
+        {
+
         }
     }
 }

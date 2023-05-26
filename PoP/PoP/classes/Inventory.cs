@@ -181,8 +181,9 @@ namespace PoP
                 {
                     if (key == ConsoleKey.F12)
                     {
-                       IsOpened = true;
-                       GameLoop.playerMovement.DisableMovement();
+                        IsOpened = true;
+                        GameLoop.playerMovement.DisableMovement();
+
                         if (ShowingItems)
                             Wire.Inventory.ToggleInUse();
                         else
@@ -215,16 +216,16 @@ namespace PoP
                             ShowingItems = false;
 
                             Wire.Disable(Wire.Inventory);
-                            Wire.Inventory.ToggleInUse();
                             Wire.Enable(Wire.Sorcery);
+                            Wire.Sorcery.SetInUse(false);
                         }
                         else
                         {
                             ShowingItems = true;
 
                             Wire.Disable(Wire.Sorcery);
-                            Wire.Sorcery.ToggleInUse();
                             Wire.Enable(Wire.Inventory);
+                            Wire.Inventory.SetInUse(false);
                         }
                     }
                     else
@@ -243,19 +244,26 @@ namespace PoP
                         {
                             try
                             {
-                                //int i = keys[(int)key];
-                                //sorcery[i].Equip();
-                                //Wire Update
+                                int i = keys[(int)key];
+                                spellList[i].Equip();
+                                Wire.Sorcery.UpdateSpellList(spellList);
                             }
                             catch (Exception) { }
                         }
-                    }
 
+                        if (ShowingItems)
+                            Wire.Inventory.ToggleInUse();
+                        else
+                            Wire.Sorcery.ToggleInUse();
+                    }
 
                     IsOpened = false;
                     GameLoop.playerMovement.EnableMovement();
-                    Wire.Inventory.ToggleInUse();
                 }
+            }
+            if (key == ConsoleKey.Enter)
+            {
+                Console.WriteLine(Wire.Sorcery.HasChanged);
             }
         }
     }

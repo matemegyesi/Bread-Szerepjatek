@@ -289,6 +289,17 @@ namespace PoP.classes.windows
             HasChanged = true;
         }
 
+        public void SetInUse(bool isInUse)
+        {
+            if (InUse != isInUse)
+            {
+                InUse = isInUse;
+
+                spellCardsChanged = true;
+                HasChanged = true;
+            }
+        }
+
         public void UpdateSpellList(List<Spell> newSpellList)
         {
             spellList = newSpellList;

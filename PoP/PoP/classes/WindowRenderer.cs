@@ -17,7 +17,7 @@ namespace PoP.classes
         {
             get
             {
-                if (Map.HasChanged || Stats.HasChanged || Gear.HasChanged || Inventory.HasChanged || Dialogue.HasChanged)
+                if ((Map.IsEnabled && Map.HasChanged) || (Stats.IsEnabled && Stats.HasChanged) || (Gear.IsEnabled && Gear.HasChanged) || (Inventory.IsEnabled && Inventory.HasChanged) || (Dialogue.IsEnabled && Dialogue.HasChanged) || (Combat.IsEnabled && Combat.HasChanged) || (Sorcery.IsEnabled && Sorcery.HasChanged))
                 {
                     return true;
                 }
@@ -44,6 +44,7 @@ namespace PoP.classes
             Inventory.IsEnabled = true;
             Dialogue.IsEnabled = true;
             Combat.IsEnabled = false;
+            Sorcery.IsEnabled = false;
         }
 
         public static List<string> Get()
