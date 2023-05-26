@@ -9,8 +9,8 @@ namespace PoP.classes
 {
     enum ColorAnsi
     {
-        DARK_RED = 88,
-        RED = 160,
+        DARK_RED = 125,
+        RED = 197,
         LIGHT_RED = 210,
 
         PURPLE = 93,
