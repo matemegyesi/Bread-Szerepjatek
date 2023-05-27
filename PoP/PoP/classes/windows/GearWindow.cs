@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace PoP.classes.windows
 {
@@ -21,7 +20,7 @@ namespace PoP.classes.windows
 
         public GearWindow()
         {
-            Height = 36;
+            Height = 46;
             Width = 44;
         }
 
@@ -122,6 +121,21 @@ namespace PoP.classes.windows
         private List<string> GenerateOverallInfo()
         {
             List<string> overallInfo = new List<string>();
+
+            string _hpTitle = "HEALTH: ";
+            AddLineLocal(ref overallInfo, Style.GetRemainingSpace(_hpTitle, 27) + Style.Color(_hpTitle, ColorAnsi.WHITE) + Style.ColorFormat(" " + Player.Health.ToString("0.#") + "/" + Player.MaxHealth.ToString("0.# hp") + " ", ColorAnsi.LIGHT_BLUE, FormatAnsi.HIGHLIGHT));
+
+            AddBlankLineLocal(ref overallInfo);
+
+            string _manaTitle = "MAX MANA: ";
+            AddLineLocal(ref overallInfo, Style.GetRemainingSpace(_manaTitle, 27) + Style.Color(_manaTitle, ColorAnsi.WHITE) + Style.Color(Player.MaxMana.ToString("0 mana"), ColorAnsi.PURPLE));
+
+            string _manaRegTitle = "REGENERATION RATE: ";
+            AddLineLocal(ref overallInfo, Style.GetRemainingSpace(_manaRegTitle, 27) + Style.Color(_manaRegTitle, ColorAnsi.WHITE) + Style.Color(Player.ManaRate.ToString("0 mana/turn"), ColorAnsi.DARK_RED));
+
+            AddBlankLineLocal(ref overallInfo);
+            AddLineLocal(ref overallInfo, Style.GetDashedLine(Width));
+            AddBlankLineLocal(ref overallInfo);
 
             string _dmgTitle = " OVERALL DAMAGE: ";
             AddLineLocal(ref overallInfo, Style.GetBlankLine(9) + Style.Color(_dmgTitle, ColorAnsi.WHITE) + Style.GetRemainingSpace(_dmgTitle, 18) + Style.ColorFormat(" " + Player.Damage.ToString("0.#") + " dmg ", ColorAnsi.RUST, FormatAnsi.HIGHLIGHT));

@@ -48,6 +48,7 @@ namespace PoP.classes
 
         static public int MaxMana { get; private set; } = 20;
         static public int Mana { get; private set; } = 9;
+        static public int ManaRate { get; private set; } = 5;
 
         public Player()
         {

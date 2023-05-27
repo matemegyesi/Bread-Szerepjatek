@@ -17,7 +17,7 @@ namespace PoP.classes
         {
             get
             {
-                if ((Map.IsEnabled && Map.HasChanged) || (Stats.IsEnabled && Stats.HasChanged) || (Gear.IsEnabled && Gear.HasChanged) || (Inventory.IsEnabled && Inventory.HasChanged) || (Dialogue.IsEnabled && Dialogue.HasChanged) || (Combat.IsEnabled && Combat.HasChanged) || (Sorcery.IsEnabled && Sorcery.HasChanged))
+                if ((Map.IsEnabled && Map.HasChanged) || (Gear.IsEnabled && Gear.HasChanged) || (Inventory.IsEnabled && Inventory.HasChanged) || (Dialogue.IsEnabled && Dialogue.HasChanged) || (Combat.IsEnabled && Combat.HasChanged) || (Sorcery.IsEnabled && Sorcery.HasChanged))
                 {
                     return true;
                 }
@@ -29,7 +29,6 @@ namespace PoP.classes
         }
 
         public static MapWindow Map = new MapWindow();
-        public static StatsWindow Stats = new StatsWindow();
         public static GearWindow Gear = new GearWindow();
         public static InventoryWindow Inventory = new InventoryWindow(PoP.Inventory.inventoryLimit);
         public static DialogueWindow Dialogue = new DialogueWindow();
@@ -39,7 +38,6 @@ namespace PoP.classes
         public static void Initialize()
         {
             Map.IsEnabled = true;
-            Stats.IsEnabled = true;
             Gear.IsEnabled = true;
             Inventory.IsEnabled = true;
             Dialogue.IsEnabled = true;
@@ -71,23 +69,15 @@ namespace PoP.classes
             {
                 AddWindow(ref windows, border.Surround(Combat.GetLines, Combat.Width));
             }
-
-            if (Stats.IsEnabled)
-            {
-                border.TopLeft = Border.DOUBLE_T_TOP;
-                AddWindow(ref windows, border.Surround(Stats.GetLines, Stats.Width));
-            }
             
             if (Gear.IsEnabled)
             {
-                border.TopLeft = Border.DOUBLE_T_LEFT;
-                AddWindow(ref windows, border.Surround(Gear.GetLines, Gear.Width), Stats.Height + 2);
+                border.TopLeft = Border.DOUBLE_T_TOP;
+                AddWindow(ref windows, border.Surround(Gear.GetLines, Gear.Width));
             }
 
             if (Inventory.IsEnabled)
             {
-                border.IntersectionList.Add(new Intersection(BorderSide.Left, Stats.Height + 1, Border.DOUBLE_T_RIGHT));
-
                 border.TopLeft = Border.DOUBLE_T_TOP;
                 AddWindow(ref windows, border.Surround(Inventory.GetLines, Inventory.Width));
                 border.IntersectionList.Clear();
@@ -95,8 +85,6 @@ namespace PoP.classes
 
             if (Sorcery.IsEnabled)
             {
-                border.IntersectionList.Add(new Intersection(BorderSide.Left, Stats.Height + 1, Border.DOUBLE_T_RIGHT));
-
                 border.TopLeft = Border.DOUBLE_T_TOP;
                 AddWindow(ref windows, border.Surround(Sorcery.GetLines, Sorcery.Width));
                 border.IntersectionList.Clear();
@@ -105,7 +93,7 @@ namespace PoP.classes
             if (Dialogue.IsEnabled)
             {
                 border.IntersectionList.Add(new Intersection(BorderSide.Top, Map.Width + 1, Border.DOUBLE_T_BOTTOM));
-                border.IntersectionList.Add(new Intersection(BorderSide.Top, Map.Width + Stats.Width + 2, Border.DOUBLE_T_BOTTOM));
+                border.IntersectionList.Add(new Intersection(BorderSide.Top, Map.Width + Gear.Width + 2, Border.DOUBLE_T_BOTTOM));
 
                 border.TopLeft = Border.DOUBLE_T_LEFT;
                 AddWindow(ref windows, border.Surround(Dialogue.GetLines, Dialogue.Width), Map.Height + 2);
@@ -113,10 +101,10 @@ namespace PoP.classes
             }
 
             Border borderFull = new Border(false, true, true, false);
-
             borderFull.IntersectionList.Add(new Intersection(BorderSide.Right, 0, Border.DOUBLE_TOPRIGHT));
             borderFull.IntersectionList.Add(new Intersection(BorderSide.Right, Inventory.Height + 1, Border.DOUBLE_T_RIGHT));
             borderFull.IntersectionList.Add(new Intersection(BorderSide.Bottom, 0, Border.DOUBLE_BOTTOMLEFT));
+
             return borderFull.Surround(windows, Width - 1);
         }
 
