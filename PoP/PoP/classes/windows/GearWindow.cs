@@ -74,7 +74,7 @@ namespace PoP.classes.windows
             }
             else
             {
-                LineList.RemoveRange(5, LineList.Count - 5);
+                LineList.RemoveRange(8, LineList.Count - 8);
 
                 // Overall info
                 foreach (string line in GenerateOverallInfo())

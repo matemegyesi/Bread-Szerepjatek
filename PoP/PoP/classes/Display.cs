@@ -135,7 +135,7 @@ namespace PoP.classes
             { 69, "E" },
             { 82, "R" }
         };
-
+        
         /// <summary>
         /// Initializes a new instance of the Display class, setting up the console window and displaying the initial game interface.
         /// </summary>

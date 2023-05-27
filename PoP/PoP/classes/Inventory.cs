@@ -30,14 +30,6 @@ namespace PoP
         MainCape
     }
 
-    public enum SpellSlot
-    {
-        Spell1,
-        Spell2,
-        Spell3,
-        Spell4
-    }
-
     class Inventory
     {
         public bool IsOpened { get; set; } = false;
@@ -175,11 +167,6 @@ namespace PoP
                 item.Collect();
             }
 
-            sorcery[0] = readSpells[0];
-            sorcery[1] = readSpells[1];
-            sorcery[2] = readSpells[4];
-            sorcery[3] = readSpells[7];
-
             KeyboardInput.KeyPressed += KeyPressed;
 
             Wire.Inventory.UpdateItemList(inventory);
@@ -195,7 +182,7 @@ namespace PoP
                     {
                         int i = spellKeys[(int)key];
 
-                        selectedSpell.Equip();
+                        selectedSpell.Equip(i);
 
                         Wire.Sorcery.UpdateSpellList(spellList);
                     }

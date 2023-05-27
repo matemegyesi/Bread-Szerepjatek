@@ -42,15 +42,30 @@ namespace PoP.classes
             }
         }
 
-        public void Equip()
+        public void Equip(int index)
         {
             Inventory.spellList.Remove(this);
+
+            if (Inventory.sorcery[index] == null)
+            {
+                Inventory.spellList.Remove(this);
+                Inventory.sorcery[index] = this;
+            }
+            else
+            {
+                Inventory.sorcery[index].Unequip(index);
+
+                Inventory.spellList.Remove(this);
+                Inventory.sorcery[index] = this;
+            }
+
             Wire.Gear.ForceUpdate();
         }
 
-        public void EquipSpecific(SpellSlot spellSlot)
+        public void Unequip(int index)
         {
-
+            Inventory.sorcery[index] = null;
+            Inventory.spellList.Add(this);
         }
     }
 }
