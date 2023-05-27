@@ -15,6 +15,13 @@ namespace PoP.classes.windows
                 return $" ¶○> GEAR & STATS <○¶ ";
             }
         }
+        public string HowToUse
+        {
+            get
+            {
+                return "USE: after selecting a spell from the inventory, press the key of the desired equipment slot (Q/W/E/R)";
+            }
+        }
 
         public bool InUse { get; private set; }
 
@@ -26,7 +33,6 @@ namespace PoP.classes.windows
 
         protected override List<string> GenerateLines()
         {
-
             if (CachedLineList.Count != Height)
             {
                 LineList.Clear();
@@ -110,8 +116,10 @@ namespace PoP.classes.windows
             AddBlankLineLocal(ref headerLineList);
             AlignedText _header = Style.AlignCenterSpaces(Title, Width);
             AddLineLocal(ref headerLineList, _header.Before + Style.ColorFormat(Title, ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT) + _header.After);
-
+            
             AddBlankLineLocal(ref headerLineList);
+            AddLineLocal(ref headerLineList, HowToUse, true, true);
+
             AddLineLocal(ref headerLineList, Style.Color(Style.GetDashedLine(Width), ColorAnsi.GREY));
             AddBlankLineLocal(ref headerLineList);
 
