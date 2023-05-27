@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace PoP.classes.windows
 {
@@ -12,7 +13,7 @@ namespace PoP.classes.windows
         {
             get
             {
-                return $" ¶○> GEAR <○¶ ";
+                return $" ¶○> GEAR & STATS <○¶ ";
             }
         }
 
@@ -120,24 +121,37 @@ namespace PoP.classes.windows
 
         private List<string> GenerateOverallInfo()
         {
-            List<string> overallInfoLineList = new List<string>();
-            
+            List<string> overallInfo = new List<string>();
+
             string _dmgTitle = " OVERALL DAMAGE: ";
-            AddLineLocal(ref overallInfoLineList, Style.GetBlankLine(9) + _dmgTitle + Style.GetRemainingSpace(_dmgTitle, 18) + Style.ColorFormat(" " + Player.Damage.ToString("0.#") + " dmg ", ColorAnsi.RUST, FormatAnsi.HIGHLIGHT));
+            AddLineLocal(ref overallInfo, Style.GetBlankLine(9) + Style.Color(_dmgTitle, ColorAnsi.WHITE) + Style.GetRemainingSpace(_dmgTitle, 18) + Style.ColorFormat(" " + Player.Damage.ToString("0.#") + " dmg ", ColorAnsi.RUST, FormatAnsi.HIGHLIGHT));
 
             string _defTitle = " OVERALL DEFENCE: ";
-            AddLineLocal(ref overallInfoLineList, Style.GetBlankLine(9) + _defTitle + Style.GetRemainingSpace(_defTitle, 18) + Style.ColorFormat(" " + Player.Defence.ToString("0.#") + " def ", ColorAnsi.TEAL, FormatAnsi.HIGHLIGHT));
+            AddLineLocal(ref overallInfo, Style.GetBlankLine(9) + Style.Color(_defTitle, ColorAnsi.WHITE) + Style.GetRemainingSpace(_defTitle, 18) + Style.ColorFormat(" " + Player.Defence.ToString("0.#") + " def ", ColorAnsi.TEAL, FormatAnsi.HIGHLIGHT));
             
-            AddBlankLineLocal(ref overallInfoLineList);
+            AddBlankLineLocal(ref overallInfo);
 
-            return overallInfoLineList;
+            return overallInfo;
         }
 
         private string GenerateGearCard(Slot slot, Item item)
         {
             string gearLine = string.Empty;
 
-            string _slot = slot.ToString();
+            string _slot;
+            switch (slot)
+            {
+                case Slot.MainSword:
+                    _slot = "Sword";
+                    break;
+                case Slot.MainCape:
+                    _slot = "Cape";
+                    break;
+                default:
+                    _slot = slot.ToString();
+                    break;
+            }
+
             if (item != null)
             {
                 string _name = item.Name;
@@ -198,6 +212,10 @@ namespace PoP.classes.windows
             return spellCard;
         }
 
+        /// <summary>
+        /// Sets the InUse boolean, setting the color of the equipment keys next to the spell names.
+        /// </summary>
+        /// <param name="isInUse">True activates, false deactivates.</param>
         public void SetInUse(bool isInUse)
         {
             InUse = isInUse;
