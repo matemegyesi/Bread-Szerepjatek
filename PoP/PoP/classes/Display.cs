@@ -128,6 +128,13 @@ namespace PoP.classes
             {115,"F4"},
             {116,"F5"}
         };
+        public static Dictionary<int, string> spellKeys = new Dictionary<int, string>()
+        {
+            { 81, "Q" },
+            { 87, "W" },
+            { 69, "E" },
+            { 82, "R" }
+        };
 
         /// <summary>
         /// Initializes a new instance of the Display class, setting up the console window and displaying the initial game interface.

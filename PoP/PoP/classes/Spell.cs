@@ -44,7 +44,8 @@ namespace PoP.classes
 
         public void Equip()
         {
-
+            Inventory.spellList.Remove(this);
+            Wire.Gear.ForceUpdate();
         }
 
         public void EquipSpecific(SpellSlot spellSlot)

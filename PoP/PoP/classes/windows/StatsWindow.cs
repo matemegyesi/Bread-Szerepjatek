@@ -18,7 +18,7 @@ namespace PoP.classes.windows
 
         public StatsWindow()
         {
-            Height = 15;
+            Height = 9;
             Width = 44;
         }
 

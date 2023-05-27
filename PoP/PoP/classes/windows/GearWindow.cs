@@ -16,9 +16,11 @@ namespace PoP.classes.windows
             }
         }
 
+        public bool InUse { get; private set; }
+
         public GearWindow()
         {
-            Height = 30;
+            Height = 36;
             Width = 44;
         }
 
@@ -49,9 +51,18 @@ namespace PoP.classes.windows
                 }
 
                 // Individual spell info
-                foreach (var spell in Inventory.sorcery)
+                string _spellSlot = "<SPELLS>";
+                AddLine(Style.GetRemainingSpace(_spellSlot.Length + 1, 14) + _spellSlot);
+                AddBlankLine();
+
+                for (int i = 0; i < 4; i++)
                 {
-                    AddLine(GenerateSpellCard(spell.Key, spell.Value));
+                    Spell _spell = Inventory.sorcery.ElementAt(i);
+
+                    foreach (string line in GenerateSpellCard(_spell, i))
+                    {
+                        AddLine(line);
+                    }
                     AddBlankLine();
                 }
             }
@@ -73,9 +84,18 @@ namespace PoP.classes.windows
                 }
 
                 // Individual spell info
-                foreach (var spell in Inventory.sorcery)
+                string _spellSlot = "<SPELLS>";
+                AddLine(Style.GetRemainingSpace(_spellSlot.Length + 1, 14) + _spellSlot);
+                AddBlankLine();
+
+                for (int i = 0; i < 4; i++)
                 {
-                    AddLine(GenerateSpellCard(spell.Key, spell.Value));
+                    Spell _spell = Inventory.sorcery.ElementAt(i);
+
+                    foreach (string line in GenerateSpellCard(_spell, i))
+                    {
+                        AddLine(line);
+                    }
                     AddBlankLine();
                 }
             }
@@ -137,7 +157,7 @@ namespace PoP.classes.windows
                     _color = ColorAnsi.AQUA;
                 }
 
-                gearLine += Style.GetRemainingSpace(_slot.Length + 2, 14) + _slot.ToUpper() + ": " + Style.ColorFormat(_name, ColorAnsi.WHEAT, FormatAnsi.UNDERLINE);
+                gearLine += Style.GetRemainingSpace(_slot.Length + 2, 14) + _slot.ToUpper() + ": " + Style.ColorFormat(_name, ColorAnsi.LIGHT_BLUE, FormatAnsi.UNDERLINE);
                 gearLine += Style.GetRemainingSpace(14 + _name.Length, 35) + Style.Color($"+{_value} {_unit}", _color);
             }
             else
@@ -148,28 +168,42 @@ namespace PoP.classes.windows
             return gearLine;
         }
 
-        private string GenerateSpellCard(SpellSlot slot, Spell spell)
+        private List<string> GenerateSpellCard(Spell spell, int valueCount)
         {
-            string spellLine = string.Empty;
+            List<string> spellCard = new List<string>();
 
-            string _slot = slot.ToString();
+            string _value = ' ' + Display.spellKeys.ElementAt(valueCount).Value + ' ';
+            if (!InUse)
+            {
+                _value = Style.ColorFormat(_value, ColorAnsi.DARK_GREY, FormatAnsi.HIGHLIGHT);
+            }
+            else
+            {
+                _value = Style.ColorFormat(_value, ColorAnsi.MAGENTA, FormatAnsi.HIGHLIGHT);
+            }
 
             if (spell != null)
             {
                 string _cost = spell.ManaCost.ToString("0 mana");
 
-                spellLine += Style.GetRemainingSpace(_slot.Length + 2, 14) + _slot.ToUpper() + ": " + Style.ColorFormat(spell.Name, ColorAnsi.PINK, FormatAnsi.UNDERLINE);
+                AddLineLocal(ref spellCard, Style.GetBlankLine(9) + _value + "  " + Style.ColorFormat(spell.Name, ColorAnsi.MAGENTA, FormatAnsi.UNDERLINE) + Style.GetRemainingSpace(14 + Style.PurgeAnsi(_value).Length + spell.Name.Length, 38) + Style.Color(_cost, ColorAnsi.PURPLE));
 
-                spellLine += Style.GetRemainingSpace(14 + spell.Name.Length, 35) + Style.Color(_cost, ColorAnsi.PURPLE);
+                AddLineLocal(ref spellCard, Style.Color(spell.Effects, ColorAnsi.PINK) + "  ", false);
             }
             else
             {
-                spellLine += Style.GetRemainingSpace(_slot.Length + 2, 14) + _slot.ToUpper() + ": " + Style.Color("(Empty)", ColorAnsi.RUST);
+                AddLineLocal(ref spellCard, Style.GetBlankLine(9) + _value + "  " + Style.Color("(Empty)", ColorAnsi.RUST));
             }
 
-            return spellLine;
+            return spellCard;
         }
 
+        public void SetInUse(bool isInUse)
+        {
+            InUse = isInUse;
+            HasChanged = true;
+        }
+        
         /// <summary>
         /// Notifies the window for the next render that the gear has changed.
         /// </summary>

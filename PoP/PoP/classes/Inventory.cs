@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
+using PoP.classes.windows;
 
 namespace PoP
 {
@@ -40,6 +41,9 @@ namespace PoP
     class Inventory
     {
         public bool IsOpened { get; set; } = false;
+        public bool IsSorceryOpened { get; set; } = false;
+        private Spell selectedSpell;
+
         ///<summary>
         /// The maximum number of items that the inventory can hold.
         /// </summary>
@@ -106,15 +110,22 @@ namespace PoP
             {115,38},
             {116,39}
         };
+        private Dictionary<int, int> spellKeys = new Dictionary<int, int>()
+        {
+            { 81, 0 },
+            { 87, 1 },
+            { 69, 2 },
+            { 82, 3 }
+        };
 
         public const int sorceryLimit = 40;
         public static List<Spell> spellList = new List<Spell>();
-        public static Dictionary<SpellSlot, Spell> sorcery = new Dictionary<SpellSlot, Spell>()
+        public static List<Spell> sorcery = new List<Spell>(4)
         {
-            { SpellSlot.Spell1, null },
-            { SpellSlot.Spell2, null },
-            { SpellSlot.Spell3, null },
-            { SpellSlot.Spell4, null }
+            { null },
+            { null },
+            { null },
+            { null }
         };
 
         public static Weapon MainSword { get; set; } = new Weapon("Myrkrsverð", Slot.MainSword, 10, true);
@@ -164,9 +175,10 @@ namespace PoP
                 item.Collect();
             }
 
-            sorcery[SpellSlot.Spell1] = readSpells[0];
-            sorcery[SpellSlot.Spell3] = readSpells[4];
-            sorcery[SpellSlot.Spell2] = readSpells[7];
+            sorcery[0] = readSpells[0];
+            sorcery[1] = readSpells[1];
+            sorcery[2] = readSpells[4];
+            sorcery[3] = readSpells[7];
 
             KeyboardInput.KeyPressed += KeyPressed;
 
@@ -177,7 +189,23 @@ namespace PoP
         {
             if (GameLoop.Phase == GamePhase.ADVENTURE)
             {
-                if (!IsOpened)
+                if (IsSorceryOpened)
+                {
+                    try
+                    {
+                        int i = spellKeys[(int)key];
+
+                        selectedSpell.Equip();
+
+                        Wire.Sorcery.UpdateSpellList(spellList);
+                    }
+                    catch (Exception) { }
+
+                    IsSorceryOpened = false;
+                    Wire.Gear.SetInUse(false);
+                    GameLoop.playerMovement.EnableMovement();
+                }
+                else if (!IsOpened)
                 {
                     if (key == ConsoleKey.F12)
                     {
@@ -248,8 +276,11 @@ namespace PoP
                             try
                             {
                                 int i = keys[(int)key];
-                                spellList[i].Equip();
-                                Wire.Sorcery.UpdateSpellList(spellList);
+                                
+                                IsSorceryOpened = true;
+                                Wire.Gear.SetInUse(true);
+
+                                selectedSpell = spellList[i];
                             }
                             catch (Exception) { }
                         }
@@ -262,7 +293,8 @@ namespace PoP
 
                     // Deactivates the F12 (equip) mode
                     IsOpened = false;
-                    GameLoop.playerMovement.EnableMovement();
+                    if (!IsSorceryOpened)
+                        GameLoop.playerMovement.EnableMovement();
                 }
             }
         }
