@@ -62,6 +62,14 @@ namespace PoP.classes
         /// </summary>
         public const string END = "\u001b[0m";
 
+        #region Color scheme
+
+        public static ColorAnsi HealthBarColor = ColorAnsi.LIGHT_BLUE;
+        public static ColorAnsi DefenceBarColor = ColorAnsi.GREEN;
+        public static ColorAnsi ManaColor = ColorAnsi.PURPLE;
+        public static ColorAnsi ManaRegColor = ColorAnsi.DARK_RED;
+
+        #endregion
 
         #region Public methods
 
@@ -545,7 +553,6 @@ namespace PoP.classes
         }
         
         #endregion
-
 
         private static string AnsiColor(byte colorNumber)
         {

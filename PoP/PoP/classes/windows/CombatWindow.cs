@@ -42,64 +42,90 @@ namespace PoP.classes.windows
             AddBlankLine();
             AddBlankLine();
 
-            List<string> playerInfo = GenerateInfo("Player", Player.Health, Player.MaxHealth, Player.Mana, Player.MaxMana, true);
-            List<string> enemyInfo = GenerateInfo("Enemy", enemy.Health, enemy.MaxHealth, enemy.Mana, enemy.MaxMana, false);
+            // Name
+            string _playerName = Player.Name;
+            string _enemyName = enemy.Name;
+            string _nameSeparation = Style.GetRemainingSpace(INFO_PADDING.Length * 2 + _playerName.Length + _enemyName.Length + 4, Width);
+            _playerName = Style.Color('<', ColorAnsi.WHITE) + Style.ColorFormat(_playerName, ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT) + Style.Color('>', ColorAnsi.WHITE);
+            _enemyName = Style.Color('<', ColorAnsi.WHITE) + Style.ColorFormat(_enemyName, ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT) + Style.Color('>', ColorAnsi.WHITE);
 
-            for (int i = 0; i < playerInfo.Count; i++)
+            AddLine(INFO_PADDING + _playerName + _nameSeparation + _enemyName + INFO_PADDING);
+            AddBlankLine();
+
+            // Health
+            List<string> playerHp = GenerateSlider("Health", Player.Health, Player.MaxHealth, true, Style.HealthBarColor);
+            List<string> enemyHp = GenerateSlider("Health", enemy.Health, enemy.MaxHealth, false, Style.HealthBarColor);
+            for (int i = 0; i < playerHp.Count; i++)
             {
-                AddLine(INFO_PADDING + playerInfo[i] + enemyInfo[i] + INFO_PADDING);
+                AddLine(INFO_PADDING + playerHp[i] + enemyHp[i] + INFO_PADDING);
             }
+
+            AddBlankLine();
+
+            // Defence
+            string _playerDef = GenerateInfo("DEFENCE: ", Player.Defence.ToString("0 def"), true, Style.DefenceBarColor);
+            string _enemyDef = GenerateInfo("DEFENCE: ", enemy.Defence.ToString("0 def"), false, Style.DefenceBarColor);
+            AddLine(INFO_PADDING + _playerDef + _enemyDef + INFO_PADDING);
+
+            AddBlankLine();
+            
+            // (Player) mana
+            foreach (string line in GenerateSlider($"Mana", Player.Mana, Player.MaxMana, true, Style.ManaColor))
+            {
+                AddLine(INFO_PADDING + line);
+            }
+
+            AddBlankLine();
+
+            // (Player) mana regeneration
+            string _playerManaReg = GenerateInfo("MANA REGENERATION: ", Player.ManaRate.ToString("+0 mana/turn"), true, Style.ManaRegColor);
+            AddLine(INFO_PADDING + _playerManaReg);
+
+            AddBlankLine();
 
             return LineList;
         }
 
-        private List<string> GenerateInfo(string name, double hp, double hpMax, int mana, int manaMax, bool alignedLeft, bool isCat = false)
+        private List<string> GenerateSlider(string name, double value, double maxValue, bool alignedLeft, ColorAnsi color)
         {
-            List<string> infoList = new List<string>();
+            List<string> sliderList = new List<string>();
             Width = 68;
 
-            // Entity name
-            AddLineLocal(ref infoList, '<' + Style.ColorFormat(' ' + name.ToUpper() + ' ', ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT) + '>', alignedLeft);
+            // Slider name
+            AddLineLocal(ref sliderList, Style.Color($"{name.ToUpper()} [{value}/{maxValue}]", ColorAnsi.WHITE), alignedLeft);
 
-            AddLineLocal(ref infoList, string.Empty);
-
-            // Hp bar
-            int _hpLength = 40;
-            double _hpPercent;
-            if (hpMax != 0)
+            // Slider
+            int _sliderLength = 40;
+            double _percent;
+            if (maxValue != 0)
             {
-                _hpPercent = hp / hpMax;
+                _percent = value / maxValue;
             }
             else
             {
-                _hpPercent = 0;
+                _percent = 0;
             }
-            ColorAnsi _hpColor = ColorAnsi.LIGHT_BLUE;
-
-            AddLineLocal(ref infoList, Style.Color($"HEALTH [{hp}/{hpMax}]", ColorAnsi.WHITE), alignedLeft);
-            AddLineLocal(ref infoList, Style.Color('┇', _hpColor) + Style.GetSlider(_hpLength, _hpPercent, _hpColor) + Style.Color('┇', _hpColor), alignedLeft);
-
-            AddLineLocal(ref infoList, string.Empty);
-
-            // Mana bar
-            int _manaLength = 40;
-            double _manaPercent;
-            if (manaMax != 0)
-            {
-                _manaPercent = (double)mana / manaMax;
-            }
-            else
-            {
-                _manaPercent = 0;
-            }
-            ColorAnsi _manaColor = ColorAnsi.PURPLE;
-
-            AddLineLocal(ref infoList, Style.Color($"MANA [{mana}/{manaMax}]", ColorAnsi.WHITE), alignedLeft);
-            AddLineLocal(ref infoList, Style.Color('┇', _manaColor) + Style.GetSlider(_manaLength, _manaPercent, _manaColor) + Style.Color('┇', _manaColor), alignedLeft);
-
+            AddLineLocal(ref sliderList, Style.Color('┇', color) + Style.GetSlider(_sliderLength, _percent, color) + Style.Color('┇', color), alignedLeft);
 
             Width = 148;
-            return infoList;
+            return sliderList;
+        }
+
+        private string GenerateInfo(string name, string value, bool alignedLeft, ColorAnsi color)
+        {
+            string info = string.Empty;
+            Width = 68;
+
+            if (!alignedLeft)
+                info += Style.GetRemainingSpace(name + value, Width);
+
+            info += Style.Color(name, ColorAnsi.WHITE) + Style.Color(value, color);
+
+            if (alignedLeft)
+                info += Style.GetRemainingSpace(name + value, Width);
+
+            Width = 148;
+            return info;
         }
 
         public void SetEnemy(Enemy enemy)

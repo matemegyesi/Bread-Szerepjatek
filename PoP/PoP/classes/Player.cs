@@ -8,6 +8,8 @@ namespace PoP.classes
 {
     class Player
     {
+        static public string Name = "Player";
+
         static public double Damage
         {
             get
