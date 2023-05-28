@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PoP.classes.effects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,9 @@ namespace PoP.classes
 {
     class Player
     {
-        static public string Name = "Player";
+        public static string Name = "Player";
 
-        static public double Damage
+        public static double Damage
         {
             get
             {
@@ -26,7 +27,7 @@ namespace PoP.classes
                 return damage;
             }
         }
-        static public double Defence
+        public static double Defence
         {
             get
             {
@@ -45,12 +46,23 @@ namespace PoP.classes
             }
         }
 
-        static public double MaxHealth { get; private set; } = 50;
-        static public double Health { get; private set; } = 44;
+        public static double MaxHealth { get; private set; } = 50;
+        public static double Health { get; private set; } = 44;
 
-        static public int MaxMana { get; private set; } = 20;
-        static public int Mana { get; private set; } = 9;
-        static public int ManaRate { get; private set; } = 5;
+        public static int MaxMana { get; private set; } = 20;
+        public static int Mana { get; private set; } = 9;
+        public static int ManaRate { get; private set; } = 5;
+
+        public static Dictionary<Effect, int> EffectDict = new Dictionary<Effect, int>()
+        {
+            { new Burn(), 0 },
+            { new Freeze(), 0 },
+            { new Stun(), 0 },
+            { new Poison(), 0 },
+            { new Bleed(), 0 },
+            { new Buff(), 0 },
+            { new Debuff(), 0 }
+        };
 
         public Player()
         {

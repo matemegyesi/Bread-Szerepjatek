@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PoP.classes.effects;
 
 namespace PoP.classes
 {
@@ -16,18 +17,18 @@ namespace PoP.classes
 
         public double Damage { get; }
         public double Heal { get; }
-        public string Effects { get; }
+        public HashSet<Effect> EffectList { get; } = new HashSet<Effect>();
 
         public int LvL { get; }
         public string Description { get; }
 
-        public Spell(string name, double mana, double damage, double heal, string effects, int level, string description = "")
+        public Spell(string name, double mana, double damage, double heal, List<Effect> effectList, int level, string description = "")
         {
             Name = name;
             ManaCost = mana;
             Damage = damage;
             Heal = heal;
-            Effects = effects;
+            EffectList = effectList.ToHashSet();
             LvL = level;
             Description = description;
         }

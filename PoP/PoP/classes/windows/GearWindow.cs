@@ -224,7 +224,7 @@ namespace PoP.classes.windows
 
                 AddLineLocal(ref spellCard, Style.GetBlankLine(9) + _value + "  " + Style.ColorFormat(spell.Name, ColorAnsi.MAGENTA, FormatAnsi.UNDERLINE) + Style.GetRemainingSpace(14 + Style.PurgeAnsi(_value).Length + spell.Name.Length, 38) + Style.Color(_cost, ColorAnsi.PURPLE));
 
-                AddLineLocal(ref spellCard, Style.Color(spell.Effects, ColorAnsi.PINK) + "  ", false);
+                //AddLineLocal(ref spellCard, Style.Color(spell.Effects, ColorAnsi.PINK) + "  ", false);
             }
             else
             {

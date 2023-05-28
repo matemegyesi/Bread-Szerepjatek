@@ -114,10 +114,10 @@ namespace PoP.classes.windows
             {
                 _lineCount += 1;
             }
-            if (spell.Effects != string.Empty)
-            {
-                _lineCount += 1;
-            }
+            //if (spell.Effects != string.Empty)
+            //{
+            //    _lineCount += 1;
+            //}
 
             return _lineCount + 1;
         }
@@ -169,11 +169,11 @@ namespace PoP.classes.windows
             }
 
             // Effects
-            if (spell.Effects != string.Empty)
-            {
-                string _fx = " EFFECTS: ";
-                AddLineLocal(ref spellCardLineList, Style.GetRemainingSpace(_fx, 15) + _fx + Style.Color(spell.Effects, ColorAnsi.PINK));
-            }
+            //if (spell.Effects != string.Empty)
+            //{
+            //    string _fx = " EFFECTS: ";
+            //    AddLineLocal(ref spellCardLineList, Style.GetRemainingSpace(_fx, 15) + _fx + Style.Color(spell.Effects, ColorAnsi.PINK));
+            //}
 
             if (hasHR)
             {
