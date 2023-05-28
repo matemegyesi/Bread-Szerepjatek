@@ -13,7 +13,7 @@ namespace PoP
         {
 
             GameLoop gameLoop = new GameLoop();
-            
+
             gameLoop.Start();
         }
     }
