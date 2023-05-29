@@ -51,7 +51,7 @@ namespace PoP.classes.windows
 
                 // Options menu
                 AddLine(Style.Color(Style.GetBlankLine(Width, Border.SINGLE_HORIZONTAL), ColorAnsi.DARK_GREY));
-                AddLine($" {Style.Color("Next [SPACE]", history.Count > 0 ? ColorAnsi.WHITE : ColorAnsi.DARK_GREY)}  {Style.Color(Border.SINGLE_VERTICAL, ColorAnsi.DARK_GREY)}  {Style.Color("Skip [ENTER]", ColorAnsi.DARK_GREY)}");
+                AddLine($" {Style.Color("Next [SPACE]", history.Count > 0 ? ColorAnsi.WHITE : ColorAnsi.DARK_GREY)}  {Style.Color(Border.SINGLE_VERTICAL, ColorAnsi.DARK_GREY)}  {Style.Color("Skip [SHIFT]", ColorAnsi.DARK_GREY)}");
 
                 return LineList;
             }
@@ -78,7 +78,7 @@ namespace PoP.classes.windows
                     LineList.RemoveRange(LineList.Count - 2, 2);
 
                     AddLine(Style.Color(Style.GetBlankLine(Width, Border.SINGLE_HORIZONTAL), ColorAnsi.DARK_GREY));
-                    AddLine($" {Style.Color("Next [SPACE]", history.Count > 0 ? ColorAnsi.WHITE : ColorAnsi.DARK_GREY)}  {Style.Color(Border.SINGLE_VERTICAL, ColorAnsi.DARK_GREY)}  {Style.Color("Skip [ENTER]", ColorAnsi.DARK_GREY)}");
+                    AddLine($" {Style.Color("Next [SPACE]", history.Count > 0 ? ColorAnsi.WHITE : ColorAnsi.DARK_GREY)}  {Style.Color(Border.SINGLE_VERTICAL, ColorAnsi.DARK_GREY)}  {Style.Color("Skip [SHIFT]", ColorAnsi.DARK_GREY)}");
 
                     historyChanged = false;
                 }

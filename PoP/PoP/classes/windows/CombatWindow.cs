@@ -27,6 +27,14 @@ namespace PoP.classes.windows
 
         private Enemy enemy;
 
+        private List<string> playerLines = new List<string>(22);
+        private List<string> enemyLines = new List<string>(22);
+
+        // Change detection
+        private bool playerChanged;
+        private bool enemyChanged;
+        private bool loadoutChanged;
+
         public CombatWindow()
         {
             Height = 46;
@@ -41,72 +49,128 @@ namespace PoP.classes.windows
 
             AddBlankLine();
             AddBlankLine();
+            GeneratePlayerColumn();
+            GenerateEnemyColumn();
 
-            // Name
-            string _playerName = Player.Name;
-            string _enemyName = enemy.Name;
-            string _nameSeparation = Style.GetRemainingSpace(INFO_PADDING.Length * 2 + _playerName.Length + _enemyName.Length + 4, Width);
-            _playerName = Style.Color('<', ColorAnsi.WHITE) + Style.ColorFormat(_playerName, ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT) + Style.Color('>', ColorAnsi.WHITE);
-            _enemyName = Style.Color('<', ColorAnsi.WHITE) + Style.ColorFormat(_enemyName, ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT) + Style.Color('>', ColorAnsi.WHITE);
-
-            AddLine(INFO_PADDING + _playerName + _nameSeparation + _enemyName + INFO_PADDING);
-            AddBlankLine();
-
-            // Health
-            List<string> playerHp = GenerateSlider("Health", Player.Health, Player.MaxHealth, true, Style.HealthBarColor);
-            List<string> enemyHp = GenerateSlider("Health", enemy.Health, enemy.MaxHealth, false, Style.HealthBarColor);
-            for (int i = 0; i < playerHp.Count; i++)
+            // Player & Enemy column section
+            for (int i = 0; i < playerLines.Count; i++)
             {
-                AddLine(INFO_PADDING + playerHp[i] + enemyHp[i] + INFO_PADDING);
+                AddLine(INFO_PADDING + playerLines[i] + enemyLines[i]);
             }
 
-            AddBlankLine();
+            AddLine(Style.Color(' ' + Style.GetBlankLine(Width - 2, Border.SINGLE_HORIZONTAL) + ' ', ColorAnsi.DARK_GREY));
 
-            // Defence
-            string _playerDef = GenerateInfo("DEFENCE: ", Player.Defence.ToString("0 def"), true, Style.DefenceBarColor);
-            string _enemyDef = GenerateInfo("DEFENCE: ", enemy.Defence.ToString("0 def"), false, Style.DefenceBarColor);
-            AddLine(INFO_PADDING + _playerDef + _enemyDef + INFO_PADDING);
+            // Loadout section
 
-            AddBlankLine();
-            
-            // (Player) mana
-            foreach (string line in GenerateSlider($"Mana", Player.Mana, Player.MaxMana, true, Style.ManaColor))
-            {
-                AddLine(INFO_PADDING + line);
-            }
 
-            AddBlankLine();
-
-            // (Player) mana regeneration
-            string _playerManaReg = GenerateInfo("MANA REGENERATION: ", Player.ManaRate.ToString("+0 mana/turn"), true, Style.ManaRegColor);
-            AddLine(INFO_PADDING + _playerManaReg);
-
-            AddBlankLine();
-
-            // Effects
-            List<string> _playerFx = GenerateEffectIndicator(Player.EffectDict, true);
-            List<string> _enemyFx = GenerateEffectIndicator(enemy.EffectDict, false);
-
-            for (int i = 0; i < _playerFx.Count; i++)
-            {
-                AddLine(INFO_PADDING + _playerFx[i] + _enemyFx[i]);
-            }
-
-            while (LineList.Count < 22)
-            {
-                AddBlankLine();
-            }
-
-            AddLine(Style.GetBlankLine(Width, Border.SINGLE_HORIZONTAL));
 
 
             return LineList;
         }
 
+        private List<string> GeneratePlayerColumn()
+        {
+            List<string> playerColumn = new List<string>();
+            Width = 68;
+
+            // Name
+            AddLineLocal(ref playerColumn, GenerateName(Player.Name, true));
+
+            AddBlankLineLocal(ref playerColumn);
+
+            // Health
+            foreach (string line in GenerateSlider("Health", Player.Health, Player.MaxHealth, true, Style.HealthBarColor))
+            {
+                AddLineLocal(ref playerColumn, line);
+            }
+
+            AddBlankLineLocal(ref playerColumn);
+
+            // Defence
+            AddLineLocal(ref playerColumn, GenerateInfo("DEFENCE: ", Player.Defence.ToString("0 def"), true, Style.DefenceBarColor));
+
+            AddBlankLineLocal(ref playerColumn);
+
+            // Effect
+            foreach (string line in GenerateEffectIndicator(Player.EffectDict, true))
+            {
+                AddLineLocal(ref playerColumn, line);
+            }
+
+            AddBlankLineLocal(ref playerColumn);
+
+            // Mana
+            foreach (string line in GenerateSlider($"Mana", Player.Mana, Player.MaxMana, true, Style.ManaColor))
+            {
+                AddLineLocal(ref playerColumn, line);
+            }
+
+            AddBlankLineLocal(ref playerColumn);
+            
+            // Mana regeneration rate
+            AddLineLocal(ref playerColumn, GenerateInfo("MANA REGENERATION: ", Player.ManaRate.ToString("+0 mana/turn"), true, Style.ManaRegColor));
+
+            // Fills up the remaining lines
+            while (playerColumn.Count < 22)
+            {
+                AddBlankLineLocal(ref playerColumn);
+            }
+
+            Width = 148;
+            playerLines = playerColumn;
+            return playerColumn;
+        }
+
+        private List<string> GenerateEnemyColumn()
+        {
+            List<string> enemyColumn = new List<string>();
+            Width = 68;
+
+            // Name
+            AddLineLocal(ref enemyColumn, GenerateName(enemy.Name, false));
+
+            AddBlankLineLocal(ref enemyColumn);
+
+            // Health
+            foreach (string line in GenerateSlider("Health", enemy.Health, enemy.MaxHealth, false, Style.HealthBarColor))
+            {
+                AddLineLocal(ref enemyColumn, line);
+            }
+
+            AddBlankLineLocal(ref enemyColumn);
+
+            // Defence
+            AddLineLocal(ref enemyColumn, GenerateInfo("DEFENCE: ", enemy.Defence.ToString("0 def"), false, Style.DefenceBarColor));
+
+            AddBlankLineLocal(ref enemyColumn);
+
+            // Effect
+            foreach (string line in GenerateEffectIndicator(enemy.EffectDict, false))
+            {
+                AddLineLocal(ref enemyColumn, line);
+            }
+
+            AddBlankLineLocal(ref enemyColumn);
+
+            // Fills up the remaining lines
+            while (enemyColumn.Count < 22)
+            {
+                AddBlankLineLocal(ref enemyColumn);
+            }
+
+            Width = 148;
+            enemyLines = enemyColumn;
+            return enemyColumn;
+        }
+
+        private string GenerateName(string name, bool alignedLeft)
+        {
+            return (alignedLeft ? "" : Style.GetRemainingSpace(name.Length + 2, 68)) + Style.Color('<', ColorAnsi.WHITE) + Style.ColorFormat(name, ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT) + Style.Color('>', ColorAnsi.WHITE);
+        }
+
         private List<string> GenerateSlider(string name, double value, double maxValue, bool alignedLeft, ColorAnsi color)
         {
             List<string> sliderList = new List<string>();
-            Width = 68;
 
             // Slider name
             AddLineLocal(ref sliderList, Style.Color($"{name.ToUpper()} [{value}/{maxValue}]", ColorAnsi.WHITE), alignedLeft);
@@ -124,14 +188,12 @@ namespace PoP.classes.windows
             }
             AddLineLocal(ref sliderList, Style.Color('┇', color) + Style.GetSlider(_sliderLength, _percent, color) + Style.Color('┇', color), alignedLeft);
 
-            Width = 148;
             return sliderList;
         }
 
         private string GenerateInfo(string name, string value, bool alignedLeft, ColorAnsi color)
         {
             string info = string.Empty;
-            Width = 68;
 
             if (!alignedLeft)
                 info += Style.GetRemainingSpace(name + value, Width);
@@ -141,7 +203,6 @@ namespace PoP.classes.windows
             if (alignedLeft)
                 info += Style.GetRemainingSpace(name + value, Width);
 
-            Width = 148;
             return info;
         }
 
@@ -150,7 +211,6 @@ namespace PoP.classes.windows
             List<string> effectIndicatorList = new List<string>();
 
             string _fxTitle = "ACTIVE EFFECT(S): ";
-            Width = 68;
 
             string _currentLine = string.Empty;
             _currentLine += Style.Color(_fxTitle, ColorAnsi.WHITE);
@@ -169,7 +229,7 @@ namespace PoP.classes.windows
                     if (_current.Value > 0)
                     {
                         _currentLine += Style.Color(_current.Key.ToString(), ColorAnsi.PINK) + Style.GetRemainingSpace(_current.Key.ToString(), 7);
-                        _currentLine += " -   " + Style.Color(_current.Value + " ", ColorAnsi.ORANGE);
+                        _currentLine += " -  " + Style.Color(_current.Value + " ", ColorAnsi.ORANGE);
                         if (_current.Value == 1)
                         {
                             _currentLine += Style.Color("turn left", ColorAnsi.CORAL);
@@ -199,12 +259,6 @@ namespace PoP.classes.windows
                 AddLineLocal(ref effectIndicatorList, _currentLine);
             }
 
-            while (effectIndicatorList.Count < 7)
-            {
-                AddBlankLineLocal(ref effectIndicatorList);
-            }
-
-            Width = 148;
             return effectIndicatorList;
         }
 
