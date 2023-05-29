@@ -187,7 +187,7 @@ namespace PoP.classes.windows
             {
                 _type = Style.Color("Armor", ColorAnsi.DARK_BLUE);
             }
-            AddLineLocal(ref itemCardLineList, _name + _value + Style.GetRemainingSpace(item.Name.Length + Style.PurgeAnsi(_value).Length + Style.PurgeAnsi(_type).Length + 6, Width) + _type);
+            AddLineLocal(ref itemCardLineList, _name + _value + Style.GetRemainingSpace(item.Name.Length + Style.PurgeAnsi(_value).Length + Style.PurgeAnsi(_type).Length + 3, Width) + _type);
 
             AddBlankLineLocal(ref itemCardLineList);
 
@@ -211,7 +211,7 @@ namespace PoP.classes.windows
 
             if (hasHR)
             {
-                AddLineLocal(ref itemCardLineList, Style.AddPadding(Style.Color(Style.GetBlankLine(Width - 5, Border.SINGLE_HORIZONTAL), ColorAnsi.DARK_GREY)));
+                AddLineLocal(ref itemCardLineList, Style.AddPadding(Style.Color(Style.GetBlankLine(Width - 2, Border.SINGLE_HORIZONTAL), ColorAnsi.DARK_GREY)));
             }
 
             return itemCardLineList;

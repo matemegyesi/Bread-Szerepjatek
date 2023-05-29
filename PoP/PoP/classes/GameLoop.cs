@@ -81,10 +81,11 @@ namespace PoP.classes
             map1.AddLocation(3, LocationType.DIALOGUE, "res\\dialogue\\guiscardtalk.json");
             map1.AddLocation(4, LocationType.COMBAT, "res\\enemies\\enemy.json");
             map1.AddLocation(5, LocationType.TRAVEL, "res\\maps\\rudtovolcano.json", 1);
-            
+
             //ReadItemFile("res\\itemFile.txt");
 
             // Initialize character
+            Player.Init();
             Wire.Map.SetCharacterPosition(127, 27); // 9, 13 or 127, 27 //
 
             // Loads map2.

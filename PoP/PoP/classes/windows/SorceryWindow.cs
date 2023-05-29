@@ -114,10 +114,10 @@ namespace PoP.classes.windows
             {
                 _lineCount += 1;
             }
-            //if (spell.Effects != string.Empty)
-            //{
-            //    _lineCount += 1;
-            //}
+            if (spell.EffectList.Count > 0)
+            {
+                _lineCount += 1;
+            }
 
             return _lineCount + 1;
         }
@@ -138,7 +138,7 @@ namespace PoP.classes.windows
                 _value = Style.ColorFormat(_value, ColorAnsi.MAGENTA, FormatAnsi.HIGHLIGHT);
             }
             string _lvl = Style.Color("LvL " + spell.LvL, ColorAnsi.DARK_RED);
-            AddLineLocal(ref spellCardLineList, _name + _value + Style.GetRemainingSpace(spell.Name.Length + Style.PurgeAnsi(_value).Length + Style.PurgeAnsi(_lvl).Length + 6, Width) + _lvl);
+            AddLineLocal(ref spellCardLineList, _name + _value + Style.GetRemainingSpace(spell.Name.Length + Style.PurgeAnsi(_value).Length + Style.PurgeAnsi(_lvl).Length + 3, Width) + _lvl);
 
             AddBlankLineLocal(ref spellCardLineList);
 
@@ -169,15 +169,15 @@ namespace PoP.classes.windows
             }
 
             // Effects
-            //if (spell.Effects != string.Empty)
-            //{
-            //    string _fx = " EFFECTS: ";
-            //    AddLineLocal(ref spellCardLineList, Style.GetRemainingSpace(_fx, 15) + _fx + Style.Color(spell.Effects, ColorAnsi.PINK));
-            //}
+            if (spell.EffectList.Count > 0)
+            {
+                string _fx = " EFFECTS: ";
+                AddLineLocal(ref spellCardLineList, Style.GetRemainingSpace(_fx, 15) + _fx + Style.Color(String.Join(", ", spell.EffectList), ColorAnsi.PINK));
+            }
 
             if (hasHR)
             {
-                AddLineLocal(ref spellCardLineList, Style.AddPadding(Style.Color(Style.GetBlankLine(Width - 5, Border.SINGLE_HORIZONTAL), ColorAnsi.DARK_GREY)));
+                AddLineLocal(ref spellCardLineList, Style.AddPadding(Style.Color(Style.GetBlankLine(Width - 2, Border.SINGLE_HORIZONTAL), ColorAnsi.DARK_GREY)));
             }
 
             return spellCardLineList;

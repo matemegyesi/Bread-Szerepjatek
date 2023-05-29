@@ -1,9 +1,9 @@
-﻿using PoP.classes.effects;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PoP.classes.effects;
 
 namespace PoP.classes
 {
@@ -46,12 +46,12 @@ namespace PoP.classes
             }
         }
 
-        public static double MaxHealth { get; private set; } = 50;
-        public static double Health { get; private set; } = 44;
+        public static double MaxHealth { get; private set; }
+        public static double Health { get; private set; }
 
-        public static int MaxMana { get; private set; } = 20;
-        public static int Mana { get; private set; } = 9;
-        public static int ManaRate { get; private set; } = 5;
+        public static int MaxMana { get; private set; }
+        public static int Mana { get; private set; }
+        public static int ManaRate { get; private set; }
 
         public static Dictionary<Effect, int> EffectDict = new Dictionary<Effect, int>()
         {
@@ -64,9 +64,15 @@ namespace PoP.classes
             { new Debuff(), 0 }
         };
 
-        public Player()
+        public static void Init()
         {
-            
+            MaxHealth = 100;
+            Health = MaxHealth;
+
+            MaxMana = 100;
+            Mana = MaxMana;
+
+            ManaRate = 15;
         }
 
         static public void AttackWithWeapon(Enemy target)
