@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PoP.classes.effects;
 
 namespace PoP.classes
 {
@@ -24,32 +23,31 @@ namespace PoP.classes
                 switch (effect)
                 {
                     case "Burn":
-                        effectList.Add(new Burn());
+                        effectList.Add(Effect.Burn);
                         break;
 
                     case "Freeze":
-                        effectList.Add(new Freeze());
+                        effectList.Add(Effect.Freeze);
                         break;
 
                     case "Stun":
-                        effectList.Add(new Stun());
+                        effectList.Add(Effect.Stun);
                         break;
 
                     case "Poison":
-                        effectList.Add(new Poison());
+                        effectList.Add(Effect.Poison);
                         break;
 
                     case "Bleed":
-                        effectList.Add(new Bleed());
+                        effectList.Add(Effect.Bleed);
                         break;
 
                     case "Buff":
-                        effectList.Add(new Buff());
+                        effectList.Add(Effect.Buff);
                         break;
 
-
                     case "Debuff":
-                        effectList.Add(new Debuff());
+                        effectList.Add(Effect.Debuff);
                         break;
                 }
             }

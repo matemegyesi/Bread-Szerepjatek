@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.Json;
-using PoP.classes.effects;
 
 namespace PoP.classes
 {
@@ -25,15 +24,14 @@ namespace PoP.classes
 
         public Dictionary<Effect, int> EffectDict = new Dictionary<Effect, int>()
         {
-            { new Burn(), 0 },
-            { new Freeze(), 0 },
-            { new Stun(), 0 },
-            { new Poison(), 0 },
-            { new Bleed(), 0 },
-            { new Buff(), 0 },
-            { new Debuff(), 0 }
+            { Effect.Burn, 0 },
+            { Effect.Freeze, 0 },
+            { Effect.Stun, 0 },
+            { Effect.Poison, 0 },
+            { Effect.Bleed, 0 },
+            { Effect.Buff, 0 },
+            { Effect.Debuff, 0 }
         };
-
 
         public Dictionary<string, string> data { get; set; }
         public Enemy(Dictionary<string, object> data)

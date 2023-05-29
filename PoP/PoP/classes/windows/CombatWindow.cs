@@ -83,6 +83,23 @@ namespace PoP.classes.windows
 
             AddBlankLine();
 
+            // Effects
+            List<string> _playerFx = GenerateEffectIndicator(Player.EffectDict, true);
+            List<string> _enemyFx = GenerateEffectIndicator(enemy.EffectDict, false);
+
+            for (int i = 0; i < _playerFx.Count; i++)
+            {
+                AddLine(INFO_PADDING + _playerFx[i] + _enemyFx[i]);
+            }
+
+            while (LineList.Count < 22)
+            {
+                AddBlankLine();
+            }
+
+            AddLine(Style.GetBlankLine(Width, Border.SINGLE_HORIZONTAL));
+
+
             return LineList;
         }
 
@@ -126,6 +143,69 @@ namespace PoP.classes.windows
 
             Width = 148;
             return info;
+        }
+
+        private List<string> GenerateEffectIndicator(Dictionary<Effect, int> effectDict, bool alignedLeft)
+        {
+            List<string> effectIndicatorList = new List<string>();
+
+            string _fxTitle = "ACTIVE EFFECT(S): ";
+            Width = 68;
+
+            string _currentLine = string.Empty;
+            _currentLine += Style.Color(_fxTitle, ColorAnsi.WHITE);
+
+            if (effectDict.Count(x => x.Value > 0) > 0)
+            {
+                for (int i = 0; i < effectDict.Count; i++)
+                {
+                    if (i != 0)
+                    {
+                        _currentLine += Style.GetBlankLine(_fxTitle.Length);
+                    }
+
+                    KeyValuePair<Effect, int> _current = effectDict.ElementAt(i);
+
+                    if (_current.Value > 0)
+                    {
+                        _currentLine += Style.Color(_current.Key.ToString(), ColorAnsi.PINK) + Style.GetRemainingSpace(_current.Key.ToString(), 7);
+                        _currentLine += " -   " + Style.Color(_current.Value + " ", ColorAnsi.ORANGE);
+                        if (_current.Value == 1)
+                        {
+                            _currentLine += Style.Color("turn left", ColorAnsi.CORAL);
+                        }
+                        else
+                        {
+                            _currentLine += Style.Color("turns left", ColorAnsi.CORAL);
+                        }
+
+                        if (!alignedLeft)
+                        {
+                            _currentLine = _currentLine.Insert(0, Style.GetBlankLine(27));
+                        }
+                        AddLineLocal(ref effectIndicatorList, _currentLine);
+                    }
+                    _currentLine = string.Empty;
+                }
+            }
+            else
+            {
+                _currentLine += Style.Color("(Empty)", ColorAnsi.RUST);
+
+                if (!alignedLeft)
+                {
+                    _currentLine = _currentLine.Insert(0, Style.GetBlankLine(27));
+                }
+                AddLineLocal(ref effectIndicatorList, _currentLine);
+            }
+
+            while (effectIndicatorList.Count < 7)
+            {
+                AddBlankLineLocal(ref effectIndicatorList);
+            }
+
+            Width = 148;
+            return effectIndicatorList;
         }
 
         public void SetEnemy(Enemy enemy)
