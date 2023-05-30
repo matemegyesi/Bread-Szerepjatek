@@ -60,10 +60,10 @@ namespace PoP.classes.windows
             // Spell card border setup
             cardTop.TopLeft = Border.CURVED_TOPLEFT;
             cardTop.TopRight = Border.CURVED_TOPRIGHT;
-            cardBottom.TopLeft = Border.SINGLE_T_LEFT;
-            cardBottom.TopRight = Border.SINGLE_T_RIGHT;
             cardBottom.BottomLeft = Border.CURVED_BOTTOMLEFT;
             cardBottom.BottomRight = Border.CURVED_BOTTOMRIGHT;
+            cardBottom.IntersectionList.Add(new Intersection(BorderSide.Top, 5, Border.SINGLE_T_BOTTOM));
+            cardBottom.IntersectionList.Add(new Intersection(BorderSide.Top, 26, Border.SINGLE_T_BOTTOM));
         }
 
         protected override List<string> GenerateLines()
@@ -97,8 +97,6 @@ namespace PoP.classes.windows
                 AddLine(CARD_PADDING + loadout[0][i] + CARD_PADDING + loadout[1][i] + CARD_PADDING + loadout[2][i] + CARD_PADDING + loadout[3][i] + CARD_PADDING);
             }
 
-
-
             return LineList;
         }
 
@@ -107,12 +105,15 @@ namespace PoP.classes.windows
             List<string> spellCardList = new List<string>();
             Width = SPELL_WIDTH;
 
+            string _padding = Style.GetBlankLine(5);
             List<string> topList = new List<string>();
             List<string> bottomList = new List<string>();
 
             if (spell != null)
             {
                 // TOP LIST - Key
+                Width = SPELL_WIDTH - 10;
+
                 string _key;
                 if (!poisoned)
                 {
@@ -141,13 +142,16 @@ namespace PoP.classes.windows
                 topList = cardTop.Surround(topList, Width);
                 foreach (string borderedLine in topList)
                 {
-                    spellCardList.Add(borderedLine);
+                    spellCardList.Add(_padding + borderedLine + _padding);
                 }
 
                 // BOTTOM LIST - Name
+                Width = SPELL_WIDTH;
+                AddBlankLineLocal(ref bottomList);
+
                 string _name = spell.Name;
                 string _lvl = spell.LvL.ToString("LvL 0");
-                AddLineLocal(ref bottomList, ' ' + Style.ColorFormat(_name, ColorAnsi.MAGENTA, FormatAnsi.UNDERLINE) + Style.GetRemainingSpace(_name.Length + _lvl.Length + 4, Width) + Style.Color(_lvl, ColorAnsi.DARK_RED));
+                AddLineLocal(ref bottomList, ' ' + Style.ColorFormat(_name, ColorAnsi.MAGENTA, FormatAnsi.UNDERLINE) + Style.GetRemainingSpace(_name.Length + _lvl.Length + 2, Width) + Style.Color(_lvl, ColorAnsi.DARK_RED));
 
                 AddBlankLineLocal(ref bottomList);
 
@@ -184,8 +188,8 @@ namespace PoP.classes.windows
                     AddLineLocal(ref bottomList, Style.GetRemainingSpace(_fx, 15) + _fx + Style.Color(String.Join(", ", spell.EffectList), ColorAnsi.PINK));
                 }
 
-                // Fill up the remaining lines
-                while (bottomList.Count < 6)
+                // Fills up the remaining lines
+                while (bottomList.Count < 8)
                 {
                     AddBlankLineLocal(ref bottomList);
                 }
@@ -199,6 +203,8 @@ namespace PoP.classes.windows
             else // No spell equipped
             {
                 // Key
+                Width = SPELL_WIDTH - 10;
+
                 string _key = " > " + key.ToString() + " < ";
                 string _keyCenter = Style.GetRemainingSpace(_key.Length / 2, Width / 2);
 
@@ -207,18 +213,19 @@ namespace PoP.classes.windows
                 topList = cardTop.Surround(topList, Width);
                 foreach (string borderedLine in topList)
                 {
-                    spellCardList.Add(borderedLine);
+                    spellCardList.Add(_padding + borderedLine + _padding);
                 }
 
                 // The rest
+                Width = SPELL_WIDTH;
                 AddBlankLineLocal(ref bottomList);
 
                 string _none = "(Empty)";
                 string _noneCenter = Style.GetRemainingSpace(_none.Length / 2, Width / 2);
                 AddLineLocal(ref bottomList, _noneCenter + Style.Color(_none, ColorAnsi.RUST));
 
-                // Fill up the remaining lines
-                while (bottomList.Count < 6)
+                // Fills up the remaining lines
+                while (bottomList.Count < 8)
                 {
                     AddBlankLineLocal(ref bottomList);
                 }

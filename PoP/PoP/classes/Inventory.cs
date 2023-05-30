@@ -6,8 +6,6 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.IO;
-using System.Reflection;
-using PoP.classes.windows;
 
 namespace PoP
 {
@@ -182,9 +180,12 @@ namespace PoP
                     {
                         int i = spellKeys[(int)key];
 
-                        selectedSpell.Equip(i);
+                        if (i >= 0 && i < 4)
+                        {
+                            selectedSpell.Equip(i);
 
-                        Wire.Sorcery.UpdateSpellList(spellList);
+                            Wire.Sorcery.UpdateSpellList(spellList);
+                        }
                     }
                     catch (Exception) { }
 
@@ -263,11 +264,11 @@ namespace PoP
                             try
                             {
                                 int i = keys[(int)key];
-                                
-                                IsSorceryOpened = true;
-                                Wire.Gear.SetInUse(true);
 
                                 selectedSpell = spellList[i];
+
+                                IsSorceryOpened = true;
+                                Wire.Gear.SetInUse(true);
                             }
                             catch (Exception) { }
                         }

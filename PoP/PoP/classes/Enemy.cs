@@ -24,13 +24,13 @@ namespace PoP.classes
 
         public Dictionary<Effect, int> EffectDict = new Dictionary<Effect, int>()
         {
-            { Effect.Burn, 3 },
-            { Effect.Freeze, 3 },
-            { Effect.Stun, 3 },
-            { Effect.Poison, 3 },
+            { Effect.Burn, 0 },
+            { Effect.Freeze, 0 },
+            { Effect.Stun, 1 },
+            { Effect.Poison, 2 },
             { Effect.Bleed, 3 },
-            { Effect.Buff, 3 },
-            { Effect.Debuff, 3 }
+            { Effect.Buff, 0 },
+            { Effect.Debuff, 0 }
         };
 
         public Dictionary<string, string> data { get; set; }

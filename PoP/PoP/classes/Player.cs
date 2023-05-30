@@ -61,8 +61,8 @@ namespace PoP.classes
         {
             { Effect.Burn, 3 },
             { Effect.Freeze, 3 },
-            { Effect.Stun, 3 },
-            { Effect.Poison, 3 },
+            { Effect.Stun, 1 },
+            { Effect.Poison, 2 },
             { Effect.Bleed, 3 },
             { Effect.Buff, 3 },
             { Effect.Debuff, 3 }
