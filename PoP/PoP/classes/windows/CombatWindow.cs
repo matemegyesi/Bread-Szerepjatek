@@ -12,7 +12,7 @@ namespace PoP.classes.windows
         private const string CARD_PADDING = "    ";
 
         private const int COLUMN_WIDTH = 62;
-        private const int COLUMN_HEIGHT = 22;
+        private const int COLUMN_HEIGHT = 20;
 
         private const int SPELL_WIDTH = 30;
 
@@ -36,8 +36,8 @@ namespace PoP.classes.windows
 
         private Enemy enemy;
 
-        private List<string> playerLines = new List<string>(22);
-        private List<string> enemyLines = new List<string>(22);
+        private List<string> playerLines = new List<string>(COLUMN_HEIGHT);
+        private List<string> enemyLines = new List<string>(COLUMN_HEIGHT);
 
         private List<List<string>> loadout = new List<List<string>>(4)
         {
@@ -60,6 +60,7 @@ namespace PoP.classes.windows
             // Spell card border setup
             cardTop.TopLeft = Border.CURVED_TOPLEFT;
             cardTop.TopRight = Border.CURVED_TOPRIGHT;
+
             cardBottom.BottomLeft = Border.CURVED_BOTTOMLEFT;
             cardBottom.BottomRight = Border.CURVED_BOTTOMRIGHT;
             cardBottom.IntersectionList.Add(new Intersection(BorderSide.Top, 5, Border.SINGLE_T_BOTTOM));
@@ -81,16 +82,26 @@ namespace PoP.classes.windows
                 AddLine(INFO_PADDING + playerLines[i] + enemyLines[i]);
             }
 
-            AddLine(Style.Color(Style.GetBlankLine(INFO_PADDING.Length / 2) + Style.GetBlankLine(Width - INFO_PADDING.Length, Border.SINGLE_HORIZONTAL) + Style.GetBlankLine(INFO_PADDING.Length / 2), ColorAnsi.DARK_GREY));
+            // (Hr)
+            AddLine(Style.Color(Style.GetBlankLine(INFO_PADDING.Length * 2 / 3) + '~' + Style.GetBlankLine(Width - INFO_PADDING.Length - INFO_PADDING.Length / 3, Border.SINGLE_HORIZONTAL) + '~', ColorAnsi.DARK_GREY));
+            AddBlankLine();
+
+            // Menu section
+            // ...
+            string _footer = GenerateFooter();
+            AddLine(INFO_PADDING + _footer);
+
+            AddBlankLine();
+
+            // (Hr)
+            AddLine(Style.Color(Style.GetBlankLine(INFO_PADDING.Length / 2) + '~' + Style.GetBlankLine(Width - INFO_PADDING.Length, Border.SINGLE_HORIZONTAL) + '~', ColorAnsi.DARK_GREY));
+            AddBlankLine();
+
+            // Weapon section
+
 
             // Loadout section
-            loadout[0] = GenerateSpellCard(Inventory.sorcery[0], 'Q', true, false);
-            loadout[1] = GenerateSpellCard(Inventory.sorcery[1], 'W', false, false);
-            loadout[2] = GenerateSpellCard(Inventory.sorcery[2], 'E', false, false);
-            loadout[3] = GenerateSpellCard(Inventory.sorcery[3], 'R', true, true);
-
-            AddBlankLine();
-            AddBlankLine();
+            GenerateLoadout();
 
             for (int i = 0; i < loadout[0].Count; i++)
             {
@@ -98,6 +109,13 @@ namespace PoP.classes.windows
             }
 
             return LineList;
+        }
+
+        private string GenerateHeader()
+        {
+            string header = string.Empty;
+
+            return header;
         }
 
         private List<string> GenerateSpellCard(Spell spell, char key, bool disabled, bool poisoned)
@@ -117,7 +135,7 @@ namespace PoP.classes.windows
                 string _key;
                 if (!poisoned)
                 {
-                    _key = " > " + key.ToString() + " < ";
+                    _key = " [" + key.ToString() + "] ";
                 }
                 else
                 {
@@ -135,7 +153,7 @@ namespace PoP.classes.windows
                 }
                 else if (poisoned)
                 {
-                    _key = Style.ColorFormat(_key, ColorAnsi.CORAL, FormatAnsi.HIGHLIGHT);
+                    _key = Style.Color(_key, ColorAnsi.CORAL);
                 }
                 AddLineLocal(ref topList, _keyCenter + _key);
 
@@ -205,7 +223,7 @@ namespace PoP.classes.windows
                 // Key
                 Width = SPELL_WIDTH - 10;
 
-                string _key = " > " + key.ToString() + " < ";
+                string _key = " [" + key.ToString() + "] ";
                 string _keyCenter = Style.GetRemainingSpace(_key.Length / 2, Width / 2);
 
                 AddLineLocal(ref topList, _keyCenter + Style.Color(_key, ColorAnsi.RUST));
@@ -334,6 +352,31 @@ namespace PoP.classes.windows
             Width = 148;
             enemyLines = enemyColumn;
             return enemyColumn;
+        }
+
+        private List<string> GenerateWeapon()
+        {
+            List<string> weaponList = new List<string>();
+
+
+            return weaponList;
+        }
+
+        private void GenerateLoadout()
+        {
+            loadout[0] = GenerateSpellCard(Inventory.sorcery[0], 'Q', true, false);
+            loadout[1] = GenerateSpellCard(Inventory.sorcery[1], 'W', false, false);
+            loadout[2] = GenerateSpellCard(Inventory.sorcery[2], 'E', false, false);
+            loadout[3] = GenerateSpellCard(Inventory.sorcery[3], 'R', true, true);
+        }
+
+        private string GenerateFooter()
+        {
+            string footer = string.Empty;
+
+            footer = Style.ColorFormat("Flee", ColorAnsi.YELLOW, FormatAnsi.UNDERLINE) + ' ' + Style.ColorFormat(" [F] ", ColorAnsi.RED, FormatAnsi.HIGHLIGHT);
+
+            return footer;
         }
 
         private string GenerateName(string name, bool alignedLeft)

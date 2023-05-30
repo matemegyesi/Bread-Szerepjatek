@@ -20,7 +20,11 @@ namespace PoP.classes.states
 
         public override void KeyPressed(ConsoleKey key)
         {
-
+            // Flee
+            if (key == ConsoleKey.F)
+            {
+                stateMachine.Flee();
+            }
         }
 
         public override void Exit()

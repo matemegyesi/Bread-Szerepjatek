@@ -113,12 +113,13 @@ namespace PoP.classes
         
         public void Flee()
         {
+            base.End();
             KeyboardInput.KeyPressed -= KeyPressed;
 
             Wire.Disable(Wire.Combat);
             Wire.Enable(Wire.Map);
 
-            // player prev. pos
+            GameLoop.playerMovement.Teleport(GameLoop.playerMovement.PrevPlayerX, GameLoop.playerMovement.PrevPlayerY);
             GameLoop.Phase = GamePhase.ADVENTURE;
         }
 

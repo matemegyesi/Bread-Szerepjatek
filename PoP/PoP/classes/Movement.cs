@@ -12,6 +12,8 @@ namespace PoP.classes
         // Player's current position in the game world.
         public int PlayerX { get; private set; }
         public int PlayerY { get; private set; }
+        public int PrevPlayerX { get; private set; }
+        public int PrevPlayerY { get; private set; }
 
         /// <summary>
         /// The Movement class is responsible for handling the movement of the player character in the game.
@@ -23,15 +25,42 @@ namespace PoP.classes
 
             PlayerX = startPositionX;
             PlayerY = startPositionY;
+            PrevPlayerX = PlayerX;
+            PrevPlayerY = PlayerY;
         }
+
+        /// <summary>
+        /// Disables the movement of the player.
+        /// </summary>
         public void DisableMovement()
         {
             KeyboardInput.KeyPressed -= KeyPressed;
         }
+
+        /// <summary>
+        /// Enables the movement of the player.
+        /// </summary>
         public void EnableMovement()
         {
             KeyboardInput.KeyPressed += KeyPressed;
         }
+
+        /// <summary>
+        /// Teleports the player into any position.
+        /// </summary>
+        /// <param name="x">X coordinate of the new position.</param>
+        /// <param name="y">Y coordinate of the new position.</param>
+        public void Teleport(int x, int y)
+        {
+            //MapWindow.Map[y, x].Char != ' '
+            PlayerX = x;
+            PlayerY = y;
+            PrevPlayerX = PlayerX;
+            PrevPlayerY = PlayerY;
+
+            Wire.Map.SetCharacterPosition(PlayerX, PlayerY);
+        }
+
         public void KeyPressed(ConsoleKey key)
         {
             // Get the player's current position.
@@ -64,6 +93,8 @@ namespace PoP.classes
             }
 
             // Erase the player's current position, move them to the new position, and redraw the player.
+            PrevPlayerX = PlayerX;
+            PrevPlayerY = PlayerY;
             PlayerX = x;
             PlayerY = y;
             Wire.Map.SetCharacterPosition(x, y);
