@@ -29,6 +29,11 @@ namespace PoP.classes
         public const char SINGLE_BOTTOMRIGHT = '┘';
         public const char SINGLE_BOTTOMLEFT = '└';
 
+        public const char SINGLE_T_TOP = '┬';
+        public const char SINGLE_T_RIGHT = '┤';
+        public const char SINGLE_T_BOTTOM = '┴';
+        public const char SINGLE_T_LEFT = '├';
+
         public const char DOUBLE_TO_SINGLE_T_TOP = '╤';
         public const char DOUBLE_TO_SINGLE_T_RIGHT = '╢';
         public const char DOUBLE_TO_SINGLE_T_BOTTOM = '╧';
@@ -63,20 +68,40 @@ namespace PoP.classes
         public char BottomLeft { get; set; } = '╚';
         public List<Intersection> IntersectionList { get; set; } = new List<Intersection>();
 
-        public Border()
+        public Border(bool singleLined = false)
         {
             HasTop = true;
             HasRight = true;
             HasBottom = true;
             HasLeft = true;
+
+            if (singleLined)
+            {
+                Horizontal = '─';
+                Vertical = '│';
+                TopLeft = '┌';
+                TopRight = '┐';
+                BottomRight = '┘';
+                BottomLeft = '└';
+            }
         }
 
-        public Border(bool hasTop, bool hasRight, bool hasBottom, bool hasLeft)
+        public Border(bool hasTop, bool hasRight, bool hasBottom, bool hasLeft, bool singleLined = false)
         {
             HasTop = hasTop;
             HasRight = hasRight;
             HasBottom = hasBottom;
             HasLeft = hasLeft;
+
+            if (singleLined)
+            {
+                Horizontal = '─';
+                Vertical = '│';
+                TopLeft = '┌';
+                TopRight = '┐';
+                BottomRight = '┘';
+                BottomLeft = '└';
+            }
         }
 
         /// <summary>

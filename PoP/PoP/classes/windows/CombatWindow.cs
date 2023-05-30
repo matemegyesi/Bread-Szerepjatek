@@ -8,7 +8,16 @@ namespace PoP.classes.windows
 {
     internal class CombatWindow : Window
     {
-        private const string INFO_PADDING = "      ";
+        private const string INFO_PADDING = "            ";
+        private const string CARD_PADDING = "    ";
+
+        private const int COLUMN_WIDTH = 62;
+        private const int COLUMN_HEIGHT = 22;
+
+        private const int SPELL_WIDTH = 30;
+
+        private Border cardTop = new Border(true ,true ,false, true, true);
+        private Border cardBottom = new Border(true);
 
         public string Title
         {
@@ -30,6 +39,14 @@ namespace PoP.classes.windows
         private List<string> playerLines = new List<string>(22);
         private List<string> enemyLines = new List<string>(22);
 
+        private List<List<string>> loadout = new List<List<string>>(4)
+        {
+            new List<string>(),
+            new List<string>(),
+            new List<string>(),
+            new List<string>()
+        };
+
         // Change detection
         private bool playerChanged;
         private bool enemyChanged;
@@ -40,7 +57,13 @@ namespace PoP.classes.windows
             Height = 46;
             Width = 148;
 
-            
+            // Spell card border setup
+            cardTop.TopLeft = Border.CURVED_TOPLEFT;
+            cardTop.TopRight = Border.CURVED_TOPRIGHT;
+            cardBottom.TopLeft = Border.SINGLE_T_LEFT;
+            cardBottom.TopRight = Border.SINGLE_T_RIGHT;
+            cardBottom.BottomLeft = Border.CURVED_BOTTOMLEFT;
+            cardBottom.BottomRight = Border.CURVED_BOTTOMRIGHT;
         }
 
         protected override List<string> GenerateLines()
@@ -58,20 +81,163 @@ namespace PoP.classes.windows
                 AddLine(INFO_PADDING + playerLines[i] + enemyLines[i]);
             }
 
-            AddLine(Style.Color(' ' + Style.GetBlankLine(Width - 2, Border.SINGLE_HORIZONTAL) + ' ', ColorAnsi.DARK_GREY));
+            AddLine(Style.Color(Style.GetBlankLine(INFO_PADDING.Length / 2) + Style.GetBlankLine(Width - INFO_PADDING.Length, Border.SINGLE_HORIZONTAL) + Style.GetBlankLine(INFO_PADDING.Length / 2), ColorAnsi.DARK_GREY));
 
             // Loadout section
+            loadout[0] = GenerateSpellCard(Inventory.sorcery[0], 'Q', true, false);
+            loadout[1] = GenerateSpellCard(Inventory.sorcery[1], 'W', false, false);
+            loadout[2] = GenerateSpellCard(Inventory.sorcery[2], 'E', false, false);
+            loadout[3] = GenerateSpellCard(Inventory.sorcery[3], 'R', true, true);
 
+            AddBlankLine();
+            AddBlankLine();
+
+            for (int i = 0; i < loadout[0].Count; i++)
+            {
+                AddLine(CARD_PADDING + loadout[0][i] + CARD_PADDING + loadout[1][i] + CARD_PADDING + loadout[2][i] + CARD_PADDING + loadout[3][i] + CARD_PADDING);
+            }
 
 
 
             return LineList;
         }
 
+        private List<string> GenerateSpellCard(Spell spell, char key, bool disabled, bool poisoned)
+        {
+            List<string> spellCardList = new List<string>();
+            Width = SPELL_WIDTH;
+
+            List<string> topList = new List<string>();
+            List<string> bottomList = new List<string>();
+
+            if (spell != null)
+            {
+                // TOP LIST - Key
+                string _key;
+                if (!poisoned)
+                {
+                    _key = " > " + key.ToString() + " < ";
+                }
+                else
+                {
+                    _key = " POISONED ";
+                }
+                string _keyCenter = Style.GetRemainingSpace(_key.Length / 2, Width / 2);
+
+                if (!poisoned && !disabled)
+                {
+                    _key = Style.ColorFormat(_key, ColorAnsi.RED, FormatAnsi.HIGHLIGHT);
+                }
+                else if (disabled && !poisoned)
+                {
+                    _key = Style.ColorFormat(_key, ColorAnsi.DARK_GREY, FormatAnsi.HIGHLIGHT);
+                }
+                else if (poisoned)
+                {
+                    _key = Style.ColorFormat(_key, ColorAnsi.CORAL, FormatAnsi.HIGHLIGHT);
+                }
+                AddLineLocal(ref topList, _keyCenter + _key);
+
+                topList = cardTop.Surround(topList, Width);
+                foreach (string borderedLine in topList)
+                {
+                    spellCardList.Add(borderedLine);
+                }
+
+                // BOTTOM LIST - Name
+                string _name = spell.Name;
+                string _lvl = spell.LvL.ToString("LvL 0");
+                AddLineLocal(ref bottomList, ' ' + Style.ColorFormat(_name, ColorAnsi.MAGENTA, FormatAnsi.UNDERLINE) + Style.GetRemainingSpace(_name.Length + _lvl.Length + 4, Width) + Style.Color(_lvl, ColorAnsi.DARK_RED));
+
+                AddBlankLineLocal(ref bottomList);
+
+                // Mana cost
+                string _mana = " MANA COST: ";
+                AddLineLocal(ref bottomList, Style.GetRemainingSpace(_mana, 15) + _mana + Style.Color(spell.ManaCost.ToString("0 mana"), ColorAnsi.PURPLE));
+
+                // Offence
+                if (spell.Damage > 0)
+                {
+                    string _dmg = " DAMAGE: ";
+                    AddLineLocal(ref bottomList, Style.GetRemainingSpace(_dmg, 15) + _dmg + Style.Color(spell.Damage.ToString("0.# dmg"), ColorAnsi.LIGHT_RED));
+                }
+
+                // Defence
+                if (spell.Heal != 0)
+                {
+                    if (spell.Heal > 0)
+                    {
+                        string _def = " HEAL: ";
+                        AddLineLocal(ref bottomList, Style.GetRemainingSpace(_def, 15) + _def + Style.Color(spell.Heal.ToString("0.# hp"), ColorAnsi.AQUA));
+                    }
+                    else
+                    {
+                        string _def = " SELF-DAMAGE: ";
+                        AddLineLocal(ref bottomList, Style.GetRemainingSpace(_def, 15) + _def + Style.Color(spell.Heal.ToString("0.# hp"), ColorAnsi.RED));
+                    }
+                }
+
+                // Effects
+                if (spell.EffectList.Count > 0)
+                {
+                    string _fx = " EFFECTS: ";
+                    AddLineLocal(ref bottomList, Style.GetRemainingSpace(_fx, 15) + _fx + Style.Color(String.Join(", ", spell.EffectList), ColorAnsi.PINK));
+                }
+
+                // Fill up the remaining lines
+                while (bottomList.Count < 6)
+                {
+                    AddBlankLineLocal(ref bottomList);
+                }
+
+                bottomList = cardBottom.Surround(bottomList, Width);
+                foreach (string borderedLines in bottomList)
+                {
+                    spellCardList.Add(borderedLines);
+                }
+            }
+            else // No spell equipped
+            {
+                // Key
+                string _key = " > " + key.ToString() + " < ";
+                string _keyCenter = Style.GetRemainingSpace(_key.Length / 2, Width / 2);
+
+                AddLineLocal(ref topList, _keyCenter + Style.Color(_key, ColorAnsi.RUST));
+
+                topList = cardTop.Surround(topList, Width);
+                foreach (string borderedLine in topList)
+                {
+                    spellCardList.Add(borderedLine);
+                }
+
+                // The rest
+                AddBlankLineLocal(ref bottomList);
+
+                string _none = "(Empty)";
+                string _noneCenter = Style.GetRemainingSpace(_none.Length / 2, Width / 2);
+                AddLineLocal(ref bottomList, _noneCenter + Style.Color(_none, ColorAnsi.RUST));
+
+                // Fill up the remaining lines
+                while (bottomList.Count < 6)
+                {
+                    AddBlankLineLocal(ref bottomList);
+                }
+
+                bottomList = cardBottom.Surround(bottomList, Width);
+                foreach (string borderedLines in bottomList)
+                {
+                    spellCardList.Add(borderedLines);
+                }
+            }
+
+            Width = 148;
+            return spellCardList;
+        }
+
         private List<string> GeneratePlayerColumn()
         {
             List<string> playerColumn = new List<string>();
-            Width = 68;
+            Width = COLUMN_WIDTH;
 
             // Name
             AddLineLocal(ref playerColumn, GenerateName(Player.Name, true));
@@ -111,7 +277,7 @@ namespace PoP.classes.windows
             AddLineLocal(ref playerColumn, GenerateInfo("MANA REGENERATION: ", Player.ManaRate.ToString("+0 mana/turn"), true, Style.ManaRegColor));
 
             // Fills up the remaining lines
-            while (playerColumn.Count < 22)
+            while (playerColumn.Count < COLUMN_HEIGHT)
             {
                 AddBlankLineLocal(ref playerColumn);
             }
@@ -124,7 +290,7 @@ namespace PoP.classes.windows
         private List<string> GenerateEnemyColumn()
         {
             List<string> enemyColumn = new List<string>();
-            Width = 68;
+            Width = COLUMN_WIDTH;
 
             // Name
             AddLineLocal(ref enemyColumn, GenerateName(enemy.Name, false));
@@ -153,7 +319,7 @@ namespace PoP.classes.windows
             AddBlankLineLocal(ref enemyColumn);
 
             // Fills up the remaining lines
-            while (enemyColumn.Count < 22)
+            while (enemyColumn.Count < COLUMN_HEIGHT)
             {
                 AddBlankLineLocal(ref enemyColumn);
             }
@@ -165,7 +331,7 @@ namespace PoP.classes.windows
 
         private string GenerateName(string name, bool alignedLeft)
         {
-            return (alignedLeft ? "" : Style.GetRemainingSpace(name.Length + 2, 68)) + Style.Color('<', ColorAnsi.WHITE) + Style.ColorFormat(name, ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT) + Style.Color('>', ColorAnsi.WHITE);
+            return (alignedLeft ? "" : Style.GetRemainingSpace(name.Length + 2, COLUMN_WIDTH)) + Style.Color('<', ColorAnsi.WHITE) + Style.ColorFormat(name, ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT) + Style.Color('>', ColorAnsi.WHITE);
         }
 
         private List<string> GenerateSlider(string name, double value, double maxValue, bool alignedLeft, ColorAnsi color)
@@ -241,7 +407,7 @@ namespace PoP.classes.windows
 
                         if (!alignedLeft)
                         {
-                            _currentLine = _currentLine.Insert(0, Style.GetBlankLine(27));
+                            _currentLine = _currentLine.Insert(0, Style.GetBlankLine(COLUMN_WIDTH - 41));
                         }
                         AddLineLocal(ref effectIndicatorList, _currentLine);
                     }
@@ -254,7 +420,7 @@ namespace PoP.classes.windows
 
                 if (!alignedLeft)
                 {
-                    _currentLine = _currentLine.Insert(0, Style.GetBlankLine(27));
+                    _currentLine = _currentLine.Insert(0, Style.GetBlankLine(COLUMN_WIDTH - 41));
                 }
                 AddLineLocal(ref effectIndicatorList, _currentLine);
             }

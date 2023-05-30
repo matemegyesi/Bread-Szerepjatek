@@ -26,6 +26,8 @@ namespace PoP.classes
                 return damage;
             }
         }
+        //public static double DamageActual { get; private set; }
+
         public static double Defence
         {
             get
@@ -44,13 +46,16 @@ namespace PoP.classes
                 return defence;
             }
         }
+        //public static double DefenceActual { get; private set; }
 
         public static double MaxHealth { get; private set; }
         public static double Health { get; private set; }
 
         public static int MaxMana { get; private set; }
         public static int Mana { get; private set; }
+
         public static int ManaRate { get; private set; }
+        //public static double ManaRateActual { get; private set; }
 
         public static Dictionary<Effect, int> EffectDict { get; set; } = new Dictionary<Effect, int>()
         {
@@ -72,6 +77,7 @@ namespace PoP.classes
             Mana = MaxMana;
 
             ManaRate = 15;
+            //ManaRateActual = ManaRate;
         }
 
         static public void AttackWithWeapon(Enemy target)
