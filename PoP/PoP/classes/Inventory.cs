@@ -57,7 +57,7 @@ namespace PoP
             { Slot.MainCape, null}
         };
 
-        private Dictionary<int, int> keys = new Dictionary<int, int>()
+        private static Dictionary<int, int> keys = new Dictionary<int, int>()
         {
             {65,0},
             {66,1},
@@ -100,7 +100,7 @@ namespace PoP
             {115,38},
             {116,39}
         };
-        private Dictionary<int, int> spellKeys = new Dictionary<int, int>()
+        public static Dictionary<int, int> spellKeys { get; } = new Dictionary<int, int>()
         {
             { 81, 0 },
             { 87, 1 },

@@ -41,9 +41,6 @@ namespace PoP.classes.windows
 
         // Combat settings
         private Combat combat;
-        //public bool CanSkip { get; set; }
-        //public bool CanContinue { get; set; }
-        //public bool CanUseWeapon { get; set; }
 
         // Change detection
         private bool playerChanged;
@@ -125,14 +122,14 @@ namespace PoP.classes.windows
         {
             string header = string.Empty;
 
-            string _turn = ' ' + TurnName + ' ';
-            header += Style.GetRemainingSpace(_turn.Length / 2, Width / 2);
-            header += Style.ColorFormat(_turn, ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT);
+            string _turn = TurnName;
+            header += Style.GetRemainingSpace(Style.PurgeAnsi(_turn).Length / 2, Width / 2);
+            header += Style.GetFormat(FormatAnsi.HIGHLIGHT) + _turn;
 
             return header;
         }
 
-        private List<string> GenerateSpellCard(Spell spell, char key, bool disabled, bool poisoned)
+        private List<string> GenerateSpellCard(Spell spell, char key, bool enabled, bool poisoned)
         {
             List<string> spellCardList = new List<string>();
             Width = SPELL_WIDTH;
@@ -153,15 +150,15 @@ namespace PoP.classes.windows
                 }
                 else
                 {
-                    _key = " POISONED ";
+                    _key = "~POISONED~";
                 }
                 string _keyCenter = Style.GetRemainingSpace(_key.Length / 2, Width / 2);
 
-                if (!poisoned && !disabled)
+                if (!poisoned && enabled)
                 {
                     _key = Style.ColorFormat(_key, ColorAnsi.RED, FormatAnsi.HIGHLIGHT);
                 }
-                else if (disabled && !poisoned)
+                else if (!enabled && !poisoned)
                 {
                     _key = Style.ColorFormat(_key, ColorAnsi.DARK_GREY, FormatAnsi.HIGHLIGHT);
                 }
@@ -406,10 +403,10 @@ namespace PoP.classes.windows
 
         private void GenerateLoadout()
         {
-            loadout[0] = GenerateSpellCard(Inventory.sorcery[0], 'Q', true, false);
-            loadout[1] = GenerateSpellCard(Inventory.sorcery[1], 'W', true, false);
-            loadout[2] = GenerateSpellCard(Inventory.sorcery[2], 'E', true, false);
-            loadout[3] = GenerateSpellCard(Inventory.sorcery[3], 'R', true, false);
+            loadout[0] = GenerateSpellCard(Inventory.sorcery[0], 'Q', combat.CanUseSorcery, false);
+            loadout[1] = GenerateSpellCard(Inventory.sorcery[1], 'W', combat.CanUseSorcery, false);
+            loadout[2] = GenerateSpellCard(Inventory.sorcery[2], 'E', combat.CanUseSorcery, false);
+            loadout[3] = GenerateSpellCard(Inventory.sorcery[3], 'R', combat.CanUseSorcery, false);
         }
 
         private string GenerateMenu()

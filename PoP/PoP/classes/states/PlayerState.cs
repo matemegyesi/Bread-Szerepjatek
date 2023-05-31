@@ -8,13 +8,6 @@ namespace PoP.classes.states
 {
     internal class PlayerState : State
     {
-        private Dictionary<int, int> spellKeys = new Dictionary<int, int>()
-        {
-            { 81, 0 },
-            { 87, 1 },
-            { 69, 2 },
-            { 82, 3 }
-        };
         private bool doneAction;
 
         public PlayerState(Combat loc) : base(loc)
@@ -29,9 +22,11 @@ namespace PoP.classes.states
             stateMachine.CanSkip = true;
             stateMachine.CanContinue = false;
             stateMachine.CanUseWeapon = true;
+            stateMachine.CanUseSorcery = true;
 
             Player.RegenerateMana();
 
+            Wire.Combat.TurnName = Style.Color($"{Player.Name}'s turn", ColorAnsi.GREEN);
             Wire.Combat.ForceUpdate();
         }
 
@@ -44,7 +39,14 @@ namespace PoP.classes.states
             {
                 if (key == ConsoleKey.F)
                 {
-                    actionDescription = "took a quick nap.";
+                    if (new Random().Next(0, 10) == 0)
+                    {
+                        actionDescription = "took a quick nap.";
+                    }
+                    else
+                    {
+                        actionDescription = "rested a turn.";
+                    }
                     doneAction = true;
                 }
 
@@ -58,7 +60,7 @@ namespace PoP.classes.states
                 {
                     try
                     {
-                        int i = spellKeys[(int)key];
+                        int i = Inventory.spellKeys[(int)key];
 
                         if (i >= 0 && i < 4 && Inventory.sorcery[i] != null)
                         {

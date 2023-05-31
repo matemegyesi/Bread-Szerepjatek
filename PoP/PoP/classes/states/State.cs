@@ -36,6 +36,7 @@ namespace PoP.classes.states
             stateMachine.CanSkip = false;
             stateMachine.CanContinue = canContinue;
             stateMachine.CanUseWeapon = false;
+            stateMachine.CanUseSorcery = false;
         }
     }
 }

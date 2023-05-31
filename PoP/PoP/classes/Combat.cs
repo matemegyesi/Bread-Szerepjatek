@@ -25,13 +25,7 @@ namespace PoP.classes
         public bool CanSkip { get; set; }
         public bool CanContinue { get; set; }
         public bool CanUseWeapon { get; set; }
-        public List<bool> CanUseSpell = new List<bool>(4)
-        {
-            { true },
-            { true },
-            { true },
-            { true }
-        };
+        public bool CanUseSorcery { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Combat"/> class.
