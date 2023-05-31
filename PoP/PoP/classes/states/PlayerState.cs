@@ -8,6 +8,15 @@ namespace PoP.classes.states
 {
     internal class PlayerState : State
     {
+        private Dictionary<int, int> spellKeys = new Dictionary<int, int>()
+        {
+            { 81, 0 },
+            { 87, 1 },
+            { 69, 2 },
+            { 82, 3 }
+        };
+        private bool doneAction;
+
         public PlayerState(Combat loc) : base(loc)
         {
 
@@ -15,6 +24,7 @@ namespace PoP.classes.states
 
         public override void Enter()
         {
+            stateMachine.SetCanSkip(true);
             stateMachine.SetCanContinue(false);
             stateMachine.SetCanUseWeapon(true);
         }
@@ -22,6 +32,47 @@ namespace PoP.classes.states
         public override void KeyPressed(ConsoleKey key)
         {
 
+            Wire.Combat.ForceUpdate(); //
+
+            if (!doneAction)
+            {
+                if (key == ConsoleKey.F)
+                {
+                    doneAction = true;
+
+                    stateMachine.SetCanSkip(false);
+                    stateMachine.SetCanContinue(true);
+                    stateMachine.SetCanUseWeapon(false);
+                }
+
+                if (key == ConsoleKey.T)
+                {
+                    Player.AttackWithWeapon(stateMachine.enemy);
+                }
+
+                if (key == ConsoleKey.Q || key == ConsoleKey.W || key == ConsoleKey.E || key == ConsoleKey.R)
+                {
+                    try
+                    {
+                        int i = spellKeys[(int)key];
+
+                        if (i >= 0 && i < 4)
+                        {
+                            Player.AttackWithSpell(stateMachine.enemy, Inventory.sorcery[i]);
+                        }
+                    }
+                    catch (Exception) { }
+                }
+            }
+            else
+            {
+                if (key == ConsoleKey.Spacebar)
+                {
+
+                    Wire.Combat.ForceUpdate(); //
+                    stateMachine.ChangeCombatState(stateMachine.EnemyState);
+                }
+            }
         }
 
         public override void Exit()

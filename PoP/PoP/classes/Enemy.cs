@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.Json;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace PoP.classes
 {
@@ -34,7 +35,9 @@ namespace PoP.classes
         };
 
         public Dictionary<string, string> data { get; set; }
-        public Enemy(Dictionary<string, object> data)
+        private Combat combat;
+
+        public Enemy(Dictionary<string, object> data, Combat location)
         {
             Name = data["name"].ToString();
             Damage = double.Parse(data["damage"].ToString());
@@ -42,6 +45,8 @@ namespace PoP.classes
             MaxHealth = double.Parse(data["health"].ToString());
             Health = MaxHealth;
             Level = int.Parse(data["level"].ToString());
+
+            combat = location;
         }
 
         public string TakeAction()
@@ -58,9 +63,49 @@ namespace PoP.classes
             // Player TakeDamage()-ét kell meghívni, aminek a paramétere Damage
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(double damage)
         {
             // ha Health <= 0, akkor a játékos nyer: (Map.CurrentLocation as Combat).ChangeCombatPhase(CombatPhase.PLAYER_WIN);
+            if (Health - damage <= 0)
+            {
+                Health = 0;
+
+                combat.ChangeCombatState(combat.WinState);
+            }
+            else
+            {
+                Health -= damage;
+            }
+        }
+
+        public void TakeSpell(Spell spell)
+        {
+            if (Health - spell.Damage <= 0)
+            {
+                Health = 0;
+
+                combat.ChangeCombatState(combat.WinState);
+            }
+            else
+            {
+                Health -= Damage;
+            }
+
+            foreach (Effect effect in spell.EffectList)
+            {
+                if (effect == Effect.Stun)
+                {
+                    EffectDict[effect] = 1;
+                }
+                else if (effect == Effect.Poison)
+                {
+                    EffectDict[effect] = 2;
+                }
+                else
+                {
+                    EffectDict[effect] = 3;
+                }
+            }
         }
     }
 }

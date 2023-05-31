@@ -20,10 +20,10 @@ namespace PoP.classes
 
         public State CurrentState { get; private set; }
 
-        Enemy enemy;
+        public Enemy enemy { get; set; }
 
         // Combat settings
-        public bool CanFlee { get; private set; }
+        public bool CanSkip { get; private set; }
         public bool CanContinue { get; private set; }
         public bool CanUseWeapon { get; private set; }
 
@@ -60,7 +60,7 @@ namespace PoP.classes
                 Name = engagement[0]["locationName"].ToString();
             }
 
-            enemy = new Enemy(engagement[1]);
+            enemy = new Enemy(engagement[1], this);
             Wire.Combat.SetEnemy(enemy);
 
             // State setup
@@ -96,7 +96,7 @@ namespace PoP.classes
             Wire.Enable(Wire.Combat);
 
             CurrentState.Enter();
-            SetCanFlee(true);
+            SetCanSkip(true);
         }
         
         /// <summary>
@@ -132,7 +132,7 @@ namespace PoP.classes
         /// Changes the current combat state to the specified new state.
         /// </summary>
         /// <param name="nextState">The new State of the combat encounter.</param>
-        public void ChangeCombatPhase(State nextState)
+        public void ChangeCombatState(State nextState)
         {
             CurrentState.Exit();
 
@@ -151,10 +151,10 @@ namespace PoP.classes
             Wire.Combat.CanContinue = CanContinue;
         }
 
-        public void SetCanFlee(bool canFlee)
+        public void SetCanSkip(bool canFlee)
         {
-            CanFlee = canFlee;
-            Wire.Combat.CanFlee = CanFlee;
+            CanSkip = canFlee;
+            Wire.Combat.CanSkip = CanSkip;
         }
 
         public void SetCanUseWeapon(bool canUseWeapon)

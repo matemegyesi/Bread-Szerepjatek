@@ -35,10 +35,11 @@ namespace PoP.classes.windows
         private Enemy enemy;
 
         // Window settings
+        public string FKeyName { get; set; }
         public string SpaceKeyName { get; set; }
 
         // Combat settings
-        public bool CanFlee { get; set; }
+        public bool CanSkip { get; set; }
         public bool CanContinue { get; set; }
         public bool CanUseWeapon { get; set; }
 
@@ -374,7 +375,7 @@ namespace PoP.classes.windows
             {
                 _weapon += Style.ColorFormat(_weaponTitle, ColorAnsi.LIGHT_BLUE, FormatAnsi.UNDERLINE);
                 _weapon += ' ';
-                _weapon += Style.ColorFormat(_weaponKey, ColorAnsi.LIGHT_BLUE, FormatAnsi.HIGHLIGHT);
+                _weapon += Style.ColorFormat(_weaponKey, ColorAnsi.RED, FormatAnsi.HIGHLIGHT);
             }
             else
             {
@@ -400,9 +401,9 @@ namespace PoP.classes.windows
         private void GenerateLoadout()
         {
             loadout[0] = GenerateSpellCard(Inventory.sorcery[0], 'Q', true, false);
-            loadout[1] = GenerateSpellCard(Inventory.sorcery[1], 'W', false, false);
-            loadout[2] = GenerateSpellCard(Inventory.sorcery[2], 'E', false, false);
-            loadout[3] = GenerateSpellCard(Inventory.sorcery[3], 'R', true, true);
+            loadout[1] = GenerateSpellCard(Inventory.sorcery[1], 'W', true, false);
+            loadout[2] = GenerateSpellCard(Inventory.sorcery[2], 'E', true, false);
+            loadout[3] = GenerateSpellCard(Inventory.sorcery[3], 'R', true, false);
         }
 
         private string GenerateMenu()
@@ -410,13 +411,13 @@ namespace PoP.classes.windows
             string footer = string.Empty;
             Width = 148 - INFO_PADDING.Length * 2;
 
-            string _flee = "Flee";
+            string _flee = FKeyName;
             string _fleeKey = " [F] ";
 
             string _space = SpaceKeyName;
             string _spaceKey = " [SPACE] ";
 
-            if (CanFlee)
+            if (CanSkip)
             {
                 footer += Style.ColorFormat(_flee, ColorAnsi.YELLOW, FormatAnsi.UNDERLINE);
                 footer += ' ';
@@ -545,6 +546,11 @@ namespace PoP.classes.windows
             }
 
             return effectIndicatorList;
+        }
+
+        public void SetCombat(Combat combat)
+        {
+
         }
 
         public void SetEnemy(Enemy enemy)

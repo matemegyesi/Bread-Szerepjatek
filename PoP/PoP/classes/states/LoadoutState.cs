@@ -15,6 +15,7 @@ namespace PoP.classes.states
 
         public override void Enter()
         {
+            Wire.Combat.FKeyName = "Flee";
             Wire.Combat.SpaceKeyName = "Begin";
             stateMachine.SetCanContinue(true);
         }
@@ -30,14 +31,15 @@ namespace PoP.classes.states
             // Begin combat
             if (key == ConsoleKey.Spacebar)
             {
-                stateMachine.ChangeCombatPhase(stateMachine.PlayerState);
+                stateMachine.ChangeCombatState(stateMachine.PlayerState);
             }
         }
 
         public override void Exit()
         {
-            stateMachine.SetCanFlee(false);
+            stateMachine.SetCanSkip(false);
 
+            Wire.Combat.FKeyName = "Skip";
             Wire.Combat.SpaceKeyName = "Continue";
             Wire.Combat.ForceUpdate();
         }

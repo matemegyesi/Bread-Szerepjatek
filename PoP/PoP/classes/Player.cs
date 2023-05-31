@@ -82,12 +82,28 @@ namespace PoP.classes
 
         static public void AttackWithWeapon(Enemy target)
         {
-            // target TakeDamage() meghívása, sebzése a Inventory.gear[Slot.HAND]
+            target.TakeDamage(Damage);
         }
 
-        static public void AttackWithSpell(Enemy target)
+        static public void AttackWithSpell(Enemy target, Spell spell)
         {
-            // target TakeDamage() meghívása
+            target.TakeSpell(spell);
+
+            if (spell.Heal != 0)
+            {
+                if (Health + spell.Heal > MaxHealth)
+                {
+                    Health = MaxHealth;
+                }
+                else if (Health + spell.Heal <= 0)
+                {
+                    Health = 1;
+                }
+                else
+                {
+                    Health += spell.Heal;
+                }
+            }
         }
 
         static public void TakeDamage(int damage)
