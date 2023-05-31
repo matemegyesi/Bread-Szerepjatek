@@ -284,7 +284,7 @@ namespace PoP.classes.windows
             AddBlankLineLocal(ref playerColumn);
 
             // Health
-            foreach (string line in GenerateSlider("Health", Player.Health, Player.MaxHealth, true, Style.HealthBarColor))
+            foreach (string line in GenerateSlider("Health", Player.Health, Player.MaxHealth, true, Style.HealthColor))
             {
                 AddLineLocal(ref playerColumn, line);
             }
@@ -292,7 +292,7 @@ namespace PoP.classes.windows
             AddBlankLineLocal(ref playerColumn);
 
             // Defence
-            AddLineLocal(ref playerColumn, GenerateInfo("DEFENCE: ", Player.Defence.ToString("0 def"), true, Style.DefenceBarColor));
+            AddLineLocal(ref playerColumn, GenerateInfo("DEFENCE: ", Player.BaseDefence.ToString("0 def"), true, Style.DefenceColor));
 
             AddBlankLineLocal(ref playerColumn);
 
@@ -337,7 +337,7 @@ namespace PoP.classes.windows
             AddBlankLineLocal(ref enemyColumn);
 
             // Health
-            foreach (string line in GenerateSlider("Health", enemy.Health, enemy.MaxHealth, false, Style.HealthBarColor))
+            foreach (string line in GenerateSlider("Health", enemy.Health, enemy.MaxHealth, false, Style.HealthColor))
             {
                 AddLineLocal(ref enemyColumn, line);
             }
@@ -345,7 +345,7 @@ namespace PoP.classes.windows
             AddBlankLineLocal(ref enemyColumn);
 
             // Defence
-            AddLineLocal(ref enemyColumn, GenerateInfo("DEFENCE: ", enemy.BaseDefence.ToString("0 def"), false, Style.DefenceBarColor));
+            AddLineLocal(ref enemyColumn, GenerateInfo("DEFENCE: ", enemy.BaseDefence.ToString("0 def"), false, Style.DefenceColor));
 
             AddBlankLineLocal(ref enemyColumn);
 
@@ -392,7 +392,7 @@ namespace PoP.classes.windows
 
             string _info = string.Empty;
             string _infoTitle = "DAMAGE:";
-            string _infoValue = Player.Damage.ToString("0 dmg");
+            string _infoValue = Player.BaseDamage.ToString("0 dmg");
 
             _info += Style.Color(_infoTitle, ColorAnsi.WHITE);
             _info += ' ';

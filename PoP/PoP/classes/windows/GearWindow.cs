@@ -146,10 +146,10 @@ namespace PoP.classes.windows
             AddBlankLineLocal(ref overallInfo);
 
             string _dmgTitle = " OVERALL DAMAGE: ";
-            AddLineLocal(ref overallInfo, Style.GetBlankLine(9) + Style.Color(_dmgTitle, ColorAnsi.WHITE) + Style.GetRemainingSpace(_dmgTitle, 18) + Style.ColorFormat(" " + Player.Damage.ToString("0.#") + " dmg ", ColorAnsi.RUST, FormatAnsi.HIGHLIGHT));
+            AddLineLocal(ref overallInfo, Style.GetBlankLine(9) + Style.Color(_dmgTitle, ColorAnsi.WHITE) + Style.GetRemainingSpace(_dmgTitle, 18) + Style.ColorFormat(" " + Player.BaseDamage.ToString("0.#") + " dmg ", ColorAnsi.RUST, FormatAnsi.HIGHLIGHT));
 
             string _defTitle = " OVERALL DEFENCE: ";
-            AddLineLocal(ref overallInfo, Style.GetBlankLine(9) + Style.Color(_defTitle, ColorAnsi.WHITE) + Style.GetRemainingSpace(_defTitle, 18) + Style.ColorFormat(" " + Player.Defence.ToString("0.#") + " def ", ColorAnsi.TEAL, FormatAnsi.HIGHLIGHT));
+            AddLineLocal(ref overallInfo, Style.GetBlankLine(9) + Style.Color(_defTitle, ColorAnsi.WHITE) + Style.GetRemainingSpace(_defTitle, 18) + Style.ColorFormat(" " + Player.BaseDefence.ToString("0.#") + " def ", ColorAnsi.TEAL, FormatAnsi.HIGHLIGHT));
             
             AddBlankLineLocal(ref overallInfo);
 

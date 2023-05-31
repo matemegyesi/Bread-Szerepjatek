@@ -44,12 +44,13 @@ namespace PoP.classes.states
             {
                 if (key == ConsoleKey.F)
                 {
+                    actionDescription = "took a quick nap.";
                     doneAction = true;
                 }
 
                 if (key == ConsoleKey.T)
                 {
-                    Player.AttackWithWeapon(stateMachine.enemy);
+                    actionDescription = Player.AttackWithWeapon(stateMachine.enemy);
                     doneAction = true;
                 }
 
@@ -61,7 +62,7 @@ namespace PoP.classes.states
 
                         if (i >= 0 && i < 4 && Inventory.sorcery[i] != null)
                         {
-                            Player.AttackWithSpell(stateMachine.enemy, Inventory.sorcery[i]);
+                            actionDescription = Player.AttackWithSpell(stateMachine.enemy, Inventory.sorcery[i]);
                             doneAction = true;
                         }
                     }
@@ -71,13 +72,14 @@ namespace PoP.classes.states
                 if (doneAction)
                 {
                     ResetBooleans(true);
+
+                    Wire.Dialogue.ProgressCombat(Player.Name, actionDescription, ColorAnsi.GREEN);
                 }
             }
             else
             {
                 if (key == ConsoleKey.Spacebar)
                 {
-
                     Wire.Combat.ForceUpdate(); //
                     stateMachine.ChangeCombatState(stateMachine.EnemyState);
                 }

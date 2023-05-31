@@ -9,6 +9,7 @@ namespace PoP.classes.states
     internal class State
     {
         protected Combat stateMachine { get; private set; }
+        protected string actionDescription;
 
         public State(Combat loc)
         {

@@ -17,18 +17,24 @@ namespace PoP.classes.states
 
         public override void Enter()
         {
-            string actionDesc = enemy.TakeAction();
-            Wire.Dialogue.ProgressCombat(enemy.Name, actionDesc, ColorAnsi.ORANGE);
+            actionDescription = enemy.TakeAction();
+            Wire.Dialogue.ProgressCombat(enemy.Name, actionDescription, ColorAnsi.ORANGE);
+
+            stateMachine.CanContinue = true;
         }
 
         public override void KeyPressed(ConsoleKey key)
         {
-
+            if (key == ConsoleKey.Spacebar)
+            {
+                Wire.Combat.ForceUpdate(); //
+                stateMachine.ChangeCombatState(stateMachine.PlayerState);
+            }
         }
 
         public override void Exit()
         {
-
+            ResetBooleans();
         }
     }
 }

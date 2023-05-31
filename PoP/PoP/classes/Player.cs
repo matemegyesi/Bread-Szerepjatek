@@ -10,7 +10,7 @@ namespace PoP.classes
     {
         public static string Name = "Player";
 
-        public static double Damage
+        public static double BaseDamage
         {
             get
             {
@@ -26,9 +26,9 @@ namespace PoP.classes
                 return damage;
             }
         }
-        //public static double DamageActual { get; private set; }
+        public static double Damage { get; private set; }
 
-        public static double Defence
+        public static double BaseDefence
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PoP.classes
                 return defence;
             }
         }
-        //public static double DefenceActual { get; private set; }
+        public static double Defence { get; private set; }
 
         public static double MaxHealth { get; private set; }
         public static double Health { get; private set; }
@@ -83,9 +83,10 @@ namespace PoP.classes
         {
             string action = string.Empty;
 
-            target.TakeDamage(Damage);
+            target.TakeDamage(BaseDamage);
+            action += $"dealt {Style.Color(BaseDamage.ToString("0.# dmg"), ColorAnsi.LIGHT_RED)}";
 
-            return action;
+            return action + '.';
         }
 
         public static string AttackWithSpell(Enemy target, Spell spell)
@@ -93,24 +94,35 @@ namespace PoP.classes
             string action = string.Empty;
 
             target.TakeSpell(spell);
+            action += $"cast the {Style.Color(spell.Name, ColorAnsi.MAGENTA)} spell";
 
             if (spell.Heal != 0)
             {
                 if (Health + spell.Heal > MaxHealth)
                 {
                     Health = MaxHealth;
+                    action += $" that healed them to {Style.Color("maximum health", ColorAnsi.LIGHT_BLUE)}";
                 }
-                else if (Health + spell.Heal <= 0)
+                else if (Health + spell.Heal <= 1)
                 {
                     Health = 1;
+                    action += $" that {Style.Color("critically damaged", ColorAnsi.RED)} them";
                 }
                 else
                 {
                     Health += spell.Heal;
+                    if (spell.Heal > 0)
+                    {
+                        action += $" that healed them (+{Style.Color(spell.Heal.ToString("0.# hp"), ColorAnsi.LIGHT_BLUE)})";
+                    }
+                    else
+                    {
+                        action += $" that damaged them ({Style.Color(spell.Heal.ToString("0.# hp"), ColorAnsi.LIGHT_RED)})";
+                    }
                 }
             }
 
-            return action;
+            return action + '.';
         }
 
         public static void TakeDamage(double damage)

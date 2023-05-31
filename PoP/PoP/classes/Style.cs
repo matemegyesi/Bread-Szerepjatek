@@ -64,8 +64,8 @@ namespace PoP.classes
 
         #region Color scheme
 
-        public static ColorAnsi HealthBarColor = ColorAnsi.LIGHT_BLUE;
-        public static ColorAnsi DefenceBarColor = ColorAnsi.GREEN;
+        public static ColorAnsi HealthColor = ColorAnsi.LIGHT_BLUE;
+        public static ColorAnsi DefenceColor = ColorAnsi.AQUA;
         public static ColorAnsi ManaColor = ColorAnsi.PURPLE;
         public static ColorAnsi ManaRegColor = ColorAnsi.DARK_RED;
 
