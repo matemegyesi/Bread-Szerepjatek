@@ -15,7 +15,7 @@ namespace PoP.classes.states
 
         public override void Enter()
         {
-
+            
         }
 
         public override void KeyPressed(ConsoleKey key)

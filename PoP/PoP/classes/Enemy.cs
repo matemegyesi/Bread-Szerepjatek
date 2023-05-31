@@ -27,9 +27,9 @@ namespace PoP.classes
         {
             { Effect.Burn, 0 },
             { Effect.Freeze, 0 },
-            { Effect.Stun, 1 },
-            { Effect.Poison, 2 },
-            { Effect.Bleed, 3 },
+            { Effect.Stun, 0 },
+            { Effect.Poison, 0 },
+            { Effect.Bleed, 0 },
             { Effect.Buff, 0 },
             { Effect.Debuff, 0 }
         };
@@ -69,7 +69,6 @@ namespace PoP.classes
             if (Health - damage <= 0)
             {
                 Health = 0;
-
                 combat.ChangeCombatState(combat.WinState);
             }
             else
@@ -80,16 +79,7 @@ namespace PoP.classes
 
         public void TakeSpell(Spell spell)
         {
-            if (Health - spell.Damage <= 0)
-            {
-                Health = 0;
-
-                combat.ChangeCombatState(combat.WinState);
-            }
-            else
-            {
-                Health -= Damage;
-            }
+            TakeDamage(spell.Damage);
 
             foreach (Effect effect in spell.EffectList)
             {

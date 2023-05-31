@@ -24,9 +24,13 @@ namespace PoP.classes.states
 
         public override void Enter()
         {
-            stateMachine.SetCanSkip(true);
-            stateMachine.SetCanContinue(false);
-            stateMachine.SetCanUseWeapon(true);
+            doneAction = false;
+
+            stateMachine.CanSkip = true;
+            stateMachine.CanContinue = false;
+            stateMachine.CanUseWeapon = true;
+
+            Wire.Combat.ForceUpdate();
         }
 
         public override void KeyPressed(ConsoleKey key)
@@ -39,15 +43,12 @@ namespace PoP.classes.states
                 if (key == ConsoleKey.F)
                 {
                     doneAction = true;
-
-                    stateMachine.SetCanSkip(false);
-                    stateMachine.SetCanContinue(true);
-                    stateMachine.SetCanUseWeapon(false);
                 }
 
                 if (key == ConsoleKey.T)
                 {
                     Player.AttackWithWeapon(stateMachine.enemy);
+                    doneAction = true;
                 }
 
                 if (key == ConsoleKey.Q || key == ConsoleKey.W || key == ConsoleKey.E || key == ConsoleKey.R)
@@ -60,8 +61,14 @@ namespace PoP.classes.states
                         {
                             Player.AttackWithSpell(stateMachine.enemy, Inventory.sorcery[i]);
                         }
+                        doneAction = true;
                     }
                     catch (Exception) { }
+                }
+
+                if (doneAction)
+                {
+                    ResetBooleans(true);
                 }
             }
             else

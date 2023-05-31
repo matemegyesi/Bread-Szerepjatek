@@ -15,9 +15,12 @@ namespace PoP.classes.states
 
         public override void Enter()
         {
+            stateMachine.CanContinue = true;
+
+            Wire.Combat.TurnName = "Loadout inspection";
             Wire.Combat.FKeyName = "Flee";
             Wire.Combat.SpaceKeyName = "Begin";
-            stateMachine.SetCanContinue(true);
+            Wire.Combat.ForceUpdate();
         }
 
         public override void KeyPressed(ConsoleKey key)
@@ -37,7 +40,7 @@ namespace PoP.classes.states
 
         public override void Exit()
         {
-            stateMachine.SetCanSkip(false);
+            stateMachine.CanSkip = false;
 
             Wire.Combat.FKeyName = "Skip";
             Wire.Combat.SpaceKeyName = "Continue";

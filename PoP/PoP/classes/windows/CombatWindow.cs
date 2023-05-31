@@ -37,11 +37,13 @@ namespace PoP.classes.windows
         // Window settings
         public string FKeyName { get; set; }
         public string SpaceKeyName { get; set; }
+        public string TurnName { get; set; }
 
         // Combat settings
-        public bool CanSkip { get; set; }
-        public bool CanContinue { get; set; }
-        public bool CanUseWeapon { get; set; }
+        private Combat combat;
+        //public bool CanSkip { get; set; }
+        //public bool CanContinue { get; set; }
+        //public bool CanUseWeapon { get; set; }
 
         // Change detection
         private bool playerChanged;
@@ -66,13 +68,15 @@ namespace PoP.classes.windows
         protected override List<string> GenerateLines()
         {
             LineList.Clear();
-
-            AddBlankLine();
-            AddBlankLine();
-            // Header
-
             GeneratePlayerColumn();
             GenerateEnemyColumn();
+
+            // Header
+            AddBlankLine();
+            string header = GenerateHeader();
+            AddLine(header);
+
+            AddBlankLine();
 
             // Player & Enemy column section
             for (int i = 0; i < playerLines.Count; i++)
@@ -121,7 +125,9 @@ namespace PoP.classes.windows
         {
             string header = string.Empty;
 
-            
+            string _turn = ' ' + TurnName + ' ';
+            header += Style.GetRemainingSpace(_turn.Length / 2, Width / 2);
+            header += Style.ColorFormat(_turn, ColorAnsi.WHITE, FormatAnsi.HIGHLIGHT);
 
             return header;
         }
@@ -371,7 +377,7 @@ namespace PoP.classes.windows
             string _weaponTitle = "Weapon attack";
             string _weaponKey = " [T] ";
 
-            if (CanUseWeapon)
+            if (combat.CanUseWeapon)
             {
                 _weapon += Style.ColorFormat(_weaponTitle, ColorAnsi.LIGHT_BLUE, FormatAnsi.UNDERLINE);
                 _weapon += ' ';
@@ -417,7 +423,7 @@ namespace PoP.classes.windows
             string _space = SpaceKeyName;
             string _spaceKey = " [SPACE] ";
 
-            if (CanSkip)
+            if (combat.CanSkip)
             {
                 footer += Style.ColorFormat(_flee, ColorAnsi.YELLOW, FormatAnsi.UNDERLINE);
                 footer += ' ';
@@ -432,7 +438,7 @@ namespace PoP.classes.windows
 
             footer += Style.GetRemainingSpace(_flee.Length + _fleeKey.Length + _space.Length + _spaceKey.Length + 2, Width);
 
-            if (CanContinue)
+            if (combat.CanContinue)
             {
                 footer += Style.ColorFormat(_space, ColorAnsi.YELLOW, FormatAnsi.UNDERLINE);
                 footer += ' ';
@@ -550,7 +556,7 @@ namespace PoP.classes.windows
 
         public void SetCombat(Combat combat)
         {
-
+            this.combat = combat;
         }
 
         public void SetEnemy(Enemy enemy)

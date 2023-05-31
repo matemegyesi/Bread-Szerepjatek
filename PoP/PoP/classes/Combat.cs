@@ -9,7 +9,6 @@ using PoP.classes.states;
 
 namespace PoP.classes
 {
-
     class Combat : Location
     {
         public LoadoutState LoadoutState { get; private set; }
@@ -23,9 +22,16 @@ namespace PoP.classes
         public Enemy enemy { get; set; }
 
         // Combat settings
-        public bool CanSkip { get; private set; }
-        public bool CanContinue { get; private set; }
-        public bool CanUseWeapon { get; private set; }
+        public bool CanSkip { get; set; }
+        public bool CanContinue { get; set; }
+        public bool CanUseWeapon { get; set; }
+        public List<bool> CanUseSpell = new List<bool>(4)
+        {
+            { true },
+            { true },
+            { true },
+            { true }
+        };
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Combat"/> class.
@@ -94,9 +100,10 @@ namespace PoP.classes
 
             Wire.Disable(Wire.Map);
             Wire.Enable(Wire.Combat);
+            Wire.Combat.SetCombat(this);
 
             CurrentState.Enter();
-            SetCanSkip(true);
+            CanSkip = true;
         }
         
         /// <summary>
@@ -109,6 +116,7 @@ namespace PoP.classes
 
             Wire.Dialogue.ClearDialogue();
             Wire.Disable(Wire.Combat);
+            Wire.Combat.SetCombat(null);
             Wire.Enable(Wire.Map);
 
             isCompleted = true;
@@ -122,6 +130,7 @@ namespace PoP.classes
             KeyboardInput.KeyPressed -= KeyPressed;
 
             Wire.Disable(Wire.Combat);
+            Wire.Combat.SetCombat(null);
             Wire.Enable(Wire.Map);
 
             GameLoop.playerMovement.Teleport(GameLoop.playerMovement.PrevPlayerX, GameLoop.playerMovement.PrevPlayerY);
@@ -144,24 +153,5 @@ namespace PoP.classes
         {
             CurrentState.KeyPressed(key);
         }
-
-        public void SetCanContinue(bool canContinue)
-        {
-            CanContinue = canContinue;
-            Wire.Combat.CanContinue = CanContinue;
-        }
-
-        public void SetCanSkip(bool canFlee)
-        {
-            CanSkip = canFlee;
-            Wire.Combat.CanSkip = CanSkip;
-        }
-
-        public void SetCanUseWeapon(bool canUseWeapon)
-        {
-            CanUseWeapon = canUseWeapon;
-            Wire.Combat.CanUseWeapon = CanUseWeapon;
-        }
-
     }
 }

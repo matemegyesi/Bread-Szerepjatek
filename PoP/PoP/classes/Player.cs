@@ -59,13 +59,13 @@ namespace PoP.classes
 
         public static Dictionary<Effect, int> EffectDict { get; set; } = new Dictionary<Effect, int>()
         {
-            { Effect.Burn, 3 },
-            { Effect.Freeze, 3 },
-            { Effect.Stun, 1 },
-            { Effect.Poison, 2 },
-            { Effect.Bleed, 3 },
-            { Effect.Buff, 3 },
-            { Effect.Debuff, 3 }
+            { Effect.Burn, 0 },
+            { Effect.Freeze, 0 },
+            { Effect.Stun, 0 },
+            { Effect.Poison, 0 },
+            { Effect.Bleed, 0 },
+            { Effect.Buff, 0 },
+            { Effect.Debuff, 0 }
         };
 
         public static void Init()

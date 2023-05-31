@@ -29,5 +29,12 @@ namespace PoP.classes.states
         {
 
         }
+
+        public virtual void ResetBooleans(bool canContinue = false)
+        {
+            stateMachine.CanSkip = false;
+            stateMachine.CanContinue = canContinue;
+            stateMachine.CanUseWeapon = false;
+        }
     }
 }
