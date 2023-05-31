@@ -16,6 +16,7 @@ namespace PoP.classes.states
         public override void Enter()
         {
             stateMachine.SetCanContinue(false);
+            stateMachine.SetCanUseWeapon(true);
         }
 
         public override void KeyPressed(ConsoleKey key)

@@ -25,6 +25,7 @@ namespace PoP.classes
         // Combat settings
         public bool CanFlee { get; private set; }
         public bool CanContinue { get; private set; }
+        public bool CanUseWeapon { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Combat"/> class.
@@ -154,6 +155,12 @@ namespace PoP.classes
         {
             CanFlee = canFlee;
             Wire.Combat.CanFlee = CanFlee;
+        }
+
+        public void SetCanUseWeapon(bool canUseWeapon)
+        {
+            CanUseWeapon = canUseWeapon;
+            Wire.Combat.CanUseWeapon = CanUseWeapon;
         }
 
     }

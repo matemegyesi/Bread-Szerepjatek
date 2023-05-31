@@ -40,6 +40,7 @@ namespace PoP.classes.windows
         // Combat settings
         public bool CanFlee { get; set; }
         public bool CanContinue { get; set; }
+        public bool CanUseWeapon { get; set; }
 
         // Change detection
         private bool playerChanged;
@@ -79,7 +80,7 @@ namespace PoP.classes.windows
             }
 
             // (Hr)
-            AddLine(Style.Color(Style.GetBlankLine(INFO_PADDING.Length * 2 / 3) + '~' + Style.GetBlankLine(Width - INFO_PADDING.Length - INFO_PADDING.Length / 3, Border.SINGLE_HORIZONTAL) + '~', ColorAnsi.DARK_GREY));
+            AddLine(Style.Color(Style.GetBlankLine(INFO_PADDING.Length / 2 + 2 - 1) + '~' + Style.GetBlankLine(Width - INFO_PADDING.Length - 4, Border.SINGLE_HORIZONTAL) + '~', ColorAnsi.DARK_GREY));
             AddBlankLine();
 
             // Menu section
@@ -89,11 +90,20 @@ namespace PoP.classes.windows
             AddBlankLine();
 
             // (Hr)
-            AddLine(Style.Color(Style.GetBlankLine(INFO_PADDING.Length / 2) + '~' + Style.GetBlankLine(Width - INFO_PADDING.Length, Border.SINGLE_HORIZONTAL) + '~', ColorAnsi.DARK_GREY));
+            AddLine(Style.Color(Style.GetBlankLine(INFO_PADDING.Length / 2 - 1) + '~' + Style.GetBlankLine(Width - INFO_PADDING.Length, Border.SINGLE_HORIZONTAL) + '~', ColorAnsi.DARK_GREY));
             AddBlankLine();
 
             // Weapon section
+            foreach (string line in GenerateWeapon())
+            {
+                AddLine(INFO_PADDING + line);
+            }
 
+            AddBlankLine();
+
+            // (Hr)
+            AddLine(Style.Color(Style.GetBlankLine(INFO_PADDING.Length / 2 - 2 - 1) + '~' + Style.GetBlankLine(Width - INFO_PADDING.Length + 4, Border.SINGLE_HORIZONTAL) + '~', ColorAnsi.DARK_GREY));
+            AddBlankLine();
 
             // Loadout section
             GenerateLoadout();
@@ -354,8 +364,36 @@ namespace PoP.classes.windows
         private List<string> GenerateWeapon()
         {
             List<string> weaponList = new List<string>();
+            Width = 148 - INFO_PADDING.Length * 2;
 
+            string _weapon = string.Empty;
+            string _weaponTitle = "Weapon attack";
+            string _weaponKey = " [T] ";
 
+            if (CanUseWeapon)
+            {
+                _weapon += Style.ColorFormat(_weaponTitle, ColorAnsi.LIGHT_BLUE, FormatAnsi.UNDERLINE);
+                _weapon += ' ';
+                _weapon += Style.ColorFormat(_weaponKey, ColorAnsi.LIGHT_BLUE, FormatAnsi.HIGHLIGHT);
+            }
+            else
+            {
+                _weapon += Style.ColorFormat(_weaponTitle, ColorAnsi.DARK_GREY, FormatAnsi.UNDERLINE);
+                _weapon += ' ';
+                _weapon += Style.ColorFormat(_weaponKey, ColorAnsi.DARK_GREY, FormatAnsi.HIGHLIGHT);
+            }
+
+            string _info = string.Empty;
+            string _infoTitle = "DAMAGE:";
+            string _infoValue = Player.Damage.ToString("0 dmg");
+
+            _info += Style.Color(_infoTitle, ColorAnsi.WHITE);
+            _info += ' ';
+            _info += Style.Color(_infoValue, ColorAnsi.LIGHT_RED);
+
+            AddLineLocal(ref weaponList, _weapon + "   " + _info);
+
+            Width = 148;
             return weaponList;
         }
 
