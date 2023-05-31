@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using System.Text.Json;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace PoP.classes
 {
@@ -36,6 +34,7 @@ namespace PoP.classes
             { Effect.Buff, 0 },
             { Effect.Debuff, 0 }
         };
+        public List<Effect> RandomEffects { get; private set; } = new List<Effect>();
 
         public Dictionary<string, string> data { get; set; }
         private Combat combat;
@@ -47,6 +46,7 @@ namespace PoP.classes
             BaseDefence = double.Parse(data["defence"].ToString());
             MaxHealth = double.Parse(data["health"].ToString());
             Health = MaxHealth;
+            RandomEffects = FileInput.GetEffectList(data["effects"].ToString().Split(';'));
             Level = int.Parse(data["level"].ToString());
 
             combat = location;
@@ -54,16 +54,30 @@ namespace PoP.classes
 
         public string TakeAction()
         {
-            string action = $"The enemy dealt {Style.Color(BaseDamage.ToString("0.# dmg"), ColorAnsi.LIGHT_RED)}.";
+            string action = string.Empty;
 
-            EnemyAttack();
+            action += EnemyAttack();
 
-            return action;
+            return action + '.';
         }
 
-        public void EnemyAttack()
+        public string EnemyAttack()
         {
+            string action = string.Empty;
+
+            // Damage
             Player.TakeDamage(BaseDamage);
+            action += $"dealt {Style.Color(BaseDamage.ToString("0.# dmg"), ColorAnsi.LIGHT_RED)}";
+
+            // Effect
+            if (new Random().Next(0, 6) == 0)
+            {
+                int rng = new Random().Next(0, RandomEffects.Count);
+                Player.TakeEffect(RandomEffects[rng]);
+                action += $", and cast {Style.Color(RandomEffects[rng].ToString(), ColorAnsi.PINK)} effect";
+            }
+
+            return action;
         }
 
         public void TakeDamage(double damage)
@@ -85,18 +99,23 @@ namespace PoP.classes
 
             foreach (Effect effect in spell.EffectList)
             {
-                if (effect == Effect.Stun)
-                {
-                    EffectDict[effect] = 1;
-                }
-                else if (effect == Effect.Poison)
-                {
-                    EffectDict[effect] = 2;
-                }
-                else
-                {
-                    EffectDict[effect] = 3;
-                }
+                TakeEffect(effect);
+            }
+        }
+
+        public void TakeEffect(Effect effect)
+        {
+            if (effect == Effect.Stun)
+            {
+                EffectDict[effect] = 1;
+            }
+            else if (effect == Effect.Poison)
+            {
+                EffectDict[effect] = 2;
+            }
+            else
+            {
+                EffectDict[effect] = 3;
             }
         }
     }

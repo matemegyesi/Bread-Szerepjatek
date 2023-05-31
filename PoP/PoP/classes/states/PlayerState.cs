@@ -59,11 +59,11 @@ namespace PoP.classes.states
                     {
                         int i = spellKeys[(int)key];
 
-                        if (i >= 0 && i < 4)
+                        if (i >= 0 && i < 4 && Inventory.sorcery[i] != null)
                         {
                             Player.AttackWithSpell(stateMachine.enemy, Inventory.sorcery[i]);
+                            doneAction = true;
                         }
-                        doneAction = true;
                     }
                     catch (Exception) { }
                 }

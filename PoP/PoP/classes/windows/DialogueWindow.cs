@@ -159,11 +159,9 @@ namespace PoP.classes.windows
         /// <param name="color">The color of the feft side of the combat line.</param>
         public void ProgressCombat(string name, string actionDescription, ColorAnsi color = ColorAnsi.WHITE)
         {
-            string _actorLine = string.Empty;
-            _actorLine = Style.GetRemainingSpace(name, speakerMaxWidth - 3) + Style.Color(name, color) + "   ";
-
-            string _combatLine = string.Empty;
-            _combatLine = actionDescription;
+            string _actorLine = Style.GetRemainingSpace(name, speakerMaxWidth - 1) + Style.Color(name, color) + " ";
+            
+            string _combatLine = actionDescription;
 
             history.Add(_actorLine + _combatLine);
 

@@ -79,13 +79,19 @@ namespace PoP.classes
             BaseManaRate = 15;
         }
 
-        public static void AttackWithWeapon(Enemy target)
+        public static string AttackWithWeapon(Enemy target)
         {
+            string action = string.Empty;
+
             target.TakeDamage(Damage);
+
+            return action;
         }
 
-        public static void AttackWithSpell(Enemy target, Spell spell)
+        public static string AttackWithSpell(Enemy target, Spell spell)
         {
+            string action = string.Empty;
+
             target.TakeSpell(spell);
 
             if (spell.Heal != 0)
@@ -103,6 +109,8 @@ namespace PoP.classes
                     Health += spell.Heal;
                 }
             }
+
+            return action;
         }
 
         public static void TakeDamage(double damage)
@@ -118,27 +126,22 @@ namespace PoP.classes
             }
         }
 
-        public void TakeSpell(Spell spell)
+        public static void TakeEffect(Effect effect)
         {
-            TakeDamage(spell.Damage);
-
-            foreach (Effect effect in spell.EffectList)
+            if (effect == Effect.Stun)
             {
-                if (effect == Effect.Stun)
-                {
-                    EffectDict[effect] = 1;
-                }
-                else if (effect == Effect.Poison)
-                {
-                    EffectDict[effect] = 2;
-                }
-                else
-                {
-                    EffectDict[effect] = 3;
-                }
+                EffectDict[effect] = 1;
+            }
+            else if (effect == Effect.Poison)
+            {
+                EffectDict[effect] = 2;
+            }
+            else
+            {
+                EffectDict[effect] = 3;
             }
         }
-
+        
         public static void RegenerateMana()
         {
             if (Mana + ManaRate > MaxMana)

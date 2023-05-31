@@ -66,7 +66,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="res\enemies\enemy.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="res\maps\Raudagnupur.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
