@@ -17,7 +17,7 @@ namespace PoP.classes.states
         {
             stateMachine.CanContinue = true;
 
-            Wire.Combat.TurnName = Style.Color("Loadout inspection", ColorAnsi.WHITE);
+            Wire.Combat.TurnName = Style.Color(" # Loadout inspection # ", ColorAnsi.WHITE);
             Wire.Combat.FKeyName = "Flee";
             Wire.Combat.SpaceKeyName = "Begin";
             Wire.Combat.ForceUpdate();

@@ -499,21 +499,30 @@ namespace PoP.classes.windows
         {
             List<string> effectIndicatorList = new List<string>();
 
+            Dictionary<Effect, int> _activeEffectDict = new Dictionary<Effect, int>(effectDict.Count(x => x.Value > 0));
+            foreach (var pair in effectDict)
+            {
+                if (pair.Value > 0)
+                {
+                    _activeEffectDict.Add(pair.Key, pair.Value);
+                }
+            }
+
             string _fxTitle = "ACTIVE EFFECT(S): ";
 
             string _currentLine = string.Empty;
             _currentLine += Style.Color(_fxTitle, ColorAnsi.WHITE);
 
-            if (effectDict.Count(x => x.Value > 0) > 0)
+            if (_activeEffectDict.Count > 0)
             {
-                for (int i = 0; i < effectDict.Count; i++)
+                for (int i = 0; i < _activeEffectDict.Count; i++)
                 {
                     if (i != 0)
                     {
                         _currentLine += Style.GetBlankLine(_fxTitle.Length);
                     }
 
-                    KeyValuePair<Effect, int> _current = effectDict.ElementAt(i);
+                    KeyValuePair<Effect, int> _current = _activeEffectDict.ElementAt(i);
 
                     if (_current.Value > 0)
                     {

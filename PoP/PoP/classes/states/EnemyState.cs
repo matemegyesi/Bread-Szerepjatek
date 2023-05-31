@@ -19,7 +19,7 @@ namespace PoP.classes.states
         {
             actionDescription = enemy.TakeAction();
             Wire.Dialogue.ProgressCombat(enemy.Name, actionDescription, ColorAnsi.ORANGE);
-            Wire.Combat.TurnName = Style.Color($"{enemy.Name}'s turn", ColorAnsi.ORANGE);
+            Wire.Combat.TurnName = Style.Color($" # {enemy.Name}'s turn # ", ColorAnsi.ORANGE);
 
             stateMachine.CanContinue = true;
         }

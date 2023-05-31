@@ -26,7 +26,7 @@ namespace PoP.classes.states
 
             Player.RegenerateMana();
 
-            Wire.Combat.TurnName = Style.Color($"{Player.Name}'s turn", ColorAnsi.GREEN);
+            Wire.Combat.TurnName = Style.Color($" # {Player.Name}'s turn # ", ColorAnsi.GREEN);
             Wire.Combat.ForceUpdate();
         }
 
