@@ -65,8 +65,15 @@ namespace PoP.classes.states
 
                         if (i >= 0 && i < 4 && Inventory.sorcery[i] != null)
                         {
-                            actionDescription = Player.AttackWithSpell(stateMachine.enemy, Inventory.sorcery[i]);
-                            doneAction = true;
+                            if (Inventory.sorcery[i].ManaCost <= Player.Mana)
+                            {
+                                actionDescription = Player.AttackWithSpell(stateMachine.enemy, Inventory.sorcery[i]);
+                                doneAction = true;
+                            }
+                            else
+                            {
+                                Wire.Dialogue.ProgressCombat("!!!", $"Not enough {Style.Color("mana", ColorAnsi.PURPLE)}.", ColorAnsi.RUST);
+                            }
                         }
                     }
                     catch (Exception) { }

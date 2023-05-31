@@ -73,8 +73,17 @@ namespace PoP.classes
             if (new Random().Next(0, 6) == 0)
             {
                 int rng = new Random().Next(0, RandomEffects.Count);
-                Player.TakeEffect(RandomEffects[rng]);
-                action += $", and cast {Style.Color(RandomEffects[rng].ToString(), ColorAnsi.PINK)} effect";
+
+                if (RandomEffects[rng] != Effect.Buff)
+                {
+                    Player.TakeEffect(RandomEffects[rng]);
+                    action += $", and cast {Style.Color(RandomEffects[rng].ToString(), ColorAnsi.PINK)} effect";
+                }
+                else
+                {
+                    EffectDict[Effect.Buff] = 3;
+                    action += $", and cast {Style.Color(RandomEffects[rng].ToString(), ColorAnsi.PINK)} effect";
+                }
             }
 
             return action;
@@ -113,7 +122,7 @@ namespace PoP.classes
             {
                 EffectDict[effect] = 2;
             }
-            else
+            else if (effect != Effect.Buff)
             {
                 EffectDict[effect] = 3;
             }

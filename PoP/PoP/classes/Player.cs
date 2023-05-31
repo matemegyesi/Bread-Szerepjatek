@@ -96,6 +96,15 @@ namespace PoP.classes
             target.TakeSpell(spell);
             action += $"cast the {Style.Color(spell.Name, ColorAnsi.MAGENTA)} spell";
 
+            if (Mana - spell.ManaCost <= 0)
+            {
+                Mana = 0;
+            }
+            else
+            {
+                Mana -= spell.ManaCost;
+            }
+
             if (spell.Heal != 0)
             {
                 if (Health + spell.Heal > MaxHealth)
@@ -120,6 +129,11 @@ namespace PoP.classes
                         action += $" that damaged them ({Style.Color(spell.Heal.ToString("0.# hp"), ColorAnsi.LIGHT_RED)})";
                     }
                 }
+            }
+
+            if (spell.EffectList.Contains(Effect.Buff))
+            {
+                EffectDict[Effect.Buff] = 3;
             }
 
             return action + '.';
@@ -148,7 +162,7 @@ namespace PoP.classes
             {
                 EffectDict[effect] = 2;
             }
-            else
+            else if (effect != Effect.Buff)
             {
                 EffectDict[effect] = 3;
             }
@@ -156,13 +170,13 @@ namespace PoP.classes
         
         public static void RegenerateMana()
         {
-            if (Mana + ManaRate > MaxMana)
+            if (Mana + BaseManaRate > MaxMana)
             {
                 Mana = MaxMana;
             }
             else
             {
-                Mana += ManaRate;
+                Mana += BaseManaRate;
             }
         }
     }
