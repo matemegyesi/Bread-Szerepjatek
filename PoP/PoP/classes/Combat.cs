@@ -12,9 +12,6 @@ namespace PoP.classes
 
     class Combat : Location
     {
-
-
-
         public LoadoutState LoadoutState { get; private set; }
         public PlayerState PlayerState { get; private set; }
         public EnemyState EnemyState { get; private set; }
@@ -24,6 +21,10 @@ namespace PoP.classes
         public State CurrentState { get; private set; }
 
         Enemy enemy;
+
+        // Combat settings
+        public bool CanFlee { get; private set; }
+        public bool CanContinue { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Combat"/> class.
@@ -92,6 +93,9 @@ namespace PoP.classes
 
             Wire.Disable(Wire.Map);
             Wire.Enable(Wire.Combat);
+
+            CurrentState.Enter();
+            SetCanFlee(true);
         }
         
         /// <summary>
@@ -138,6 +142,18 @@ namespace PoP.classes
         public void KeyPressed(ConsoleKey key)
         {
             CurrentState.KeyPressed(key);
+        }
+
+        public void SetCanContinue(bool canContinue)
+        {
+            CanContinue = canContinue;
+            Wire.Combat.CanContinue = CanContinue;
+        }
+
+        public void SetCanFlee(bool canFlee)
+        {
+            CanFlee = canFlee;
+            Wire.Combat.CanFlee = CanFlee;
         }
 
     }

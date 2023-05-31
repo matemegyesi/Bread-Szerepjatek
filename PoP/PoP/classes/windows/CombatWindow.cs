@@ -8,34 +8,19 @@ namespace PoP.classes.windows
 {
     internal class CombatWindow : Window
     {
+        // Constants
         private const string INFO_PADDING = "            ";
         private const string CARD_PADDING = "    ";
 
         private const int COLUMN_WIDTH = 62;
         private const int COLUMN_HEIGHT = 20;
-
         private const int SPELL_WIDTH = 30;
 
+        // Borders
         private Border cardTop = new Border(true ,true ,false, true, true);
         private Border cardBottom = new Border(true);
 
-        public string Title
-        {
-            get
-            {
-                return $" >>> Combat <<< ";
-            }
-        }
-        public string HowToUse
-        {
-            get
-            {
-                return "USE: (...)";
-            }
-        }
-
-        private Enemy enemy;
-
+        // Line lists
         private List<string> playerLines = new List<string>(COLUMN_HEIGHT);
         private List<string> enemyLines = new List<string>(COLUMN_HEIGHT);
 
@@ -46,6 +31,15 @@ namespace PoP.classes.windows
             new List<string>(),
             new List<string>()
         };
+        
+        private Enemy enemy;
+
+        // Window settings
+        public string SpaceKeyName { get; set; }
+
+        // Combat settings
+        public bool CanFlee { get; set; }
+        public bool CanContinue { get; set; }
 
         // Change detection
         private bool playerChanged;
@@ -73,6 +67,8 @@ namespace PoP.classes.windows
 
             AddBlankLine();
             AddBlankLine();
+            // Header
+
             GeneratePlayerColumn();
             GenerateEnemyColumn();
 
@@ -87,9 +83,8 @@ namespace PoP.classes.windows
             AddBlankLine();
 
             // Menu section
-            // ...
-            string _footer = GenerateFooter();
-            AddLine(INFO_PADDING + _footer);
+            string menu = GenerateMenu();
+            AddLine(INFO_PADDING + menu);
 
             AddBlankLine();
 
@@ -114,6 +109,8 @@ namespace PoP.classes.windows
         private string GenerateHeader()
         {
             string header = string.Empty;
+
+            
 
             return header;
         }
@@ -370,12 +367,46 @@ namespace PoP.classes.windows
             loadout[3] = GenerateSpellCard(Inventory.sorcery[3], 'R', true, true);
         }
 
-        private string GenerateFooter()
+        private string GenerateMenu()
         {
             string footer = string.Empty;
+            Width = 148 - INFO_PADDING.Length * 2;
 
-            footer = Style.ColorFormat("Flee", ColorAnsi.YELLOW, FormatAnsi.UNDERLINE) + ' ' + Style.ColorFormat(" [F] ", ColorAnsi.RED, FormatAnsi.HIGHLIGHT);
+            string _flee = "Flee";
+            string _fleeKey = " [F] ";
 
+            string _space = SpaceKeyName;
+            string _spaceKey = " [SPACE] ";
+
+            if (CanFlee)
+            {
+                footer += Style.ColorFormat(_flee, ColorAnsi.YELLOW, FormatAnsi.UNDERLINE);
+                footer += ' ';
+                footer += Style.ColorFormat(_fleeKey, ColorAnsi.RED, FormatAnsi.HIGHLIGHT);
+            }
+            else
+            {
+                footer += Style.ColorFormat(_flee, ColorAnsi.DARK_GREY, FormatAnsi.UNDERLINE);
+                footer += ' ';
+                footer += Style.ColorFormat(_fleeKey, ColorAnsi.DARK_GREY, FormatAnsi.HIGHLIGHT);
+            }
+
+            footer += Style.GetRemainingSpace(_flee.Length + _fleeKey.Length + _space.Length + _spaceKey.Length + 2, Width);
+
+            if (CanContinue)
+            {
+                footer += Style.ColorFormat(_space, ColorAnsi.YELLOW, FormatAnsi.UNDERLINE);
+                footer += ' ';
+                footer += Style.ColorFormat(_spaceKey, ColorAnsi.RED, FormatAnsi.HIGHLIGHT);
+            }
+            else
+            {
+                footer += Style.ColorFormat(_space, ColorAnsi.DARK_GREY, FormatAnsi.UNDERLINE);
+                footer += ' ';
+                footer += Style.ColorFormat(_spaceKey, ColorAnsi.DARK_GREY, FormatAnsi.HIGHLIGHT);
+            }
+
+            Width = 148;
             return footer;
         }
 
