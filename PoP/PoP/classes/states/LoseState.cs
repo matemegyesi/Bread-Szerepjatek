@@ -17,7 +17,7 @@ namespace PoP.classes.states
         {
             ResetBooleans(true);
 
-            Wire.Combat.TurnTitle = $"{Player.Name} died!";
+            Wire.Combat.TurnTitle = Style.Color($" # {Player.Name} died! # ", ColorAnsi.RUST);
             Wire.Combat.SpaceKeyName = "Leave encounter";
 
             actionDescription = Style.Color($"slayed {Player.Name}.", ColorAnsi.RED);
