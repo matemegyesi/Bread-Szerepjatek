@@ -30,5 +30,46 @@ namespace PoP.classes
             string json = File.ReadAllText(filePath);
             return JsonSerializer.Deserialize<List<Dictionary<string, object>>>(json);
         }
+
+        public static List<Effect> GetEffectList(string[] data)
+        {
+            List<Effect> effectList = new List<Effect>();
+            
+            foreach (string effect in data)
+            {
+                switch (effect)
+                {
+                    case "Burn":
+                        effectList.Add(Effect.Burn);
+                        break;
+
+                    case "Freeze":
+                        effectList.Add(Effect.Freeze);
+                        break;
+
+                    case "Stun":
+                        effectList.Add(Effect.Stun);
+                        break;
+
+                    case "Poison":
+                        effectList.Add(Effect.Poison);
+                        break;
+
+                    case "Bleed":
+                        effectList.Add(Effect.Bleed);
+                        break;
+
+                    case "Buff":
+                        effectList.Add(Effect.Buff);
+                        break;
+
+                    case "Debuff":
+                        effectList.Add(Effect.Debuff);
+                        break;
+                }
+            }
+
+            return effectList;
+        }
     }
 }

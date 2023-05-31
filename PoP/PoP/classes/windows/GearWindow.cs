@@ -139,7 +139,7 @@ namespace PoP.classes.windows
             AddLineLocal(ref overallInfo, Style.GetRemainingSpace(_manaTitle, 27) + Style.Color(_manaTitle, ColorAnsi.WHITE) + Style.Color(Player.MaxMana.ToString("0 mana"), ColorAnsi.PURPLE));
 
             string _manaRegTitle = "REGENERATION RATE: ";
-            AddLineLocal(ref overallInfo, Style.GetRemainingSpace(_manaRegTitle, 27) + Style.Color(_manaRegTitle, ColorAnsi.WHITE) + Style.Color(Player.ManaRate.ToString("0 mana/turn"), ColorAnsi.DARK_RED));
+            AddLineLocal(ref overallInfo, Style.GetRemainingSpace(_manaRegTitle, 27) + Style.Color(_manaRegTitle, ColorAnsi.WHITE) + Style.Color(Player.BaseManaRate.ToString("0 mana/turn"), ColorAnsi.DARK_RED));
 
             AddBlankLineLocal(ref overallInfo);
             AddLineLocal(ref overallInfo, Style.GetDashedLine(Width));

@@ -30,6 +30,8 @@ namespace PoP.classes.states
             stateMachine.CanContinue = false;
             stateMachine.CanUseWeapon = true;
 
+            Player.RegenerateMana();
+
             Wire.Combat.ForceUpdate();
         }
 
@@ -84,7 +86,7 @@ namespace PoP.classes.states
 
         public override void Exit()
         {
-
+            ResetBooleans();
         }
     }
 }

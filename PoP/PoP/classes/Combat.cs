@@ -72,7 +72,7 @@ namespace PoP.classes
             // State setup
             LoadoutState = new LoadoutState(this);
             PlayerState = new PlayerState(this);
-            EnemyState = new EnemyState(this);
+            EnemyState = new EnemyState(this, enemy);
             WinState = new WinState(this);
             LoseState = new LoseState(this);
 

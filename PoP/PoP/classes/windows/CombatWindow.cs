@@ -313,7 +313,7 @@ namespace PoP.classes.windows
             AddBlankLineLocal(ref playerColumn);
             
             // Mana regeneration rate
-            AddLineLocal(ref playerColumn, GenerateInfo("MANA REGENERATION: ", Player.ManaRate.ToString("+0 mana/turn"), true, Style.ManaRegColor));
+            AddLineLocal(ref playerColumn, GenerateInfo("MANA REGENERATION: ", Player.BaseManaRate.ToString("+0 mana/turn"), true, Style.ManaRegColor));
 
             // Fills up the remaining lines
             while (playerColumn.Count < COLUMN_HEIGHT)
@@ -345,7 +345,7 @@ namespace PoP.classes.windows
             AddBlankLineLocal(ref enemyColumn);
 
             // Defence
-            AddLineLocal(ref enemyColumn, GenerateInfo("DEFENCE: ", enemy.Defence.ToString("0 def"), false, Style.DefenceBarColor));
+            AddLineLocal(ref enemyColumn, GenerateInfo("DEFENCE: ", enemy.BaseDefence.ToString("0 def"), false, Style.DefenceBarColor));
 
             AddBlankLineLocal(ref enemyColumn);
 

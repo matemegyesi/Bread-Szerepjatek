@@ -51,11 +51,11 @@ namespace PoP.classes
         public static double MaxHealth { get; private set; }
         public static double Health { get; private set; }
 
-        public static int MaxMana { get; private set; }
-        public static int Mana { get; private set; }
+        public static double MaxMana { get; private set; }
+        public static double Mana { get; private set; }
 
-        public static int ManaRate { get; private set; }
-        //public static double ManaRateActual { get; private set; }
+        public static double BaseManaRate { get; private set; }
+        public static double ManaRate { get; private set; }
 
         public static Dictionary<Effect, int> EffectDict { get; set; } = new Dictionary<Effect, int>()
         {
@@ -73,19 +73,18 @@ namespace PoP.classes
             MaxHealth = 100;
             Health = MaxHealth;
 
-            MaxMana = 100;
+            MaxMana = 75;
             Mana = MaxMana;
 
-            ManaRate = 15;
-            //ManaRateActual = ManaRate;
+            BaseManaRate = 15;
         }
 
-        static public void AttackWithWeapon(Enemy target)
+        public static void AttackWithWeapon(Enemy target)
         {
             target.TakeDamage(Damage);
         }
 
-        static public void AttackWithSpell(Enemy target, Spell spell)
+        public static void AttackWithSpell(Enemy target, Spell spell)
         {
             target.TakeSpell(spell);
 
@@ -106,9 +105,50 @@ namespace PoP.classes
             }
         }
 
-        static public void TakeDamage(int damage)
+        public static void TakeDamage(double damage)
         {
-            // ha Health az <= 0, akkor az ellenség nyer: (Map.CurrentLocation as Combat).ChangeCombatPhase(CombatPhase.ENEMY_WIN);
+            if (Health - damage <= 0)
+            {
+                Health = 0;
+                (Map.CurrentLocation as Combat).ChangeCombatState((Map.CurrentLocation as Combat).LoseState);
+            }
+            else
+            {
+                Health -= damage;
+            }
+        }
+
+        public void TakeSpell(Spell spell)
+        {
+            TakeDamage(spell.Damage);
+
+            foreach (Effect effect in spell.EffectList)
+            {
+                if (effect == Effect.Stun)
+                {
+                    EffectDict[effect] = 1;
+                }
+                else if (effect == Effect.Poison)
+                {
+                    EffectDict[effect] = 2;
+                }
+                else
+                {
+                    EffectDict[effect] = 3;
+                }
+            }
+        }
+
+        public static void RegenerateMana()
+        {
+            if (Mana + ManaRate > MaxMana)
+            {
+                Mana = MaxMana;
+            }
+            else
+            {
+                Mana += ManaRate;
+            }
         }
     }
 }

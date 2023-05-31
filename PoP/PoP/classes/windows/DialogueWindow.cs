@@ -155,30 +155,17 @@ namespace PoP.classes.windows
         /// Adds a new combat line to the bottom.
         /// </summary>
         /// <param name="name">Left side of the combat line.</param>
-        /// <param name="lineList">Right side of the combat line.</param>
+        /// <param name="actionDescription">Right side of the combat line.</param>
         /// <param name="color">The color of the feft side of the combat line.</param>
-        public void ProgressCombat(string name, List<string> lineList, ColorAnsi color = ColorAnsi.WHITE)
+        public void ProgressCombat(string name, string actionDescription, ColorAnsi color = ColorAnsi.WHITE)
         {
-            List<string> actorLines = new List<string>();
-            for (int i = 0; i < lineList.Count; i++)
-            {
-                if (i == 0)
-                {
-                    actorLines.Add(Style.GetRemainingSpace(name, speakerMaxWidth - 3) + Style.Color(name, color) + "   ");
-                }
-                else
-                {
-                    actorLines.Add(Style.GetBlankLine(speakerMaxWidth));
-                }
-            }
+            string _actorLine = string.Empty;
+            _actorLine = Style.GetRemainingSpace(name, speakerMaxWidth - 3) + Style.Color(name, color) + "   ";
 
-            List<string> combatLineList = new List<string>();
-            for (int i = 0; i < actorLines.Count; i++)
-            {
-                combatLineList.Add(actorLines[i] + lineList[i]);
-            }
+            string _combatLine = string.Empty;
+            _combatLine = actionDescription;
 
-            history.AddRange(combatLineList);
+            history.Add(_actorLine + _combatLine);
 
             HasChanged = true;
         }

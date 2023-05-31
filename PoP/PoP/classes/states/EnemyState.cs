@@ -8,14 +8,17 @@ namespace PoP.classes.states
 {
     internal class EnemyState : State
     {
-        public EnemyState(Combat loc) : base(loc)
-        {
+        private Enemy enemy;
 
+        public EnemyState(Combat loc, Enemy enemy) : base(loc)
+        {
+            this.enemy = enemy;
         }
 
         public override void Enter()
         {
-            
+            string actionDesc = enemy.TakeAction();
+            Wire.Dialogue.ProgressCombat(enemy.Name, actionDesc, ColorAnsi.ORANGE);
         }
 
         public override void KeyPressed(ConsoleKey key)

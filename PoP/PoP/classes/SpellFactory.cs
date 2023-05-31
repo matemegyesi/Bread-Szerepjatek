@@ -16,47 +16,13 @@ namespace PoP.classes
             double mana = double.Parse(properties["mana"].ToString());
             double damage = double.Parse(properties["damage"].ToString());
             double heal = double.Parse(properties["heal"].ToString());
-            string[] effects = properties["effects"].ToString().Split(';');
-            List<Effect> effectList = new List<Effect>();
-            foreach (string effect in effects)
-            {
-                switch (effect)
-                {
-                    case "Burn":
-                        effectList.Add(Effect.Burn);
-                        break;
-
-                    case "Freeze":
-                        effectList.Add(Effect.Freeze);
-                        break;
-
-                    case "Stun":
-                        effectList.Add(Effect.Stun);
-                        break;
-
-                    case "Poison":
-                        effectList.Add(Effect.Poison);
-                        break;
-
-                    case "Bleed":
-                        effectList.Add(Effect.Bleed);
-                        break;
-
-                    case "Buff":
-                        effectList.Add(Effect.Buff);
-                        break;
-
-                    case "Debuff":
-                        effectList.Add(Effect.Debuff);
-                        break;
-                }
-            }
+            List<Effect> effects = FileInput.GetEffectList(properties["effects"].ToString().Split(';'));
             int level = int.Parse(properties["level"].ToString());
             string description = properties["description"].ToString();
 
             try
             {
-                spell = new Spell(name, mana, damage, heal, effectList, level, description);
+                spell = new Spell(name, mana, damage, heal, effects, level, description);
             }
             catch { }
 

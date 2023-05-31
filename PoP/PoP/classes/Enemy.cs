@@ -12,7 +12,12 @@ namespace PoP.classes
     class Enemy
     {
         public string Name { get; set; }
+        public int Level { get; set; }
+
+        public double BaseDamage { get; set; }
         public double Damage { get; set; }
+
+        public double BaseDefence { get; set; }
         public double Defence { get; set; }
 
         public double MaxHealth { get; set; }
@@ -20,8 +25,6 @@ namespace PoP.classes
 
         public int MaxMana { get; set; }
         public int Mana { get; set; }
-
-        public int Level { get; set; }
 
         public Dictionary<Effect, int> EffectDict = new Dictionary<Effect, int>()
         {
@@ -40,8 +43,8 @@ namespace PoP.classes
         public Enemy(Dictionary<string, object> data, Combat location)
         {
             Name = data["name"].ToString();
-            Damage = double.Parse(data["damage"].ToString());
-            Defence = double.Parse(data["defence"].ToString());
+            BaseDamage = double.Parse(data["damage"].ToString());
+            BaseDefence = double.Parse(data["defence"].ToString());
             MaxHealth = double.Parse(data["health"].ToString());
             Health = MaxHealth;
             Level = int.Parse(data["level"].ToString());
@@ -51,21 +54,20 @@ namespace PoP.classes
 
         public string TakeAction()
         {
-            string action = $"The enemy dealt {Damage} damage.";
+            string action = $"The enemy dealt {Style.Color(BaseDamage.ToString("0.# dmg"), ColorAnsi.LIGHT_RED)}.";
 
-            // itt lesz az AI-a majd az enemy-nek, egyelőre csak az EnemyAttack()-ot kell meghívni
+            EnemyAttack();
 
             return action;
         }
 
         public void EnemyAttack()
         {
-            // Player TakeDamage()-ét kell meghívni, aminek a paramétere Damage
+            Player.TakeDamage(BaseDamage);
         }
 
         public void TakeDamage(double damage)
         {
-            // ha Health <= 0, akkor a játékos nyer: (Map.CurrentLocation as Combat).ChangeCombatPhase(CombatPhase.PLAYER_WIN);
             if (Health - damage <= 0)
             {
                 Health = 0;
