@@ -15,12 +15,21 @@ namespace PoP.classes.states
 
         public override void Enter()
         {
+            ResetBooleans(true);
 
+            Wire.Combat.TurnTitle = $"{Player.Name} won!";
+            Wire.Combat.SpaceKeyName = "Leave encounter";
+
+            actionDescription = Style.Color($"slayed {stateMachine.enemy.Name}.", ColorAnsi.RED);
+            Wire.Dialogue.ProgressCombat(Player.Name, actionDescription, ColorAnsi.GREEN);
         }
 
         public override void KeyPressed(ConsoleKey key)
         {
-
+            if (key == ConsoleKey.Spacebar)
+            {
+                stateMachine.End();
+            }
         }
 
         public override void Exit()

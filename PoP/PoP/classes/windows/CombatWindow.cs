@@ -37,7 +37,7 @@ namespace PoP.classes.windows
         // Window settings
         public string FKeyName { get; set; }
         public string SpaceKeyName { get; set; }
-        public string TurnName { get; set; }
+        public string TurnTitle { get; set; }
 
         // Combat settings
         private Combat combat;
@@ -122,7 +122,7 @@ namespace PoP.classes.windows
         {
             string header = string.Empty;
 
-            string _turn = TurnName;
+            string _turn = TurnTitle;
             header += Style.GetRemainingSpace(Style.PurgeAnsi(_turn).Length / 2, Width / 2);
             header += Style.GetFormat(FormatAnsi.HIGHLIGHT) + _turn;
 

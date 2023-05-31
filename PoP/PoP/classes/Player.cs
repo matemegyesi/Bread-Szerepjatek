@@ -130,7 +130,7 @@ namespace PoP.classes
             if (Health - damage <= 0)
             {
                 Health = 0;
-                (Map.CurrentLocation as Combat).ChangeCombatState((Map.CurrentLocation as Combat).LoseState);
+                (Map.CurrentLocation as Combat).EnemyState.SlayedPlayer = true;
             }
             else
             {

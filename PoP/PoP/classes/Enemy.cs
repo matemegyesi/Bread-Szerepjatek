@@ -85,7 +85,7 @@ namespace PoP.classes
             if (Health - damage <= 0)
             {
                 Health = 0;
-                combat.ChangeCombatState(combat.WinState);
+                combat.PlayerState.SlayedEnemy = true;
             }
             else
             {

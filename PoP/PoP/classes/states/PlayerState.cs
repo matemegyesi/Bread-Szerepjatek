@@ -8,6 +8,7 @@ namespace PoP.classes.states
 {
     internal class PlayerState : State
     {
+        public bool SlayedEnemy { get; set; }
         private bool doneAction;
 
         public PlayerState(Combat loc) : base(loc)
@@ -26,7 +27,7 @@ namespace PoP.classes.states
 
             Player.RegenerateMana();
 
-            Wire.Combat.TurnName = Style.Color($" # {Player.Name}'s turn # ", ColorAnsi.GREEN);
+            Wire.Combat.TurnTitle = Style.Color($" # {Player.Name}'s turn # ", ColorAnsi.GREEN);
             Wire.Combat.ForceUpdate();
         }
 
@@ -82,8 +83,16 @@ namespace PoP.classes.states
             {
                 if (key == ConsoleKey.Spacebar)
                 {
-                    Wire.Combat.ForceUpdate(); //
-                    stateMachine.ChangeCombatState(stateMachine.EnemyState);
+                    if (!SlayedEnemy)
+                    {
+                        Wire.Combat.ForceUpdate(); //
+                        stateMachine.ChangeCombatState(stateMachine.EnemyState);
+                    }
+                    else
+                    {
+                        Wire.Combat.ForceUpdate(); //
+                        stateMachine.ChangeCombatState(stateMachine.WinState);
+                    }
                 }
             }
         }

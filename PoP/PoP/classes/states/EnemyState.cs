@@ -8,6 +8,7 @@ namespace PoP.classes.states
 {
     internal class EnemyState : State
     {
+        public bool SlayedPlayer { get; set; }
         private Enemy enemy;
 
         public EnemyState(Combat loc, Enemy enemy) : base(loc)
@@ -19,7 +20,7 @@ namespace PoP.classes.states
         {
             actionDescription = enemy.TakeAction();
             Wire.Dialogue.ProgressCombat(enemy.Name, actionDescription, ColorAnsi.ORANGE);
-            Wire.Combat.TurnName = Style.Color($" # {enemy.Name}'s turn # ", ColorAnsi.ORANGE);
+            Wire.Combat.TurnTitle = Style.Color($" # {enemy.Name}'s turn # ", ColorAnsi.ORANGE);
 
             stateMachine.CanContinue = true;
         }
@@ -28,8 +29,16 @@ namespace PoP.classes.states
         {
             if (key == ConsoleKey.Spacebar)
             {
-                Wire.Combat.ForceUpdate(); //
-                stateMachine.ChangeCombatState(stateMachine.PlayerState);
+                if (!SlayedPlayer)
+                {
+                    Wire.Combat.ForceUpdate(); //
+                    stateMachine.ChangeCombatState(stateMachine.PlayerState);
+                }
+                else
+                {
+                    Wire.Combat.ForceUpdate(); //
+                    stateMachine.ChangeCombatState(stateMachine.LoseState);
+                }
             }
         }
 
