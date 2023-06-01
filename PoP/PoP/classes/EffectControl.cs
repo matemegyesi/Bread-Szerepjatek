@@ -6,19 +6,49 @@ using System.Threading.Tasks;
 
 namespace PoP.classes
 {
+    /// <summary>
+    /// EFFECTs influence stats and create difficult choices in combat.
+    /// </summary>
     public enum Effect
     {
+        /// <summary>
+        /// BURN EFFECT halves the defence for the Player.
+        /// </summary>
         Burn,
+        /// <summary>
+        /// FREEZE EFFECT halves the mana regeneration rate for the Player.
+        /// </summary>
         Freeze,
+        /// <summary>
+        /// STUN EFFECT takes away the control from the Player.
+        /// </summary>
         Stun,
+        /// <summary>
+        /// POISON EFFECT disables a spell of the Player.
+        /// The disablement depends on the amount of spells.
+        /// There's a 10% chance that every spell gets disabled.
+        /// </summary>
         Poison,
+        /// <summary>
+        /// BLEED EFFECT takes away 25% from the health of the Player.
+        /// </summary>
         Bleed,
+        /// <summary>
+        /// BUFF EFFECT raises the damage by 25% for the Player.
+        /// </summary>
         Buff,
+        /// <summary>
+        /// DEBUFF EFFECT reduces the damage by 25% for the Player.
+        /// </summary>
         Debuff
     }
 
     internal static class EffectControl
     {
+        /// <summary>
+        /// Activates the changes of the Effect for the Player.
+        /// </summary>
+        /// <param name="effect">The Effect enum that has to take effect.</param>
         public static void TakeEffect(Effect effect)
         {
             switch (effect)
@@ -72,6 +102,11 @@ namespace PoP.classes
             }
         }
 
+        /// <summary>
+        /// Activates the changes of the Effect for the specified enemy.
+        /// </summary>
+        /// <param name="effect">The Effect enum that has to take effect.</param>
+        /// <param name="target">The Enemy that got the effect.</param>
         public static void TakeEffect(Effect effect, Enemy target)
         {
             return;
