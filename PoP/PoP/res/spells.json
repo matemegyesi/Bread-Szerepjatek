@@ -1,7 +1,7 @@
 [
   {
     "name": "Flare",
-    "mana": 10,
+    "mana": 20,
     "damage": 30,
     "heal": 0,
     "effects": "Burn",
@@ -10,8 +10,8 @@
   },
   {
     "name": "Frost breath",
-    "mana": 10,
-    "damage": 10,
+    "mana": 20,
+    "damage": 15,
     "heal": 0,
     "effects": "Freeze",
     "level": 1,
@@ -19,7 +19,7 @@
   },
   {
     "name": "Lightning strike",
-    "mana": 20,
+    "mana": 40,
     "damage": 0,
     "heal": 0,
     "effects": "Stun",
@@ -28,8 +28,8 @@
   },
   {
     "name": "Poison cloud",
-    "mana": 15,
-    "damage": 5,
+    "mana": 30,
+    "damage": 15,
     "heal": 0,
     "effects": "Poison",
     "level": 1,
@@ -37,7 +37,7 @@
   },
   {
     "name": "Infusion",
-    "mana": 40,
+    "mana": 50,
     "damage": 50,
     "heal": -50,
     "effects": "Bleed",
@@ -46,17 +46,17 @@
   },
   {
     "name": "Healbuff",
-    "mana": 60,
+    "mana": 75,
     "damage": 0,
-    "heal": 50,
+    "heal": 40,
     "effects": "Buff",
     "level": 1,
     "description": ""
   },
   {
     "name": "Bone cracking",
-    "mana": 75,
-    "damage": 50,
+    "mana": 60,
+    "damage": 40,
     "heal": 0,
     "effects": "",
     "level": 1,
@@ -64,7 +64,7 @@
   },
   {
     "name": "Dark mist",
-    "mana": 50,
+    "mana": 30,
     "damage": 0,
     "heal": 0,
     "effects": "Debuff",
