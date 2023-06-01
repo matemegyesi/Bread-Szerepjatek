@@ -19,8 +19,8 @@ namespace PoP.classes.states
         public override void Enter()
         {
             actionDescription = enemy.TakeAction();
-            Wire.Dialogue.ProgressCombat(enemy.Name, actionDescription, ColorAnsi.ORANGE);
-            Wire.Combat.TurnTitle = Style.Color($" # {enemy.Name}'s turn # ", ColorAnsi.ORANGE);
+            Wire.Dialogue.ProgressCombat(enemy.Name, actionDescription, ColorAnsi.DARK_RED);
+            Wire.Combat.TurnTitle = Style.Color($" # {enemy.Name}'s turn # ", ColorAnsi.DARK_RED);
 
             stateMachine.CanContinue = true;
         }

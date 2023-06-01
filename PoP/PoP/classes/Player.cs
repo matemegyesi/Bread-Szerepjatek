@@ -26,7 +26,7 @@ namespace PoP.classes
                 return damage;
             }
         }
-        public static double Damage { get; private set; }
+        public static double Damage { get; set; }
 
         public static double BaseDefence
         {
@@ -46,7 +46,7 @@ namespace PoP.classes
                 return defence;
             }
         }
-        public static double Defence { get; private set; }
+        public static double Defence { get; set; }
 
         public static double MaxHealth { get; private set; }
         public static double Health { get; private set; }
@@ -55,7 +55,7 @@ namespace PoP.classes
         public static double Mana { get; private set; }
 
         public static double BaseManaRate { get; private set; }
-        public static double ManaRate { get; private set; }
+        public static double ManaRate { get; set; }
 
         public static Dictionary<Effect, int> EffectDict { get; set; } = new Dictionary<Effect, int>()
         {
@@ -67,9 +67,21 @@ namespace PoP.classes
             { Effect.Buff, 0 },
             { Effect.Debuff, 0 }
         };
+        public static bool IsStunned { get; set; }
+        public static List<bool> PoisonedSpells { get; set; } = new List<bool>(4)
+        {
+            { false },
+            { false },
+            { false },
+            { false }
+        };
 
         public static void Init()
         {
+            Damage = BaseDamage;
+
+            Defence = BaseDefence;
+
             MaxHealth = 100;
             Health = MaxHealth;
 
@@ -77,6 +89,7 @@ namespace PoP.classes
             Mana = MaxMana;
 
             BaseManaRate = 15;
+            ManaRate = BaseManaRate;
         }
 
         public static string AttackWithWeapon(Enemy target)
@@ -177,6 +190,24 @@ namespace PoP.classes
             else
             {
                 Mana += BaseManaRate;
+            }
+        }
+
+        public static void SetPosionedSpells(bool arePoisoned)
+        {
+            if (!arePoisoned)
+            {
+                PoisonedSpells[0] = false;
+                PoisonedSpells[1] = false;
+                PoisonedSpells[2] = false;
+                PoisonedSpells[3] = false;
+            }
+            else
+            {
+                PoisonedSpells[0] = true;
+                PoisonedSpells[1] = true;
+                PoisonedSpells[2] = true;
+                PoisonedSpells[3] = true;
             }
         }
     }

@@ -133,16 +133,19 @@ namespace PoP.classes.windows
         {
             List<string> spellCardList = new List<string>();
             Width = SPELL_WIDTH;
-
+            
             string _padding = Style.GetBlankLine(5);
             List<string> topList = new List<string>();
             List<string> bottomList = new List<string>();
 
             if (spell != null)
             {
-                // TOP LIST - Key
+                #region TOP LIST
+                
+                // Key
                 Width = SPELL_WIDTH - 10;
 
+                // Text
                 string _key;
                 if (!poisoned)
                 {
@@ -154,27 +157,47 @@ namespace PoP.classes.windows
                 }
                 string _keyCenter = Style.GetRemainingSpace(_key.Length / 2, Width / 2);
 
-                if (!poisoned && enabled)
+                // Color
+                if (Player.Mana < spell.ManaCost && !poisoned)
+                    enabled = false;
+
+                if (poisoned)
                 {
-                    _key = Style.ColorFormat(_key, ColorAnsi.RED, FormatAnsi.HIGHLIGHT);
+                    if (enabled)
+                    {
+                        _key = Style.Color(_key, ColorAnsi.CORAL);
+                    }
+                    else
+                    {
+                        _key = Style.Color(_key, ColorAnsi.DARK_GREY);
+                    }
                 }
-                else if (!enabled && !poisoned)
+                else
                 {
-                    _key = Style.ColorFormat(_key, ColorAnsi.DARK_GREY, FormatAnsi.HIGHLIGHT);
+                    if (enabled)
+                    {
+                        _key = Style.ColorFormat(_key, ColorAnsi.RED, FormatAnsi.HIGHLIGHT);
+                    }
+                    else
+                    {
+                        _key = Style.ColorFormat(_key, ColorAnsi.DARK_GREY, FormatAnsi.HIGHLIGHT);
+                    }
                 }
-                else if (poisoned)
-                {
-                    _key = Style.Color(_key, ColorAnsi.CORAL);
-                }
+
                 AddLineLocal(ref topList, _keyCenter + _key);
 
+                // Borders
                 topList = cardTop.Surround(topList, Width);
                 foreach (string borderedLine in topList)
                 {
                     spellCardList.Add(_padding + borderedLine + _padding);
                 }
 
-                // BOTTOM LIST - Name
+                #endregion
+
+                #region BOTTOM LIST
+
+                // Name
                 Width = SPELL_WIDTH;
                 AddBlankLineLocal(ref bottomList);
 
@@ -228,6 +251,8 @@ namespace PoP.classes.windows
                 {
                     spellCardList.Add(borderedLines);
                 }
+
+                #endregion
             }
             else // No spell equipped
             {
@@ -289,7 +314,7 @@ namespace PoP.classes.windows
             AddBlankLineLocal(ref playerColumn);
 
             // Defence
-            AddLineLocal(ref playerColumn, GenerateInfo("DEFENCE: ", Player.BaseDefence.ToString("0 def"), true, Style.DefenceColor));
+            AddLineLocal(ref playerColumn, GenerateInfo("DEFENCE: ", Player.Defence.ToString("0 def"), true, Style.DefenceColor) + GenerateEffectNotice(Effect.Burn));
 
             AddBlankLineLocal(ref playerColumn);
 
@@ -308,9 +333,9 @@ namespace PoP.classes.windows
             }
 
             AddBlankLineLocal(ref playerColumn);
-            
+
             // Mana regeneration rate
-            AddLineLocal(ref playerColumn, GenerateInfo("MANA REGENERATION: ", Player.BaseManaRate.ToString("+0 mana/turn"), true, Style.ManaRegColor));
+            AddLineLocal(ref playerColumn, GenerateInfo("MANA REGENERATION: ", Player.ManaRate.ToString("+0.# mana/turn"), true, Style.ManaRegColor) + GenerateEffectNotice(Effect.Freeze));
 
             // Fills up the remaining lines
             while (playerColumn.Count < COLUMN_HEIGHT)
@@ -389,13 +414,13 @@ namespace PoP.classes.windows
 
             string _info = string.Empty;
             string _infoTitle = "DAMAGE:";
-            string _infoValue = Player.BaseDamage.ToString("0 dmg");
+            string _infoValue = Player.Damage.ToString("0 dmg");
 
             _info += Style.Color(_infoTitle, ColorAnsi.WHITE);
             _info += ' ';
             _info += Style.Color(_infoValue, ColorAnsi.LIGHT_RED);
 
-            AddLineLocal(ref weaponList, _weapon + "   " + _info);
+            AddLineLocal(ref weaponList, _weapon + "   " + _info + GenerateEffectNotice(Effect.Buff) + GenerateEffectNotice(Effect.Debuff));
 
             Width = 148;
             return weaponList;
@@ -403,10 +428,10 @@ namespace PoP.classes.windows
 
         private void GenerateLoadout()
         {
-            loadout[0] = GenerateSpellCard(Inventory.sorcery[0], 'Q', combat.CanUseSorcery, false);
-            loadout[1] = GenerateSpellCard(Inventory.sorcery[1], 'W', combat.CanUseSorcery, false);
-            loadout[2] = GenerateSpellCard(Inventory.sorcery[2], 'E', combat.CanUseSorcery, false);
-            loadout[3] = GenerateSpellCard(Inventory.sorcery[3], 'R', combat.CanUseSorcery, false);
+            loadout[0] = GenerateSpellCard(Inventory.sorcery[0], 'Q', combat.CanUseSorcery, Player.PoisonedSpells[0]);
+            loadout[1] = GenerateSpellCard(Inventory.sorcery[1], 'W', combat.CanUseSorcery, Player.PoisonedSpells[1]);
+            loadout[2] = GenerateSpellCard(Inventory.sorcery[2], 'E', combat.CanUseSorcery, Player.PoisonedSpells[2]);
+            loadout[3] = GenerateSpellCard(Inventory.sorcery[3], 'R', combat.CanUseSorcery, Player.PoisonedSpells[3]);
         }
 
         private string GenerateMenu()
@@ -462,7 +487,7 @@ namespace PoP.classes.windows
             List<string> sliderList = new List<string>();
 
             // Slider name
-            AddLineLocal(ref sliderList, Style.Color($"{name.ToUpper()} [{value}/{maxValue}]", ColorAnsi.WHITE), alignedLeft);
+            AddLineLocal(ref sliderList, Style.Color($"{name.ToUpper()} [{value.ToString("0.#")}/{maxValue.ToString("0.#")}]", ColorAnsi.WHITE), alignedLeft);
 
             // Slider
             int _sliderLength = 40;
@@ -489,8 +514,8 @@ namespace PoP.classes.windows
 
             info += Style.Color(name, ColorAnsi.WHITE) + Style.Color(value, color);
 
-            if (alignedLeft)
-                info += Style.GetRemainingSpace(name + value, Width);
+            //if (alignedLeft)
+            //    info += Style.GetRemainingSpace(name + value, Width);
 
             return info;
         }
@@ -558,6 +583,39 @@ namespace PoP.classes.windows
             }
 
             return effectIndicatorList;
+        }
+
+        private string GenerateEffectNotice(Effect effect, Enemy enemy = null)
+        {
+            string _notice = string.Empty;
+
+            if (enemy == null)
+            {
+                switch (effect)
+                {
+                    case Effect.Burn:
+                        if (Player.Defence < Player.BaseDefence)
+                            _notice = $" ({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
+                        break;
+
+                    case Effect.Freeze:
+                        if (Player.ManaRate < Player.BaseManaRate)
+                            _notice = $" ({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
+                        break;
+
+                    case Effect.Buff:
+                        if (Player.Damage > Player.BaseDamage)
+                            _notice = $" ({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
+                        break;
+
+                    case Effect.Debuff:
+                        if (Player.Damage < Player.BaseDamage)
+                            _notice = $" ({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
+                        break;
+                }
+            }
+
+            return _notice;
         }
 
         public void SetCombat(Combat combat)

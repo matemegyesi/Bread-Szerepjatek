@@ -35,6 +35,7 @@ namespace PoP.classes
             { Effect.Debuff, 0 }
         };
         public List<Effect> RandomEffects { get; private set; } = new List<Effect>();
+        public bool IsStunned { get; set; }
 
         public Dictionary<string, string> data { get; set; }
         private Combat combat;
