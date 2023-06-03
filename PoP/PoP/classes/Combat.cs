@@ -105,6 +105,8 @@ namespace PoP.classes
         /// </summary>
         public override void End()
         {
+            CurrentState.Exit();
+
             base.End();
             KeyboardInput.KeyPressed -= KeyPressed;
 
@@ -112,6 +114,7 @@ namespace PoP.classes
             Wire.Disable(Wire.Combat);
             Wire.Combat.SetCombat(null);
             Wire.Enable(Wire.Map);
+            Wire.Gear.UpdateGear();
 
             isCompleted = true;
             Wire.Map.UpdateLocation(this);
@@ -141,6 +144,11 @@ namespace PoP.classes
 
             CurrentState = nextState;
             CurrentState.Enter();
+        }
+
+        public void Loot()
+        {
+
         }
 
         public void KeyPressed(ConsoleKey key)

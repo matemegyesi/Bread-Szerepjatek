@@ -21,6 +21,7 @@ namespace PoP.classes.states
             Player.Damage = Player.BaseDamage;
             Player.Defence = Player.BaseDefence;
             Player.ManaRate = Player.BaseManaRate;
+
             stateMachine.enemy.Damage = stateMachine.enemy.BaseDamage;
             stateMachine.enemy.Defence = stateMachine.enemy.BaseDefence;
             stateMachine.enemy.CanHeal = true;

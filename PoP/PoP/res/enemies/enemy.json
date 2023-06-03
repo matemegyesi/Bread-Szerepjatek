@@ -8,7 +8,7 @@
     "name": "Dragon",
     "damage": "10",
     "defence": "10",
-    "health": "200",
+    "health": "150",
     "effects": "Burn;Bleed",
     "level": "1"
   }

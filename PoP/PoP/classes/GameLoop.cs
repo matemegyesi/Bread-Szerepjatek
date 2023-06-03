@@ -88,8 +88,7 @@ namespace PoP.classes
             Player.Init();
             Wire.Map.SetCharacterPosition(127, 27); // 9, 13 or 127, 27 //
 
-            Inventory.spellList[5].Equip(3);
-            Inventory.spellList[4].Equip(2);
+            Inventory.spellList[8].Equip(2);
             Inventory.spellList[1].Equip(1);
             Inventory.spellList[0].Equip(0);
             Wire.Sorcery.UpdateSpellList(Inventory.spellList);

@@ -169,6 +169,14 @@ namespace PoP.classes.windows
         }
 
         /// <summary>
+        /// Adds a new blank line to the bottom.
+        /// </summary>
+        public void ProgressBlank()
+        {
+            history.Add(string.Empty);
+        }
+
+        /// <summary>
         /// Clears the dialogue box.
         /// </summary>
         public void ClearDialogue()

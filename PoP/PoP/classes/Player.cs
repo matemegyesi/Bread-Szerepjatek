@@ -48,13 +48,13 @@ namespace PoP.classes
         }
         public static double Defence { get; set; }
 
-        public static double MaxHealth { get; private set; }
-        public static double Health { get; private set; }
+        public static double MaxHealth { get; set; }
+        public static double Health { get; set; }
 
-        public static double MaxMana { get; private set; }
-        public static double Mana { get; private set; }
+        public static double MaxMana { get; set; }
+        public static double Mana { get; set; }
 
-        public static double BaseManaRate { get; private set; }
+        public static double BaseManaRate { get; set; }
         public static double ManaRate { get; set; }
 
         public static Dictionary<Effect, int> EffectDict { get; set; } = new Dictionary<Effect, int>()
