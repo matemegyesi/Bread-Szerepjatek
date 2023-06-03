@@ -109,7 +109,38 @@ namespace PoP.classes
         /// <param name="target">The Enemy that got the effect.</param>
         public static void TakeEffect(Effect effect, Enemy target)
         {
-            return;
+            switch (effect)
+            {
+                case Effect.Burn:
+                    target.Defence = target.BaseDefence / 2;
+                    break;
+
+                case Effect.Freeze:
+                    target.CanHeal = false;
+                    break;
+
+                case Effect.Stun:
+                    target.IsStunned = true;
+                    break;
+
+                case Effect.Poison:
+                    target.CanCastEffect = false;
+                    break;
+
+                case Effect.Bleed:
+                    double _damage = target.Health * .1;
+                    target.TakeDamage(_damage);
+                    //Wire.Dialogue.ProgressCombat(effect.ToString(), $"effect caused {Style.Color(_damage.ToString("-0.# hp"), ColorAnsi.LIGHT_RED)}.", ColorAnsi.PINK);
+                    break;
+
+                case Effect.Buff:
+                    target.Damage += target.BaseDamage * .25;
+                    break;
+
+                case Effect.Debuff:
+                    target.Damage -= target.BaseDamage * .25;
+                    break;
+            }
         }
     }
 }

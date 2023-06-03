@@ -17,6 +17,16 @@ namespace PoP.classes.states
         {
             stateMachine.CanContinue = true;
 
+            // Set normal values
+            Player.Damage = Player.BaseDamage;
+            Player.Defence = Player.BaseDefence;
+            Player.ManaRate = Player.BaseManaRate;
+            stateMachine.enemy.Damage = stateMachine.enemy.BaseDamage;
+            stateMachine.enemy.Defence = stateMachine.enemy.BaseDefence;
+            stateMachine.enemy.CanHeal = true;
+            stateMachine.enemy.CanCastEffect = true;
+
+            // Visuals
             Wire.Combat.TurnTitle = Style.Color(" # Loadout inspection # ", ColorAnsi.WHITE);
             Wire.Combat.FKeyName = "Flee";
             Wire.Combat.SpaceKeyName = "Begin";

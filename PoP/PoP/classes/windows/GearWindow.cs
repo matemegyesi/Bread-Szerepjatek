@@ -131,7 +131,7 @@ namespace PoP.classes.windows
             List<string> overallInfo = new List<string>();
 
             string _hpTitle = "HEALTH: ";
-            AddLineLocal(ref overallInfo, Style.GetRemainingSpace(_hpTitle, 27) + Style.Color(_hpTitle, ColorAnsi.WHITE) + Style.ColorFormat(" " + Player.Health.ToString("0.#") + "/" + Player.MaxHealth.ToString("0.# hp") + " ", ColorAnsi.LIGHT_BLUE, FormatAnsi.HIGHLIGHT));
+            AddLineLocal(ref overallInfo, Style.GetRemainingSpace(_hpTitle, 27) + Style.Color(_hpTitle, ColorAnsi.WHITE) + Style.ColorFormat(" " + Player.MaxHealth.ToString("0.# hp") + " ", ColorAnsi.LIGHT_BLUE, FormatAnsi.HIGHLIGHT));
 
             AddBlankLineLocal(ref overallInfo);
 

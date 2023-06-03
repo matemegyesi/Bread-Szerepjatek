@@ -28,8 +28,9 @@ namespace PoP.classes.states
             foreach (Effect effect in Player.EffectDict.Where(x => x.Value > 0).Select(x => x.Key))
             {
                 EffectControl.TakeEffect(effect);
-                Player.EffectDict[effect]--;
             }
+
+            Player.RegenerateMana();
 
             // Stun check
             if (!Player.IsStunned)
@@ -48,10 +49,11 @@ namespace PoP.classes.states
                 actionDescription = "pulled themself together.";
                 ResetBooleans();
                 stateMachine.CanSkip = true;
-                Wire.Combat.FKeyName = "Wake up";
+                if (new Random().Next(0, 10) != 0)
+                    Wire.Combat.FKeyName = "Wake up";
+                else
+                    Wire.Combat.FKeyName = "Stay determined";
             }
-            
-            Player.RegenerateMana();
 
             // Visuals
             Wire.Combat.TurnTitle = Style.Color($" # {Player.Name}'s turn # ", ColorAnsi.GREEN);
@@ -68,14 +70,11 @@ namespace PoP.classes.states
                 // Skip
                 if (key == ConsoleKey.F)
                 {
-                    if (new Random().Next(0, 10) == 0)
-                    {
-                        actionDescription = "took a quick nap.";
-                    }
-                    else
-                    {
+                    if (new Random().Next(0, 10) != 0)
                         actionDescription = "rested a turn.";
-                    }
+                    else
+                        actionDescription = "took a quick nap.";
+
                     doneAction = true;
                 }
 
@@ -102,11 +101,11 @@ namespace PoP.classes.states
                             }
                             else if (Player.PoisonedSpells[i] == true)
                             {
-                                Wire.Dialogue.ProgressCombat("!!!", $"{Style.Color(Inventory.sorcery[i].Name, ColorAnsi.MAGENTA)} is disabled by the {Style.Color(Effect.Poison.ToString(), ColorAnsi.PINK)} effect.", ColorAnsi.RUST);
+                                Wire.Dialogue.ProgressCombat(">", $"{Style.Color(Inventory.sorcery[i].Name, ColorAnsi.MAGENTA)} is disabled by the {Style.Color(Effect.Poison.ToString(), ColorAnsi.PINK)} effect.", ColorAnsi.RUST);
                             }
                             else if (Inventory.sorcery[i].ManaCost > Player.Mana)
                             {
-                                Wire.Dialogue.ProgressCombat("!!!", $"Not enough {Style.Color("mana", ColorAnsi.PURPLE)}.", ColorAnsi.RUST);
+                                Wire.Dialogue.ProgressCombat(">", $"Not enough {Style.Color("mana", ColorAnsi.PURPLE)}.", ColorAnsi.RUST);
                             }
                         }
                     }
@@ -146,6 +145,15 @@ namespace PoP.classes.states
 
         public override void Exit()
         {
+            // Effect reduction
+            foreach (Effect effect in Player.EffectDict.Where(x => x.Value > 0).Select(x => x.Key))
+            {
+                Player.EffectDict[effect]--;
+            }
+
+            if (Player.IsStunned)
+                Player.IsStunned = false;
+
             ResetBooleans();
         }
     }

@@ -88,7 +88,7 @@ namespace PoP.classes
             MaxMana = 75;
             Mana = MaxMana;
 
-            BaseManaRate = 15;
+            BaseManaRate = 10;
             ManaRate = BaseManaRate;
         }
 
@@ -96,8 +96,16 @@ namespace PoP.classes
         {
             string action = string.Empty;
 
-            target.TakeDamage(BaseDamage);
-            action += $"dealt {Style.Color(BaseDamage.ToString("0.# dmg"), ColorAnsi.LIGHT_RED)}";
+            double potentialDamage = Damage;
+            double rng = new Random().NextDouble() * (1.1 - .9) + .9;
+            if (Damage > target.Defence)
+            {
+                potentialDamage -= Math.Sqrt(Damage - target.Defence);
+            }
+            potentialDamage *= rng;
+
+            target.TakeDamage(potentialDamage);
+            action += $"dealt {Style.Color(potentialDamage.ToString("0.# dmg"), ColorAnsi.LIGHT_RED)}";
 
             return action + '.';
         }

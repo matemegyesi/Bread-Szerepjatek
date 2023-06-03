@@ -314,7 +314,7 @@ namespace PoP.classes.windows
             AddBlankLineLocal(ref playerColumn);
 
             // Defence
-            AddLineLocal(ref playerColumn, GenerateInfo("DEFENCE: ", Player.Defence.ToString("0 def"), true, Style.DefenceColor) + GenerateEffectNotice(Effect.Burn));
+            AddLineLocal(ref playerColumn, GenerateInfo("DEFENCE: ", Player.Defence.ToString("0.# def"), true, Style.DefenceColor, GenerateEffectNotice(Effect.Burn)));
 
             AddBlankLineLocal(ref playerColumn);
 
@@ -335,7 +335,7 @@ namespace PoP.classes.windows
             AddBlankLineLocal(ref playerColumn);
 
             // Mana regeneration rate
-            AddLineLocal(ref playerColumn, GenerateInfo("MANA REGENERATION: ", Player.ManaRate.ToString("+0.# mana/turn"), true, Style.ManaRegColor) + GenerateEffectNotice(Effect.Freeze));
+            AddLineLocal(ref playerColumn, GenerateInfo("MANA REGENERATION: ", Player.ManaRate.ToString("+0.# mana/turn"), true, Style.ManaRegColor, GenerateEffectNotice(Effect.Freeze)));
 
             // Fills up the remaining lines
             while (playerColumn.Count < COLUMN_HEIGHT)
@@ -367,7 +367,7 @@ namespace PoP.classes.windows
             AddBlankLineLocal(ref enemyColumn);
 
             // Defence
-            AddLineLocal(ref enemyColumn, GenerateInfo("DEFENCE: ", enemy.BaseDefence.ToString("0 def"), false, Style.DefenceColor));
+            AddLineLocal(ref enemyColumn, GenerateInfo("DEFENCE: ", enemy.Defence.ToString("0.# def"), false, Style.DefenceColor, GenerateEffectNotice(Effect.Burn, enemy)));
 
             AddBlankLineLocal(ref enemyColumn);
 
@@ -378,6 +378,14 @@ namespace PoP.classes.windows
             }
 
             AddBlankLineLocal(ref enemyColumn);
+
+            // Damage
+            AddLineLocal(ref enemyColumn, GenerateInfo("DAMAGE: ", enemy.Damage.ToString("0.# dmg"), false, ColorAnsi.LIGHT_RED, GenerateEffectNotice(Effect.Buff, enemy) + GenerateEffectNotice(Effect.Debuff, enemy)));
+
+            AddBlankLineLocal(ref enemyColumn);
+
+            // Random effect(s)
+            AddLineLocal(ref enemyColumn, GenerateInfo("POSSIBLE EFFECT(S): ", String.Join(", ", enemy.RandomEffects), false, ColorAnsi.PINK, GenerateEffectNotice(Effect.Poison, enemy)));
 
             // Fills up the remaining lines
             while (enemyColumn.Count < COLUMN_HEIGHT)
@@ -414,13 +422,13 @@ namespace PoP.classes.windows
 
             string _info = string.Empty;
             string _infoTitle = "DAMAGE:";
-            string _infoValue = Player.Damage.ToString("0 dmg");
+            string _infoValue = Player.Damage.ToString("0.# dmg");
 
             _info += Style.Color(_infoTitle, ColorAnsi.WHITE);
             _info += ' ';
             _info += Style.Color(_infoValue, ColorAnsi.LIGHT_RED);
 
-            AddLineLocal(ref weaponList, _weapon + "   " + _info + GenerateEffectNotice(Effect.Buff) + GenerateEffectNotice(Effect.Debuff));
+            AddLineLocal(ref weaponList, _weapon + "   " + _info + ' ' + GenerateEffectNotice(Effect.Buff) + GenerateEffectNotice(Effect.Debuff));
 
             Width = 148;
             return weaponList;
@@ -505,17 +513,29 @@ namespace PoP.classes.windows
             return sliderList;
         }
 
-        private string GenerateInfo(string name, string value, bool alignedLeft, ColorAnsi color)
+        private string GenerateInfo(string name, string value, bool alignedLeft, ColorAnsi color, string additionalInfo = null)
         {
             string info = string.Empty;
 
             if (!alignedLeft)
-                info += Style.GetRemainingSpace(name + value, Width);
+            {
+                if (additionalInfo == null)
+                    info += Style.GetRemainingSpace(name + value, Width);
+                else
+                    info += Style.GetRemainingSpace(name.Length + value.Length + Style.PurgeAnsi(additionalInfo).Length + 1, Width);
+            }
 
-            info += Style.Color(name, ColorAnsi.WHITE) + Style.Color(value, color);
-
-            //if (alignedLeft)
-            //    info += Style.GetRemainingSpace(name + value, Width);
+            if (additionalInfo == null)
+            {
+                info += Style.Color(name, ColorAnsi.WHITE) + Style.Color(value, color);
+            }
+            else
+            {
+                if (alignedLeft)
+                    info += Style.Color(name, ColorAnsi.WHITE) + Style.Color(value, color) + ' ' + additionalInfo;
+                else
+                    info += additionalInfo + ' ' + Style.Color(name, ColorAnsi.WHITE) + Style.Color(value, color);
+            }
 
             return info;
         }
@@ -587,7 +607,7 @@ namespace PoP.classes.windows
 
         private string GenerateEffectNotice(Effect effect, Enemy enemy = null)
         {
-            string _notice = string.Empty;
+            string notice = string.Empty;
 
             if (enemy == null)
             {
@@ -595,27 +615,52 @@ namespace PoP.classes.windows
                 {
                     case Effect.Burn:
                         if (Player.Defence < Player.BaseDefence)
-                            _notice = $" ({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
+                            notice = $"({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
                         break;
 
                     case Effect.Freeze:
                         if (Player.ManaRate < Player.BaseManaRate)
-                            _notice = $" ({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
+                            notice = $"({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
                         break;
 
                     case Effect.Buff:
                         if (Player.Damage > Player.BaseDamage)
-                            _notice = $" ({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
+                            notice = $"({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
                         break;
 
                     case Effect.Debuff:
                         if (Player.Damage < Player.BaseDamage)
-                            _notice = $" ({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
+                            notice = $"({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
+                        break;
+                }
+            }
+            else
+            {
+                switch (effect)
+                {
+                    case Effect.Burn:
+                        if (enemy.Defence < enemy.BaseDefence)
+                            notice = $"({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
+                        break;
+
+                    case Effect.Poison:
+                        if (!enemy.CanCastEffect)
+                            notice = $"({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
+                        break;
+
+                    case Effect.Buff:
+                        if (enemy.Damage > enemy.BaseDamage)
+                            notice = $"({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
+                        break;
+
+                    case Effect.Debuff:
+                        if (enemy.Damage < enemy.BaseDamage)
+                            notice = $"({Style.Color(effect.ToString(), ColorAnsi.CORAL)})";
                         break;
                 }
             }
 
-            return _notice;
+            return notice;
         }
 
         public void SetCombat(Combat combat)

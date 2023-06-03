@@ -21,9 +21,6 @@ namespace PoP.classes
         public double MaxHealth { get; set; }
         public double Health { get; set; }
 
-        public int MaxMana { get; set; }
-        public int Mana { get; set; }
-
         public Dictionary<Effect, int> EffectDict = new Dictionary<Effect, int>()
         {
             { Effect.Burn, 0 },
@@ -36,9 +33,11 @@ namespace PoP.classes
         };
         public List<Effect> RandomEffects { get; private set; } = new List<Effect>();
         public bool IsStunned { get; set; }
+        public bool CanHeal { get; set; }
+        public bool CanCastEffect { get; set; }
 
-        public Dictionary<string, string> data { get; set; }
         private Combat combat;
+        private Random rng = new Random();
 
         public Enemy(Dictionary<string, object> data, Combat location)
         {
@@ -57,7 +56,21 @@ namespace PoP.classes
         {
             string action = string.Empty;
 
-            action += EnemyAttack();
+            if (!IsStunned)
+            {
+                if (rng.Next(0, 3) == 0 && Health < MaxHealth / 4 && CanHeal)
+                {
+                    action += EnemyHeal();
+                }
+                else
+                {
+                    action += EnemyAttack();
+                }
+            }
+            else
+            {
+                action += $"was knocked out";
+            }
 
             return action + '.';
         }
@@ -67,24 +80,54 @@ namespace PoP.classes
             string action = string.Empty;
 
             // Damage
-            Player.TakeDamage(BaseDamage);
-            action += $"dealt {Style.Color(BaseDamage.ToString("0.# dmg"), ColorAnsi.LIGHT_RED)}";
+            double potentialDamage = Damage;
+            double randomDouble = rng.NextDouble() * (1.2 - .8) + .8;
+            if (Damage > Player.Defence)
+            {
+                potentialDamage -= Math.Sqrt(Damage - Player.Defence);
+            }
+            potentialDamage *= randomDouble;
+
+            Player.TakeDamage(potentialDamage);
+            action += $"dealt {Style.Color(potentialDamage.ToString("0.# dmg"), ColorAnsi.LIGHT_RED)}";
 
             // Effect
-            if (new Random().Next(0, 6) == 0)
+            if (CanCastEffect)
             {
-                int rng = new Random().Next(0, RandomEffects.Count);
+                if (rng.Next(0, 5) == 0)
+                {
+                    int randomInt = rng.Next(0, RandomEffects.Count);
 
-                if (RandomEffects[rng] != Effect.Buff)
-                {
-                    Player.TakeEffect(RandomEffects[rng]);
-                    action += $", and cast {Style.Color(RandomEffects[rng].ToString(), ColorAnsi.PINK)} effect";
+                    if (RandomEffects[randomInt] != Effect.Buff)
+                    {
+                        Player.TakeEffect(RandomEffects[randomInt]);
+                        action += $", and cast {Style.Color(RandomEffects[randomInt].ToString(), ColorAnsi.PINK)} effect";
+                    }
+                    else
+                    {
+                        EffectDict[Effect.Buff] = 3;
+                        action += $", and cast {Style.Color(RandomEffects[randomInt].ToString(), ColorAnsi.PINK)} effect";
+                    }
                 }
-                else
-                {
-                    EffectDict[Effect.Buff] = 3;
-                    action += $", and cast {Style.Color(RandomEffects[rng].ToString(), ColorAnsi.PINK)} effect";
-                }
+            }
+
+            return action;
+        }
+
+        public string EnemyHeal()
+        {
+            string action = string.Empty;
+
+            double _heal = Player.BaseDamage / 3 * (rng.NextDouble() * (3 - 1.5) + 1.5);
+            if (Health + _heal > MaxHealth)
+            {
+                Health = MaxHealth;
+                action += $"fully {Style.Color("healed", ColorAnsi.LIGHT_BLUE)} back";
+            }
+            else
+            {
+                Health += _heal;
+                action += $"healed back {Style.Color(_heal.ToString("0.# hp"), ColorAnsi.LIGHT_BLUE)}";
             }
 
             return action;
