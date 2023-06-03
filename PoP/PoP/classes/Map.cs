@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json;
 using System.IO;
 
 namespace PoP.classes
@@ -31,6 +30,7 @@ namespace PoP.classes
         /// The path to the image file of the map
         /// </summary>
         public readonly string path;
+        private readonly List<Dictionary<string, object>> mapData = new List<Dictionary<string, object>>();
 
         /// <summary>
         /// A list of all the locations on the map
@@ -47,6 +47,28 @@ namespace PoP.classes
             this.path = path;
             ID = id;
 
+            // Reads the map file
+            mapData = FileInput.GetJsonDictList(path);
+            for (int i = 1; i < mapData.Count; i++)
+            {
+                try
+                {
+                    switch (mapData[i]["type"].ToString())
+                    {
+                        case "dialogue":
+                            AddLocation(i - 1, LocationType.DIALOGUE, mapData[i]["path"].ToString());
+                            break;
+                        case "combat":
+                            AddLocation(i - 1, LocationType.COMBAT, mapData[i]["path"].ToString());
+                            break;
+                        case "travel":
+                            AddLocation(i - 1, LocationType.TRAVEL, mapData[i]["path"].ToString(), int.Parse(mapData[i]["id"].ToString()));
+                            break;
+                    }
+                }
+                catch (Exception) { }
+            }
+
             maps.Add(this);
         }
 
@@ -57,7 +79,7 @@ namespace PoP.classes
         {
             // Display the map's image
             Wire.Map.UpdateLocationList(locations);
-            Wire.Map.ImportMap(path);
+            Wire.Map.ImportMap(mapData[0]["path"].ToString());
 
             // Set the current map to this map
             CurrentMap = this;

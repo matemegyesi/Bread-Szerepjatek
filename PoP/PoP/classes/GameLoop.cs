@@ -70,17 +70,11 @@ namespace PoP.classes
             action = new Action();
 
             // Initializes maps with file paths and adds locations to map3 using the Map class.
-            Map map1 = new Map("res\\maps\\Raudagnupur.txt", 0);
-            Map map3 = new Map("res\\maps\\volcano.txt", 1);
+            Map map1 = new Map("res\\maps\\raudagnupur_map.json", 0);
+            //Map map3 = new Map("res\\maps\\volcano.txt", 1);
             //Map map2 = new Map("res\\maps\\map1.txt");
             //Map map4 = new Map("res\\maps\\cave.txt");
             //Map map5 = new Map("res\\maps\\Capital.txt");
-
-            map1.AddLocation(2, LocationType.DIALOGUE, "res\\dialogue\\blacksmith.json");
-            map1.AddLocation(1, LocationType.DIALOGUE, "res\\dialogue\\talkwithhighpriest.json");
-            map1.AddLocation(3, LocationType.DIALOGUE, "res\\dialogue\\guiscardtalk.json");
-            map1.AddLocation(4, LocationType.COMBAT, "res\\enemies\\enemy.json");
-            map1.AddLocation(5, LocationType.TRAVEL, "res\\maps\\rudtovolcano.json", 1);
 
             //ReadItemFile("res\\itemFile.txt");
 

@@ -1,0 +1,28 @@
+﻿[
+  {
+    "name": "Raudagnupur",
+    "path": "res\\maps\\Raudagnupur.txt",
+    "id": 0
+  },
+  {
+    "type": "dialogue",
+    "path": "res\\dialogue\\talkwithhighpriest.json"
+  },
+  {
+    "type": "dialogue",
+    "path": "res\\dialogue\\blacksmith.json"
+  },
+  {
+    "type": "dialogue",
+    "path": "res\\dialogue\\guiscardtalk.json"
+  },
+  {
+    "type": "combat",
+    "path": "res\\enemies\\enemy.json"
+  },
+  {
+    "type": "travel",
+    "path": "res\\maps\\rudtovolcano.json",
+    "id": 1
+  }
+]
