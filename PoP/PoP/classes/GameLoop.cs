@@ -61,6 +61,7 @@ namespace PoP.classes
 
             // Initializes the Window Renderer
             Wire.Initialize();
+            display = new Display();
 
             // Main menu & tutorial
             Console.OutputEncoding = Encoding.Unicode;
@@ -119,7 +120,6 @@ namespace PoP.classes
             Console.Clear();
 
             // Initializes objects for the display, keyboard input, and player movement.
-            display = new Display();
             Running = true;
             keyboardInput = new KeyboardInput();
             playerMovement = new Movement(127, 27); // 9, 13 or 127, 27 //
