@@ -77,6 +77,12 @@
     <None Update="res\maps\rudtovolcano.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="res\tutorial.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="res\pop_logo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="res\spells.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

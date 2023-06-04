@@ -1,0 +1,32 @@
+╼━┅ CONTROLS ┅━╾
+
+Movement on the map: [WASD]
+Continue dialogue/combat: [SPACE]
+Switch between item/spell invenvtory: [F12] + [SPACE]
+Equip item: [F12] + Key (next to the item)
+Equip spell: [F12] + Key (next to the spell) + Slot (Q/W/E/R)
+Quit: [ESC] (double tap)
+
+
+
+╼━┅ STATS ┅━╾
+
+Health: if it reaches zero, you die
+Damage: the average dmg you deal with a weapon attack
+Defence: decreases incoming dmg, if it's above you defence number
+Mana: you can only use spells, if you have enough mana
+Mana regeneration rate: how much mana you get back per turn
+
+
+
+╼━┅ EFFECTS ┅━╾
+
+Burn: decreases defence by 50%
+Freeze: decreases mana regeneration by 50%
+└ The enemy can't heal.
+Stun: knocks out for a turn
+Poison: can disable spells during combat
+└ Disables the enemy's effect casting ability.
+Bleed: takes away 10% of the remaining health
+Buff: raises the damage by 25%
+Debuff: reduces the damage by 25%
