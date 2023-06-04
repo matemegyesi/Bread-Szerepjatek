@@ -23,10 +23,10 @@ Mana regeneration rate: how much mana you get back per turn
 
 Burn: decreases defence by 50%
 Freeze: decreases mana regeneration by 50%
-└ The enemy can't heal.
+└ The enemy can't heal
 Stun: knocks out for a turn
 Poison: can disable spells during combat
-└ Disables the enemy's effect casting ability.
+└ Disables the enemy's effect casting ability
 Bleed: takes away 10% of the remaining health
 Buff: raises the damage by 25%
 Debuff: reduces the damage by 25%

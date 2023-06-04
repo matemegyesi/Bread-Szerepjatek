@@ -150,7 +150,21 @@ namespace PoP.classes
         {
             Loot loot = new Loot(enemy.Level);
 
-            //Wire.Dialogue.ProgressCombat("", $"{Style.Color(loot.ItemLoot[0].Name, ColorAnsi.LIGHT_BLUE)}, damage: { Style.Color(loot.ItemLoot[0].DamageOrDefense.ToString("0"), ColorAnsi.LIGHT_RED)}");
+            for (int i = 0; i < loot.ItemLoot.Count; i++)
+            {
+                string _loot = string.Empty;
+                if (i == 0)
+                    _loot = "Loot";
+
+                if (loot.ItemLoot[i] is Weapon)
+                {
+                    Wire.Dialogue.ProgressCombat(_loot, $"{Style.Color(loot.ItemLoot[i].Name, ColorAnsi.LIGHT_BLUE)}, damage: {Style.Color(loot.ItemLoot[i].DamageOrDefense.ToString("0 dmg"), ColorAnsi.LIGHT_RED)}", ColorAnsi.WHEAT);
+                }
+                else if (loot.ItemLoot[i] is Armor)
+                {
+                    Wire.Dialogue.ProgressCombat(_loot, $"{Style.Color(loot.ItemLoot[0].Name, ColorAnsi.LIGHT_BLUE)}, defense: {Style.Color(loot.ItemLoot[i].DamageOrDefense.ToString("0 def"), ColorAnsi.AQUA)}", ColorAnsi.WHEAT);
+                }
+            }
 
             loot.ItemLoot.ForEach(x => x.Collect());
         }

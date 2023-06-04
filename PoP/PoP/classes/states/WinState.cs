@@ -26,11 +26,17 @@ namespace PoP.classes.states
             Wire.Dialogue.ProgressCombat(Player.Name, actionDescription, ColorAnsi.GREEN);
             Wire.Dialogue.ProgressBlank();
 
-            // Loot + Boost description
-            Wire.Dialogue.ProgressCombat("Player", $"{Style.Color((Math.Round(stateMachine.enemy.MaxHealth / 100) * 10).ToString("+0 max hp"), ColorAnsi.LIGHT_BLUE)}", ColorAnsi.GREEN);
+            // Boost description
+            Wire.Dialogue.ProgressCombat("Boost", $"{Style.Color((Math.Round(stateMachine.enemy.MaxHealth / 100) * 10).ToString("+0 max hp"), ColorAnsi.LIGHT_BLUE)}", ColorAnsi.TEAL);
             Wire.Dialogue.ProgressCombat("", $"{Style.Color(10.ToString("+0 max mana"), ColorAnsi.PURPLE)}");
             Wire.Dialogue.ProgressCombat("", $"{Style.Color(2.5.ToString("+0.# mana rate"), ColorAnsi.DARK_RED)}");
             Wire.Dialogue.ProgressBlank();
+
+            // Loot description
+            stateMachine.Loot();
+            Wire.Dialogue.ProgressBlank();
+
+            Wire.Combat.ForceUpdate();
         }
 
         public override void KeyPressed(ConsoleKey key)
@@ -56,8 +62,6 @@ namespace PoP.classes.states
             {
                 Player.EffectDict[effect] = 0;
             }
-
-            stateMachine.Loot();
         }
     }
 }
