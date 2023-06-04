@@ -128,7 +128,7 @@ namespace PoP.classes
 
             // Initializes maps with file paths and adds locations to map3 using the Map class.
             Map map1 = new Map("res\\maps\\raudagnupur_map.json", 0);
-            //Map map3 = new Map("res\\maps\\volcano.txt", 1);
+            Map map3 = new Map("res\\maps\\ermir_map.json", 1);
             //Map map2 = new Map("res\\maps\\map1.txt");
             //Map map4 = new Map("res\\maps\\cave.txt");
             //Map map5 = new Map("res\\maps\\Capital.txt");
