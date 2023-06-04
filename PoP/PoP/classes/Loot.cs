@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PoP.classes
 {
-    internal class Loot
+    class Loot
     {
-        Random rand = new Random();
+        //Random rand = new Random();
 
         public static Dictionary<int, int> RarityLevels = new Dictionary<int, int>(){
             {1, 30 },
@@ -18,11 +18,11 @@ namespace PoP.classes
             {5, 150 }
         };
 
-        public static List<Dictionary<string, object>> AllItems = new();
+        public static List<Item> AllItems = new List<Item>();
 
         public int Rarity { get; set; }
         
-        public List<Item> ItemLoot { get; set; }
+        public List<Item> ItemLoot = new List<Item>();
 
         public Loot(int rlevel)
         {
@@ -33,28 +33,28 @@ namespace PoP.classes
 
             int max = RarityLevels[Rarity];
 
-            List<Dictionary<string, object>> choices = new();
+            List<Item> _loot = AllItems.Where(x => x.DamageOrDefense <= max && x.DamageOrDefense >= max-30).ToList();
 
-            foreach (Dictionary<string, object> item in AllItems)
+            for (int i = 0; i < 2; i++)
             {
-                if (item["type"].ToString() == "armor")
-                    choices.AddRange(AllItems.Where(x => int.Parse(x["defense"].ToString()) >= max-30 && int.Parse(x["defense"].ToString()) <= max));
-                else if (item["type"].ToString() == "weapon")
-                    choices.AddRange(AllItems.Where(x => int.Parse(x["damage"].ToString()) >= max-30 && int.Parse(x["defense"].ToString()) <= max));
+                ItemLoot.Add(_loot[i]);
             }
 
-            for (int i = 0; i < 4; i++)
+        }
+
+        public void InitAllLoot()
+        {
+            List<Dictionary<string, object>> _items = FileInput.GetJsonDictList("res\\items\\items_weapon.json");
+
+            foreach(Dictionary<string, object> item in _items)
             {
-                int random = rand.Next(choices.Count);
-                Dictionary<string, object> item = choices[random];
-             
                 if (item["type"].ToString() == "Armor")
                 {
                     string name = item["name"].ToString();
                     double dod = double.Parse(item["defense"].ToString());
                     Slot slot = (Slot)Enum.Parse(typeof(Slot), item["slot"].ToString());
 
-                    ItemLoot.Add(ItemFactory.CreateItem(ItemType.ARMOR, name, dod, slot));
+                    AllItems.Add(ItemFactory.CreateItem(ItemType.ARMOR, name, dod, slot));
 
                 }
                 else if (item["type"].ToString() == "Weapon")
@@ -63,14 +63,10 @@ namespace PoP.classes
                     double dod = double.Parse(item["damage"].ToString());
                     Slot slot = (Slot)Enum.Parse(typeof(Slot), item["slot"].ToString());
 
-                    ItemLoot.Add(ItemFactory.CreateItem(ItemType.WEAPON, name, dod, slot));
+                    AllItems.Add(ItemFactory.CreateItem(ItemType.WEAPON, name, dod, slot));
                 }
             }
-        }
 
-        public void InitAllLoot()
-        {
-            AllItems = FileInput.GetJsonDictList("//res//items//items_weapon.json");
         }
     }
 }

@@ -32,6 +32,8 @@ namespace PoP.classes
         ///</summary>
         public Slot Slot { get; set; }
 
+        public abstract double DamageOrDefense { get; set; }
+
         public abstract void Collect();
 
         public abstract void Drop();

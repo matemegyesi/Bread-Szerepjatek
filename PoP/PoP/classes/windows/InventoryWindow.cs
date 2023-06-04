@@ -195,14 +195,14 @@ namespace PoP.classes.windows
             if (item is Weapon)
             {
                 string _dmg = " DAMAGE: ";
-                AddLineLocal(ref itemCardLineList, Style.GetRemainingSpace(_dmg, 15) + _dmg + Style.Color((item as Weapon).Damage.ToString("0.# dmg"), ColorAnsi.LIGHT_RED));
+                AddLineLocal(ref itemCardLineList, Style.GetRemainingSpace(_dmg, 15) + _dmg + Style.Color((item as Weapon).DamageOrDefense.ToString("0.# dmg"), ColorAnsi.LIGHT_RED));
             }
 
             // Defence
             if (item is Armor)
             {
                 string _def = " DEFENCE: ";
-                AddLineLocal(ref itemCardLineList, Style.GetRemainingSpace(_def, 15) + _def + Style.Color((item as Armor).Defence.ToString("0.# def"), ColorAnsi.AQUA));
+                AddLineLocal(ref itemCardLineList, Style.GetRemainingSpace(_def, 15) + _def + Style.Color((item as Armor).DamageOrDefense.ToString("0.# def"), ColorAnsi.AQUA));
             }
 
             // Equip

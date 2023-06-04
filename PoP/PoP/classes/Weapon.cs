@@ -12,7 +12,7 @@ namespace PoP.classes
         /// <summary>
         /// The damage the weapon adds to the player's statistics
         /// </summary>
-        public double Damage { get; set; }
+        public override double DamageOrDefense { get; set; }
 
         /// <summary>
         /// Constructor for a Weapon object, taking a name, weapon type, and damage value as parameters.
@@ -26,7 +26,7 @@ namespace PoP.classes
             if (main)
             {
                 Name = name;
-                Damage = damage;
+                DamageOrDefense = damage;
                 Slot = Slot.MainSword;
             }
             else
@@ -45,7 +45,7 @@ namespace PoP.classes
                         throw new ArgumentException($"Ez nem egy weapon tipus: {weaponType}");
                 }
                 Name = name;
-                Damage = damage;
+                DamageOrDefense = damage;
             }
         }
 
@@ -85,7 +85,7 @@ namespace PoP.classes
 
         public override string ToString()
         {
-            return $"{Name} / {Damage} / {Slot}";
+            return $"{Name} / {DamageOrDefense} / {Slot}";
         }
     }
 }

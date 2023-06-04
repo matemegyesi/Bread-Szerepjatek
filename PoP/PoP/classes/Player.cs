@@ -17,11 +17,11 @@ namespace PoP.classes
                 double damage = 0;
 
                 if (Inventory.gear[Slot.Hand] != null)
-                    damage += (Inventory.gear[Slot.Hand] as Weapon).Damage;
+                    damage += (Inventory.gear[Slot.Hand] as Weapon).DamageOrDefense;
                 if (Inventory.gear[Slot.Ring] != null)
-                    damage += (Inventory.gear[Slot.Ring] as Weapon).Damage;
+                    damage += (Inventory.gear[Slot.Ring] as Weapon).DamageOrDefense;
                 if (Inventory.gear[Slot.MainSword] != null)
-                    damage += (Inventory.gear[Slot.MainSword] as Weapon).Damage;
+                    damage += (Inventory.gear[Slot.MainSword] as Weapon).DamageOrDefense;
 
                 return damage;
             }
@@ -35,13 +35,13 @@ namespace PoP.classes
                 double defence = 0;
 
                 if (Inventory.gear[Slot.Head] != null)
-                    defence += (Inventory.gear[Slot.Head] as Armor).Defence;
+                    defence += (Inventory.gear[Slot.Head] as Armor).DamageOrDefense;
                 if (Inventory.gear[Slot.Chest] != null)
-                    defence += (Inventory.gear[Slot.Chest] as Armor).Defence;
+                    defence += (Inventory.gear[Slot.Chest] as Armor).DamageOrDefense;
                 if (Inventory.gear[Slot.Leg] != null)
-                    defence += (Inventory.gear[Slot.Leg] as Armor).Defence;
+                    defence += (Inventory.gear[Slot.Leg] as Armor).DamageOrDefense;
                 if (Inventory.gear[Slot.MainCape] != null)
-                    defence += (Inventory.gear[Slot.MainCape] as Armor).Defence;
+                    defence += (Inventory.gear[Slot.MainCape] as Armor).DamageOrDefense;
 
                 return defence;
             }

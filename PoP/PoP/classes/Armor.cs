@@ -11,7 +11,7 @@ namespace PoP.classes
         /// <summary>
         /// The Defense property represents a float value that represents how many percent of the damage it can negate.
         /// </summary>
-        public double Defence { get; set; }
+        public override double DamageOrDefense { get; set; }
 
         /// <summary>
         /// Creates a new armor with the specified name, type, and defense.
@@ -27,7 +27,7 @@ namespace PoP.classes
             {
                 Name = name;
                 Slot = Slot.MainCape;
-                Defence = defense;
+                DamageOrDefense = defense;
             }
             else
             {
@@ -43,7 +43,7 @@ namespace PoP.classes
                         throw new ArgumentException($"Ez nem egy armor tipus: {armorType}");
                 }
                 Name = name;
-                Defence = defense;
+                DamageOrDefense = defense;
             }
         }
 
@@ -81,7 +81,7 @@ namespace PoP.classes
         }
         public override string ToString()
         {
-            return $"{Name} / {Defence} / {Slot}";
+            return $"{Name} / {DamageOrDefense} / {Slot}";
         }
     }
 }

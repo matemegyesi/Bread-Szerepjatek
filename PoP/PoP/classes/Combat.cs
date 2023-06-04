@@ -148,7 +148,11 @@ namespace PoP.classes
 
         public void Loot()
         {
+            Loot loot = new Loot(enemy.Level);
 
+            //Wire.Dialogue.ProgressCombat("", $"{Style.Color(loot.ItemLoot[0].Name, ColorAnsi.LIGHT_BLUE)}, damage: { Style.Color(loot.ItemLoot[0].DamageOrDefense.ToString("0"), ColorAnsi.LIGHT_RED)}");
+
+            loot.ItemLoot.ForEach(x => x.Collect());
         }
 
         public void KeyPressed(ConsoleKey key)

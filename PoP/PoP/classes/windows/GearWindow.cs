@@ -182,13 +182,13 @@ namespace PoP.classes.windows
                 ColorAnsi _color = ColorAnsi.BLACK;
                 if (item is Weapon)
                 {
-                    _value = (item as Weapon).Damage;
+                    _value = (item as Weapon).DamageOrDefense;
                     _unit = "dmg";
                     _color = ColorAnsi.LIGHT_RED;
                 }
                 else if (item is Armor)
                 {
-                    _value = (item as Armor).Defence;
+                    _value = (item as Armor).DamageOrDefense;
                     _unit = "def";
                     _color = ColorAnsi.AQUA;
                 }
