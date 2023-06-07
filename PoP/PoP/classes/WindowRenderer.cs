@@ -17,7 +17,7 @@ namespace PoP.classes
         {
             get
             {
-                if ((Map.IsEnabled && Map.HasChanged) || (Gear.IsEnabled && Gear.HasChanged) || (Inventory.IsEnabled && Inventory.HasChanged) || (Dialogue.IsEnabled && Dialogue.HasChanged) || (Combat.IsEnabled && Combat.HasChanged) || (Sorcery.IsEnabled && Sorcery.HasChanged))
+                if ((Menu.IsEnabled && Menu.HasChanged) || (Map.IsEnabled && Map.HasChanged) || (Gear.IsEnabled && Gear.HasChanged) || (Inventory.IsEnabled && Inventory.HasChanged) || (Dialogue.IsEnabled && Dialogue.HasChanged) || (Combat.IsEnabled && Combat.HasChanged) || (Sorcery.IsEnabled && Sorcery.HasChanged))
                 {
                     return true;
                 }
@@ -28,6 +28,7 @@ namespace PoP.classes
             }
         }
 
+        public static MenuWindow Menu = new MenuWindow();
         public static MapWindow Map = new MapWindow();
         public static GearWindow Gear = new GearWindow();
         public static InventoryWindow Inventory = new InventoryWindow(PoP.Inventory.inventoryLimit);
@@ -37,6 +38,12 @@ namespace PoP.classes
 
         public static void Initialize()
         {
+            Menu.IsEnabled = true;
+        }
+
+        public static void BasicWindowSetup()
+        {
+            Menu.IsEnabled = false;
             Map.IsEnabled = true;
             Gear.IsEnabled = true;
             Inventory.IsEnabled = true;
@@ -59,6 +66,11 @@ namespace PoP.classes
             // DDDDDDD      DDDDDDD
 
             Border border = new Border(true, false, false, true);
+
+            if (Menu.IsEnabled)
+            {
+                AddWindow(ref windows, Menu.GetLines);
+            }
 
             if (Map.IsEnabled)
             {
@@ -100,12 +112,19 @@ namespace PoP.classes
                 border.IntersectionList.Clear();
             }
 
-            Border borderFull = new Border(false, true, true, false);
-            borderFull.IntersectionList.Add(new Intersection(BorderSide.Right, 0, Border.DOUBLE_TOPRIGHT));
-            borderFull.IntersectionList.Add(new Intersection(BorderSide.Right, Inventory.Height + 1, Border.DOUBLE_T_RIGHT));
-            borderFull.IntersectionList.Add(new Intersection(BorderSide.Bottom, 0, Border.DOUBLE_BOTTOMLEFT));
+            if (!Menu.IsEnabled)
+            {
+                Border borderFull = new Border(false, true, true, false);
+                borderFull.IntersectionList.Add(new Intersection(BorderSide.Right, 0, Border.DOUBLE_TOPRIGHT));
+                borderFull.IntersectionList.Add(new Intersection(BorderSide.Right, Inventory.Height + 1, Border.DOUBLE_T_RIGHT));
+                borderFull.IntersectionList.Add(new Intersection(BorderSide.Bottom, 0, Border.DOUBLE_BOTTOMLEFT));
 
-            return borderFull.Surround(windows, Width - 1);
+                return borderFull.Surround(windows, Width - 1);
+            }
+            else
+            {
+                return windows;
+            }
         }
 
         private static void AddWindow(ref List<string> windowLineList, List<string> lineList, int startIndex = 1)

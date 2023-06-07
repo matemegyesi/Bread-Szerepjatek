@@ -115,6 +115,7 @@ namespace PoP.classes
             }
             catch
             {
+                Console.WriteLine("Couldn't get the frame.");
                 return null;
             }
         }

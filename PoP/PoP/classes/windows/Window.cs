@@ -75,6 +75,18 @@ namespace PoP.classes.windows
         }
 
         /// <summary>
+        /// Appends specified amount of lines full of spaces to the bottom of the window.
+        /// </summary>
+        /// <param name="lineAmount">The amount of blank lines.</param>
+        protected virtual void AddBlankLine(int lineAmount)
+        {
+            for (int i = 0; i < lineAmount; i++)
+            {
+                LineList.Add(Style.GetBlankLine(Width));
+            }
+        }
+
+        /// <summary>
         /// Appends a line full of spaces to the bottom of the window.
         /// </summary>
         /// <param name="localList">The local list that will be changed.</param>

@@ -50,6 +50,7 @@ namespace PoP.classes
         public static Movement playerMovement;
 
         public static Inventory inventory;
+        public static Menu menu;
 
         private Action action;
 
@@ -59,72 +60,23 @@ namespace PoP.classes
             // Sends the F11 key input using the CSInputs library.
             CSInputs.SendInput.Keyboard.Send(CSInputs.Enums.KeyboardKeys.F11);
 
-            // Initializes the Window Renderer
+            // Initializes the Window Renderer & the Display
             Wire.Initialize();
             display = new Display();
 
             // Main menu & tutorial
-            Console.OutputEncoding = Encoding.Unicode;
-            Console.CursorVisible = false;
-
             if (true)
             {
-                List<string> _menuLines = new List<string>();
-
-                string[] _logo = FileInput.GetAllLines("res\\pop_logo.txt");
-                for (int i = 0; i < _logo.Length; i++)
-                {
-                    _logo[i] = Style.GetBlankLine(77) + Style.Color(_logo[i], ColorAnsi.RED);
-                }
-
-                _menuLines.AddRange(new List<string>() { string.Empty, string.Empty, string.Empty });
-
-                string[] _tutorial = FileInput.GetAllLines("res\\tutorial.txt");
-                for (int i = 0; i < _tutorial.Length; i++)
-                {
-                    if (_tutorial[i].Contains('━'))
-                    {
-                        string[] _info = _tutorial[i].Split(' ');
-
-                        _tutorial[i] = Style.GetBlankLine(90) + Style.Color(_info[0], ColorAnsi.CORAL) + ' ' + Style.ColorFormat(_info[1], ColorAnsi.CORAL, FormatAnsi.UNDERLINE) + ' ' + Style.Color(_info[2], ColorAnsi.CORAL);
-                    }
-                    else if (_tutorial[i].Contains(':'))
-                    {
-                        string[] _info = _tutorial[i].Split(':');
-
-                        _tutorial[i] = Style.GetBlankLine(90) + Style.Color(_info[0] + ':', ColorAnsi.LIGHT_BLUE) + Style.Color(_info[1], ColorAnsi.WHITE);
-                    }
-                    else if (_tutorial[i].Contains('└'))
-                    {
-                        _tutorial[i] = Style.GetBlankLine(90) + Style.Color('└', ColorAnsi.LIGHT_BLUE) + Style.Color(_tutorial[i].Substring(1), ColorAnsi.WHITE);
-                    }
-                    else
-                    {
-                        _tutorial[i] = _tutorial[i];
-                    }
-                    
-                }
-
-                _menuLines.AddRange(_logo);
-                _menuLines.AddRange(new List<string>() { string.Empty, string.Empty, string.Empty } );
-                _menuLines.AddRange(_tutorial);
-
-                _menuLines.AddRange(new List<string>() { string.Empty, string.Empty, string.Empty });
-                string _continue = "Press any key to continue";
-                _menuLines.Add(Style.GetRemainingSpace(_continue.Length / 2, Wire.Width / 2) + _continue);
-
-                Console.WriteLine(String.Join("\n", _menuLines));
+                Wire.Menu.HasChanged = true;
             }
 
-            Console.ReadKey();
-            Console.Clear();
-
-            // Initializes objects for the display, keyboard input, and player movement.
+            // Initializes objects for the keyboard input, the player movement, and the inventory.
             Running = true;
             keyboardInput = new KeyboardInput();
-            playerMovement = new Movement(127, 27); // 9, 13 or 127, 27 //
+            playerMovement = new Movement(9, 13); // 9, 13 or 127, 27 //
             inventory = new Inventory();
             action = new Action();
+            menu = new Menu();
 
             // Initializes maps with file paths and adds locations to map3 using the Map class.
             Map map1 = new Map("res\\maps\\raudagnupur_map.json", 0);
@@ -137,7 +89,7 @@ namespace PoP.classes
 
             // Initialize character
             Player.Init();
-            Wire.Map.SetCharacterPosition(127, 27); // 9, 13 or 127, 27 //
+            Wire.Map.SetCharacterPosition(9, 13); // 9, 13 or 127, 27 //
 
             Inventory.spellList[8].Equip(2);
             Inventory.spellList[1].Equip(1);
