@@ -1,0 +1,15 @@
+[
+  {
+    "posX": 2,
+    "posY": 2,
+    "isHidden": true
+  },
+  {
+    "name": "Susmus",
+    "damage": "15",
+    "defence": "20",
+    "health": "200",
+    "effects": "Stun;Poison;Debuff",
+    "level": "2"
+  }
+]

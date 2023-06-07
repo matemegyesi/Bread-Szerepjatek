@@ -18,7 +18,11 @@
   },
   {
     "type": "combat",
-    "path": "res\\enemies\\enemy.json"
+    "path": "res\\enemies\\dragon.json"
+  },
+  {
+    "type": "combat",
+    "path": "res\\enemies\\susmus.json"
   },
   {
     "type": "travel",

@@ -61,7 +61,6 @@ namespace PoP.classes
             }
 
             enemy = new Enemy(engagement[1], this);
-            Wire.Combat.SetEnemy(enemy);
 
             // State setup
             LoadoutState = new LoadoutState(this);
@@ -94,6 +93,7 @@ namespace PoP.classes
 
             Wire.Disable(Wire.Map);
             Wire.Enable(Wire.Combat);
+            Wire.Combat.SetEnemy(enemy);
             Wire.Combat.SetCombat(this);
 
             CurrentState.Enter();
@@ -112,6 +112,7 @@ namespace PoP.classes
 
             Wire.Dialogue.ClearDialogue();
             Wire.Disable(Wire.Combat);
+            Wire.Combat.SetEnemy(null);
             Wire.Combat.SetCombat(null);
             Wire.Enable(Wire.Map);
             Wire.Gear.UpdateGear();
@@ -127,6 +128,7 @@ namespace PoP.classes
             KeyboardInput.KeyPressed -= KeyPressed;
 
             Wire.Disable(Wire.Combat);
+            Wire.Combat.SetEnemy(null);
             Wire.Combat.SetCombat(null);
             Wire.Enable(Wire.Map);
 
@@ -162,7 +164,7 @@ namespace PoP.classes
                 }
                 else if (loot.ItemLoot[i] is Armor)
                 {
-                    Wire.Dialogue.ProgressCombat(_loot, $"{Style.Color(loot.ItemLoot[0].Name, ColorAnsi.LIGHT_BLUE)}, defense: {Style.Color(loot.ItemLoot[i].DamageOrDefense.ToString("0 def"), ColorAnsi.AQUA)}", ColorAnsi.WHEAT);
+                    Wire.Dialogue.ProgressCombat(_loot, $"{Style.Color(loot.ItemLoot[i].Name, ColorAnsi.LIGHT_BLUE)}, defense: {Style.Color(loot.ItemLoot[i].DamageOrDefense.ToString("0 def"), ColorAnsi.AQUA)}", ColorAnsi.WHEAT);
                 }
             }
 

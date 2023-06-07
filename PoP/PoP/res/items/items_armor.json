@@ -1,0 +1,129 @@
+[
+  {
+    "name": "Coventry Sallet",
+    "defense": 15,
+    "type": "Armor",
+    "slot": "Head"
+  },
+  {
+    "name": "Falling Buffe",
+    "defense": 20,
+    "type": "Armor",
+    "slot": "Head"
+  },
+  {
+    "name": "Spangenhelm",
+    "defense": 30,
+    "type": "Armor",
+    "slot": "Head"
+  },
+  {
+    "name": "Jazerant",
+    "defense": 12,
+    "type": "Armor",
+    "slot": "Chest"
+  },
+  {
+    "name": "Lance Rest",
+    "defense": 18,
+    "type": "Armor",
+    "slot": "Chest"
+  },
+  {
+    "name": "Laminar Armour",
+    "defense": 24,
+    "type": "Armor",
+    "slot": "Chest"
+  },
+  {
+    "name": "Chausses",
+    "defense": 21,
+    "type": "Armor",
+    "slot": "Leg"
+  },
+
+  {
+    "name": "Coppergate Helmet",
+    "defense": 40,
+    "type": "Armor",
+    "slot": "Head"
+  },
+  {
+    "name": "Iron Helm",
+    "defense": 50,
+    "type": "Armor",
+    "slot": "Head"
+  },
+  {
+    "name": "Steel Helmet",
+    "defense": 60,
+    "type": "Armor",
+    "slot": "Head"
+  },
+  {
+    "name": "Lamellar Armour",
+    "defense": 30,
+    "type": "Armor",
+    "slot": "Chest"
+  },
+  {
+    "name": "Buff Leather",
+    "defense": 36,
+    "type": "Armor",
+    "slot": "Chest"
+  },
+  {
+    "name": "Brigandine",
+    "defense": 48,
+    "type": "Armor",
+    "slot": "Chest"
+  },
+  {
+    "name": "Schynbalds",
+    "defense": 33,
+    "type": "Armor",
+    "slot": "Leg"
+  },
+  {
+    "name": "Tungsten Sallet",
+    "defense": 75,
+    "type": "Armor",
+    "slot": "Head"
+  },
+  {
+    "name": "Great Helm",
+    "defense": 100,
+    "type": "Armor",
+    "slot": "Head"
+  },
+  {
+    "name": "Aventail",
+    "defense": 150,
+    "type": "Armor",
+    "slot": "Head"
+  },
+  {
+    "name": "Boiled Leather",
+    "defense": 60,
+    "type": "Armor",
+    "slot": "Chest"
+  },
+  {
+    "name": "Scale Armour",
+    "defense": 76,
+    "type": "Armor",
+    "slot": "Chest"
+  },
+  {
+    "name": "Mail & Plate",
+    "defense": 100,
+    "type": "Armor",
+    "slot": "Chest"
+  },
+  {
+    "name": "Sabaton",
+    "defense": 50,
+    "type": "Armor",
+    "slot": "Leg"
+  }
+]

@@ -1,37 +1,37 @@
 [
   {
     "name": "Blazeheart Band",
-    "damage": 1,
+    "damage": 15,
     "slot": "Ring",
     "type": "Weapon"
   },
   {
     "name": "Frostshard Loop",
-    "damage": 2,
+    "damage": 20,
     "slot": "Ring",
     "type": "Weapon"
   },
   {
     "name": "Thunderbolt Circle",
-    "damage": 3,
+    "damage": 25,
     "slot": "Ring",
     "type": "Weapon"
   },
   {
     "name": "Venomfang Loop",
-    "damage": 4,
+    "damage": 30,
     "slot": "Ring",
     "type": "Weapon"
   },
   {
     "name": "Celestial Circlet",
-    "damage": 5,
+    "damage": 35,
     "slot": "Ring",
     "type": "Weapon"
   },
   {
     "name": "Shadowweave Ring",
-    "damage": 6,
+    "damage": 40,
     "slot": "Ring",
     "type": "Weapon"
   },
