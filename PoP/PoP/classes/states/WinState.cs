@@ -8,14 +8,30 @@ namespace PoP.classes.states
 {
     internal class WinState : State
     {
+        private double healthBoost;
+        private double manaBoost;
+        private double manaRateBoost;
+
         public WinState(Combat loc) : base(loc)
         {
-
+            healthBoost = Math.Round(stateMachine.enemy.MaxHealth / 100, 1) * 10;
+            manaBoost = stateMachine.enemy.Level * 5;
+            manaRateBoost = stateMachine.enemy.Level * 2.5;
         }
 
         public override void Enter()
         {
             ResetBooleans(true);
+
+            // Boost
+            Player.MaxHealth += healthBoost;
+            Player.Health = Player.MaxHealth;
+
+            Player.MaxMana += manaBoost;
+            Player.Mana = Player.MaxMana;
+
+            Player.BaseManaRate += manaRateBoost;
+            Player.ManaRate = Player.BaseManaRate;
 
             Wire.Combat.TurnTitle = Style.Color($" # {Player.Name} won! # ", ColorAnsi.LIGHT_GREEN);
             Wire.Combat.SpaceKeyName = "Leave encounter";
@@ -27,15 +43,17 @@ namespace PoP.classes.states
             Wire.Dialogue.ProgressBlank();
 
             // Boost description
-            Wire.Dialogue.ProgressCombat("Boost", $"{Style.Color((Math.Round(stateMachine.enemy.MaxHealth / 100) * 10).ToString("+0 max hp"), ColorAnsi.LIGHT_BLUE)}", ColorAnsi.TEAL);
-            Wire.Dialogue.ProgressCombat("", $"{Style.Color(10.ToString("+0 max mana"), ColorAnsi.PURPLE)}");
-            Wire.Dialogue.ProgressCombat("", $"{Style.Color(2.5.ToString("+0.# mana rate"), ColorAnsi.DARK_RED)}");
+            Wire.Dialogue.ProgressCombat("Boost", $"{Style.Color(healthBoost.ToString("+0 max hp"), ColorAnsi.LIGHT_BLUE)}", ColorAnsi.TEAL);
+            Wire.Dialogue.ProgressCombat("", $"{Style.Color(manaBoost.ToString("+0 max mana"), ColorAnsi.PURPLE)}");
+            Wire.Dialogue.ProgressCombat("", $"{Style.Color(manaRateBoost.ToString("+0.# mana rate"), ColorAnsi.DARK_RED)}");
             Wire.Dialogue.ProgressBlank();
 
             // Loot description
             stateMachine.Loot();
             Wire.Dialogue.ProgressBlank();
 
+            Wire.Inventory.UpdateItemList(Inventory.inventory);
+            Wire.Gear.UpdateGear();
             Wire.Combat.ForceUpdate();
         }
 
@@ -49,15 +67,6 @@ namespace PoP.classes.states
 
         public override void Exit()
         {
-            Player.MaxHealth += Math.Round(stateMachine.enemy.MaxHealth / 100) * 10;
-            Player.Health = Player.MaxHealth;
-
-            Player.MaxMana += 10;
-            Player.Mana = Player.MaxMana;
-
-            Player.BaseManaRate += 2.5;
-            Player.ManaRate = Player.BaseManaRate;
-
             foreach (Effect effect in Player.EffectDict.Select(x => x.Key))
             {
                 Player.EffectDict[effect] = 0;

@@ -117,6 +117,8 @@ namespace PoP.classes
 
             while (Running)
             {
+                Console.CursorVisible = false;
+
                 DateTime currentTime = DateTime.Now;
                 double elapsedTime = (currentTime - lastTime).TotalMilliseconds;
                 lastTime = currentTime;
