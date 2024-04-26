@@ -1,7 +1,0 @@
-Úlfdís - Ork - 10
-
-Múlt: Egy orkok között ritka, értelmes családból származik. Okos jól nevelt és harctéren képzett. Családjának titkos sajátos mágiája van, amivel a saját, vagy akár kellő erővel és érintkezéssel mások testét tudják befolyásolni. Ezt a mágiát igen nehéz elsajátítani, de az évek alatt sikerült neki. Szüleivel jó kapcsolatot ápol és családja hírneve miatt egész könnyen vették be a tanácsba.
-
-Racial spells: Ha elég sokszor megjelöl akkor meghalsz, Saját testét tudja befolyásolni
-Erősségek: Átlag feletti hp, instant öl
-Gyengeség: Lassú
